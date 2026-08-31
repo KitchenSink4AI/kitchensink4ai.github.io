@@ -194,6 +194,11 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
   html{scroll-behavior:auto}
 }
+
+/* whole-card click targets: stretched link under the card, inner links above */
+.aisle{cursor:pointer}
+.aisle .stretch{position:absolute;inset:0;z-index:1}
+.aisle .links, .aisle .links a{position:relative;z-index:2}
 </style>
 </head>
 <body>
@@ -216,7 +221,7 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="wrap">
     <div class="sec-head"><span class="no">THE FLOOR</span><h2>Shop by department</h2></div>
     <div class="aisles">
-      <div class="aisle w">
+      <div class="aisle w"><a class="stretch" href="https://nometalalchemist.github.io/KitchenSink4Word/" aria-label="KitchenSink4Word showroom"></a>
         <span class="aisle-tag">AISLE W · PLUMBING</span>
         <span class="fixture">🚰</span>
         <h3>KitchenSink<span class="four">4</span>Word</h3>
@@ -228,7 +233,7 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           <a href="https://pypi.org/project/kitchensink4word/">PYPI</a>
         </div>
       </div>
-      <div class="aisle p">
+      <div class="aisle p"><a class="stretch" href="https://nometalalchemist.github.io/KitchenSink4PPT/" aria-label="KitchenSink4PPT showroom"></a>
         <span class="aisle-tag">AISLE P · LIGHTING</span>
         <span class="fixture">💡</span>
         <h3>KitchenSink<span class="four">4</span>PPT<span class="badge">NEW STOCK</span></h3>
@@ -310,7 +315,8 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <span>© 2026 · <b>AGPL-3.0</b>, storewide: free for any use under AGPL terms.<br>Commercial licenses available for use cases that cannot comply with copyleft; arrange one at the service counter of the product you need.</span>
     <span style="text-align:right"><a href="https://github.com/nometalalchemist">github.com/nometalalchemist</a><br>Every fixture in this store was prototyped with Claude Code and hardened until adversarial test agents ran out of complaints.</span>
   </div>
-  <div class="wrap colophon">SET IN FRAUNCES &amp; IBM PLEX MONO</div>
+  <div class="wrap" style="text-align:center;padding:10px 0"><img src="https://visitor-badge.laobi.icu/badge?page_id=nometalalchemist.storefront&left_color=%231e3550&right_color=%23b0622a&left_text=views" alt="views" height="18" style="vertical-align:middle"></div>
+<div class="wrap colophon">SET IN FRAUNCES &amp; IBM PLEX MONO</div>
 </footer>
 
 </body>
