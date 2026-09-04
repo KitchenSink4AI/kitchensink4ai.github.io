@@ -4,24 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!--
-  STAGING LOCATION. At ship, this file moves to the nometalalchemist.github.io root repo
-  (index.html at the repo root) so it serves at https://nometalalchemist.github.io/.
-  SHIP-DAY NUMBERS FILLED: 138 tools. Update the KS4P shelf line when v1.0 ships.
-  SHIP-DAY CHECK: verify both service counter issue URLs are live before publishing
-  (github.com/nometalalchemist/KitchenSink4Word/issues and github.com/nometalalchemist/KitchenSink4PPT/issues;
-  the KS4P repo does not exist until launch, same pre-launch pattern as the product page).
+  LIVE. This is the nometalalchemist.github.io root page, served at https://nometalalchemist.github.io/.
+  Per-product counts in the aisle cards track the SHIPPED release of each server, not a staged one.
+  Update an aisle card only when that product's release is actually public.
 -->
 <title>The KitchenSink Works · Everything plus the kitchen sink</title>
 <meta name="description" content="The KitchenSink family of MCP servers for Office documents: KitchenSink4Word (189 tools for .docx) and KitchenSink4PPT (138 tools for .pptx, native editable diagrams from SVG). Engineered not to corrupt. Refuses rather than guesses.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏪</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,50&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,50&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* metric-matched local fallbacks: on a cold cache the swap to the webfonts cannot re-wrap text.
-   Courier New shares IBM Plex Mono's exact 0.6em advance width; Georgia scaled 104% matches Fraunces at text weights. */
-@font-face{font-family:"Plex Mono Fallback";src:local("Courier New");size-adjust:100%;line-gap-override:0%}
-@font-face{font-family:"Fraunces Fallback";src:local("Georgia");size-adjust:104%;line-gap-override:0%}
+   Courier New shares IBM Plex Mono's exact 0.6em advance width; Georgia scaled 104% matches Fraunces at text weights.
+   font-weight ranges are required: without them the fallback covers weight 400 only, so bold text
+   (the masthead <b>) fell through to the generic monospace face while its own sentence stayed in
+   Courier New. That was the visible mismatch between PURVEYORS and the words after it. */
+@font-face{font-family:"Plex Mono Fallback";src:local("Courier New");size-adjust:100%;line-gap-override:0%;font-weight:100 900}
+@font-face{font-family:"Fraunces Fallback";src:local("Georgia");size-adjust:104%;line-gap-override:0%;font-weight:100 900}
 :root{
   --paper:#f5efe0; --paper-deep:#ede4cd; --ink:#1e3550; --ink-soft:#3f5878;
   --copper:#b0622a; --patina:#2e6e55; --stamp:#a3352b; --rule:#c9bda0;
@@ -43,10 +43,33 @@ a:hover{text-decoration-style:wavy;text-decoration-thickness:1px;text-underline-
 .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
 
 /* masthead */
+/* grid, not flex: the language toggle keeps the same centre column in every
+   language, so switching languages never moves it. */
 .masthead{border-bottom:3px double var(--ink);padding:14px 0;font-size:12px;
-  letter-spacing:.18em;text-transform:uppercase;display:flex;justify-content:space-between;
-  gap:12px;flex-wrap:wrap}
-.masthead b{letter-spacing:.02em}
+  letter-spacing:.18em;text-transform:uppercase;display:grid;
+  grid-template-columns:1fr auto 1fr;align-items:baseline;gap:12px}
+.masthead>span:last-child{justify-self:end;text-align:right}
+/* one face across the whole line, bold included */
+.masthead,.masthead span,.masthead b{
+  font-family:'IBM Plex Mono',"Plex Mono Fallback",ui-monospace,monospace}
+.masthead b{letter-spacing:.02em;font-weight:600}
+@media(max-width:900px){
+  .masthead{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .masthead>span:last-child{justify-self:center;text-align:center}
+}
+
+/* product switch bar */
+.switchbar{border-bottom:1px solid var(--rule);background:var(--paper-deep);
+  padding:9px 0;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap;
+  font-family:'IBM Plex Mono',"Plex Mono Fallback",ui-monospace,monospace}
+.switchbar .lbl{color:var(--ink-soft);letter-spacing:.22em}
+.switchbar a{text-decoration:none;font-weight:600;border-bottom:2px solid transparent;
+  padding-bottom:2px}
+.switchbar a.w{color:var(--copper)}
+.switchbar a.w:hover{border-bottom-color:var(--copper)}
+.switchbar a.p{color:var(--patina)}
+.switchbar a.p:hover{border-bottom-color:var(--patina)}
 .lang-toggle{display:inline-flex;gap:1px;align-items:baseline;flex-wrap:wrap;text-transform:none;letter-spacing:.05em}
 .lang-toggle button{font-family:'IBM Plex Mono',"Plex Mono Fallback",ui-monospace,monospace;font-size:11px;background:none;border:none;border-bottom:2px solid transparent;color:var(--ink-soft);cursor:pointer;padding:1px 5px;letter-spacing:.05em}
 .lang-toggle button:hover{color:var(--copper)}
@@ -216,6 +239,12 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <span><a href="https://github.com/nometalalchemist">GITHUB</a> · <a href="#aisles" data-i18n="m.depts">DEPARTMENTS</a> · <a href="#creed" data-i18n="m.rules">HOUSE RULES</a></span>
 </div>
 
+<div class="switchbar">
+  <span class="lbl" data-i18n="sw.lbl">The aisles</span>
+  <a class="w" href="https://nometalalchemist.github.io/KitchenSink4Word/">🚰 KitchenSink4Word</a>
+  <a class="p" href="https://nometalalchemist.github.io/KitchenSink4PPT/">💡 KitchenSink4PPT</a>
+</div>
+
 <div class="awning"><div class="scallop-alt"></div></div>
 
 <header class="hero wrap">
@@ -314,14 +343,14 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <span class="go" data-i18n="dp.g">Visit the PPT service desk →</span>
       </a>
     </div>
-    <p class="svc-note" data-i18n="svc.com"><b>Commercial fitting?</b> Free for any use under AGPL-3.0 terms. Commercial license available for use cases that cannot comply with copyleft; open an issue at the desk of the product you need to arrange one.</p>
+    <p class="svc-note" data-i18n="svc.com"><b>Commercial fitting?</b> Free for individuals and personal use, and it stays that way. If your company wants to build one of these servers into a product of its own, that needs a commercial license, and terms are worked out case by case. Open an issue at the desk of the product you need and we will talk it through.</p>
     <p class="svc-note" data-i18n="svc.note">Reports are public GitHub issues (a free GitHub account is needed to file one). Every report lands in the maintainer's inbox.</p>
   </div>
 </section>
 
 <footer>
   <div class="wrap row">
-    <span data-i18n="f.left">© 2026 · <b>AGPL-3.0</b>, storewide: free for any use under AGPL terms.<br>Commercial licenses available for use cases that cannot comply with copyleft; arrange one at the service counter of the product you need.</span>
+    <span data-i18n="f.left">© 2026 · <b>AGPL-3.0</b>, storewide: free for individuals and personal use.<br>Companies building these servers into their own products need a commercial license; arrange one at the service counter of the product you need.</span>
     <span style="text-align:right" data-i18n="f.right"><a href="https://github.com/nometalalchemist">github.com/nometalalchemist</a><br>Every fixture in this store was prototyped with Claude Code and hardened until adversarial test agents ran out of complaints.</span>
   </div>
   <div class="wrap" style="text-align:center;padding:10px 0"><img src="https://visitor-badge.laobi.icu/badge?page_id=nometalalchemist.storefront&left_color=%231e3550&right_color=%23b0622a&left_text=views" alt="views" height="18" style="vertical-align:middle"></div>
@@ -335,6 +364,7 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 var I18N = {
 en: {
 "pageTitle": "The KitchenSink Works · Everything plus the kitchen sink",
+"sw.lbl": "The aisles",
 "m.left": "<b>PURVEYORS</b> OF FINE INSTRUMENTS FOR OFFICE DOCUMENTS",
 "m.depts": "DEPARTMENTS",
 "m.rules": "HOUSE RULES",
@@ -375,13 +405,14 @@ en: {
 "dp.q": "Lights flickering?",
 "dp.p": "Glitches, refusals, and feature requests for KitchenSink4PPT go to the lighting desk. Same structured forms, same house policy; never attach a private deck, rebuild the structure with placeholder text.",
 "dp.g": "Visit the PPT service desk →",
-"svc.com": "<b>Commercial fitting?</b> Free for any use under AGPL-3.0 terms. Commercial license available for use cases that cannot comply with copyleft; open an issue at the desk of the product you need to arrange one.",
+"svc.com": "<b>Commercial fitting?</b> Free for individuals and personal use, and it stays that way. If your company wants to build one of these servers into a product of its own, that needs a commercial license, and terms are worked out case by case. Open an issue at the desk of the product you need and we will talk it through.",
 "svc.note": "Reports are public GitHub issues (a free GitHub account is needed to file one). Every report lands in the maintainer's inbox.",
-"f.left": "© 2026 · <b>AGPL-3.0</b>, storewide: free for any use under AGPL terms.<br>Commercial licenses available for use cases that cannot comply with copyleft; arrange one at the service counter of the product you need.",
+"f.left": "&copy; 2026 &middot; <b>AGPL-3.0</b>, storewide: free for individuals and personal use.<br>Companies building these servers into their own products need a commercial license; arrange one at the service counter of the product you need.",
 "f.right": "<a href='https://github.com/nometalalchemist'>github.com/nometalalchemist</a><br>Every fixture in this store was prototyped with Claude Code and hardened until adversarial test agents ran out of complaints."
 },
 ko: {
 "pageTitle": "The KitchenSink Works · 없는 게 없습니다",
+"sw.lbl": "매장 통로",
 "m.left": "<b>사무 문서용</b> 정밀 기구 전문점",
 "m.depts": "매장 안내",
 "m.rules": "가게 원칙",
@@ -422,13 +453,14 @@ ko: {
 "dp.q": "조명이 깜빡입니까?",
 "dp.p": "오작동, 거부, KitchenSink4PPT 기능 요청은 조명 창구로 갑니다. 같은 구조화된 양식, 같은 가게 방침입니다. 개인 프레젠테이션은 절대 첨부하지 말고, 자리표시 텍스트로 구조만 재현해 주세요.",
 "dp.g": "PPT 서비스 창구로 →",
-"svc.com": "<b>영업용 설비가 필요합니까?</b> AGPL-3.0 조건 아래 모든 용도로 무료입니다. 카피레프트 준수가 어려운 사용처에는 상업용 라이선스를 제공합니다. 필요한 제품의 창구에서 이슈를 열어 진행하세요.",
+"svc.com": "<b>영업용 설비가 필요합니까?</b> 개인과 개인적 용도에는 무료이며, 앞으로도 그렇습니다. 회사가 이 서버들을 자사 제품에 넣어 만들려면 상업용 라이선스가 필요하고, 조건은 사안마다 협의해서 정합니다. 필요한 제품의 창구에서 이슈를 열어 주시면 함께 이야기하겠습니다.",
 "svc.note": "신고는 공개 GitHub 이슈로 접수됩니다(제출에는 무료 GitHub 계정이 필요합니다). 모든 신고는 관리자의 수신함에 바로 도착합니다.",
-"f.left": "© 2026 · <b>AGPL-3.0</b>, 전 매장 공통: 모든 용도 무료 (AGPL 조건).<br>카피레프트 준수가 어려운 경우 상업용 라이선스를 제공합니다. 필요한 제품의 서비스 창구에서 진행하세요.",
+"f.left": "&copy; 2026 &middot; <b>AGPL-3.0</b>, 전 매장 공통: 개인과 개인적 용도에는 무료.<br>이 서버들을 자사 제품에 넣어 만드는 회사에는 상업용 라이선스가 필요합니다. 필요한 제품의 서비스 창구에서 진행하세요.",
 "f.right": "<a href='https://github.com/nometalalchemist'>github.com/nometalalchemist</a><br>이 가게의 모든 설비는 Claude Code로 프로토타입을 만들고, 적대적 테스트 에이전트가 불평거리를 다 소진할 때까지 단련했습니다."
 },
 ja: {
 "pageTitle": "The KitchenSink Works · 何でも揃います",
+"sw.lbl": "売り場",
 "m.left": "<b>オフィス文書のための</b>精密器具商",
 "m.depts": "売り場案内",
 "m.rules": "店の掟",
@@ -469,13 +501,14 @@ ja: {
 "dp.q": "明かりがちらつく?",
 "dp.p": "誤動作、拒否、KitchenSink4PPT への機能要望は照明窓口へ。同じ構造化フォーム、同じ店の方針です。私的なスライド資料は決して添付せず、プレースホルダーのテキストで構造だけ再現してください。",
 "dp.g": "PPT のサービス窓口へ →",
-"svc.com": "<b>業務用の取り付けですか?</b> AGPL-3.0 の条件のもと、あらゆる用途で無料です。コピーレフトに従えない用途には商用ライセンスを用意しています。必要な製品の窓口で Issue を開いて手続きしてください。",
+"svc.com": "<b>業務用の取り付けですか?</b> 個人利用と私的な用途は無料で、これからも無料のままです。会社としてこれらのサーバーを自社製品に組み込みたい場合は商用ライセンスが必要で、条件は案件ごとに相談して決めます。必要な製品の窓口で Issue を開いてください。そこから話を進めましょう。",
 "svc.note": "報告は公開の GitHub Issue になります(提出には無料の GitHub アカウントが必要です)。すべての報告はメンテナーの受信箱に届きます。",
-"f.left": "© 2026 · <b>AGPL-3.0</b>、全店共通:全用途無料(AGPL条件)。<br>コピーレフト準拠が困難な場合、商用ライセンスを提供しています。必要な製品のサービス窓口でご相談ください。",
+"f.left": "&copy; 2026 &middot; <b>AGPL-3.0</b>、全店共通:個人利用と私的な用途は無料。<br>これらのサーバーを自社製品に組み込む企業には商用ライセンスが必要です。必要な製品のサービス窓口でご相談ください。",
 "f.right": "<a href='https://github.com/nometalalchemist'>github.com/nometalalchemist</a><br>この店のすべての器具は Claude Code でプロトタイプを作り、敵対的テストエージェントが文句を言い尽くすまで鍛えました。"
 },
 zh: {
 "pageTitle": "The KitchenSink Works · 应有尽有",
+"sw.lbl": "各条过道",
 "m.left": "<b>办公文档</b>精密器具供应商",
 "m.depts": "各部门",
 "m.rules": "店规",
@@ -516,13 +549,14 @@ zh: {
 "dp.q": "灯在闪?",
 "dp.p": "故障、拒绝、KitchenSink4PPT 的功能请求,到灯具台。同样的结构化表单,同样的店规;切勿附上私人演示文稿,请用占位文字重建结构。",
 "dp.g": "去 PPT 服务台 →",
-"svc.com": "<b>商用装配?</b> 在 AGPL-3.0 条款下,任何用途都免费。无法遵守 copyleft 的使用场景可获取商业许可;到你所需产品的服务台开一个 issue 办理。",
+"svc.com": "<b>商用装配?</b> 个人和个人用途一直免费,以后也是。如果贵公司想把这些服务器做进自家产品里,那就需要商业许可,条款按具体情况一事一议。到你所需产品的服务台开一个 issue,我们细谈。",
 "svc.note": "报告以公开 GitHub issue 的形式提交(需要一个免费的 GitHub 账号)。每份报告都会直达维护者的收件箱。",
-"f.left": "© 2026 · <b>AGPL-3.0</b>,全店通用:所有用途免费(AGPL条款)。<br>无法遵守copyleft的使用场景可获取商业许可,请到所需产品的服务台办理。",
+"f.left": "&copy; 2026 &middot; <b>AGPL-3.0</b>,全店通用:个人和个人用途免费。<br>把这些服务器做进自家产品的公司需要商业许可,请到所需产品的服务台办理。",
 "f.right": "<a href='https://github.com/nometalalchemist'>github.com/nometalalchemist</a><br>店里的每件设备都用 Claude Code 做出原型,再打磨到对抗性测试智能体挑不出毛病为止。"
 },
 de: {
 "pageTitle": "The KitchenSink Works · Alles mit allem Drum und Dran",
+"sw.lbl": "Die Gänge",
 "m.left": "<b>LIEFERANTEN</b> FEINER INSTRUMENTE FÜR OFFICE-DOKUMENTE",
 "m.depts": "ABTEILUNGEN",
 "m.rules": "HAUSREGELN",
@@ -563,13 +597,14 @@ de: {
 "dp.q": "Flackert das Licht?",
 "dp.p": "Aussetzer, Verweigerungen und Funktionswünsche für KitchenSink4PPT gehen an den Beleuchtungsschalter. Dieselben strukturierten Formulare, dieselbe Hauspolitik; hängen Sie nie einen privaten Foliensatz an, bauen Sie die Struktur mit Platzhaltertext nach.",
 "dp.g": "Zum PPT-Serviceschalter →",
-"svc.com": "<b>Gewerbliche Montage?</b> Kostenlos für jede Nutzung unter AGPL-3.0-Bedingungen. Für Anwendungsfälle, die das Copyleft nicht einhalten können, gibt es eine kommerzielle Lizenz; öffnen Sie ein Issue am Schalter des Produkts, das Sie brauchen, um sie zu vereinbaren.",
+"svc.com": "<b>Gewerbliche Montage?</b> Für Privatpersonen und private Nutzung kostenlos, und das bleibt so. Will ein Unternehmen einen dieser Server in ein eigenes Produkt einbauen, braucht es eine kommerzielle Lizenz, und die Konditionen werden im Einzelfall besprochen. Öffnen Sie ein Issue am Schalter des Produkts, das Sie brauchen, dann klären wir das.",
 "svc.note": "Berichte sind öffentliche GitHub-Issues (zum Einreichen genügt ein kostenloses GitHub-Konto). Jeder Bericht landet im Posteingang des Maintainers.",
-"f.left": "© 2026 · <b>AGPL-3.0</b>, im ganzen Laden: kostenlos unter AGPL-Bedingungen.<br>Kommerzielle Lizenzen verfügbar, wenn Copyleft nicht umsetzbar; zu vereinbaren am Serviceschalter des Produkts, das Sie brauchen.",
+"f.left": "&copy; 2026 &middot; <b>AGPL-3.0</b>, im ganzen Laden: kostenlos für Privatpersonen und private Nutzung.<br>Unternehmen, die diese Server in eigene Produkte einbauen, brauchen eine kommerzielle Lizenz; zu vereinbaren am Serviceschalter des Produkts, das Sie brauchen.",
 "f.right": "<a href='https://github.com/nometalalchemist'>github.com/nometalalchemist</a><br>Jede Armatur in diesem Laden wurde mit Claude Code prototypisiert und gehärtet, bis den adversarialen Test-Agenten die Beschwerden ausgingen."
 },
 fr: {
 "pageTitle": "The KitchenSink Works · Absolument tout, jusqu'au moindre détail",
+"sw.lbl": "Les allées",
 "m.left": "<b>FOURNISSEURS</b> D'INSTRUMENTS DE PRÉCISION POUR DOCUMENTS OFFICE",
 "m.depts": "RAYONS",
 "m.rules": "RÈGLES DE LA MAISON",
@@ -610,13 +645,14 @@ fr: {
 "dp.q": "La lumière vacille ?",
 "dp.p": "Pépins, refus et demandes de fonctions pour KitchenSink4PPT vont au comptoir éclairage. Mêmes formulaires structurés, même politique de la maison ; ne joignez jamais une présentation privée, reconstruisez la structure avec du texte de substitution.",
 "dp.g": "Au comptoir de service PPT →",
-"svc.com": "<b>Installation commerciale ?</b> Gratuit pour tout usage aux conditions AGPL-3.0. Une licence commerciale est disponible pour les cas qui ne peuvent pas respecter le copyleft ; ouvrez un ticket au comptoir du produit dont vous avez besoin pour la convenir.",
+"svc.com": "<b>Installation commerciale ?</b> Gratuit pour les particuliers et l'usage personnel, et cela ne changera pas. Si votre entreprise veut intégrer un de ces serveurs dans un produit à elle, il lui faut une licence commerciale, et les conditions se discutent au cas par cas. Ouvrez un ticket au comptoir du produit qui vous intéresse et nous en parlerons.",
 "svc.note": "Les signalements sont des tickets GitHub publics (un compte GitHub gratuit suffit pour en déposer un). Chaque signalement atterrit dans la boîte du mainteneur.",
-"f.left": "© 2026 · <b>AGPL-3.0</b>, dans toute la boutique : gratuit sous conditions AGPL.<br>Licences commerciales disponibles si le copyleft n'est pas applicable ; à convenir au comptoir de service du produit qu'il vous faut.",
+"f.left": "&copy; 2026 &middot; <b>AGPL-3.0</b>, dans toute la boutique : gratuit pour les particuliers et l'usage personnel.<br>Les entreprises qui intègrent ces serveurs dans leurs propres produits ont besoin d'une licence commerciale ; à convenir au comptoir de service du produit qu'il vous faut.",
 "f.right": "<a href='https://github.com/nometalalchemist'>github.com/nometalalchemist</a><br>Chaque installation de cette boutique a été prototypée avec Claude Code et endurcie jusqu'à ce que les agents de test adversariaux soient à court de réclamations."
 },
 es: {
 "pageTitle": "The KitchenSink Works · De todo, hasta lo que no imaginas",
+"sw.lbl": "Los pasillos",
 "m.left": "<b>PROVEEDORES</b> DE INSTRUMENTOS FINOS PARA DOCUMENTOS DE OFFICE",
 "m.depts": "DEPARTAMENTOS",
 "m.rules": "REGLAS DE LA CASA",
@@ -657,9 +693,9 @@ es: {
 "dp.q": "¿Parpadean las luces?",
 "dp.p": "Fallos, rechazos y peticiones de funciones de KitchenSink4PPT van al mostrador de iluminación. Los mismos formularios estructurados, la misma política de la casa; nunca adjunte una presentación privada, reconstruya la estructura con texto de relleno.",
 "dp.g": "Al mostrador de servicio de PPT →",
-"svc.com": "<b>¿Instalación comercial?</b> Gratis para cualquier uso bajo los términos de AGPL-3.0. Hay licencia comercial para los casos que no puedan cumplir el copyleft; abra un issue en el mostrador del producto que necesite para gestionarla.",
+"svc.com": "<b>¿Instalación comercial?</b> Gratis para particulares y uso personal, y seguirá siéndolo. Si su empresa quiere integrar uno de estos servidores en un producto propio, hace falta una licencia comercial, y las condiciones se acuerdan caso por caso. Abra un issue en el mostrador del producto que necesite y lo hablamos.",
 "svc.note": "Los partes son issues públicos de GitHub (hace falta una cuenta gratuita de GitHub para presentarlos). Cada parte llega a la bandeja del mantenedor.",
-"f.left": "© 2026 · <b>AGPL-3.0</b>, en toda la tienda: gratis bajo los términos de AGPL.<br>Licencias comerciales disponibles si el copyleft no es viable; gestiónela en el mostrador de servicio del producto que necesite.",
+"f.left": "&copy; 2026 &middot; <b>AGPL-3.0</b>, en toda la tienda: gratis para particulares y uso personal.<br>Las empresas que integren estos servidores en productos propios necesitan una licencia comercial; gestiónela en el mostrador de servicio del producto que necesite.",
 "f.right": "<a href='https://github.com/nometalalchemist'>github.com/nometalalchemist</a><br>Cada accesorio de esta tienda se prototipó con Claude Code y se endureció hasta que los agentes de prueba adversariales se quedaron sin quejas."
 }
 };
