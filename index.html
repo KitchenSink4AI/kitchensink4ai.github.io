@@ -12,7 +12,7 @@
   moment that release is cut rather than waiting for it.
 -->
 <title>The KitchenSink Works · Everything plus the kitchen sink</title>
-<meta name="description" content="The KitchenSink family of MCP servers for Office documents: KitchenSink4Word (219 operations across 108 tools for .docx) and KitchenSink4PPT (138 tools for .pptx, native editable diagrams from SVG with connectors that stay glued). Both start small and load capability packs on demand. Engineered not to corrupt. Refuses rather than guesses.">
+<meta name="description" content="The KitchenSink family of MCP servers for Office documents: KitchenSink4Word (219 operations across 108 tools for .docx), KitchenSink4PPT (138 tools for .pptx, native editable diagrams from SVG with connectors that stay glued), and KitchenSink4XL (69 tools for .xlsx, every value labeled calculated, cached, or absent). All start small and load capability packs on demand. Engineered not to corrupt. Refuses rather than guesses.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏪</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,7 +27,7 @@
 @font-face{font-family:"Fraunces Fallback";src:local("Georgia");size-adjust:104%;line-gap-override:0%;font-weight:100 900}
 :root{
   --paper:#f5efe0; --paper-deep:#ede4cd; --ink:#1e3550; --ink-soft:#3f5878;
-  --copper:#b0622a; --patina:#2e6e55; --stamp:#a3352b; --rule:#c9bda0;
+  --copper:#b0622a; --patina:#2e6e55; --brass:#7d5c14; --stamp:#a3352b; --rule:#c9bda0;
   --shadow: 0 2px 0 var(--rule), 0 10px 30px rgba(30,53,80,.10);
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -73,6 +73,8 @@ a:hover{text-decoration-style:wavy;text-decoration-thickness:1px;text-underline-
 .switchbar a.w:hover{border-bottom-color:var(--copper)}
 .switchbar a.p{color:var(--patina)}
 .switchbar a.p:hover{border-bottom-color:var(--patina)}
+.switchbar a.x{color:var(--brass)}
+.switchbar a.x:hover{border-bottom-color:var(--brass)}
 .lang-toggle{display:inline-flex;gap:1px;align-items:baseline;flex-wrap:wrap;text-transform:none;letter-spacing:.05em}
 .lang-toggle button{font-family:'IBM Plex Mono',"Plex Mono Fallback",ui-monospace,monospace;font-size:11px;background:none;border:none;border-bottom:2px solid transparent;color:var(--ink-soft);cursor:pointer;padding:1px 5px;letter-spacing:.05em}
 .lang-toggle button:hover{color:var(--copper)}
@@ -143,8 +145,11 @@ section{padding:60px 0;border-top:1px solid var(--rule)}
   box-shadow:2px 4px 0 rgba(176,98,42,.35), 8px 14px 30px rgba(30,53,80,.16)}
 .aisle.p:hover{transform:translate(-2px,-2px);border-color:var(--patina);
   box-shadow:2px 4px 0 rgba(46,110,85,.35), 8px 14px 30px rgba(30,53,80,.16)}
+.aisle.x:hover{transform:translate(-2px,-2px);border-color:var(--brass);
+  box-shadow:2px 4px 0 rgba(125,92,20,.35), 8px 14px 30px rgba(30,53,80,.16)}
 .aisle.w:hover .aisle-tag{background:var(--copper)}
 .aisle.p:hover .aisle-tag{background:var(--patina)}
+.aisle.x:hover .aisle-tag{background:var(--brass)}
 .aisle .aisle-tag{position:absolute;top:-11px;left:24px;background:var(--ink);color:var(--paper);
   font-size:10px;letter-spacing:.3em;padding:4px 12px;text-transform:uppercase;transition:background .15s}
 .aisle .fixture{font-size:44px;display:block;margin-bottom:10px;line-height:1;transition:transform .2s}
@@ -153,6 +158,7 @@ section{padding:60px 0;border-top:1px solid var(--rule)}
 .aisle h3 .four{font-size:.8em}
 .aisle.w h3 .four{color:var(--copper)}
 .aisle.p h3 .four{color:var(--patina)}
+.aisle.x h3 .four{color:var(--brass)}
 .aisle .pitch{font-family:'Fraunces',"Fraunces Fallback",Georgia,serif;font-size:15.5px;color:var(--ink-soft);margin-top:10px;line-height:1.6}
 .aisle .counts{margin-top:16px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
 .aisle .counts b{color:var(--ink);font-size:13px;letter-spacing:.05em}
@@ -160,6 +166,7 @@ section{padding:60px 0;border-top:1px solid var(--rule)}
   font-size:12px;display:flex;gap:14px;flex-wrap:wrap}
 .aisle.w .links a{color:var(--copper)}
 .aisle.p .links a{color:var(--patina)}
+.aisle.x .links a{color:var(--brass)}
 .aisle .badge{display:inline-block;margin-left:10px;font-size:9px;border:1px solid var(--stamp);
   color:var(--stamp);padding:1px 7px;letter-spacing:.18em;vertical-align:middle;transform:rotate(-2deg)}
 
@@ -246,6 +253,7 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <span class="lbl" data-i18n="sw.lbl">The aisles</span>
   <a class="w" href="https://nometalalchemist.github.io/KitchenSink4Word/">🚰 KitchenSink4Word</a>
   <a class="p" href="https://nometalalchemist.github.io/KitchenSink4PPT/">💡 KitchenSink4PPT</a>
+  <a class="x" href="https://nometalalchemist.github.io/KitchenSink4XL/">🔌 KitchenSink4XL</a>
 </div>
 
 <div class="awning"><div class="scallop-alt"></div></div>
@@ -277,13 +285,25 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <div class="aisle p"><a class="stretch" href="https://nometalalchemist.github.io/KitchenSink4PPT/" aria-label="KitchenSink4PPT showroom"></a>
         <span class="aisle-tag" data-i18n="p.tag">AISLE P · DECOR</span>
         <span class="fixture">💡</span>
-        <h3>KitchenSink<span class="four">4</span>PPT<span class="badge" data-i18n="p.badge">NEW STOCK</span></h3>
+        <h3>KitchenSink<span class="four">4</span>PPT</h3>
         <p class="pitch" data-i18n="p.pitch">Everything plus the kitchen sink for PowerPoint (.pptx), headlined by the fixture nobody else carries: SVG in, grouped native shapes with glued connectors out. Move the node, the arrows follow. Plus the first file-based structural table surgery, slide management done right, and tiered loading from day one.</p>
         <p class="counts" data-i18n="p.counts"><b>159</b> operations · <b>138</b> tools · <b>885</b> tests · <b>0</b> corruptions</p>
         <div class="links">
           <a href="https://nometalalchemist.github.io/KitchenSink4PPT/" data-i18n="p.show">SHOWROOM →</a>
           <a href="https://github.com/nometalalchemist/KitchenSink4PPT">GITHUB</a>
           <a href="https://pypi.org/project/kitchensink4ppt/">PYPI</a>
+        </div>
+      </div>
+      <div class="aisle x"><a class="stretch" href="https://nometalalchemist.github.io/KitchenSink4XL/" aria-label="KitchenSink4XL showroom"></a>
+        <span class="aisle-tag" data-i18n="x.tag">AISLE X · ELECTRICAL</span>
+        <span class="fixture">🔌</span>
+        <h3>KitchenSink<span class="four">4</span>XL<span class="badge" data-i18n="x.badge">NEW STOCK</span></h3>
+        <p class="pitch" data-i18n="x.pitch">Everything plus the kitchen sink for Excel (.xlsx), headlined by the thing every other server gets wrong: a spreadsheet remembers its answers, not its thinking, so a stale number looks exactly like a live one. This one labels every value it hands back, names the cells that went stale, and asks Excel itself to recalculate when it matters. Structural edits carry their formulas with them. Tiered loading from day one.</p>
+        <p class="counts" data-i18n="x.counts"><b>129</b> operations · <b>69</b> tools · <b>1,041</b> tests · <b>0</b> corruptions</p>
+        <div class="links">
+          <a href="https://nometalalchemist.github.io/KitchenSink4XL/" data-i18n="x.show">SHOWROOM →</a>
+          <a href="https://github.com/nometalalchemist/KitchenSink4XL">GITHUB</a>
+          <a href="https://pypi.org/project/kitchensink4xl/">PYPI</a>
         </div>
       </div>
     </div>
@@ -293,12 +313,6 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <div class="dustline"></div>
         <p data-i18n="shelf.p">THIS SHELF INTENTIONALLY LEFT EMPTY</p>
         <small data-i18n="shelf.s1">The store is growing. The next fixture earns its department the same way the first two did: by shipping.</small>
-      </div>
-      <div class="shelf">
-        <span class="silhouette"></span>
-        <div class="dustline"></div>
-        <p data-i18n="shelf.p">THIS SHELF INTENTIONALLY LEFT EMPTY</p>
-        <small data-i18n="shelf.s2">Restock notices are posted on GitHub, never before the tests pass.</small>
       </div>
     </div>
   </div>
@@ -386,6 +400,11 @@ en: {
 "p.pitch": "Everything plus the kitchen sink for PowerPoint (.pptx), headlined by the fixture nobody else carries: SVG in, grouped native shapes with glued connectors out. Move the node, the arrows follow. Plus the first file-based structural table surgery, slide management done right, and tiered loading from day one.",
 "p.counts": "<b>159</b> operations · <b>138</b> tools · <b>885</b> tests · <b>0</b> corruptions",
 "p.show": "SHOWROOM →",
+"x.tag": "AISLE X · ELECTRICAL",
+"x.badge": "NEW STOCK",
+"x.pitch": "Everything plus the kitchen sink for Excel (.xlsx), headlined by the thing every other server gets wrong: a spreadsheet remembers its answers, not its thinking, so a stale number looks exactly like a live one. This one labels every value it hands back, names the cells that went stale, and asks Excel itself to recalculate when it matters. Structural edits carry their formulas with them. Tiered loading from day one.",
+"x.counts": "<b>129</b> operations · <b>69</b> tools · <b>1,041</b> tests · <b>0</b> corruptions",
+"x.show": "SHOWROOM →",
 "shelf.p": "THIS SHELF INTENTIONALLY LEFT EMPTY",
 "shelf.s1": "The store is growing. The next fixture earns its department the same way the first two did: by shipping.",
 "shelf.s2": "Restock notices are posted on GitHub, never before the tests pass.",
@@ -434,6 +453,11 @@ ko: {
 "p.pitch": "PowerPoint(.pptx)를 위한 것도 정말 없는 게 없습니다. 간판은 다른 어디에도 없는 설비: SVG가 들어가면, 붙은 연결선을 갖춘 그룹 네이티브 도형이 나옵니다. 노드를 옮기면 화살표가 따라옵니다. 여기에 최초의 파일 기반 표 구조 수술, 제대로 만든 슬라이드 관리, 첫날부터 계층형 로딩까지.",
 "p.counts": "작업 <b>159</b>가지 · 도구 <b>138</b>종 · 테스트 <b>885</b>건 · 손상 <b>0</b>건",
 "p.show": "전시장 →",
+"x.tag": "X 통로 · 전기",
+"x.badge": "신상품",
+"x.pitch": "Excel(.xlsx)을 위한 것도 정말 없는 게 없습니다. 간판은 다른 서버가 하나같이 놓치는 지점: 스프레드시트는 계산 과정이 아니라 계산 결과만 기억하기 때문에, 오래된 숫자가 살아 있는 숫자와 똑같아 보입니다. 이 서버는 돌려주는 모든 값에 라벨을 붙이고, 오래된 셀을 주소로 지목하며, 중요한 순간에는 Excel 자신에게 재계산을 시킵니다. 구조를 바꿔도 수식이 함께 따라옵니다. 첫날부터 계층형 로딩.",
+"x.counts": "작업 <b>129</b>가지 · 도구 <b>69</b>종 · 테스트 <b>1,041</b>건 · 손상 <b>0</b>건",
+"x.show": "전시장 →",
 "shelf.p": "이 선반은 일부러 비워 두었습니다",
 "shelf.s1": "가게는 커지는 중입니다. 다음 설비도 앞의 둘과 같은 방식으로 제 부문을 얻습니다: 출시로.",
 "shelf.s2": "재입고 소식은 GitHub에 올라오며, 테스트를 통과하기 전에는 절대 올라오지 않습니다.",
@@ -482,6 +506,11 @@ ja: {
 "p.pitch": "PowerPoint(.pptx)のためにも何でも揃っています。看板は他のどこにも置いていない器具:SVG を入れると、接着コネクタ付きのグループ化ネイティブ図形が出てきます。ノードを動かせば、矢印がついてくる。さらに初のファイルベース構造テーブル手術、まともに作られたスライド管理、初日からの段階式読み込みも。",
 "p.counts": "操作 <b>159</b> · ツール <b>138</b> · テスト <b>885</b> · 破損 <b>0</b>",
 "p.show": "ショールーム →",
+"x.tag": "X 列 · 電気",
+"x.badge": "新入荷",
+"x.pitch": "Excel(.xlsx)のためのものも本当になんでも揃っています。看板は、ほかのサーバーがそろって外している一点:表計算が覚えているのは答えであって、考え方ではありません。だから古い数字は生きている数字とまったく同じ顔をしています。このサーバーは返すすべての値にラベルを付け、古くなったセルをアドレスで名指しし、大事な場面では Excel 自身に再計算させます。構造を変えても数式がついてきます。初日からの段階式読み込み。",
+"x.counts": "操作 <b>129</b> · ツール <b>69</b> · テスト <b>1,041</b> · 破損 <b>0</b>",
+"x.show": "ショールーム →",
 "shelf.p": "この棚は意図的に空けてあります",
 "shelf.s1": "店は成長中です。次の器具も、最初の二つと同じやり方で自分の売り場を勝ち取ります:出荷することで。",
 "shelf.s2": "再入荷のお知らせは GitHub に。テストが通る前に出ることは決してありません。",
@@ -530,6 +559,11 @@ zh: {
 "p.pitch": "为 PowerPoint(.pptx)同样应有尽有,招牌是别家都不进货的设备:SVG 进,带粘附连接线的分组原生图形出。移动节点,箭头跟着走。外加第一个基于文件的表格结构手术、做对了的幻灯片管理,以及第一天就有的分层加载。",
 "p.counts": "<b>159</b> 项操作 · <b>138</b> 件工具 · <b>885</b> 项测试 · <b>0</b> 次损坏",
 "p.show": "展厅 →",
+"x.tag": "X 过道 · 电工",
+"x.badge": "新货上架",
+"x.pitch": "为 Excel(.xlsx)同样应有尽有,招牌是别家服务器都做错的那一点: 表格记住的是答案,不是算法,所以过期的数字和活的数字长得一模一样。这一台给交回的每个值都贴上标注,把过期的单元格按地址点名,关键时刻请 Excel 亲自重算。改结构的时候,公式跟着走。第一天就有的分层加载。",
+"x.counts": "<b>129</b> 项操作 · <b>69</b> 件工具 · <b>1,041</b> 项测试 · <b>0</b> 次损坏",
+"x.show": "展厅 →",
 "shelf.p": "此货架特意留空",
 "shelf.s1": "店还在扩张。下一件设备赢得自己部门的方式,和前两件一样:靠出货。",
 "shelf.s2": "补货通知发在 GitHub 上,测试没过之前绝不预告。",
@@ -578,6 +612,11 @@ de: {
 "p.pitch": "Auch für PowerPoint (.pptx) alles mit allem Drum und Dran, angeführt von der Armatur, die sonst niemand führt: SVG hinein, gruppierte native Formen mit angeklebten Verbindern heraus. Den Knoten verschieben, die Pfeile folgen. Dazu die erste dateibasierte strukturelle Tabellenchirurgie, Folienverwaltung, richtig gemacht, und gestuftes Laden vom ersten Tag an.",
 "p.counts": "<b>159</b> Operationen · <b>138</b> Werkzeuge · <b>885</b> Tests · <b>0</b> Beschädigungen",
 "p.show": "AUSSTELLUNG →",
+"x.tag": "GANG X · ELEKTRO",
+"x.badge": "NEU EINGETROFFEN",
+"x.pitch": "Auch für Excel (.xlsx) alles mit allem Drum und Dran, angeführt von dem einen Punkt, den jeder andere Server falsch macht: eine Tabelle merkt sich ihre Antworten, nicht ihren Rechenweg, und so sieht eine veraltete Zahl genau aus wie eine lebendige. Dieser hier weist jeden Wert aus, den er zurückgibt, benennt die veralteten Zellen mit Adresse und lässt Excel selbst neu rechnen, wenn es darauf ankommt. Strukturelle Änderungen nehmen ihre Formeln mit. Gestuftes Laden vom ersten Tag an.",
+"x.counts": "<b>129</b> Operationen · <b>69</b> Werkzeuge · <b>1.041</b> Tests · <b>0</b> Beschädigungen",
+"x.show": "AUSSTELLUNG →",
 "shelf.p": "DIESES REGAL IST ABSICHTLICH LEER",
 "shelf.s1": "Der Laden wächst. Die nächste Armatur verdient sich ihre Abteilung genauso wie die ersten beiden: durchs Ausliefern.",
 "shelf.s2": "Nachschub wird auf GitHub angekündigt, nie bevor die Tests bestehen.",
@@ -626,6 +665,11 @@ fr: {
 "p.pitch": "Absolument tout pour PowerPoint (.pptx) aussi, avec en vedette l'installation que personne d'autre ne tient en magasin : le SVG entre, des formes natives groupées aux connecteurs collés sortent. Déplacez le nœud, les flèches suivent. Plus la première chirurgie structurelle de tableaux sur fichier, une gestion des diapositives bien faite, et le chargement par paliers dès le premier jour.",
 "p.counts": "<b>159</b> opérations · <b>138</b> outils · <b>885</b> tests · <b>0</b> corruption",
 "p.show": "SALLE D'EXPO →",
+"x.tag": "ALLÉE X · ÉLECTRICITÉ",
+"x.badge": "NOUVEL ARRIVAGE",
+"x.pitch": "Absolument tout pour Excel (.xlsx) aussi, avec en vedette le point que tous les autres serveurs manquent : un tableur retient ses réponses, pas son raisonnement, si bien qu'un chiffre périmé ressemble exactement à un chiffre vivant. Celui-ci mentionne chaque valeur qu'il rend, nomme par leur adresse les cellules périmées, et demande à Excel lui-même de recalculer quand cela compte. Les modifications de structure emportent leurs formules avec elles. Le chargement par paliers dès le premier jour.",
+"x.counts": "<b>129</b> opérations · <b>69</b> outils · <b>1 041</b> tests · <b>0</b> corruption",
+"x.show": "SALLE D'EXPO →",
 "shelf.p": "CETTE ÉTAGÈRE EST VIDE À DESSEIN",
 "shelf.s1": "La boutique grandit. La prochaine installation gagnera son rayon comme les deux premières : en étant livrée.",
 "shelf.s2": "Les avis de réassort sont publiés sur GitHub, jamais avant que les tests passent.",
@@ -674,6 +718,11 @@ es: {
 "p.pitch": "De todo también para PowerPoint (.pptx), encabezado por el accesorio que nadie más tiene en stock: entra SVG, salen formas nativas agrupadas con conectores pegados. Mueva el nodo y las flechas lo siguen. Más la primera cirugía estructural de tablas basada en archivo, gestión de diapositivas bien hecha y carga por niveles desde el primer día.",
 "p.counts": "<b>159</b> operaciones · <b>138</b> herramientas · <b>885</b> pruebas · <b>0</b> corrupciones",
 "p.show": "SALA DE EXPOSICIÓN →",
+"x.tag": "PASILLO X · ELECTRICIDAD",
+"x.badge": "RECIÉN LLEGADO",
+"x.pitch": "De todo también para Excel (.xlsx), encabezado por lo que todos los demás servidores hacen mal: una hoja de cálculo recuerda sus respuestas, no su razonamiento, así que un número caducado se ve exactamente igual que uno vivo. Este etiqueta cada valor que devuelve, nombra por su dirección las celdas caducadas y le pide al propio Excel que recalcule cuando importa. Los cambios de estructura se llevan sus fórmulas consigo. Carga por niveles desde el primer día.",
+"x.counts": "<b>129</b> operaciones · <b>69</b> herramientas · <b>1.041</b> pruebas · <b>0</b> corrupciones",
+"x.show": "SALA DE EXPOSICIÓN →",
 "shelf.p": "ESTE ESTANTE ESTÁ VACÍO A PROPÓSITO",
 "shelf.s1": "La tienda está creciendo. El próximo accesorio se ganará su departamento igual que los dos primeros: entregándose.",
 "shelf.s2": "Los avisos de reposición se publican en GitHub, nunca antes de que pasen las pruebas.",
