@@ -233,11 +233,22 @@ section{padding:60px 0;border-top:1px solid var(--rule)}
 .svc-note b{color:var(--ink)}
 
 /* the shop dog: asleep near the service counters. Unlabeled, unlisted, easy to
-   miss; deliberately no animation in ANY motion mode (a sleeping dog needs none). */
+   miss. Three ascending z's read as sleep at a glance (author, 2026-09-06); the
+   z's breathe slowly where motion is welcome, and hold still where it is not. */
 .shop-dog{display:block;width:max-content;margin:30px 6px 0 auto;font-size:22px;line-height:1;
   text-decoration:none;opacity:.45;filter:grayscale(55%);transition:opacity .2s,filter .2s}
 .shop-dog .zz{font-family:'IBM Plex Mono',"Plex Mono Fallback",ui-monospace,monospace;
-  font-size:10px;color:var(--ink-soft);vertical-align:top;letter-spacing:.1em}
+  color:var(--ink-soft);vertical-align:top;letter-spacing:.06em}
+.shop-dog .zz i{font-style:normal;display:inline-block}
+.shop-dog .zz i:nth-child(1){font-size:9px}
+.shop-dog .zz i:nth-child(2){font-size:12px;transform:translateY(-3px)}
+.shop-dog .zz i:nth-child(3){font-size:15px;transform:translateY(-7px)}
+@media (prefers-reduced-motion:no-preference){
+  .shop-dog .zz i{animation:zbreathe 3.6s ease-in-out infinite}
+  .shop-dog .zz i:nth-child(2){animation-delay:1.2s}
+  .shop-dog .zz i:nth-child(3){animation-delay:2.4s}
+}
+@keyframes zbreathe{0%,100%{opacity:.45}50%{opacity:1}}
 .shop-dog:hover,.shop-dog:focus-visible{opacity:.95;filter:grayscale(0%)}
 
 /* footer */
@@ -387,7 +398,7 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     </div>
     <p class="svc-note" data-i18n="svc.com"><b>Commercial fitting?</b> Free for individuals and personal use, and it stays that way. If your company wants to build one of these servers into a product of its own, that needs a commercial license, and terms are worked out case by case. Open an issue at the desk of the product you need and we will talk it through.</p>
     <p class="svc-note" data-i18n="svc.note">Reports are public GitHub issues (a free GitHub account is needed to file one). Every report lands in the maintainer's inbox.</p>
-    <a class="shop-dog" href="shop-dog.html" data-i18n-aria="dog.alt" aria-label="the shop dog, asleep near the service counters">🐕<span class="zz" aria-hidden="true"> ᶻ ᶻ</span></a>
+    <a class="shop-dog" href="shop-dog.html" data-i18n-aria="dog.alt" aria-label="the shop dog, asleep near the service counters">🐕<span class="zz" aria-hidden="true"><i>z</i><i>z</i><i>z</i></span></a>
   </div>
 </section>
 

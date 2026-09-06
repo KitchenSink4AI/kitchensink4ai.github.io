@@ -65,7 +65,17 @@ main{padding:64px 0 40px}
   font-size:10px;letter-spacing:.3em;padding:4px 12px;text-transform:uppercase}
 .dog-card .dog{display:block;font-size:44px;line-height:1;margin-bottom:6px}
 .dog-card .dog .zz{font-family:'IBM Plex Mono',"Plex Mono Fallback",ui-monospace,monospace;
-  font-size:13px;color:var(--ink-soft);vertical-align:top;letter-spacing:.1em}
+  color:var(--ink-soft);vertical-align:top;letter-spacing:.06em}
+.dog-card .dog .zz i{font-style:normal;display:inline-block}
+.dog-card .dog .zz i:nth-child(1){font-size:12px}
+.dog-card .dog .zz i:nth-child(2){font-size:16px;transform:translateY(-4px)}
+.dog-card .dog .zz i:nth-child(3){font-size:20px;transform:translateY(-9px)}
+@media (prefers-reduced-motion:no-preference){
+  .dog-card .dog .zz i{animation:zbreathe 3.6s ease-in-out infinite}
+  .dog-card .dog .zz i:nth-child(2){animation-delay:1.2s}
+  .dog-card .dog .zz i:nth-child(3){animation-delay:2.4s}
+}
+@keyframes zbreathe{0%,100%{opacity:.45}50%{opacity:1}}
 .dog-card h1{font-size:clamp(30px,5vw,44px);font-weight:900;line-height:1.1;
   font-variation-settings:'SOFT' 50;margin-bottom:18px;
   text-shadow:2px 2px 0 var(--paper), 4px 4px 0 var(--rule)}
@@ -98,7 +108,7 @@ main{padding:64px 0 40px}
 <main class="wrap">
   <div class="dog-card">
     <span class="tag" data-i18n="tag">The Shop Dog</span>
-    <span class="dog" aria-hidden="true">🐕<span class="zz"> ᶻ ᶻ</span></span>
+    <span class="dog" aria-hidden="true">🐕<span class="zz"><i>z</i><i>z</i><i>z</i></span></span>
     <h1 data-i18n="t">The Shop Dog</h1>
     <p data-i18n="p1">There is an old rule in software, coined in a 1988 memo at a very large company: eat your own dog food. If you make dog food, feed it to your own dog, because nothing finds the problems in a product faster than depending on it yourself, and nothing sells it more honestly than being able to say you do.</p>
     <p data-i18n="p2">This store runs on that rule. The Word sink keeps its maker's own manuscripts in order, the kind where a broken reference list has real consequences. The PowerPoint sink builds the maker's own defense and conference decks, due on mornings when a broken file is not an option. The browser sink does the maker's browsing, every day, in the same sessions that built it. The Excel sink was tested by a benchmark its own maker aimed at it before anyone else could. Most of the complaints in our repair logs were filed by the owner, about this very store, before you ever walked in.</p>
