@@ -157,8 +157,14 @@ section{padding:60px 0;border-top:1px solid var(--rule)}
 .aisle.x:hover .aisle-tag{background:var(--brass)}
 .aisle .aisle-tag{position:absolute;top:-11px;left:24px;background:var(--ink);color:var(--paper);
   font-size:10px;letter-spacing:.3em;padding:4px 12px;text-transform:uppercase;transition:background .15s}
-.aisle .fixture{font-size:44px;display:block;margin-bottom:10px;line-height:1;transition:transform .2s}
-.aisle:hover .fixture{transform:translateY(-2px) rotate(-4deg)}
+/* fixture: each department's sign hangs from the shelf edge above it. Hover the
+   card (or tab to its stretch link) and the sign takes a nudge, rocks, and
+   settles; hinged at the top so it swings like a hanging sign, not a dial. */
+.aisle .fixture{font-size:44px;display:block;margin-bottom:10px;line-height:1;transform-origin:top center}
+@keyframes sign-swing{0%{transform:rotate(0)}35%{transform:rotate(-6deg)}70%{transform:rotate(3deg)}100%{transform:rotate(0)}}
+@media (prefers-reduced-motion: no-preference){
+  .aisle:hover .fixture,.aisle:focus-within .fixture{animation:sign-swing .45s ease-out}
+}
 .aisle h3{font-size:clamp(22px,3vw,28px);font-weight:900}
 .aisle h3 .four{font-size:.8em}
 .aisle.w h3 .four{color:var(--copper)}
@@ -261,7 +267,7 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <div class="switchbar">
   <span class="lbl" data-i18n="sw.lbl">The aisles</span>
   <a class="w" href="https://nometalalchemist.github.io/KitchenSink4Word/">🚰 KitchenSink4Word</a>
-  <a class="p" href="https://nometalalchemist.github.io/KitchenSink4PPT/">💡 KitchenSink4PPT</a>
+  <a class="p" href="https://nometalalchemist.github.io/KitchenSink4PPT/">🖌️ KitchenSink4PPT</a>
   <a class="x" href="https://nometalalchemist.github.io/KitchenSink4XL/">🔌 KitchenSink4XL</a>
 </div>
 
@@ -293,7 +299,7 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       </div>
       <div class="aisle p"><a class="stretch" href="https://nometalalchemist.github.io/KitchenSink4PPT/" aria-label="KitchenSink4PPT showroom"></a>
         <span class="aisle-tag" data-i18n="p.tag">AISLE P · PAINT</span>
-        <span class="fixture">💡</span>
+        <span class="fixture">🖌️</span>
         <h3>KitchenSink<span class="four">4</span>PPT</h3>
         <p class="pitch" data-i18n="p.pitch">Everything plus the kitchen sink for PowerPoint (.pptx), headlined by the fixture nobody else carries: SVG in, grouped native shapes with glued connectors out. Move the node, the arrows follow. Plus the first file-based structural table surgery, slide management done right, and tiered loading from day one.</p>
         <p class="counts" data-i18n="p.counts"><b>159</b> operations · <b>138</b> tools · <b>885</b> tests · <b>0</b> corruptions</p>
