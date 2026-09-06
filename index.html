@@ -27,7 +27,7 @@
 @font-face{font-family:"Fraunces Fallback";src:local("Georgia");size-adjust:104%;line-gap-override:0%;font-weight:100 900}
 :root{
   --paper:#f5efe0; --paper-deep:#ede4cd; --ink:#1e3550; --ink-soft:#3f5878;
-  --copper:#b0622a; --patina:#2e6e55; --brass:#7d5c14; --stamp:#a3352b; --rule:#c9bda0;
+  --copper:#b0622a; --patina:#2e6e55; --brass:#7d5c14; --emerald:#2a7a45; --stamp:#a3352b; --rule:#c9bda0;
   --shadow: 0 2px 0 var(--rule), 0 10px 30px rgba(30,53,80,.10);
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -75,6 +75,8 @@ a:hover{text-decoration-style:wavy;text-decoration-thickness:1px;text-underline-
 .switchbar a.p:hover{border-bottom-color:var(--patina)}
 .switchbar a.x{color:var(--brass)}
 .switchbar a.x:hover{border-bottom-color:var(--brass)}
+.switchbar a.g{color:var(--emerald)}
+.switchbar a.g:hover{border-bottom-color:var(--emerald)}
 .lang-toggle{display:inline-flex;gap:1px;align-items:baseline;flex-wrap:wrap;text-transform:none;letter-spacing:.05em}
 .lang-toggle button{font-family:'IBM Plex Mono',"Plex Mono Fallback",ui-monospace,monospace;font-size:11px;background:none;border:none;border-bottom:2px solid transparent;color:var(--ink-soft);cursor:pointer;padding:1px 5px;letter-spacing:.05em}
 .lang-toggle button:hover{color:var(--copper)}
@@ -147,9 +149,12 @@ section{padding:60px 0;border-top:1px solid var(--rule)}
   box-shadow:2px 4px 0 rgba(46,110,85,.35), 8px 14px 30px rgba(30,53,80,.16)}
 .aisle.x:hover{transform:translate(-2px,-2px);border-color:var(--brass);
   box-shadow:2px 4px 0 rgba(125,92,20,.35), 8px 14px 30px rgba(30,53,80,.16)}
+.aisle.g:hover{transform:translate(-2px,-2px);border-color:var(--emerald);
+  box-shadow:2px 4px 0 rgba(42,122,69,.35), 8px 14px 30px rgba(30,53,80,.16)}
 .aisle.w:hover .aisle-tag{background:var(--copper)}
 .aisle.p:hover .aisle-tag{background:var(--patina)}
 .aisle.x:hover .aisle-tag{background:var(--brass)}
+.aisle.g:hover .aisle-tag{background:var(--emerald)}
 .aisle .aisle-tag{position:absolute;top:-11px;left:24px;background:var(--ink);color:var(--paper);
   font-size:10px;letter-spacing:.3em;padding:4px 12px;text-transform:uppercase;transition:background .15s}
 .aisle .fixture{font-size:44px;display:block;margin-bottom:10px;line-height:1;transition:transform .2s}
@@ -159,6 +164,7 @@ section{padding:60px 0;border-top:1px solid var(--rule)}
 .aisle.w h3 .four{color:var(--copper)}
 .aisle.p h3 .four{color:var(--patina)}
 .aisle.x h3 .four{color:var(--brass)}
+.aisle.g h3 .four{color:var(--emerald)}
 .aisle .pitch{font-family:'Fraunces',"Fraunces Fallback",Georgia,serif;font-size:15.5px;color:var(--ink-soft);margin-top:10px;line-height:1.6}
 .aisle .counts{margin-top:16px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
 .aisle .counts b{color:var(--ink);font-size:13px;letter-spacing:.05em}
@@ -167,6 +173,7 @@ section{padding:60px 0;border-top:1px solid var(--rule)}
 .aisle.w .links a{color:var(--copper)}
 .aisle.p .links a{color:var(--patina)}
 .aisle.x .links a{color:var(--brass)}
+.aisle.g .links a{color:var(--emerald)}
 .aisle .badge{display:inline-block;margin-left:10px;font-size:9px;border:1px solid var(--stamp);
   color:var(--stamp);padding:1px 7px;letter-spacing:.18em;vertical-align:middle;transform:rotate(-2deg)}
 
@@ -258,6 +265,7 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <a class="w" href="https://nometalalchemist.github.io/KitchenSink4Word/">🚰 KitchenSink4Word</a>
   <a class="p" href="https://nometalalchemist.github.io/KitchenSink4PPT/">💡 KitchenSink4PPT</a>
   <a class="x" href="https://nometalalchemist.github.io/KitchenSink4XL/">🔌 KitchenSink4XL</a>
+  <a class="g" href="https://nometalalchemist.github.io/KitchenSink4Web/">🪴 KitchenSink4Web</a>
 </div>
 
 <div class="awning"><div class="scallop-alt"></div></div>
@@ -301,13 +309,25 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <div class="aisle x"><a class="stretch" href="https://nometalalchemist.github.io/KitchenSink4XL/" aria-label="KitchenSink4XL showroom"></a>
         <span class="aisle-tag" data-i18n="x.tag">AISLE X · ELECTRICAL</span>
         <span class="fixture">🔌</span>
-        <h3>KitchenSink<span class="four">4</span>XL<span class="badge" data-i18n="x.badge">NEW STOCK</span></h3>
+        <h3>KitchenSink<span class="four">4</span>XL</h3>
         <p class="pitch" data-i18n="x.pitch">Everything plus the kitchen sink for Excel (.xlsx), headlined by the thing every other server gets wrong: a spreadsheet remembers its answers, not its thinking, so a stale number looks exactly like a live one. This one labels every value it hands back, names the cells that went stale, and asks Excel itself to recalculate when it matters. Structural edits carry their formulas with them. Tiered loading from day one.</p>
         <p class="counts" data-i18n="x.counts"><b>129</b> operations · <b>69</b> tools · <b>1,046</b> tests · <b>0</b> corruptions</p>
         <div class="links">
           <a href="https://nometalalchemist.github.io/KitchenSink4XL/" data-i18n="x.show">SHOWROOM →</a>
           <a href="https://github.com/nometalalchemist/KitchenSink4XL">GITHUB</a>
           <a href="https://pypi.org/project/kitchensink4xl/">PYPI</a>
+        </div>
+      </div>
+      <div class="aisle g"><a class="stretch" href="https://nometalalchemist.github.io/KitchenSink4Web/" aria-label="KitchenSink4Web showroom"></a>
+        <span class="aisle-tag" data-i18n="g.tag">AISLE G · GARDEN</span>
+        <span class="fixture">🌱</span>
+        <h3>KitchenSink<span class="four">4</span>Web<span class="badge" data-i18n="g.badge">NEW STOCK</span></h3>
+        <p class="pitch" data-i18n="g.pitch">Everything plus the kitchen sink for the open web: your AI reads whole pages for the price of a paragraph, shadow roots included, and cannot click a thing until you flip the switch. Every read ends with the price it paid and a list of what it skipped.</p>
+        <p class="counts" data-i18n="g.counts"><b>{LITE}/{FULL}</b> tools · <b>{TESTS}</b> tests · <b>7×</b> cheaper reads · <b>0</b> acting tools until allowed</p>
+        <div class="links">
+          <a href="https://nometalalchemist.github.io/KitchenSink4Web/" data-i18n="g.show">SHOWROOM →</a>
+          <a href="https://github.com/nometalalchemist/KitchenSink4Web">GITHUB</a>
+          <a href="https://pypi.org/project/kitchensink4web/">PYPI</a>
         </div>
       </div>
     </div>
@@ -417,6 +437,11 @@ en: {
 "x.pitch": "Everything plus the kitchen sink for Excel (.xlsx), headlined by the thing every other server gets wrong: a spreadsheet remembers its answers, not its thinking, so a stale number looks exactly like a live one. This one labels every value it hands back, names the cells that went stale, and asks Excel itself to recalculate when it matters. Structural edits carry their formulas with them. Tiered loading from day one.",
 "x.counts": "<b>129</b> operations · <b>69</b> tools · <b>1,046</b> tests · <b>0</b> corruptions",
 "x.show": "SHOWROOM →",
+"g.tag": "AISLE G · GARDEN",
+"g.badge": "NEW STOCK",
+"g.pitch": "Everything plus the kitchen sink for the open web: your AI reads whole pages for the price of a paragraph, shadow roots included, and cannot click a thing until you flip the switch. Every read ends with the price it paid and a list of what it skipped.",
+"g.counts": "<b>{LITE}/{FULL}</b> tools · <b>{TESTS}</b> tests · <b>7×</b> cheaper reads · <b>0</b> acting tools until allowed",
+"g.show": "SHOWROOM →",
 "shelf.p": "THIS SHELF INTENTIONALLY LEFT EMPTY",
 "shelf.s1": "The store is growing. The next fixture earns its department the same way the first two did: by shipping.",
 "shelf.s2": "Restock notices are posted on GitHub, never before the tests pass.",
@@ -474,6 +499,11 @@ ko: {
 "x.pitch": "Excel(.xlsx)을 위한 것도 정말 없는 게 없습니다. 간판은 다른 서버가 하나같이 놓치는 지점: 스프레드시트는 계산 과정이 아니라 계산 결과만 기억하기 때문에, 오래된 숫자가 살아 있는 숫자와 똑같아 보입니다. 이 서버는 돌려주는 모든 값에 라벨을 붙이고, 오래된 셀을 주소로 지목하며, 중요한 순간에는 Excel 자신에게 재계산을 시킵니다. 구조를 바꿔도 수식이 함께 따라옵니다. 첫날부터 계층형 로딩.",
 "x.counts": "작업 <b>129</b>가지 · 도구 <b>69</b>종 · 테스트 <b>1,046</b>건 · 손상 <b>0</b>건",
 "x.show": "전시장 →",
+"g.tag": "G 통로 · 원예",
+"g.badge": "신상품",
+"g.pitch": "열린 웹을 위한 것도 정말 없는 게 없습니다. AI가 페이지 전체를 문단 하나 값에 읽고, 섬우 루트 안까지 들어가며, 사용자가 스위치를 올리기 전에는 아무것도 클릭하지 못합니다. 읽기가 끝날 때마다 치른 비용과 건너뛰 것의 목록이 함께 나옵니다.",
+"g.counts": "도구 <b>{LITE}/{FULL}</b>종 · 테스트 <b>{TESTS}</b>건 · 읽기 비용 <b>7×</b> 절감 · 허용 전 조작 도구 <b>0</b>종",
+"g.show": "전시장 →",
 "shelf.p": "이 선반은 일부러 비워 두었습니다",
 "shelf.s1": "가게는 커지는 중입니다. 다음 설비도 앞의 둘과 같은 방식으로 제 부문을 얻습니다: 출시로.",
 "shelf.s2": "재입고 소식은 GitHub에 올라오며, 테스트를 통과하기 전에는 절대 올라오지 않습니다.",
@@ -531,6 +561,11 @@ ja: {
 "x.pitch": "Excel(.xlsx)のためのものも本当になんでも揃っています。看板は、ほかのサーバーがそろって外している一点:表計算が覚えているのは答えであって、考え方ではありません。だから古い数字は生きている数字とまったく同じ顔をしています。このサーバーは返すすべての値にラベルを付け、古くなったセルをアドレスで名指しし、大事な場面では Excel 自身に再計算させます。構造を変えても数式がついてきます。初日からの段階式読み込み。",
 "x.counts": "操作 <b>129</b> · ツール <b>69</b> · テスト <b>1,046</b> · 破損 <b>0</b>",
 "x.show": "ショールーム →",
+"g.tag": "G 列 · 園芸",
+"g.badge": "新入荷",
+"g.pitch": "オープンウェブのためにも何でも揃っています。AI がページまるごとを段落ひとつ分の費用で読み、シャドウルートの中まで届き、あなたがスイッチを入れるまで何もクリックできません。読み取りが終わるたびに、かかった費用と飛ばした箇所の一覧が付いてきます。",
+"g.counts": "ツール <b>{LITE}/{FULL}</b> · テスト <b>{TESTS}</b> · 読み取り費用 <b>7×</b> 削減 · 許可前の操作ツール <b>0</b>",
+"g.show": "ショールーム →",
 "shelf.p": "この棚は意図的に空けてあります",
 "shelf.s1": "店は成長中です。次の器具も、最初の二つと同じやり方で自分の売り場を勝ち取ります:出荷することで。",
 "shelf.s2": "再入荷のお知らせは GitHub に。テストが通る前に出ることは決してありません。",
@@ -588,6 +623,11 @@ zh: {
 "x.pitch": "为 Excel(.xlsx)同样应有尽有,招牌是别家服务器都做错的那一点: 表格记住的是答案,不是算法,所以过期的数字和活的数字长得一模一样。这一台给交回的每个值都贴上标注,把过期的单元格按地址点名,关键时刻请 Excel 亲自重算。改结构的时候,公式跟着走。第一天就有的分层加载。",
 "x.counts": "<b>129</b> 项操作 · <b>69</b> 件工具 · <b>1,046</b> 项测试 · <b>0</b> 次损坏",
 "x.show": "展厅 →",
+"g.tag": "G 过道 · 园艺",
+"g.badge": "新货上架",
+"g.pitch": "为开放网页同样应有尽有: 你的 AI 用一个段落的价钱读完整页,连 shadow root 里的内容也读得到,而且在你打开开关之前点不了任何东西。每次读完都会交代花了多少,以及跳过了哪些。",
+"g.counts": "<b>{LITE}/{FULL}</b> 件工具 · <b>{TESTS}</b> 项测试 · 读取便宜 <b>7×</b> · 允许前 <b>0</b> 个操作工具",
+"g.show": "展厅 →",
 "shelf.p": "此货架特意留空",
 "shelf.s1": "店还在扩张。下一件设备赢得自己部门的方式,和前两件一样:靠出货。",
 "shelf.s2": "补货通知发在 GitHub 上,测试没过之前绝不预告。",
@@ -645,6 +685,11 @@ de: {
 "x.pitch": "Auch für Excel (.xlsx) alles mit allem Drum und Dran, angeführt von dem einen Punkt, den jeder andere Server falsch macht: eine Tabelle merkt sich ihre Antworten, nicht ihren Rechenweg, und so sieht eine veraltete Zahl genau aus wie eine lebendige. Dieser hier weist jeden Wert aus, den er zurückgibt, benennt die veralteten Zellen mit Adresse und lässt Excel selbst neu rechnen, wenn es darauf ankommt. Strukturelle Änderungen nehmen ihre Formeln mit. Gestuftes Laden vom ersten Tag an.",
 "x.counts": "<b>129</b> Operationen · <b>69</b> Werkzeuge · <b>1.046</b> Tests · <b>0</b> Beschädigungen",
 "x.show": "AUSSTELLUNG →",
+"g.tag": "GANG G · GARTEN",
+"g.badge": "NEU EINGETROFFEN",
+"g.pitch": "Auch für das offene Web alles mit allem Drum und Dran: Ihre KI liest ganze Seiten zum Preis eines Absatzes, Shadow Roots eingeschlossen, und kann nichts anklicken, solange Sie den Schalter nicht umlegen. Jeder Lesevorgang endet mit dem Preis, den er gekostet hat, und einer Liste dessen, was übersprungen wurde.",
+"g.counts": "<b>{LITE}/{FULL}</b> Werkzeuge · <b>{TESTS}</b> Tests · <b>7×</b> günstiger lesen · <b>0</b> handelnde Werkzeuge bis erlaubt",
+"g.show": "AUSSTELLUNG →",
 "shelf.p": "DIESES REGAL IST ABSICHTLICH LEER",
 "shelf.s1": "Der Laden wächst. Die nächste Armatur verdient sich ihre Abteilung genauso wie die ersten beiden: durchs Ausliefern.",
 "shelf.s2": "Nachschub wird auf GitHub angekündigt, nie bevor die Tests bestehen.",
@@ -702,6 +747,11 @@ fr: {
 "x.pitch": "Absolument tout pour Excel (.xlsx) aussi, avec en vedette le point que tous les autres serveurs manquent : un tableur retient ses réponses, pas son raisonnement, si bien qu'un chiffre périmé ressemble exactement à un chiffre vivant. Celui-ci mentionne chaque valeur qu'il rend, nomme par leur adresse les cellules périmées, et demande à Excel lui-même de recalculer quand cela compte. Les modifications de structure emportent leurs formules avec elles. Le chargement par paliers dès le premier jour.",
 "x.counts": "<b>129</b> opérations · <b>69</b> outils · <b>1 046</b> tests · <b>0</b> corruption",
 "x.show": "SALLE D'EXPO →",
+"g.tag": "ALLÉE G · JARDIN",
+"g.badge": "NOUVEL ARRIVAGE",
+"g.pitch": "Absolument tout pour le web ouvert aussi : votre IA lit des pages entières pour le prix d'un paragraphe, shadow roots compris, et ne peut rien cliquer tant que vous n'avez pas actionné l'interrupteur. Chaque lecture se termine par le prix qu'elle a coûté et la liste de ce qui a été sauté.",
+"g.counts": "<b>{LITE}/{FULL}</b> outils · <b>{TESTS}</b> tests · lectures <b>7×</b> moins chères · <b>0</b> outil d'action avant autorisation",
+"g.show": "SALLE D'EXPO →",
 "shelf.p": "CETTE ÉTAGÈRE EST VIDE À DESSEIN",
 "shelf.s1": "La boutique grandit. La prochaine installation gagnera son rayon comme les deux premières : en étant livrée.",
 "shelf.s2": "Les avis de réassort sont publiés sur GitHub, jamais avant que les tests passent.",
@@ -759,6 +809,11 @@ es: {
 "x.pitch": "De todo también para Excel (.xlsx), encabezado por lo que todos los demás servidores hacen mal: una hoja de cálculo recuerda sus respuestas, no su razonamiento, así que un número caducado se ve exactamente igual que uno vivo. Este etiqueta cada valor que devuelve, nombra por su dirección las celdas caducadas y le pide al propio Excel que recalcule cuando importa. Los cambios de estructura se llevan sus fórmulas consigo. Carga por niveles desde el primer día.",
 "x.counts": "<b>129</b> operaciones · <b>69</b> herramientas · <b>1.046</b> pruebas · <b>0</b> corrupciones",
 "x.show": "SALA DE EXPOSICIÓN →",
+"g.tag": "PASILLO G · JARDÍN",
+"g.badge": "RECIÉN LLEGADO",
+"g.pitch": "De todo también para la web abierta: su IA lee páginas enteras por el precio de un párrafo, shadow roots incluidos, y no puede hacer clic en nada hasta que usted accione el interruptor. Cada lectura termina con el precio que costó y una lista de lo que se saltó.",
+"g.counts": "<b>{LITE}/{FULL}</b> herramientas · <b>{TESTS}</b> pruebas · lecturas <b>7×</b> más baratas · <b>0</b> herramientas de acción hasta permitirlo",
+"g.show": "SALA DE EXPOSICIÓN →",
 "shelf.p": "ESTE ESTANTE ESTÁ VACÍO A PROPÓSITO",
 "shelf.s1": "La tienda está creciendo. El próximo accesorio se ganará su departamento igual que los dos primeros: entregándose.",
 "shelf.s2": "Los avisos de reposición se publican en GitHub, nunca antes de que pasen las pruebas.",
