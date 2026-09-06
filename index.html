@@ -220,6 +220,17 @@ section{padding:60px 0;border-top:1px solid var(--rule)}
   box-shadow:2px 4px 0 rgba(46,110,85,.35), 8px 14px 30px rgba(30,53,80,.16)}
 .counter.w:hover .aisle-tag{background:var(--copper)}
 .counter.p:hover .aisle-tag{background:var(--patina)}
+.counter.x .go{color:var(--brass)}
+.counter.x:hover{transform:translate(-2px,-2px);border-color:var(--brass);
+  box-shadow:2px 4px 0 rgba(125,92,20,.35), 8px 14px 30px rgba(30,53,80,.16)}
+.counter.x:hover .aisle-tag{background:var(--brass)}
+.counter.x{cursor:pointer}
+.counter .stretch{position:absolute;inset:0;z-index:1}
+.counter .desk-links{display:flex;gap:20px;flex-wrap:wrap;position:relative;z-index:2}
+.counter .desk-links a{position:relative;z-index:2;text-decoration:none}
+.counter .q{margin:2px 0 0;font-family:'Fraunces',"Fraunces Fallback",Georgia,serif;
+  font-style:italic;color:var(--ink-soft)}
+.counter .q+p+.q{margin-top:16px}
 .svc-note{margin-top:18px;font-size:12px;color:var(--ink-soft);max-width:820px}
 .svc-note b{color:var(--ink)}
 
@@ -359,6 +370,19 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <p data-i18n="dp.p">Glitches, refusals, and feature requests for KitchenSink4PPT go to the lighting desk. Same structured forms, same house policy; never attach a private deck, rebuild the structure with placeholder text.</p>
         <span class="go" data-i18n="dp.g">Visit the PPT service desk →</span>
       </a>
+      <div class="counter x"><a class="stretch" href="https://github.com/nometalalchemist/KitchenSink4XL/issues" aria-label="KitchenSink4XL service desk"></a>
+        <span class="aisle-tag" data-i18n="x.tag">AISLE X · ELECTRICAL</span>
+        <span class="icon">🔌</span>
+        <h3><span data-i18n="dx.t">Excel</span> <span style="font-size:.72em;font-weight:400;font-style:italic">(KitchenSink4XL)</span></h3>
+        <p class="q" data-i18n="dx.q">Found a number you can't trust?</p>
+        <p data-i18n="dx.p">A value labeled wrong, a refusal that made no sense, a save that touched something it shouldn't have. File it at the repair counter: the form asks exactly what a fix needs. Never paste real spreadsheet data; describe the shape of the workbook instead.</p>
+        <p class="q" data-i18n="dx.q2">Missing an attachment?</p>
+        <p data-i18n="dx.p2">A spreadsheet capability the sink should also have. Describe the real task behind it and it goes on the workbench.</p>
+        <span class="desk-links">
+          <a class="go" href="https://github.com/nometalalchemist/KitchenSink4XL/issues/new?template=bug_report.yml" data-i18n="dx.g">File a bug report →</a>
+          <a class="go" href="https://github.com/nometalalchemist/KitchenSink4XL/issues/new?template=feature_request.yml" data-i18n="dx.g2">Request a feature →</a>
+        </span>
+      </div>
     </div>
     <p class="svc-note" data-i18n="svc.com"><b>Commercial fitting?</b> Free for individuals and personal use, and it stays that way. If your company wants to build one of these servers into a product of its own, that needs a commercial license, and terms are worked out case by case. Open an issue at the desk of the product you need and we will talk it through.</p>
     <p class="svc-note" data-i18n="svc.note">Reports are public GitHub issues (a free GitHub account is needed to file one). Every report lands in the maintainer's inbox.</p>
@@ -427,6 +451,13 @@ en: {
 "dp.q": "Lights flickering?",
 "dp.p": "Glitches, refusals, and feature requests for KitchenSink4PPT go to the lighting desk. Same structured forms, same house policy; never attach a private deck, rebuild the structure with placeholder text.",
 "dp.g": "Visit the PPT service desk →",
+"dx.t": "Excel",
+"dx.q": "Found a number you can't trust?",
+"dx.p": "A value labeled wrong, a refusal that made no sense, a save that touched something it shouldn't have. File it at the repair counter: the form asks exactly what a fix needs. Never paste real spreadsheet data; describe the shape of the workbook instead.",
+"dx.q2": "Missing an attachment?",
+"dx.p2": "A spreadsheet capability the sink should also have. Describe the real task behind it and it goes on the workbench.",
+"dx.g": "File a bug report →",
+"dx.g2": "Request a feature →",
 "svc.com": "<b>Commercial fitting?</b> Free for individuals and personal use, and it stays that way. If your company wants to build one of these servers into a product of its own, that needs a commercial license, and terms are worked out case by case. Open an issue at the desk of the product you need and we will talk it through.",
 "svc.note": "Reports are public GitHub issues (a free GitHub account is needed to file one). Every report lands in the maintainer's inbox.",
 "f.left": "&copy; 2026 &middot; <b>AGPL-3.0</b>, storewide: free for individuals and personal use.<br>Companies building these servers into their own products need a commercial license; arrange one at the service counter of the product you need.",
@@ -480,6 +511,13 @@ ko: {
 "dp.q": "조명이 깜빡입니까?",
 "dp.p": "오작동, 거부, KitchenSink4PPT 기능 요청은 조명 창구로 갑니다. 같은 구조화된 양식, 같은 가게 방침입니다. 개인 프레젠테이션은 절대 첨부하지 말고, 자리표시 텍스트로 구조만 재현해 주세요.",
 "dp.g": "PPT 서비스 창구로 →",
+"dx.t": "Excel",
+"dx.q": "믿기 어려운 숫자가 나왔습니까?",
+"dx.p": "값에 잘못된 라벨이 붙었거나, 납득할 수 없는 거부가 돌아왔거나, 저장이 건드리지 말아야 할 곳까지 건드렸다면 수리 창구에 접수해 주세요. 양식은 수리에 필요한 것만 정확히 묻습니다. 실제 스프레드시트 데이터는 절대 붙여 넣지 마시고, 대신 통합 문서의 구조를 설명해 주세요.",
+"dx.q2": "부속이 빠졌습니까?",
+"dx.p2": "싱크대에 마땅히 있어야 할 스프레드시트 기능이 있다면, 그 뒤에 있는 실제 작업을 설명해 주세요. 작업대에 올라갑니다.",
+"dx.g": "버그 신고하기 →",
+"dx.g2": "기능 요청하기 →",
 "svc.com": "<b>영업용 설비가 필요합니까?</b> 개인과 개인적 용도에는 무료이며, 앞으로도 그렇습니다. 회사가 이 서버들을 자사 제품에 넣어 만들려면 상업용 라이선스가 필요하고, 조건은 사안마다 협의해서 정합니다. 필요한 제품의 창구에서 이슈를 열어 주시면 함께 이야기하겠습니다.",
 "svc.note": "신고는 공개 GitHub 이슈로 접수됩니다(제출에는 무료 GitHub 계정이 필요합니다). 모든 신고는 관리자의 수신함에 바로 도착합니다.",
 "f.left": "&copy; 2026 &middot; <b>AGPL-3.0</b>, 전 매장 공통: 개인과 개인적 용도에는 무료.<br>이 서버들을 자사 제품에 넣어 만드는 회사에는 상업용 라이선스가 필요합니다. 필요한 제품의 서비스 창구에서 진행하세요.",
@@ -533,6 +571,13 @@ ja: {
 "dp.q": "明かりがちらつく?",
 "dp.p": "誤動作、拒否、KitchenSink4PPT への機能要望は照明窓口へ。同じ構造化フォーム、同じ店の方針です。私的なスライド資料は決して添付せず、プレースホルダーのテキストで構造だけ再現してください。",
 "dp.g": "PPT のサービス窓口へ →",
+"dx.t": "Excel",
+"dx.q": "信用できない数字が出ましたか？",
+"dx.p": "値のラベルが違う、筋の通らない拒否が返ってきた、保存が触るべきでないところまで触った。修理窓口にお届けください。フォームは修理に必要なことだけを尋ねます。実際のスプレッドシートのデータは決して貼らず、代わりにブックの形を説明してください。",
+"dx.q2": "部品が足りませんか？",
+"dx.p2": "この流しにあるべきスプレッドシートの機能。その裏にある実際の作業を説明してもらえれば、作業台に載ります。",
+"dx.g": "バグを報告する →",
+"dx.g2": "機能を要望する →",
 "svc.com": "<b>業務用の取り付けですか?</b> 個人利用と私的な用途は無料で、これからも無料のままです。会社としてこれらのサーバーを自社製品に組み込みたい場合は商用ライセンスが必要で、条件は案件ごとに相談して決めます。必要な製品の窓口で Issue を開いてください。そこから話を進めましょう。",
 "svc.note": "報告は公開の GitHub Issue になります(提出には無料の GitHub アカウントが必要です)。すべての報告はメンテナーの受信箱に届きます。",
 "f.left": "&copy; 2026 &middot; <b>AGPL-3.0</b>、全店共通:個人利用と私的な用途は無料。<br>これらのサーバーを自社製品に組み込む企業には商用ライセンスが必要です。必要な製品のサービス窓口でご相談ください。",
@@ -586,6 +631,13 @@ zh: {
 "dp.q": "灯在闪?",
 "dp.p": "故障、拒绝、KitchenSink4PPT 的功能请求,到灯具台。同样的结构化表单,同样的店规;切勿附上私人演示文稿,请用占位文字重建结构。",
 "dp.g": "去 PPT 服务台 →",
+"dx.t": "Excel",
+"dx.q": "拿到一个信不过的数？",
+"dx.p": "某个值标错了，某次拒绝毫无道理，某回保存动了不该动的地方。到维修柜台报一单，表单只问修复所需的信息。切勿粘贴真实的表格数据；请改为描述工作簿的结构。",
+"dx.q2": "缺个配件？",
+"dx.p2": "这台水槽还该有的某项电子表格能力。说明它背后的真实任务，它就会上工作台。",
+"dx.g": "提交缺陷报告 →",
+"dx.g2": "提交功能请求 →",
 "svc.com": "<b>商用装配?</b> 个人和个人用途一直免费,以后也是。如果贵公司想把这些服务器做进自家产品里,那就需要商业许可,条款按具体情况一事一议。到你所需产品的服务台开一个 issue,我们细谈。",
 "svc.note": "报告以公开 GitHub issue 的形式提交(需要一个免费的 GitHub 账号)。每份报告都会直达维护者的收件箱。",
 "f.left": "&copy; 2026 &middot; <b>AGPL-3.0</b>,全店通用:个人和个人用途免费。<br>把这些服务器做进自家产品的公司需要商业许可,请到所需产品的服务台办理。",
@@ -639,6 +691,13 @@ de: {
 "dp.q": "Flackert das Licht?",
 "dp.p": "Aussetzer, Verweigerungen und Funktionswünsche für KitchenSink4PPT gehen an den Beleuchtungsschalter. Dieselben strukturierten Formulare, dieselbe Hauspolitik; hängen Sie nie einen privaten Foliensatz an, bauen Sie die Struktur mit Platzhaltertext nach.",
 "dp.g": "Zum PPT-Serviceschalter →",
+"dx.t": "Excel",
+"dx.q": "Eine Zahl, der Sie nicht trauen?",
+"dx.p": "Ein falsch beschrifteter Wert, eine Verweigerung ohne erkennbaren Grund, ein Speichern, das etwas angefasst hat, das es nicht anfassen sollte. Geben Sie es am Reparaturschalter ab: das Formular fragt genau das ab, was eine Reparatur braucht. Fügen Sie nie echte Tabellendaten ein; beschreiben Sie stattdessen den Aufbau der Arbeitsmappe.",
+"dx.q2": "Fehlt ein Anbauteil?",
+"dx.p2": "Eine Tabellen-Fähigkeit, die die Spüle auch haben sollte. Beschreiben Sie die echte Aufgabe dahinter, und sie kommt auf die Werkbank.",
+"dx.g": "Fehler melden →",
+"dx.g2": "Funktion vorschlagen →",
 "svc.com": "<b>Gewerbliche Montage?</b> Für Privatpersonen und private Nutzung kostenlos, und das bleibt so. Will ein Unternehmen einen dieser Server in ein eigenes Produkt einbauen, braucht es eine kommerzielle Lizenz, und die Konditionen werden im Einzelfall besprochen. Öffnen Sie ein Issue am Schalter des Produkts, das Sie brauchen, dann klären wir das.",
 "svc.note": "Berichte sind öffentliche GitHub-Issues (zum Einreichen genügt ein kostenloses GitHub-Konto). Jeder Bericht landet im Posteingang des Maintainers.",
 "f.left": "&copy; 2026 &middot; <b>AGPL-3.0</b>, im ganzen Laden: kostenlos für Privatpersonen und private Nutzung.<br>Unternehmen, die diese Server in eigene Produkte einbauen, brauchen eine kommerzielle Lizenz; zu vereinbaren am Serviceschalter des Produkts, das Sie brauchen.",
@@ -692,6 +751,13 @@ fr: {
 "dp.q": "La lumière vacille ?",
 "dp.p": "Pépins, refus et demandes de fonctions pour KitchenSink4PPT vont au comptoir éclairage. Mêmes formulaires structurés, même politique de la maison ; ne joignez jamais une présentation privée, reconstruisez la structure avec du texte de substitution.",
 "dp.g": "Au comptoir de service PPT →",
+"dx.t": "Excel",
+"dx.q": "Un chiffre auquel vous ne pouvez pas vous fier ?",
+"dx.p": "Une valeur mal étiquetée, un refus sans logique, un enregistrement qui a touché ce qu'il n'aurait pas dû. Déposez-le au comptoir des réparations : le formulaire demande exactement ce qu'il faut pour réparer. Ne collez jamais de vraies données de tableur ; décrivez plutôt la structure du classeur.",
+"dx.q2": "Un accessoire manquant ?",
+"dx.p2": "Une capacité tableur que l'évier devrait aussi avoir. Décrivez la tâche réelle qui la motive et elle rejoint l'établi.",
+"dx.g": "Signaler un bogue →",
+"dx.g2": "Demander une fonction →",
 "svc.com": "<b>Installation commerciale ?</b> Gratuit pour les particuliers et l'usage personnel, et cela ne changera pas. Si votre entreprise veut intégrer un de ces serveurs dans un produit à elle, il lui faut une licence commerciale, et les conditions se discutent au cas par cas. Ouvrez un ticket au comptoir du produit qui vous intéresse et nous en parlerons.",
 "svc.note": "Les signalements sont des tickets GitHub publics (un compte GitHub gratuit suffit pour en déposer un). Chaque signalement atterrit dans la boîte du mainteneur.",
 "f.left": "&copy; 2026 &middot; <b>AGPL-3.0</b>, dans toute la boutique : gratuit pour les particuliers et l'usage personnel.<br>Les entreprises qui intègrent ces serveurs dans leurs propres produits ont besoin d'une licence commerciale ; à convenir au comptoir de service du produit qu'il vous faut.",
@@ -745,6 +811,13 @@ es: {
 "dp.q": "¿Parpadean las luces?",
 "dp.p": "Fallos, rechazos y peticiones de funciones de KitchenSink4PPT van al mostrador de iluminación. Los mismos formularios estructurados, la misma política de la casa; nunca adjunte una presentación privada, reconstruya la estructura con texto de relleno.",
 "dp.g": "Al mostrador de servicio de PPT →",
+"dx.t": "Excel",
+"dx.q": "¿Un número del que no se fía?",
+"dx.p": "Un valor mal etiquetado, un rechazo sin sentido, un guardado que tocó algo que no debía. Preséntelo en el mostrador de reparaciones: el formulario pregunta exactamente lo que un arreglo necesita. Nunca pegue datos reales de hoja de cálculo; describa en su lugar la estructura del libro.",
+"dx.q2": "¿Falta un accesorio?",
+"dx.p2": "Una capacidad de hoja de cálculo que el fregadero también debería tener. Describa la tarea real que hay detrás y pasará al banco de trabajo.",
+"dx.g": "Informar de un fallo →",
+"dx.g2": "Pedir una función →",
 "svc.com": "<b>¿Instalación comercial?</b> Gratis para particulares y uso personal, y seguirá siéndolo. Si su empresa quiere integrar uno de estos servidores en un producto propio, hace falta una licencia comercial, y las condiciones se acuerdan caso por caso. Abra un issue en el mostrador del producto que necesite y lo hablamos.",
 "svc.note": "Los partes son issues públicos de GitHub (hace falta una cuenta gratuita de GitHub para presentarlos). Cada parte llega a la bandeja del mantenedor.",
 "f.left": "&copy; 2026 &middot; <b>AGPL-3.0</b>, en toda la tienda: gratis para particulares y uso personal.<br>Las empresas que integren estos servidores en productos propios necesitan una licencia comercial; gestiónela en el mostrador de servicio del producto que necesite.",
