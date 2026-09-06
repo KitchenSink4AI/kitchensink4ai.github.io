@@ -141,6 +141,11 @@ section{padding:60px 0;border-top:1px solid var(--rule)}
 @media(max-width:760px){.aisles{grid-template-columns:1fr}}
 .aisle{border:2px solid var(--ink);background:var(--paper);box-shadow:var(--shadow);
   padding:30px 28px 24px;position:relative;transition:all .15s}
+/* paper wash: each aisle card is cut from its own department's stock. Ink is
+   untouched; only the paper under it changes. */
+.aisle.w{background:#f5efe0}
+.aisle.p{background:#e3edea}
+.aisle.x{background:#f8e7c4}
 .aisle.w:hover{transform:translate(-2px,-2px);border-color:var(--copper);
   box-shadow:2px 4px 0 rgba(176,98,42,.35), 8px 14px 30px rgba(30,53,80,.16)}
 .aisle.p:hover{transform:translate(-2px,-2px);border-color:var(--patina);
@@ -287,7 +292,7 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         </div>
       </div>
       <div class="aisle p"><a class="stretch" href="https://nometalalchemist.github.io/KitchenSink4PPT/" aria-label="KitchenSink4PPT showroom"></a>
-        <span class="aisle-tag" data-i18n="p.tag">AISLE P · DECOR</span>
+        <span class="aisle-tag" data-i18n="p.tag">AISLE P · PAINT</span>
         <span class="fixture">💡</span>
         <h3>KitchenSink<span class="four">4</span>PPT</h3>
         <p class="pitch" data-i18n="p.pitch">Everything plus the kitchen sink for PowerPoint (.pptx), headlined by the fixture nobody else carries: SVG in, grouped native shapes with glued connectors out. Move the node, the arrows follow. Plus the first file-based structural table surgery, slide management done right, and tiered loading from day one.</p>
@@ -344,7 +349,7 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 <section id="service">
   <div class="wrap">
-    <div class="sec-head"><span class="no" data-i18n="svc.no">THE FRONT DESK</span><h2 data-i18n="svc.h2">Which aisle needs service?</h2></div>
+    <div class="sec-head"><span class="no" data-i18n="svc.no">THE FRONT DESK</span><h2 data-i18n="svc.h2">CUSTOMER SERVICE</h2></div>
     <span class="ticket" data-i18n="svc.ticket">NOW SERVING · TAKE A NUMBER · EVERY FIXTURE HAS ITS OWN DESK</span>
     <div class="desks">
       <a class="counter w" href="https://github.com/nometalalchemist/KitchenSink4Word/issues">
@@ -356,7 +361,7 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <span class="go" data-i18n="dw.g">Visit the Word service desk →</span>
       </a>
       <a class="counter p" href="https://github.com/nometalalchemist/KitchenSink4PPT/issues">
-        <span class="aisle-tag" data-i18n="p.tag">AISLE P · DECOR</span>
+        <span class="aisle-tag" data-i18n="p.tag">AISLE P · PAINT</span>
         <span class="icon">🔌</span>
         <h3><span data-i18n="dp.t">PowerPoint</span> <span style="font-size:.72em;font-weight:400;font-style:italic">(KitchenSink4PPT)</span></h3>
         <p style="margin:2px 0 0;font-family:'Fraunces',Georgia,serif;font-style:italic;color:var(--ink-soft)" data-i18n="dp.q">Lights flickering?</p>
@@ -407,7 +412,7 @@ en: {
 "w.pitch": "The most complete Word (.docx) MCP server ever plumbed. Live editing of open documents, native citations and bibliography, merge-aware table surgery, footnotes, tracked-changes authoring, redaction with verification. Engineered not to corrupt.",
 "w.counts": "<b>219</b> operations · <b>108</b> tools · <b>1,324</b> tests · <b>0</b> corruptions",
 "w.show": "SHOWROOM →",
-"p.tag": "AISLE P · DECOR",
+"p.tag": "AISLE P · PAINT",
 "p.badge": "NEW STOCK",
 "p.pitch": "Everything plus the kitchen sink for PowerPoint (.pptx), headlined by the fixture nobody else carries: SVG in, grouped native shapes with glued connectors out. Move the node, the arrows follow. Plus the first file-based structural table surgery, slide management done right, and tiered loading from day one.",
 "p.counts": "<b>159</b> operations · <b>138</b> tools · <b>885</b> tests · <b>0</b> corruptions",
@@ -429,7 +434,7 @@ en: {
 "creed3.t": "Refuses rather than guesses.",
 "creed3.p": "When a target is ambiguous, the tools refuse and show the candidates. A confident wrong edit is the one product this store does not stock.",
 "svc.no": "THE FRONT DESK",
-"svc.h2": "Which aisle needs service?",
+"svc.h2": "CUSTOMER SERVICE",
 "svc.ticket": "NOW SERVING · TAKE A NUMBER · EVERY FIXTURE HAS ITS OWN DESK",
 "dw.t": "Word",
 "dw.q": "Sink acting up?",
@@ -464,7 +469,7 @@ ko: {
 "w.pitch": "역대 가장 완전하게 배관된 Word(.docx) MCP 서버. 열린 문서의 라이브 편집, 네이티브 인용과 참고문헌, 병합 인식 표 수술, 각주, 추적 변경으로 쓰기, 검증을 동반한 검열 삭제. 손상시키지 않도록 설계.",
 "w.counts": "작업 <b>219</b>가지 · 도구 <b>108</b>종 · 테스트 <b>1,324</b>건 · 손상 <b>0</b>건",
 "w.show": "전시장 →",
-"p.tag": "P 통로 · 데코",
+"p.tag": "P 통로 · 페인트",
 "p.badge": "신상품",
 "p.pitch": "PowerPoint(.pptx)를 위한 것도 정말 없는 게 없습니다. 간판은 다른 어디에도 없는 설비: SVG가 들어가면, 붙은 연결선을 갖춘 그룹 네이티브 도형이 나옵니다. 노드를 옮기면 화살표가 따라옵니다. 여기에 최초의 파일 기반 표 구조 수술, 제대로 만든 슬라이드 관리, 첫날부터 계층형 로딩까지.",
 "p.counts": "작업 <b>159</b>가지 · 도구 <b>138</b>종 · 테스트 <b>885</b>건 · 손상 <b>0</b>건",
@@ -486,7 +491,7 @@ ko: {
 "creed3.t": "추측하느니 거부합니다.",
 "creed3.p": "대상이 모호하면 도구는 거부하고 후보를 보여 줍니다. 자신만만한 오편집이야말로 이 가게가 취급하지 않는 유일한 상품입니다.",
 "svc.no": "프런트 데스크",
-"svc.h2": "어느 통로에 서비스가 필요합니까?",
+"svc.h2": "고객 서비스",
 "svc.ticket": "지금 접수 중 · 번호표를 뽑으세요 · 설비마다 전용 창구가 있습니다",
 "dw.t": "Word",
 "dw.q": "싱크대가 말썽입니까?",
@@ -521,7 +526,7 @@ ja: {
 "w.pitch": "史上もっとも完全に配管された Word(.docx)MCP サーバー。開いた文書のライブ編集、ネイティブの引用と文献目録、結合を認識する表の外科手術、脚注、変更履歴としての書き込み、検証付きの墨消し。壊さないための設計。",
 "w.counts": "操作 <b>219</b> · ツール <b>108</b> · テスト <b>1,324</b> · 破損 <b>0</b>",
 "w.show": "ショールーム →",
-"p.tag": "P 列 · 装飾",
+"p.tag": "P 列 · 塗料",
 "p.badge": "新入荷",
 "p.pitch": "PowerPoint(.pptx)のためにも何でも揃っています。看板は他のどこにも置いていない器具:SVG を入れると、接着コネクタ付きのグループ化ネイティブ図形が出てきます。ノードを動かせば、矢印がついてくる。さらに初のファイルベース構造テーブル手術、まともに作られたスライド管理、初日からの段階式読み込みも。",
 "p.counts": "操作 <b>159</b> · ツール <b>138</b> · テスト <b>885</b> · 破損 <b>0</b>",
@@ -543,7 +548,7 @@ ja: {
 "creed3.t": "当て推量より、拒否。",
 "creed3.p": "対象が曖昧なら、ツールは拒否して候補を示します。自信満々の誤編集こそ、この店が置かない唯一の商品です。",
 "svc.no": "フロントデスク",
-"svc.h2": "サービスが要るのはどの列?",
+"svc.h2": "カスタマーサービス",
 "svc.ticket": "ただいま受付中 · 番号札をどうぞ · 器具ごとに専用窓口",
 "dw.t": "Word",
 "dw.q": "流しの調子が悪い?",
@@ -578,7 +583,7 @@ zh: {
 "w.pitch": "迄今管道铺设最完整的 Word(.docx)MCP 服务器。打开的文档实时编辑,原生引文与参考文献,识别合并的表格手术,脚注,以修订方式写入,带验证的涂黑。为“不损坏”而设计。",
 "w.counts": "<b>219</b> 项操作 · <b>108</b> 件工具 · <b>1,324</b> 项测试 · <b>0</b> 次损坏",
 "w.show": "展厅 →",
-"p.tag": "P 过道 · 装饰",
+"p.tag": "P 过道 · 油漆",
 "p.badge": "新货上架",
 "p.pitch": "为 PowerPoint(.pptx)同样应有尽有,招牌是别家都不进货的设备:SVG 进,带粘附连接线的分组原生图形出。移动节点,箭头跟着走。外加第一个基于文件的表格结构手术、做对了的幻灯片管理,以及第一天就有的分层加载。",
 "p.counts": "<b>159</b> 项操作 · <b>138</b> 件工具 · <b>885</b> 项测试 · <b>0</b> 次损坏",
@@ -600,7 +605,7 @@ zh: {
 "creed3.t": "宁拒绝,不瞎猜。",
 "creed3.p": "目标含糊时,工具会拒绝并列出候选。信心十足的错误修改,是这家店唯一不进的货。",
 "svc.no": "前台",
-"svc.h2": "哪条过道需要服务?",
+"svc.h2": "客户服务",
 "svc.ticket": "正在叫号 · 请取号 · 每件设备都有自己的服务台",
 "dw.t": "Word",
 "dw.q": "水槽闹脾气了?",
@@ -635,7 +640,7 @@ de: {
 "w.pitch": "Der vollständigste Word-(.docx-)MCP-Server, der je verrohrt wurde. Live-Bearbeitung offener Dokumente, native Zitate und Literaturverzeichnis, verbund-bewusste Tabellenchirurgie, Fußnoten, Schreiben als nachverfolgte Änderung, Schwärzung mit Verifikation. Konstruiert mit dem Ziel, nichts zu beschädigen.",
 "w.counts": "<b>219</b> Operationen · <b>108</b> Werkzeuge · <b>1.324</b> Tests · <b>0</b> Beschädigungen",
 "w.show": "AUSSTELLUNG →",
-"p.tag": "GANG P · DEKO",
+"p.tag": "GANG P · FARBEN",
 "p.badge": "NEU EINGETROFFEN",
 "p.pitch": "Auch für PowerPoint (.pptx) alles mit allem Drum und Dran, angeführt von der Armatur, die sonst niemand führt: SVG hinein, gruppierte native Formen mit angeklebten Verbindern heraus. Den Knoten verschieben, die Pfeile folgen. Dazu die erste dateibasierte strukturelle Tabellenchirurgie, Folienverwaltung, richtig gemacht, und gestuftes Laden vom ersten Tag an.",
 "p.counts": "<b>159</b> Operationen · <b>138</b> Werkzeuge · <b>885</b> Tests · <b>0</b> Beschädigungen",
@@ -657,7 +662,7 @@ de: {
 "creed3.t": "Verweigert, statt zu raten.",
 "creed3.p": "Ist ein Ziel mehrdeutig, verweigern die Werkzeuge und zeigen die Kandidaten. Eine selbstsichere Fehlbearbeitung ist das eine Produkt, das dieser Laden nicht führt.",
 "svc.no": "DER EMPFANG",
-"svc.h2": "Welcher Gang braucht Service?",
+"svc.h2": "KUNDENSERVICE",
 "svc.ticket": "JETZT BEDIENUNG · NUMMER ZIEHEN · JEDE ARMATUR HAT IHREN EIGENEN SCHALTER",
 "dw.t": "Word",
 "dw.q": "Zickt die Spüle?",
@@ -692,7 +697,7 @@ fr: {
 "w.pitch": "Le serveur MCP Word (.docx) le plus complet jamais raccordé. Édition en direct des documents ouverts, citations et bibliographie natives, chirurgie de tableaux tenant compte des fusions, notes de bas de page, écriture en suivi des modifications, caviardage avec vérification. Conçu pour ne pas corrompre.",
 "w.counts": "<b>219</b> opérations · <b>108</b> outils · <b>1 324</b> tests · <b>0</b> corruption",
 "w.show": "SALLE D'EXPO →",
-"p.tag": "ALLÉE P · DÉCORATION",
+"p.tag": "ALLÉE P · PEINTURE",
 "p.badge": "NOUVEL ARRIVAGE",
 "p.pitch": "Absolument tout pour PowerPoint (.pptx) aussi, avec en vedette l'installation que personne d'autre ne tient en magasin : le SVG entre, des formes natives groupées aux connecteurs collés sortent. Déplacez le nœud, les flèches suivent. Plus la première chirurgie structurelle de tableaux sur fichier, une gestion des diapositives bien faite, et le chargement par paliers dès le premier jour.",
 "p.counts": "<b>159</b> opérations · <b>138</b> outils · <b>885</b> tests · <b>0</b> corruption",
@@ -714,7 +719,7 @@ fr: {
 "creed3.t": "Refuse plutôt que de deviner.",
 "creed3.p": "Quand une cible est ambiguë, les outils refusent et montrent les candidats. La modification erronée pleine d'assurance est le seul produit que cette boutique ne tient pas.",
 "svc.no": "L'ACCUEIL",
-"svc.h2": "Quelle allée a besoin du service ?",
+"svc.h2": "SERVICE CLIENT",
 "svc.ticket": "ON VOUS SERT · PRENEZ UN NUMÉRO · CHAQUE INSTALLATION A SON COMPTOIR",
 "dw.t": "Word",
 "dw.q": "L'évier fait des siennes ?",
@@ -749,7 +754,7 @@ es: {
 "w.pitch": "El servidor MCP de Word (.docx) más completo jamás entubado. Edición en vivo de documentos abiertos, citas y bibliografía nativas, cirugía de tablas consciente de las combinaciones, notas al pie, escritura como cambios rastreados, censura con verificación. Diseñado para no corromper.",
 "w.counts": "<b>219</b> operaciones · <b>108</b> herramientas · <b>1.324</b> pruebas · <b>0</b> corrupciones",
 "w.show": "SALA DE EXPOSICIÓN →",
-"p.tag": "PASILLO P · DECORACIÓN",
+"p.tag": "PASILLO P · PINTURA",
 "p.badge": "RECIÉN LLEGADO",
 "p.pitch": "De todo también para PowerPoint (.pptx), encabezado por el accesorio que nadie más tiene en stock: entra SVG, salen formas nativas agrupadas con conectores pegados. Mueva el nodo y las flechas lo siguen. Más la primera cirugía estructural de tablas basada en archivo, gestión de diapositivas bien hecha y carga por niveles desde el primer día.",
 "p.counts": "<b>159</b> operaciones · <b>138</b> herramientas · <b>885</b> pruebas · <b>0</b> corrupciones",
@@ -771,7 +776,7 @@ es: {
 "creed3.t": "Rehúsa antes que adivinar.",
 "creed3.p": "Cuando un objetivo es ambiguo, las herramientas rehúsan y muestran los candidatos. Una edición equivocada y segura de sí misma es el único producto que esta tienda no vende.",
 "svc.no": "EL MOSTRADOR PRINCIPAL",
-"svc.h2": "¿Qué pasillo necesita servicio?",
+"svc.h2": "ATENCIÓN AL CLIENTE",
 "svc.ticket": "AHORA ATENDIENDO · TOME UN NÚMERO · CADA ACCESORIO TIENE SU PROPIO MOSTRADOR",
 "dw.t": "Word",
 "dw.q": "¿El fregadero da guerra?",
