@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--
+  EASTER EGG PAGE. Reached only from the sleeping dog near the customer service
+  counters on the storefront (index.html). By design there is NO nav entry, NO
+  sitemap line, and no links out except back to the floor. Page copy is the
+  author's, verbatim (source of record: the web ship copy file, 2026-09-06).
+  The dog has no animation in any motion mode: a sleeping dog needs none.
+-->
+<title>The Shop Dog</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐕</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,50&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:"Plex Mono Fallback";src:local("Courier New");size-adjust:100%;line-gap-override:0%;font-weight:100 900}
+@font-face{font-family:"Fraunces Fallback";src:local("Georgia");size-adjust:104%;line-gap-override:0%;font-weight:100 900}
+:root{
+  --paper:#f5efe0; --paper-deep:#ede4cd; --ink:#1e3550; --ink-soft:#3f5878;
+  --copper:#b0622a; --patina:#2e6e55; --brass:#7d5c14; --stamp:#a3352b; --rule:#c9bda0;
+  --shadow: 0 2px 0 var(--rule), 0 10px 30px rgba(30,53,80,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'IBM Plex Mono',"Plex Mono Fallback",ui-monospace,monospace;
+  background:var(--paper); color:var(--ink); line-height:1.6;
+  overflow-x:hidden;
+  background-image:
+    radial-gradient(ellipse at 50% -10%, rgba(30,53,80,.06), transparent 55%),
+    repeating-linear-gradient(0deg, transparent 0 27px, rgba(30,53,80,.035) 27px 28px);
+}
+h1{font-family:'Fraunces',"Fraunces Fallback",Georgia,serif}
+a{color:var(--copper)}
+a:hover{text-decoration-style:wavy;text-decoration-thickness:1px;text-underline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* masthead: same double rule and centre-column language toggle as the storefront */
+.masthead{border-bottom:3px double var(--ink);padding:14px 0;font-size:12px;
+  letter-spacing:.18em;text-transform:uppercase;display:grid;
+  grid-template-columns:1fr auto 1fr;align-items:baseline;gap:12px}
+.masthead>span:last-child{justify-self:end;text-align:right}
+.masthead,.masthead span,.masthead b{
+  font-family:'IBM Plex Mono',"Plex Mono Fallback",ui-monospace,monospace}
+.masthead a{text-decoration:none;font-weight:600}
+.masthead a:hover{text-decoration:underline}
+@media(max-width:900px){
+  .masthead{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .masthead>span:last-child{justify-self:center;text-align:center}
+}
+.lang-toggle{display:inline-flex;gap:1px;align-items:baseline;flex-wrap:wrap;text-transform:none;letter-spacing:.05em}
+.lang-toggle button{font-family:'IBM Plex Mono',"Plex Mono Fallback",ui-monospace,monospace;font-size:11px;background:none;border:none;border-bottom:2px solid transparent;color:var(--ink-soft);cursor:pointer;padding:1px 5px;letter-spacing:.05em}
+.lang-toggle button:hover{color:var(--copper)}
+.lang-toggle button[aria-pressed="true"]{color:var(--copper);font-weight:600;border-bottom-color:var(--copper)}
+.lang-toggle .sep{color:var(--rule);padding:0 1px}
+
+/* the dog's corner: one small double-bordered card on the store's deep paper */
+main{padding:64px 0 40px}
+.dog-card{max-width:680px;margin:0 auto;border:3px double var(--ink);background:var(--paper-deep);
+  box-shadow:var(--shadow);padding:44px 38px 34px;position:relative}
+@media(max-width:600px){.dog-card{padding:34px 22px 26px}}
+.dog-card .tag{position:absolute;top:-11px;left:28px;background:var(--ink);color:var(--paper);
+  font-size:10px;letter-spacing:.3em;padding:4px 12px;text-transform:uppercase}
+.dog-card .dog{display:block;font-size:44px;line-height:1;margin-bottom:6px}
+.dog-card .dog .zz{font-family:'IBM Plex Mono',"Plex Mono Fallback",ui-monospace,monospace;
+  color:var(--ink-soft);vertical-align:top;letter-spacing:.06em}
+.dog-card .dog .zz i{font-style:normal;display:inline-block}
+.dog-card .dog .zz i:nth-child(1){font-size:12px}
+.dog-card .dog .zz i:nth-child(2){font-size:16px;transform:translateY(-4px)}
+.dog-card .dog .zz i:nth-child(3){font-size:20px;transform:translateY(-9px)}
+@media (prefers-reduced-motion:no-preference){
+  .dog-card .dog .zz i{animation:zbreathe 3.6s ease-in-out infinite}
+  .dog-card .dog .zz i:nth-child(2){animation-delay:1.2s}
+  .dog-card .dog .zz i:nth-child(3){animation-delay:2.4s}
+}
+@keyframes zbreathe{0%,100%{opacity:.45}50%{opacity:1}}
+.dog-card h1{font-size:clamp(30px,5vw,44px);font-weight:900;line-height:1.1;
+  font-variation-settings:'SOFT' 50;margin-bottom:18px;
+  text-shadow:2px 2px 0 var(--paper), 4px 4px 0 var(--rule)}
+.dog-card p{font-family:'Fraunces',"Fraunces Fallback",Georgia,serif;font-size:16.5px;
+  color:var(--ink-soft);line-height:1.7;margin-top:14px}
+.dog-card p.small{font-family:'IBM Plex Mono',"Plex Mono Fallback",ui-monospace,monospace;
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);
+  margin-top:24px;padding-top:16px;border-top:1px dotted var(--rule)}
+.back-line{max-width:680px;margin:26px auto 0;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;font-weight:600}
+.back-line a{text-decoration:none}
+.back-line a:hover{text-decoration:underline}
+.colophon{text-align:center;padding:34px 0 26px;font-size:10px;letter-spacing:.28em;
+  text-transform:uppercase;opacity:.45}
+
+/* reduced motion: nothing here moves anyway; the dog is asleep in every mode */
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap masthead">
+  <span><a href="./" data-i18n="back">← Back to the floor</a></span>
+  <nav class="lang-toggle" id="langToggle" aria-label="Language"></nav>
+  <span></span>
+</div>
+
+<main class="wrap">
+  <div class="dog-card">
+    <span class="tag" data-i18n="tag">The Shop Dog</span>
+    <span class="dog" aria-hidden="true">🐕<span class="zz"><i>z</i><i>z</i><i>z</i></span></span>
+    <h1 data-i18n="t">The Shop Dog</h1>
+    <p data-i18n="p1">There is an old rule in software, coined in a 1988 memo at a very large company: eat your own dog food. If you make dog food, feed it to your own dog, because nothing finds the problems in a product faster than depending on it yourself, and nothing sells it more honestly than being able to say you do.</p>
+    <p data-i18n="p2">This store runs on that rule. The Word sink keeps its maker's own manuscripts in order, the kind where a broken reference list has real consequences. The PowerPoint sink builds the maker's own defense and conference decks, due on mornings when a broken file is not an option. The browser sink does the maker's browsing, every day, in the same sessions that built it. The Excel sink was tested by a benchmark its own maker aimed at it before anyone else could. Most of the complaints in our repair logs were filed by the owner, about this very store, before you ever walked in.</p>
+    <p data-i18n="p2a">The store itself started the way most hardware stores do: with a repair that could not wait and a toolbox full of tools that could not do it. The owner hired the free help first. It promised everything, broke on contact with real work, and the hours meant for the job went into fixing the help instead. There is no point in bringing in a machine for efficiency when the machine is the least efficient thing in the room. So the owner built one tool that could cut it, then another, and then a family of them, for everyone who got tired of it the same way.</p>
+    <p data-i18n="p2b">The name is an old joke about overpacking: somebody loads the bags with everything they could possibly need and plenty they never will, plus the kitchen sink, just in case. That is this store, on purpose. Nobody wants to spend two hours installing a tool for a job that comes once, but the one time the job comes and the tool is missing, nobody has the two hours to go find it. So the shelves hold everything, including what you may never touch. The day you need it, it is already there. Everything, plus the kitchen sink.</p>
+    <p data-i18n="p3">So when a page here says a tool refuses rather than guesses, that is not a promise written by a marketing department. It is a house rule, enforced by a very fussy dog.</p>
+    <p class="small" data-i18n="p4">If it is not good enough for our dog, it does not go on the shelf.</p>
+  </div>
+  <p class="back-line"><a href="./" data-i18n="back">← Back to the floor</a></p>
+</main>
+
+<div class="wrap colophon">SET IN FRAUNCES &amp; IBM PLEX MONO</div>
+
+<script>
+/*I18N-START*/
+(function(){
+"use strict";
+var I18N = {
+en: {
+"pageTitle": "The Shop Dog",
+"tag": "The Shop Dog",
+"t": "The Shop Dog",
+"p1": "There is an old rule in software, coined in a 1988 memo at a very large company: eat your own dog food. If you make dog food, feed it to your own dog, because nothing finds the problems in a product faster than depending on it yourself, and nothing sells it more honestly than being able to say you do.",
+"p2": "This store runs on that rule. The Word sink keeps its maker's own manuscripts in order, the kind where a broken reference list has real consequences. The PowerPoint sink builds the maker's own defense and conference decks, due on mornings when a broken file is not an option. The browser sink does the maker's browsing, every day, in the same sessions that built it. The Excel sink was tested by a benchmark its own maker aimed at it before anyone else could. Most of the complaints in our repair logs were filed by the owner, about this very store, before you ever walked in.",
+"p2a": "The store itself started the way most hardware stores do: with a repair that could not wait and a toolbox full of tools that could not do it. The owner hired the free help first. It promised everything, broke on contact with real work, and the hours meant for the job went into fixing the help instead. There is no point in bringing in a machine for efficiency when the machine is the least efficient thing in the room. So the owner built one tool that could cut it, then another, and then a family of them, for everyone who got tired of it the same way.",
+"p2b": "The name is an old joke about overpacking: somebody loads the bags with everything they could possibly need and plenty they never will, plus the kitchen sink, just in case. That is this store, on purpose. Nobody wants to spend two hours installing a tool for a job that comes once, but the one time the job comes and the tool is missing, nobody has the two hours to go find it. So the shelves hold everything, including what you may never touch. The day you need it, it is already there. Everything, plus the kitchen sink.",
+"p3": "So when a page here says a tool refuses rather than guesses, that is not a promise written by a marketing department. It is a house rule, enforced by a very fussy dog.",
+"p4": "If it is not good enough for our dog, it does not go on the shelf.",
+"back": "← Back to the floor"
+},
+ko: {
+"pageTitle": "이 가게의 개",
+"tag": "이 가게의 개",
+"t": "이 가게의 개",
+"p1": "소프트웨어 업계에는 오래된 규칙이 하나 있습니다. 1988년 아주 큰 회사의 메모에서 나온 말입니다: 자기가 만든 개밥은 자기가 먹어라. 개밥을 만든다면 자기 개에게 먹여야 합니다. 제품에 스스로 기대어 사는 것만큼 그 제품의 문제를 빨리 찾아내는 방법이 없고, 우리도 쓰고 있다고 말할 수 있는 것만큼 정직하게 파는 방법도 없기 때문입니다.",
+"p2": "이 가게는 그 규칙으로 돌아갑니다. Word 싱크대는 주인 자신의 원고를 정리합니다. 참고문헌 목록이 깨지면 실제로 큰일이 나는 종류의 원고입니다. PowerPoint 싱크대는 주인 자신의 논문 심사 발표자료와 학회 발표자료를 만듭니다. 깨진 파일이 용납되지 않는 아침에 마감이 걸린 자료들입니다. 브라우저 싱크대는 주인의 브라우징을 매일, 자신을 만든 바로 그 세션 안에서 대신합니다. Excel 싱크대는 다른 누가 겨누기도 전에 주인이 직접 만들어 겨눈 벤치마크로 시험받았습니다. 우리 수리 일지에 적힌 불평의 대부분은 손님이 들어오기 전에 주인이 바로 이 가게를 상대로 직접 접수한 것입니다.",
+"p2a": "이 가게 자체도 대부분의 철물점이 그렇듯 시작했습니다. 미룰 수 없는 수리가 하나 있었고, 공구함에는 그 일을 해내지 못하는 공구만 가득했습니다. 주인은 먼저 공짜 일꾼을 들였습니다. 무엇이든 해내겠다고 약속했지만 실제 일에 닿는 순간 부서졌고, 일에 쓰려던 시간은 그 일꾼을 고치는 데 들어갔습니다. 효율을 위해 기계를 들였는데 그 기계가 방 안에서 가장 비효율적인 물건이라면 들일 이유가 없습니다. 그래서 주인은 그 일을 해내는 공구를 하나 만들었고, 또 하나 만들었고, 결국 한 가족을 이루도록 만들었습니다. 같은 방식으로 지쳐 본 모든 사람을 위해서입니다.",
+"p2b": "이 이름은 짐을 너무 많이 싼다는 오래된 농담에서 왔습니다. 누군가 가방에 필요할 법한 모든 것과 절대 쓸 일 없는 것까지 잔뜩 챙기고, 혹시 몰라 부엌 싱크대까지 싣는다는 이야기입니다. 이 가게가 바로 그렇습니다. 일부러 그렇게 만들었습니다. 한 번 올까 말까 한 일 때문에 두 시간 들여 도구를 설치하고 싶은 사람은 없지만, 정작 그 일이 닥쳤는데 도구가 없으면 찾으러 다닐 두 시간도 없습니다. 그래서 선반에는 모든 것이 놓여 있습니다. 평생 손대지 않을 것까지 포함해서입니다. 필요한 날이 오면, 이미 거기에 있습니다. 정말 없는 게 없습니다. 그 싱크대까지 들어 있습니다.",
+"p3": "그러니 이 가게 어딘가에 도구가 추측하느니 거부한다고 적혀 있다면, 그것은 마케팅 부서가 쓴 약속이 아닙니다. 아주 깐깐한 개 한 마리가 지키는 가게 원칙입니다.",
+"p4": "우리 개가 먹기에 부족하다면, 선반에 올리지 않습니다.",
+"back": "← 매장으로 돌아가기"
+},
+ja: {
+"pageTitle": "看板犬",
+"tag": "看板犬",
+"t": "看板犬",
+"p1": "ソフトウェアには古い掟がひとつあります。1988年、とても大きな会社のメモで生まれた言葉です:自分のドッグフードは自分で食べろ。ドッグフードを作るなら、自分の犬に食べさせること。製品の問題を見つけるのに、自分がその製品に頼って暮らすより速い方法はなく、「うちでも使っています」と言えるより正直な売り方もないからです。",
+"p2": "この店は、その掟で回っています。Word の流しは店主自身の原稿を整えています。参考文献リストが壊れたら本当に困る類の原稿です。PowerPoint の流しは店主自身の審査用スライドと学会発表のスライドを組み上げています。壊れたファイルでは済まされない朝に締め切りが来る類のものです。ブラウザの流しは店主のブラウジングを毎日、自分を作ったのと同じセッションの中で引き受けています。Excel の流しは、他の誰かに狙われる前に、店主自身が自作のベンチマークを撃ち込んで試しました。修理台帳にある苦情の大半は、お客さまが来る前に、店主がこの店について自分で申し立てたものです。",
+"p2a": "この店そのものも、たいていの金物屋と同じ形で始まりました。待ったなしの修理がひとつあり、道具箱にはそれをこなせない道具ばかりが詰まっていたのです。店主はまず無料の助っ人を雇いました。何でもできると約束しておきながら、実際の仕事に触れた途端に壊れ、仕事に充てるはずだった時間は助っ人の修理に消えました。効率のために機械を入れても、その機械が部屋でいちばん非効率なのでは意味がありません。そこで店主は、使いものになる道具をひとつ作り、もうひとつ作り、やがて一家をなすまで作りました。同じ形でうんざりしたすべての人のためにです。",
+"p2b": "この名前は、詰め込みすぎについての古い冗談から来ています。誰かが鞄に、要りそうなものすべてと絶対に使わないものまでたっぷり詰め、念のためにと台所の流しまで積み込む、という話です。この店がまさにそれで、わざとそうしてあります。一度来るかどうかの仕事のために二時間かけて道具を据え付けたい人はいません。しかし、いざその仕事が来て道具がないとき、探しに行く二時間は誰にもありません。だから棚にはすべてが置いてあります。一生触れないかもしれないものも含めてです。必要な日が来れば、もうそこにあります。何でも揃う。その流しまで置いてあります。",
+"p3": "ですから、この店のどこかに「道具は当て推量より拒否を選ぶ」と書いてあっても、それはマーケティング部門が書いた約束ではありません。とても口うるさい一匹の犬が守っている、店の掟です。",
+"p4": "うちの犬に出せないものは、棚に並べません。",
+"back": "← 売り場へ戻る"
+},
+zh: {
+"pageTitle": "看店的狗",
+"tag": "看店的狗",
+"t": "看店的狗",
+"p1": "软件行业有一条老规矩,出自 1988 年一家很大的公司的内部备忘录:自己的狗粮自己吃。如果你做狗粮,就喂给自己的狗,因为没有什么比自己依赖这件产品更快找出它的毛病,也没有什么比能说一句“我们自己也在用”卖得更诚实。",
+"p2": "这家店就靠这条规矩运转。Word 水槽管着店主自己的手稿,那种参考文献列表一坏就有真后果的手稿。PowerPoint 水槽做的是店主自己的答辩幻灯片和会议幻灯片,截稿都在那种文件一坏就没有退路的早晨。浏览器水槽每天替店主上网,就在打造它的那些会话里。Excel 水槽在别人来得及瞄准之前,先挨了店主亲手对准它的基准测试。我们维修日志里的投诉,大多是店主在你进门之前,自己对这家店提的。",
+"p2a": "这家店本身的起头,和大多数五金店一样:一件等不起的修理活,和一箱干不了这活的工具。店主先请了免费的帮手。它什么都答应,一碰真活就垮,本该花在活上的时间,全花在修这个帮手上了。请机器进门是为了省力,可要是机器偏偏是屋里最不省力的东西,那就没有请的必要。于是店主造了一件顶用的工具,又造了一件,后来造出了一整个系列,给每一个以同样方式受够了的人。",
+"p2b": "这个店名来自一个关于收拾行李收拾过头的老笑话:有人往包里装上可能用得着的一切,还有一堆永远用不着的,连厨房水槽也带上,以防万一。这家店就是这样,而且是故意的。谁都不愿意为一件也许只来一次的活儿花两个小时装一件工具,可等那活儿真来了、工具却不在手边,谁也拿不出那两个小时去找。所以这些货架上什么都有,包括你也许永远碰不到的。等到用得上的那天,它已经在那儿了。应有尽有,连那个水槽也一并有售。",
+"p3": "所以,这里哪一页写着某件工具宁拒绝、不瞎猜,那都不是市场部写下的承诺。那是店规,由一条非常挑剔的狗看着执行。",
+"p4": "连我们的狗都过不了关的东西,不上架。",
+"back": "← 回卖场"
+},
+de: {
+"pageTitle": "Der Ladenhund",
+"tag": "Der Ladenhund",
+"t": "Der Ladenhund",
+"p1": "In der Software gibt es eine alte Regel, geprägt 1988 in einem Memo einer sehr großen Firma: Iss dein eigenes Hundefutter. Wer Hundefutter herstellt, soll es dem eigenen Hund geben, denn nichts findet die Probleme eines Produkts schneller, als selbst davon abzuhängen, und nichts verkauft es ehrlicher, als sagen zu können, dass man genau das tut.",
+"p2": "Dieser Laden läuft nach dieser Regel. Die Word-Spüle hält die Manuskripte ihres eigenen Herstellers in Ordnung, die Sorte, bei der ein kaputtes Literaturverzeichnis echte Folgen hat. Die PowerPoint-Spüle baut die Verteidigungs- und Konferenzfolien ihres eigenen Herstellers, fällig an Morgen, an denen eine kaputte Datei keine Option ist. Die Browser-Spüle erledigt das Browsen des Herstellers, jeden Tag, in denselben Sitzungen, die sie gebaut haben. Die Excel-Spüle wurde von einem Benchmark geprüft, den ihr eigener Hersteller auf sie richtete, bevor es sonst jemand konnte. Die meisten Beschwerden in unseren Reparaturbüchern hat der Inhaber eingereicht, über genau diesen Laden, bevor Sie je hereinkamen.",
+"p2a": "Der Laden selbst begann, wie die meisten Eisenwarenläden beginnen: mit einer Reparatur, die nicht warten konnte, und einem Werkzeugkasten voller Werkzeuge, die sie nicht schafften. Der Inhaber stellte zuerst die kostenlose Aushilfe ein. Sie versprach alles, zerbrach bei der ersten Berührung mit echter Arbeit, und die Stunden, die für die Arbeit gedacht waren, gingen stattdessen in das Reparieren der Aushilfe. Es hat keinen Sinn, sich für die Effizienz eine Maschine zu holen, wenn die Maschine das ineffizienteste Ding im Raum ist. Also baute der Inhaber ein Werkzeug, das es schaffte, dann ein zweites, und dann eine ganze Familie davon, für alle, die es auf dieselbe Weise satt hatten.",
+"p2b": "Der Name kommt von einem alten Witz übers Überpacken: Jemand lädt in die Taschen alles, was er je brauchen könnte, und reichlich, was er nie brauchen wird, dazu die Küchenspüle, nur für den Fall. Genau das ist dieser Laden, mit Absicht. Niemand will zwei Stunden damit verbringen, ein Werkzeug für eine Arbeit einzurichten, die einmal kommt. Doch wenn die Arbeit dann kommt und das Werkzeug fehlt, hat niemand die zwei Stunden, um es erst zu suchen. Also halten die Regale alles bereit, auch das, was Sie vielleicht nie anfassen. An dem Tag, an dem Sie es brauchen, ist es schon da. Mit allem Drum und Dran, die Spüle gleich mit.",
+"p3": "Wenn hier also auf einer Seite steht, ein Werkzeug verweigere, statt zu raten, dann ist das kein Versprechen aus einer Marketingabteilung. Es ist eine Hausregel, durchgesetzt von einem sehr pingeligen Hund.",
+"p4": "Was unserem Hund nicht gut genug ist, kommt nicht ins Regal.",
+"back": "← Zurück auf die Verkaufsfläche"
+},
+fr: {
+"pageTitle": "Le chien de la boutique",
+"tag": "Le chien de la boutique",
+"t": "Le chien de la boutique",
+"p1": "Il existe en logiciel une vieille règle, née en 1988 dans une note interne d'une très grande entreprise : mangez votre propre nourriture pour chien. Si vous fabriquez de la nourriture pour chien, donnez-la à votre propre chien, car rien ne trouve les défauts d'un produit plus vite que d'en dépendre soi-même, et rien ne le vend plus honnêtement que de pouvoir dire qu'on le fait.",
+"p2": "Cette boutique tourne selon cette règle. L'évier Word tient en ordre les manuscrits de son propre fabricant, ceux où une liste de références cassée a de vraies conséquences. L'évier PowerPoint monte les diaporamas de soutenance et de conférence de son propre fabricant, à rendre ces matins où un fichier cassé n'est pas une option. L'évier navigateur fait la navigation du fabricant, chaque jour, dans les sessions mêmes qui l'ont construit. L'évier Excel a été éprouvé par un banc d'essai que son propre fabricant a braqué sur lui avant que quiconque d'autre ne le puisse. La plupart des réclamations de nos registres de réparation ont été déposées par le patron, au sujet de cette boutique même, avant que vous n'ayez passé la porte.",
+"p2a": "La boutique elle-même a commencé comme la plupart des quincailleries : par une réparation qui ne pouvait pas attendre et une caisse pleine d'outils qui n'en étaient pas capables. Le patron a d'abord embauché l'aide gratuite. Elle promettait tout, cassait au premier contact avec le vrai travail, et les heures prévues pour la tâche passaient à réparer l'aide. Il ne sert à rien de faire entrer une machine pour l'efficacité quand la machine est la chose la moins efficace de la pièce. Alors le patron a construit un outil qui tenait la route, puis un autre, puis toute une famille, pour tous ceux que cela avait lassés de la même façon.",
+"p2b": "Le nom vient d'une vieille blague sur les bagages trop pleins : quelqu'un charge les sacs de tout ce dont il pourrait avoir besoin et de bien des choses qui ne serviront jamais, plus l'évier de la cuisine, au cas où. Cette boutique, c'est exactement cela, et c'est voulu. Personne ne veut passer deux heures à installer un outil pour une tâche qui ne vient qu'une fois, mais le jour où la tâche arrive et où l'outil manque, personne n'a les deux heures pour aller le chercher. Alors les rayons portent tout, y compris ce que vous ne toucherez peut-être jamais. Le jour où il vous le faut, c'est déjà là. Absolument tout, jusqu'au moindre détail, et l'évier avec.",
+"p3": "Alors quand une page ici dit qu'un outil refuse plutôt que de deviner, ce n'est pas une promesse écrite par un service marketing. C'est une règle de la maison, faite respecter par un chien très pointilleux.",
+"p4": "Si ce n'est pas assez bon pour notre chien, ça ne va pas en rayon.",
+"back": "← Retour à la surface de vente"
+},
+es: {
+"pageTitle": "El perro de la tienda",
+"tag": "El perro de la tienda",
+"t": "El perro de la tienda",
+"p1": "En el software hay una regla vieja, acuñada en 1988 en un memorando de una empresa muy grande: coma su propia comida de perro. Si usted hace comida de perro, désela a su propio perro, porque nada encuentra los problemas de un producto más rápido que depender de él uno mismo, y nada lo vende con más honradez que poder decir que lo hace.",
+"p2": "Esta tienda funciona con esa regla. El fregadero de Word mantiene en orden los manuscritos de su propio fabricante, de esos en los que una lista de referencias rota tiene consecuencias reales. El fregadero de PowerPoint arma las diapositivas de defensa y de congreso de su propio fabricante, que se entregan en mañanas en las que un archivo roto no es una opción. El fregadero del navegador hace la navegación del fabricante, cada día, en las mismas sesiones que lo construyeron. El fregadero de Excel fue puesto a prueba por un banco de pruebas que su propio fabricante apuntó contra él antes de que nadie más pudiera. La mayoría de las quejas de nuestros registros de reparación las presentó el dueño, sobre esta misma tienda, antes de que usted entrara.",
+"p2a": "La tienda misma empezó como empiezan casi todas las ferreterías: con una reparación que no podía esperar y una caja llena de herramientas que no podían hacerla. El dueño contrató primero la ayuda gratuita. Lo prometía todo, se rompía al primer contacto con el trabajo de verdad, y las horas destinadas a la faena se iban en arreglar la ayuda. No tiene sentido meter una máquina por eficiencia cuando la máquina es lo menos eficiente que hay en el cuarto. Así que el dueño construyó una herramienta que sí podía, luego otra, y luego una familia entera de ellas, para todos los que se habían cansado de la misma manera.",
+"p2b": "El nombre viene de un chiste viejo sobre empacar de más: alguien carga las maletas con todo lo que podría llegar a necesitar y con mucho que no necesitará nunca, más el fregadero de la cocina, por si acaso. Esta tienda es exactamente eso, a propósito. Nadie quiere pasar dos horas instalando una herramienta para una faena que llega una sola vez, pero el día en que la faena llega y la herramienta falta, nadie tiene las dos horas para ir a buscarla. Así que los estantes lo guardan todo, incluso lo que quizá nunca toque. El día que lo necesita, ya está ahí. De todo, hasta lo que no imaginas, y el fregadero también.",
+"p3": "Así que cuando una página de aquí dice que una herramienta rehúsa antes que adivinar, eso no es una promesa escrita por un departamento de marketing. Es una regla de la casa, y la hace cumplir un perro muy quisquilloso.",
+"p4": "Si no es lo bastante bueno para nuestro perro, no sube al estante.",
+"back": "← Volver a la planta"
+}
+};
+/*I18N-END*/
+var LANGS = [["en","EN"],["ko","한국어"],["ja","日本語"],["zh","中文"],["de","DE"],["fr","FR"],["es","ES"]];
+var HTML_LANG = {en:"en", ko:"ko", ja:"ja", zh:"zh-CN", de:"de", fr:"fr", es:"es"};
+function apply(lang){
+  if (!I18N[lang]) lang = "en";
+  var t = I18N[lang];
+  document.documentElement.lang = HTML_LANG[lang];
+  if (t["pageTitle"]) document.title = t["pageTitle"];
+  var nodes = document.querySelectorAll("[data-i18n]");
+  for (var i = 0; i < nodes.length; i++){
+    var k = nodes[i].getAttribute("data-i18n");
+    if (t[k] !== undefined) nodes[i].innerHTML = t[k];
+  }
+  var btns = document.querySelectorAll("#langToggle button");
+  for (var j = 0; j < btns.length; j++){
+    btns[j].setAttribute("aria-pressed", String(btns[j].getAttribute("data-lang") === lang));
+  }
+  try { localStorage.setItem("ksworks-lang", lang); } catch(e){}
+}
+var nav = document.getElementById("langToggle");
+if (nav){
+  LANGS.forEach(function(pair, idx){
+    if (idx){ var s = document.createElement("span"); s.className = "sep"; s.textContent = "·"; nav.appendChild(s); }
+    var b = document.createElement("button");
+    b.type = "button";
+    b.setAttribute("data-lang", pair[0]);
+    b.setAttribute("aria-pressed", "false");
+    b.textContent = pair[1];
+    b.addEventListener("click", function(){ apply(pair[0]); });
+    nav.appendChild(b);
+  });
+}
+var saved = null;
+try { saved = localStorage.getItem("ksworks-lang"); } catch(e){}
+var lang = (saved && I18N[saved]) ? saved : null;
+if (!lang){
+  var pref = (navigator.languages && navigator.languages[0]) || navigator.language || "en";
+  var code = String(pref).toLowerCase().slice(0, 2);
+  lang = I18N[code] ? code : "en";
+}
+apply(lang);
+})();
+</script>
+
+</body>
+</html>

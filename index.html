@@ -238,6 +238,25 @@ section{padding:60px 0;border-top:1px solid var(--rule)}
 .svc-note{margin-top:18px;font-size:12px;color:var(--ink-soft);max-width:820px}
 .svc-note b{color:var(--ink)}
 
+/* the shop dog: asleep near the service counters. Unlabeled, unlisted, easy to
+   miss. Three ascending z's read as sleep at a glance (author, 2026-09-06); the
+   z's breathe slowly where motion is welcome, and hold still where it is not. */
+.shop-dog{display:block;width:max-content;margin:30px 6px 0 auto;font-size:22px;line-height:1;
+  text-decoration:none;opacity:.45;filter:grayscale(55%);transition:opacity .2s,filter .2s}
+.shop-dog .zz{font-family:'IBM Plex Mono',"Plex Mono Fallback",ui-monospace,monospace;
+  color:var(--ink-soft);vertical-align:top;letter-spacing:.06em}
+.shop-dog .zz i{font-style:normal;display:inline-block}
+.shop-dog .zz i:nth-child(1){font-size:9px}
+.shop-dog .zz i:nth-child(2){font-size:12px;transform:translateY(-3px)}
+.shop-dog .zz i:nth-child(3){font-size:15px;transform:translateY(-7px)}
+@media (prefers-reduced-motion:no-preference){
+  .shop-dog .zz i{animation:zbreathe 3.6s ease-in-out infinite}
+  .shop-dog .zz i:nth-child(2){animation-delay:1.2s}
+  .shop-dog .zz i:nth-child(3){animation-delay:2.4s}
+}
+@keyframes zbreathe{0%,100%{opacity:.45}50%{opacity:1}}
+.shop-dog:hover,.shop-dog:focus-visible{opacity:.95;filter:grayscale(0%)}
+
 /* footer */
 footer{border-top:3px double var(--ink);padding:36px 0 48px;font-size:12px;color:var(--ink-soft)}
 footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
@@ -385,6 +404,7 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     </div>
     <p class="svc-note" data-i18n="svc.com"><b>Commercial fitting?</b> Free for individuals and personal use, and it stays that way. If your company wants to build one of these servers into a product of its own, that needs a commercial license, and terms are worked out case by case. Open an issue at the desk of the product you need and we will talk it through.</p>
     <p class="svc-note" data-i18n="svc.note">Reports are public GitHub issues (a free GitHub account is needed to file one). Every report lands in the maintainer's inbox.</p>
+    <a class="shop-dog" href="shop-dog.html" data-i18n-aria="dog.alt" aria-label="the shop dog, asleep near the service counters">🐕<span class="zz" aria-hidden="true"><i>z</i><i>z</i><i>z</i></span></a>
   </div>
 </section>
 
@@ -457,7 +477,8 @@ en: {
 "svc.com": "<b>Commercial fitting?</b> Free for individuals and personal use, and it stays that way. If your company wants to build one of these servers into a product of its own, that needs a commercial license, and terms are worked out case by case. Open an issue at the desk of the product you need and we will talk it through.",
 "svc.note": "Reports are public GitHub issues (a free GitHub account is needed to file one). Every report lands in the maintainer's inbox.",
 "f.left": "&copy; 2026 &middot; <b>AGPL-3.0</b>, storewide: free for individuals and personal use.<br>Companies building these servers into their own products need a commercial license; arrange one at the service counter of the product you need.",
-"f.right": "<a href='https://github.com/nometalalchemist'>github.com/nometalalchemist</a><br>Every fixture in this store was prototyped with Claude Code and hardened until adversarial test agents ran out of complaints."
+"f.right": "<a href='https://github.com/nometalalchemist'>github.com/nometalalchemist</a><br>Every fixture in this store was prototyped with Claude Code and hardened until adversarial test agents ran out of complaints.",
+"dog.alt": "the shop dog, asleep near the service counters"
 },
 ko: {
 "pageTitle": "The KitchenSink Works · 없는 게 없습니다",
@@ -514,7 +535,8 @@ ko: {
 "svc.com": "<b>영업용 설비가 필요합니까?</b> 개인과 개인적 용도에는 무료이며, 앞으로도 그렇습니다. 회사가 이 서버들을 자사 제품에 넣어 만들려면 상업용 라이선스가 필요하고, 조건은 사안마다 협의해서 정합니다. 필요한 제품의 창구에서 이슈를 열어 주시면 함께 이야기하겠습니다.",
 "svc.note": "신고는 공개 GitHub 이슈로 접수됩니다(제출에는 무료 GitHub 계정이 필요합니다). 모든 신고는 관리자의 수신함에 바로 도착합니다.",
 "f.left": "&copy; 2026 &middot; <b>AGPL-3.0</b>, 전 매장 공통: 개인과 개인적 용도에는 무료.<br>이 서버들을 자사 제품에 넣어 만드는 회사에는 상업용 라이선스가 필요합니다. 필요한 제품의 서비스 창구에서 진행하세요.",
-"f.right": "<a href='https://github.com/nometalalchemist'>github.com/nometalalchemist</a><br>이 가게의 모든 설비는 Claude Code로 프로토타입을 만들고, 적대적 테스트 에이전트가 불평거리를 다 소진할 때까지 단련했습니다."
+"f.right": "<a href='https://github.com/nometalalchemist'>github.com/nometalalchemist</a><br>이 가게의 모든 설비는 Claude Code로 프로토타입을 만들고, 적대적 테스트 에이전트가 불평거리를 다 소진할 때까지 단련했습니다.",
+"dog.alt": "서비스 창구 옆에서 잠든 가게 개"
 },
 ja: {
 "pageTitle": "The KitchenSink Works · 何でも揃います",
@@ -571,7 +593,8 @@ ja: {
 "svc.com": "<b>業務用の取り付けですか?</b> 個人利用と私的な用途は無料で、これからも無料のままです。会社としてこれらのサーバーを自社製品に組み込みたい場合は商用ライセンスが必要で、条件は案件ごとに相談して決めます。必要な製品の窓口で Issue を開いてください。そこから話を進めましょう。",
 "svc.note": "報告は公開の GitHub Issue になります(提出には無料の GitHub アカウントが必要です)。すべての報告はメンテナーの受信箱に届きます。",
 "f.left": "&copy; 2026 &middot; <b>AGPL-3.0</b>、全店共通:個人利用と私的な用途は無料。<br>これらのサーバーを自社製品に組み込む企業には商用ライセンスが必要です。必要な製品のサービス窓口でご相談ください。",
-"f.right": "<a href='https://github.com/nometalalchemist'>github.com/nometalalchemist</a><br>この店のすべての器具は Claude Code でプロトタイプを作り、敵対的テストエージェントが文句を言い尽くすまで鍛えました。"
+"f.right": "<a href='https://github.com/nometalalchemist'>github.com/nometalalchemist</a><br>この店のすべての器具は Claude Code でプロトタイプを作り、敵対的テストエージェントが文句を言い尽くすまで鍛えました。",
+"dog.alt": "サービス窓口のそばで眠る看板犬"
 },
 zh: {
 "pageTitle": "The KitchenSink Works · 应有尽有",
@@ -628,7 +651,8 @@ zh: {
 "svc.com": "<b>商用装配?</b> 个人和个人用途一直免费,以后也是。如果贵公司想把这些服务器做进自家产品里,那就需要商业许可,条款按具体情况一事一议。到你所需产品的服务台开一个 issue,我们细谈。",
 "svc.note": "报告以公开 GitHub issue 的形式提交(需要一个免费的 GitHub 账号)。每份报告都会直达维护者的收件箱。",
 "f.left": "&copy; 2026 &middot; <b>AGPL-3.0</b>,全店通用:个人和个人用途免费。<br>把这些服务器做进自家产品的公司需要商业许可,请到所需产品的服务台办理。",
-"f.right": "<a href='https://github.com/nometalalchemist'>github.com/nometalalchemist</a><br>店里的每件设备都用 Claude Code 做出原型,再打磨到对抗性测试智能体挑不出毛病为止。"
+"f.right": "<a href='https://github.com/nometalalchemist'>github.com/nometalalchemist</a><br>店里的每件设备都用 Claude Code 做出原型,再打磨到对抗性测试智能体挑不出毛病为止。",
+"dog.alt": "在服务台旁睡着的看店狗"
 },
 de: {
 "pageTitle": "The KitchenSink Works · Alles mit allem Drum und Dran",
@@ -685,7 +709,8 @@ de: {
 "svc.com": "<b>Gewerbliche Montage?</b> Für Privatpersonen und private Nutzung kostenlos, und das bleibt so. Will ein Unternehmen einen dieser Server in ein eigenes Produkt einbauen, braucht es eine kommerzielle Lizenz, und die Konditionen werden im Einzelfall besprochen. Öffnen Sie ein Issue am Schalter des Produkts, das Sie brauchen, dann klären wir das.",
 "svc.note": "Berichte sind öffentliche GitHub-Issues (zum Einreichen genügt ein kostenloses GitHub-Konto). Jeder Bericht landet im Posteingang des Maintainers.",
 "f.left": "&copy; 2026 &middot; <b>AGPL-3.0</b>, im ganzen Laden: kostenlos für Privatpersonen und private Nutzung.<br>Unternehmen, die diese Server in eigene Produkte einbauen, brauchen eine kommerzielle Lizenz; zu vereinbaren am Serviceschalter des Produkts, das Sie brauchen.",
-"f.right": "<a href='https://github.com/nometalalchemist'>github.com/nometalalchemist</a><br>Jede Armatur in diesem Laden wurde mit Claude Code prototypisiert und gehärtet, bis den adversarialen Test-Agenten die Beschwerden ausgingen."
+"f.right": "<a href='https://github.com/nometalalchemist'>github.com/nometalalchemist</a><br>Jede Armatur in diesem Laden wurde mit Claude Code prototypisiert und gehärtet, bis den adversarialen Test-Agenten die Beschwerden ausgingen.",
+"dog.alt": "der Ladenhund, eingeschlafen neben den Serviceschaltern"
 },
 fr: {
 "pageTitle": "The KitchenSink Works · Absolument tout, jusqu'au moindre détail",
@@ -742,7 +767,8 @@ fr: {
 "svc.com": "<b>Installation commerciale ?</b> Gratuit pour les particuliers et l'usage personnel, et cela ne changera pas. Si votre entreprise veut intégrer un de ces serveurs dans un produit à elle, il lui faut une licence commerciale, et les conditions se discutent au cas par cas. Ouvrez un ticket au comptoir du produit qui vous intéresse et nous en parlerons.",
 "svc.note": "Les signalements sont des tickets GitHub publics (un compte GitHub gratuit suffit pour en déposer un). Chaque signalement atterrit dans la boîte du mainteneur.",
 "f.left": "&copy; 2026 &middot; <b>AGPL-3.0</b>, dans toute la boutique : gratuit pour les particuliers et l'usage personnel.<br>Les entreprises qui intègrent ces serveurs dans leurs propres produits ont besoin d'une licence commerciale ; à convenir au comptoir de service du produit qu'il vous faut.",
-"f.right": "<a href='https://github.com/nometalalchemist'>github.com/nometalalchemist</a><br>Chaque installation de cette boutique a été prototypée avec Claude Code et endurcie jusqu'à ce que les agents de test adversariaux soient à court de réclamations."
+"f.right": "<a href='https://github.com/nometalalchemist'>github.com/nometalalchemist</a><br>Chaque installation de cette boutique a été prototypée avec Claude Code et endurcie jusqu'à ce que les agents de test adversariaux soient à court de réclamations.",
+"dog.alt": "le chien de la boutique, endormi près des comptoirs de service"
 },
 es: {
 "pageTitle": "The KitchenSink Works · De todo, hasta lo que no imaginas",
@@ -799,7 +825,8 @@ es: {
 "svc.com": "<b>¿Instalación comercial?</b> Gratis para particulares y uso personal, y seguirá siéndolo. Si su empresa quiere integrar uno de estos servidores en un producto propio, hace falta una licencia comercial, y las condiciones se acuerdan caso por caso. Abra un issue en el mostrador del producto que necesite y lo hablamos.",
 "svc.note": "Los partes son issues públicos de GitHub (hace falta una cuenta gratuita de GitHub para presentarlos). Cada parte llega a la bandeja del mantenedor.",
 "f.left": "&copy; 2026 &middot; <b>AGPL-3.0</b>, en toda la tienda: gratis para particulares y uso personal.<br>Las empresas que integren estos servidores en productos propios necesitan una licencia comercial; gestiónela en el mostrador de servicio del producto que necesite.",
-"f.right": "<a href='https://github.com/nometalalchemist'>github.com/nometalalchemist</a><br>Cada accesorio de esta tienda se prototipó con Claude Code y se endureció hasta que los agentes de prueba adversariales se quedaron sin quejas."
+"f.right": "<a href='https://github.com/nometalalchemist'>github.com/nometalalchemist</a><br>Cada accesorio de esta tienda se prototipó con Claude Code y se endureció hasta que los agentes de prueba adversariales se quedaron sin quejas.",
+"dog.alt": "el perro de la tienda, dormido junto a los mostradores de servicio"
 }
 };
 /*I18N-END*/
@@ -814,6 +841,11 @@ function apply(lang){
   for (var i = 0; i < nodes.length; i++){
     var k = nodes[i].getAttribute("data-i18n");
     if (t[k] !== undefined) nodes[i].innerHTML = t[k];
+  }
+  var ariaNodes = document.querySelectorAll("[data-i18n-aria]");
+  for (var a = 0; a < ariaNodes.length; a++){
+    var ak = ariaNodes[a].getAttribute("data-i18n-aria");
+    if (t[ak] !== undefined) ariaNodes[a].setAttribute("aria-label", t[ak]);
   }
   var btns = document.querySelectorAll("#langToggle button");
   for (var j = 0; j < btns.length; j++){
