@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!--
-  LIVE. This is the nometalalchemist.github.io root page, served at https://nometalalchemist.github.io/.
+  LIVE. This is the kitchensink4ai.github.io root page, served at https://kitchensink4ai.github.io/.
   Per-product counts in the aisle cards track the SHIPPED release of each server, not a staged one.
   Update an aisle card only when that product's release is actually public.
   EXCEPTION (author ruling, 2026-09-04): for the KS4PPT v1.1 / KS4W v2.0 pair the storefront was
@@ -12,7 +12,7 @@
   moment that release is cut rather than waiting for it.
 -->
 <title>The KitchenSink Works · Everything plus the kitchen sink</title>
-<meta name="description" content="The KitchenSink family of MCP servers for Office documents: KitchenSink4Word (219 operations across 108 tools for .docx), KitchenSink4PPT (138 tools for .pptx, native editable diagrams from SVG with connectors that stay glued), and KitchenSink4XL (69 tools for .xlsx, every value labeled calculated, cached, or absent). All start small and load capability packs on demand. Engineered not to corrupt. Refuses rather than guesses.">
+<meta name="description" content="Every KitchenSink server on one page: Word, PowerPoint, Excel, and the web. Everything you'll ever need for the trip, plus more; even the kitchen sink.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏪</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -120,6 +120,10 @@ a:hover{text-decoration-style:wavy;text-decoration-thickness:1px;text-underline-
 .hero h1 .amp{color:var(--copper)}
 .tagline{font-family:'Fraunces',"Fraunces Fallback",Georgia,serif;font-style:italic;font-size:clamp(18px,2.6vw,26px);
   color:var(--ink-soft);margin:20px auto 0;max-width:640px}
+/* the promise takes the tagline slot; the older line stays under it because the
+   idiom note below is written to explain the English idiom that line quotes. */
+.tagline-sub{font-family:'Fraunces',"Fraunces Fallback",Georgia,serif;font-style:italic;
+  font-size:clamp(15px,1.9vw,19px);color:var(--ink-soft);margin:10px auto 0;max-width:600px;opacity:.9}
 .est-line{margin-top:18px;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-soft)}
 .est-line b{color:var(--ink)}
 
@@ -193,16 +197,41 @@ section{padding:60px 0;border-top:1px solid var(--rule)}
 @media(max-width:760px){.shelves{grid-template-columns:1fr}}
 .shelf{border:2px dashed var(--rule);background:transparent;padding:30px 28px 22px;text-align:center;
   color:var(--ink-soft);position:relative}
-.shelf .silhouette{display:inline-block;width:74px;height:58px;border:2px dashed var(--rule);
-  border-radius:6px;position:relative;background:rgba(30,53,80,.03);margin-bottom:2px}
-.shelf .silhouette:after{content:"?";font-family:'Fraunces',"Fraunces Fallback",Georgia,serif;font-weight:900;
-  font-size:26px;color:var(--rule);position:absolute;top:50%;left:50%;transform:translate(-50%,-52%)}
+/* the backordered shelf: the fixture is on the label, not on the floor, so it
+   sits at aisle-card scale but greyed back to shelf weight. */
+.shelf .fixture{font-size:40px;display:block;line-height:1;margin-bottom:2px;
+  filter:grayscale(70%);opacity:.7}
 .shelf .dustline{width:96px;height:9px;margin:2px auto 12px;border-radius:50%;
   background:radial-gradient(ellipse, rgba(30,53,80,.12), transparent 70%)}
-.shelf p{font-size:11px;letter-spacing:.24em;text-transform:uppercase}
+.shelf .shelf-name{font-family:'Fraunces',"Fraunces Fallback",Georgia,serif;
+  font-size:clamp(19px,2.4vw,24px);font-weight:900;letter-spacing:0;text-transform:none;
+  color:var(--ink-soft)}
+.shelf .shelf-name .four{font-size:.8em;color:var(--rule)}
 .shelf small{display:block;margin-top:8px;font-size:11px;letter-spacing:.02em;text-transform:none;opacity:.8}
 
+/* the cart: three routes to the same four packages, laid out like a receipt */
+.cart-lead{font-family:'Fraunces',"Fraunces Fallback",Georgia,serif;font-size:17px;
+  color:var(--ink-soft);max-width:640px;margin-bottom:28px}
+.routes{display:grid;gap:22px;max-width:900px}
+.route{border:2px solid var(--ink);background:var(--paper-deep);box-shadow:var(--shadow);
+  padding:20px 22px 18px}
+.route-t{font-size:13px;color:var(--ink-soft);margin-bottom:12px}
+.route-t b{color:var(--ink);font-weight:700}
+.bundles{font-size:14px;letter-spacing:.06em;color:var(--rule)}
+.bundles a{font-weight:600;text-decoration:none;border-bottom:2px solid transparent;padding-bottom:1px}
+.bundles a:nth-of-type(1){color:var(--copper)}
+.bundles a:nth-of-type(2){color:var(--patina)}
+.bundles a:nth-of-type(3){color:var(--brass)}
+.bundles a:nth-of-type(4){color:var(--emerald)}
+.bundles a:hover{border-bottom-color:currentColor;text-decoration:none}
+.cmd{background:var(--paper);border:1px dashed var(--rule);padding:14px 16px;
+  overflow-x:auto;font-size:12.5px;line-height:1.75}
+.cmd code{font-family:'IBM Plex Mono',"Plex Mono Fallback",ui-monospace,monospace;
+  color:var(--ink);white-space:pre}
+
 /* philosophy */
+.creed-lead{max-width:820px;margin:0 auto 30px;font-family:'Fraunces',"Fraunces Fallback",Georgia,serif;
+  font-size:16px;line-height:1.7;color:var(--ink-soft)}
 .creed{max-width:820px;margin:0 auto;border:3px double var(--ink);background:var(--paper-deep);
   box-shadow:var(--shadow);padding:38px 34px;text-align:center}
 .creed h3{font-family:'Fraunces',"Fraunces Fallback",Georgia,serif;font-size:clamp(20px,2.8vw,27px);font-weight:900}
@@ -245,6 +274,16 @@ section{padding:60px 0;border-top:1px solid var(--rule)}
 .svc-note{margin-top:18px;font-size:12px;color:var(--ink-soft);max-width:820px}
 .svc-note b{color:var(--ink)}
 
+/* the counter: one window for everything the three desks do not sort by aisle */
+.the-counter{margin-top:30px;border-top:2px dotted var(--rule);padding-top:24px;max-width:820px}
+.the-counter p{font-family:'Fraunces',"Fraunces Fallback",Georgia,serif;font-size:16px;
+  line-height:1.7;color:var(--ink-soft)}
+.the-counter .counter-link{margin-top:12px;font-family:'IBM Plex Mono',"Plex Mono Fallback",ui-monospace,monospace;
+  font-size:13px;letter-spacing:.06em}
+.the-counter .counter-link a{text-decoration:none;font-weight:600;
+  border-bottom:2px solid transparent;padding-bottom:2px}
+.the-counter .counter-link a:hover{border-bottom-color:var(--copper);text-decoration:none}
+
 /* the shop dog: asleep near the service counters. Unlabeled, unlisted, easy to
    miss. Three ascending z's read as sleep at a glance (author, 2026-09-06); the
    z's breathe slowly where motion is welcome, and hold still where it is not. */
@@ -266,7 +305,12 @@ section{padding:60px 0;border-top:1px solid var(--rule)}
 
 /* footer */
 footer{border-top:3px double var(--ink);padding:36px 0 48px;font-size:12px;color:var(--ink-soft)}
-footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+/* the footer splits: receipts in the store's own voice, then plain boilerplate */
+.f-receipts{font-family:'Fraunces',"Fraunces Fallback",Georgia,serif;font-size:15px;
+  line-height:1.7;color:var(--ink-soft);max-width:760px}
+.f-receipts b{color:var(--ink)}
+.f-legal{margin-top:20px;padding-top:16px;border-top:1px dotted var(--rule);
+  font-size:11px;line-height:1.65;color:var(--ink-soft);opacity:.8;max-width:880px}
 .colophon{text-align:center;padding:22px 0 0;font-size:10px;letter-spacing:.28em;
   text-transform:uppercase;opacity:.45}
 
@@ -287,15 +331,15 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <div class="wrap masthead rev d1">
   <span data-i18n="m.left"><b>PURVEYORS</b> OF FINE INSTRUMENTS FOR OFFICE DOCUMENTS</span>
   <nav class="lang-toggle" id="langToggle" aria-label="Language"></nav>
-  <span><a href="https://github.com/nometalalchemist">GITHUB</a> · <a href="#aisles" data-i18n="m.depts">DEPARTMENTS</a> · <a href="#creed" data-i18n="m.rules">HOUSE RULES</a></span>
+  <span><a href="https://github.com/KitchenSink4AI">GITHUB</a> · <a href="#aisles" data-i18n="m.depts">DEPARTMENTS</a> · <a href="#creed" data-i18n="m.rules">HOUSE RULES</a></span>
 </div>
 
 <div class="switchbar">
   <span class="lbl" data-i18n="sw.lbl">The aisles</span>
-  <a class="w" href="https://nometalalchemist.github.io/KitchenSink4Word/">🚰 KitchenSink4Word</a>
-  <a class="p" href="https://nometalalchemist.github.io/KitchenSink4PPT/">🖌️ KitchenSink4PPT</a>
-  <a class="x" href="https://nometalalchemist.github.io/KitchenSink4XL/">🔌 KitchenSink4XL</a>
-  <a class="g" href="https://nometalalchemist.github.io/KitchenSink4Web/">🪴 KitchenSink4Web</a>
+  <a class="w" href="https://kitchensink4ai.github.io/KitchenSink4Word/">🚰 KitchenSink4Word</a>
+  <a class="p" href="https://kitchensink4ai.github.io/KitchenSink4PPT/">🖌️ KitchenSink4PPT</a>
+  <a class="x" href="https://kitchensink4ai.github.io/KitchenSink4XL/">🔌 KitchenSink4XL</a>
+  <a class="g" href="https://kitchensink4ai.github.io/KitchenSink4Web/">🌿 KitchenSink4Web</a>
 </div>
 
 <div class="awning"><div class="scallop-alt"></div></div>
@@ -303,7 +347,8 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <header class="hero wrap">
   <div class="open-sign" data-i18n="hero.open">OPEN · ALL HOURS · ALL TIME ZONES</div>
   <h1 class="rev d2">The KitchenSink<br><span class="amp">Works</span></h1>
-  <p class="tagline rev d3" data-i18n="hero.tagline">Everything <em>plus</em> the kitchen sink. And yes, it just works.</p>
+  <p class="tagline rev d3" data-i18n="hero.promise">Everything you'll ever need for the trip, plus more; even the kitchen sink.</p>
+  <p class="tagline-sub rev d3" data-i18n="hero.tagline">Everything <em>plus</em> the kitchen sink. And yes, it just works.</p>
   <p class="idiom-note rev d3" data-i18n="hero.idiom"></p>
   <p class="est-line rev d4" data-i18n="hero.est">A FAMILY OF <b>MCP SERVERS</b> · ONE FIXTURE PER DEPARTMENT · <b>AGPL-3.0</b></p>
 </header>
@@ -312,61 +357,90 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="wrap">
     <div class="sec-head"><span class="no" data-i18n="floor.no">THE FLOOR</span><h2 data-i18n="floor.h2">Shop by department</h2></div>
     <div class="aisles">
-      <div class="aisle w"><a class="stretch" href="https://nometalalchemist.github.io/KitchenSink4Word/" aria-label="KitchenSink4Word showroom"></a>
+      <div class="aisle w"><a class="stretch" href="https://kitchensink4ai.github.io/KitchenSink4Word/" aria-label="KitchenSink4Word showroom"></a>
         <span class="aisle-tag" data-i18n="w.tag">AISLE W · PLUMBING</span>
         <span class="fixture">🚰</span>
         <h3>KitchenSink<span class="four">4</span>Word</h3>
         <p class="pitch" data-i18n="w.pitch">The most complete Word (.docx) MCP server ever plumbed. Live editing of open documents, native citations and bibliography, merge-aware table surgery, footnotes, tracked-changes authoring, redaction with verification. Engineered not to corrupt.</p>
         <p class="counts" data-i18n="w.counts"><b>219</b> operations · <b>108</b> tools · <b>1,324</b> tests · <b>0</b> corruptions</p>
         <div class="links">
-          <a href="https://nometalalchemist.github.io/KitchenSink4Word/" data-i18n="w.show">SHOWROOM →</a>
-          <a href="https://github.com/nometalalchemist/KitchenSink4Word">GITHUB</a>
+          <a href="https://kitchensink4ai.github.io/KitchenSink4Word/" data-i18n="w.show">SHOWROOM →</a>
+          <a href="https://github.com/KitchenSink4AI/KitchenSink4Word">GITHUB</a>
           <a href="https://pypi.org/project/kitchensink4word/">PYPI</a>
         </div>
       </div>
-      <div class="aisle p"><a class="stretch" href="https://nometalalchemist.github.io/KitchenSink4PPT/" aria-label="KitchenSink4PPT showroom"></a>
+      <div class="aisle p"><a class="stretch" href="https://kitchensink4ai.github.io/KitchenSink4PPT/" aria-label="KitchenSink4PPT showroom"></a>
         <span class="aisle-tag" data-i18n="p.tag">AISLE P · PAINT</span>
         <span class="fixture">🖌️</span>
         <h3>KitchenSink<span class="four">4</span>PPT</h3>
         <p class="pitch" data-i18n="p.pitch">Everything plus the kitchen sink for PowerPoint (.pptx), headlined by the fixture nobody else carries: SVG in, grouped native shapes with glued connectors out. Move the node, the arrows follow. Plus the first file-based structural table surgery, slide management done right, and tiered loading from day one.</p>
         <p class="counts" data-i18n="p.counts"><b>159</b> operations · <b>138</b> tools · <b>885</b> tests · <b>0</b> corruptions</p>
         <div class="links">
-          <a href="https://nometalalchemist.github.io/KitchenSink4PPT/" data-i18n="p.show">SHOWROOM →</a>
-          <a href="https://github.com/nometalalchemist/KitchenSink4PPT">GITHUB</a>
+          <a href="https://kitchensink4ai.github.io/KitchenSink4PPT/" data-i18n="p.show">SHOWROOM →</a>
+          <a href="https://github.com/KitchenSink4AI/KitchenSink4PPT">GITHUB</a>
           <a href="https://pypi.org/project/kitchensink4ppt/">PYPI</a>
         </div>
       </div>
-      <div class="aisle x"><a class="stretch" href="https://nometalalchemist.github.io/KitchenSink4XL/" aria-label="KitchenSink4XL showroom"></a>
+      <div class="aisle x"><a class="stretch" href="https://kitchensink4ai.github.io/KitchenSink4XL/" aria-label="KitchenSink4XL showroom"></a>
         <span class="aisle-tag" data-i18n="x.tag">AISLE X · ELECTRICAL</span>
         <span class="fixture">🔌</span>
         <h3>KitchenSink<span class="four">4</span>XL</h3>
         <p class="pitch" data-i18n="x.pitch">Everything plus the kitchen sink for Excel (.xlsx), headlined by the thing every other server gets wrong: a spreadsheet remembers its answers, not its thinking, so a stale number looks exactly like a live one. This one labels every value it hands back, names the cells that went stale, and asks Excel itself to recalculate when it matters. Structural edits carry their formulas with them. Tiered loading from day one.</p>
         <p class="counts" data-i18n="x.counts"><b>129</b> operations · <b>69</b> tools · <b>1,174</b> tests · <b>0</b> corruptions</p>
         <div class="links">
-          <a href="https://nometalalchemist.github.io/KitchenSink4XL/" data-i18n="x.show">SHOWROOM →</a>
-          <a href="https://github.com/nometalalchemist/KitchenSink4XL">GITHUB</a>
+          <a href="https://kitchensink4ai.github.io/KitchenSink4XL/" data-i18n="x.show">SHOWROOM →</a>
+          <a href="https://github.com/KitchenSink4AI/KitchenSink4XL">GITHUB</a>
           <a href="https://pypi.org/project/kitchensink4xl/">PYPI</a>
         </div>
       </div>
-      <div class="aisle g"><a class="stretch" href="https://nometalalchemist.github.io/KitchenSink4Web/" aria-label="KitchenSink4Web showroom"></a>
+      <div class="aisle g"><a class="stretch" href="https://kitchensink4ai.github.io/KitchenSink4Web/" aria-label="KitchenSink4Web showroom"></a>
         <span class="aisle-tag" data-i18n="g.tag">AISLE G · GARDEN</span>
-        <span class="fixture">🌱</span>
+        <span class="fixture">🌿</span>
         <h3>KitchenSink<span class="four">4</span>Web<span class="badge" data-i18n="g.badge">NEW STOCK</span></h3>
         <p class="pitch" data-i18n="g.pitch">Everything plus the kitchen sink for the open web: your AI reads whole pages for the price of a paragraph, shadow roots included, and cannot click a thing until you flip the switch. Every read ends with the price it paid and a list of what it skipped.</p>
-        <p class="counts" data-i18n="g.counts"><b>{LITE}/{FULL}</b> tools · <b>{TESTS}</b> tests · <b>7×</b> cheaper reads · <b>0</b> acting tools until allowed</p>
+        <p class="counts" data-i18n="g.counts"><b>19/52</b> tools · <b>2,055</b> tests · <b>7×</b> cheaper reads · <b>0</b> acting tools until allowed</p>
         <div class="links">
-          <a href="https://nometalalchemist.github.io/KitchenSink4Web/" data-i18n="g.show">SHOWROOM →</a>
-          <a href="https://github.com/nometalalchemist/KitchenSink4Web">GITHUB</a>
+          <a href="https://kitchensink4ai.github.io/KitchenSink4Web/" data-i18n="g.show">SHOWROOM →</a>
+          <a href="https://github.com/KitchenSink4AI/KitchenSink4Web">GITHUB</a>
           <a href="https://pypi.org/project/kitchensink4web/">PYPI</a>
         </div>
       </div>
     </div>
     <div class="shelves">
       <div class="shelf">
-        <span class="silhouette"></span>
+        <span class="fixture">📦</span>
         <div class="dustline"></div>
-        <p data-i18n="shelf.p">THIS SHELF INTENTIONALLY LEFT EMPTY</p>
-        <small data-i18n="shelf.s1">The store is growing. The next fixture earns its department the same way the first two did: by shipping.</small>
+        <p class="shelf-name">KitchenSink<span class="four">4</span>PDF</p>
+        <small data-i18n="shelf.s1">Backordered. This shelf is not empty by accident.</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cart">
+  <div class="wrap">
+    <div class="sec-head"><span class="no" data-i18n="cart.no">ONE TRIP</span><h2 data-i18n="cart.h2">Whole store</h2></div>
+    <p class="cart-lead" data-i18n="cart.lead">Came in for one and want the set? It all fits in one cart.</p>
+    <div class="routes">
+      <div class="route">
+        <p class="route-t" data-i18n="cart.desktop"><b>Claude Desktop</b>, one click per bundle:</p>
+        <p class="bundles">
+          <a href="https://github.com/KitchenSink4AI/KitchenSink4Word/releases/latest">Word</a> ·
+          <a href="https://github.com/KitchenSink4AI/KitchenSink4PPT/releases/latest">PPT</a> ·
+          <a href="https://github.com/KitchenSink4AI/KitchenSink4XL/releases/latest">XL</a> ·
+          <a href="https://github.com/KitchenSink4AI/KitchenSink4Web/releases/latest">Web</a>
+        </p>
+      </div>
+      <div class="route">
+        <p class="route-t" data-i18n="cart.code"><b>Claude Code</b>, paste once and the register rings up all four:</p>
+        <pre class="cmd"><code>claude mcp add word -s user -- uvx kitchensink4word
+claude mcp add ppt  -s user -- uvx kitchensink4ppt
+claude mcp add xl   -s user -- uvx kitchensink4xl
+claude mcp add web  -s user -- uvx kitchensink4web</code></pre>
+      </div>
+      <div class="route">
+        <p class="route-t" data-i18n="cart.dev"><b>Developers</b>:</p>
+        <pre class="cmd"><code>pip install kitchensink4word kitchensink4ppt kitchensink4xl kitchensink4web</code></pre>
       </div>
     </div>
   </div>
@@ -375,6 +449,7 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <section id="creed">
   <div class="wrap">
     <div class="sec-head"><span class="no" data-i18n="creed.no">HOUSE RULES</span><h2 data-i18n="creed.h2">How this store is run</h2></div>
+    <p class="creed-lead" data-i18n="creed.why">Nobody wants to install a tool for a job that comes up once. The one time the job does come, though, nobody has the hours to go find the tool either. So these shelves hold everything, including things you may never touch, and the day you need one, it is already there. Everything on them is built to the same house standard: a backup lands before your file changes, the work is checked after, and when something cannot be done, your AI says so plainly instead of guessing. The spec sheets hang in each aisle.</p>
     <div class="creed">
       <div class="line">
         <h3 data-i18n="creed1.t">Everything plus the kitchen sink.</h3>
@@ -397,7 +472,7 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <div class="sec-head"><span class="no" data-i18n="svc.no">THE FRONT DESK</span><h2 data-i18n="svc.h2">CUSTOMER SERVICE</h2></div>
     <span class="ticket" data-i18n="svc.ticket">NOW SERVING · TAKE A NUMBER · EVERY FIXTURE HAS ITS OWN DESK</span>
     <div class="desks">
-      <a class="counter w" href="https://github.com/nometalalchemist/KitchenSink4Word/issues">
+      <a class="counter w" href="https://github.com/KitchenSink4AI/KitchenSink4Word/issues">
         <span class="aisle-tag" data-i18n="w.tag">AISLE W · PLUMBING</span>
         <span class="icon">🔧</span>
         <h3><span data-i18n="dw.t">Word</span> <span style="font-size:.72em;font-weight:400;font-style:italic">(KitchenSink4Word)</span></h3>
@@ -405,7 +480,7 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <p data-i18n="dw.p">Leaks, missing attachments, and feature requests for KitchenSink4Word all go to the plumbing desk. Structured forms ask exactly what a fix needs; never attach a private document, rebuild the structure with placeholder text.</p>
         <span class="go" data-i18n="dw.g">Visit the Word service desk →</span>
       </a>
-      <a class="counter p" href="https://github.com/nometalalchemist/KitchenSink4PPT/issues">
+      <a class="counter p" href="https://github.com/KitchenSink4AI/KitchenSink4PPT/issues">
         <span class="aisle-tag" data-i18n="p.tag">AISLE P · PAINT</span>
         <span class="icon">🔌</span>
         <h3><span data-i18n="dp.t">PowerPoint</span> <span style="font-size:.72em;font-weight:400;font-style:italic">(KitchenSink4PPT)</span></h3>
@@ -413,7 +488,7 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <p data-i18n="dp.p">Glitches, refusals, and feature requests for KitchenSink4PPT go to the lighting desk. Same structured forms, same house policy; never attach a private deck, rebuild the structure with placeholder text.</p>
         <span class="go" data-i18n="dp.g">Visit the PPT service desk →</span>
       </a>
-      <a class="counter x" href="https://github.com/nometalalchemist/KitchenSink4XL/issues">
+      <a class="counter x" href="https://github.com/KitchenSink4AI/KitchenSink4XL/issues">
         <span class="aisle-tag" data-i18n="x.tag">AISLE X · ELECTRICAL</span>
         <span class="icon">🔌</span>
         <h3><span data-i18n="dx.t">Excel</span> <span style="font-size:.72em;font-weight:400;font-style:italic">(KitchenSink4XL)</span></h3>
@@ -424,14 +499,18 @@ footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     </div>
     <p class="svc-note" data-i18n="svc.com"><b>Commercial fitting?</b> Free for individuals and personal use, and it stays that way. If your company wants to build one of these servers into a product of its own, that needs a commercial license, and terms are worked out case by case. Open an issue at the desk of the product you need and we will talk it through.</p>
     <p class="svc-note" data-i18n="svc.note">Reports are public GitHub issues (a free GitHub account is needed to file one). Every report lands in the maintainer's inbox.</p>
+    <div class="the-counter">
+      <p data-i18n="counter.p">Something broke, something you wish these could do, or your company wants to build them into a product of its own. Whatever brought you to the counter, it is the same window: file it on GitHub and it gets read by the person who built the shelves.</p>
+      <p class="counter-link"><a href="https://github.com/KitchenSink4AI">→ github.com/KitchenSink4AI</a></p>
+    </div>
     <a class="shop-dog" href="shop-dog.html" data-i18n-aria="dog.alt" aria-label="the shop dog, asleep near the service counters">🐕<span class="zz" aria-hidden="true"><i>z</i><i>z</i><i>z</i></span></a>
   </div>
 </section>
 
 <footer>
-  <div class="wrap row">
-    <span data-i18n="f.left">© 2026 · <b>AGPL-3.0</b>, storewide: free for individuals and personal use.<br>Companies building these servers into their own products need a commercial license; arrange one at the service counter of the product you need.</span>
-    <span style="text-align:right" data-i18n="f.right"><a href="https://github.com/nometalalchemist">github.com/nometalalchemist</a><br>Every fixture in this store was prototyped with Claude Code and hardened until adversarial test agents ran out of complaints.</span>
+  <div class="wrap">
+    <p class="f-receipts" data-i18n="f.receipts">Four aisles, seven languages, and more than <b>5,400</b> adversarial tests between them, most of them filed by the owner against his own store before it opened. That's a lotta hardware. 🧰</p>
+    <p class="f-legal" data-i18n="f.legal">© 2026 Alvut Consulting, LLC. Licensed AGPL-3.0: free for individuals and personal use; companies building these into their own products need a commercial license (licensing@kitchensink4.ai). Provided as-is, without warranty of any kind, per the license. Not affiliated with or endorsed by Microsoft Corporation. Microsoft, Word, PowerPoint, and Excel are trademarks of Microsoft Corporation. All other trademarks are the property of their respective owners.</p>
   </div>
   <div class="wrap" style="text-align:center;padding:10px 0"><img src="https://visitor-badge.laobi.icu/badge?page_id=nometalalchemist.storefront&left_color=%231e3550&right_color=%23b0622a&left_text=views" alt="views" height="18" style="vertical-align:middle"></div>
 <div class="wrap colophon">SET IN FRAUNCES &amp; IBM PLEX MONO</div>
@@ -450,6 +529,7 @@ en: {
 "m.rules": "HOUSE RULES",
 "hero.open": "OPEN · ALL HOURS · ALL TIME ZONES",
 "hero.tagline": "Everything <em>plus</em> the kitchen sink. And yes, it just works.",
+"hero.promise": "Everything you'll ever need for the trip, plus more; even the kitchen sink.",
 "hero.idiom": "",
 "hero.est": "A FAMILY OF <b>MCP SERVERS</b> · ONE FIXTURE PER DEPARTMENT · <b>AGPL-3.0</b>",
 "floor.no": "THE FLOOR",
@@ -459,25 +539,28 @@ en: {
 "w.counts": "<b>219</b> operations · <b>108</b> tools · <b>1,324</b> tests · <b>0</b> corruptions",
 "w.show": "SHOWROOM →",
 "p.tag": "AISLE P · PAINT",
-"p.badge": "NEW STOCK",
 "p.pitch": "Everything plus the kitchen sink for PowerPoint (.pptx), headlined by the fixture nobody else carries: SVG in, grouped native shapes with glued connectors out. Move the node, the arrows follow. Plus the first file-based structural table surgery, slide management done right, and tiered loading from day one.",
 "p.counts": "<b>159</b> operations · <b>138</b> tools · <b>885</b> tests · <b>0</b> corruptions",
 "p.show": "SHOWROOM →",
 "x.tag": "AISLE X · ELECTRICAL",
-"x.badge": "NEW STOCK",
 "x.pitch": "Everything plus the kitchen sink for Excel (.xlsx), headlined by the thing every other server gets wrong: a spreadsheet remembers its answers, not its thinking, so a stale number looks exactly like a live one. This one labels every value it hands back, names the cells that went stale, and asks Excel itself to recalculate when it matters. Structural edits carry their formulas with them. Tiered loading from day one.",
 "x.counts": "<b>129</b> operations · <b>69</b> tools · <b>1,174</b> tests · <b>0</b> corruptions",
 "x.show": "SHOWROOM →",
 "g.tag": "AISLE G · GARDEN",
 "g.badge": "NEW STOCK",
 "g.pitch": "Everything plus the kitchen sink for the open web: your AI reads whole pages for the price of a paragraph, shadow roots included, and cannot click a thing until you flip the switch. Every read ends with the price it paid and a list of what it skipped.",
-"g.counts": "<b>{LITE}/{FULL}</b> tools · <b>{TESTS}</b> tests · <b>7×</b> cheaper reads · <b>0</b> acting tools until allowed",
+"g.counts": "<b>19/52</b> tools · <b>2,055</b> tests · <b>7×</b> cheaper reads · <b>0</b> acting tools until allowed",
 "g.show": "SHOWROOM →",
-"shelf.p": "THIS SHELF INTENTIONALLY LEFT EMPTY",
-"shelf.s1": "The store is growing. The next fixture earns its department the same way the first two did: by shipping.",
-"shelf.s2": "Restock notices are posted on GitHub, never before the tests pass.",
+"shelf.s1": "Backordered. This shelf is not empty by accident.",
+"cart.no": "ONE TRIP",
+"cart.h2": "Whole store",
+"cart.lead": "Came in for one and want the set? It all fits in one cart.",
+"cart.desktop": "<b>Claude Desktop</b>, one click per bundle:",
+"cart.code": "<b>Claude Code</b>, paste once and the register rings up all four:",
+"cart.dev": "<b>Developers</b>:",
 "creed.no": "HOUSE RULES",
 "creed.h2": "How this store is run",
+"creed.why": "Nobody wants to install a tool for a job that comes up once. The one time the job does come, though, nobody has the hours to go find the tool either. So these shelves hold everything, including things you may never touch, and the day you need one, it is already there. Everything on them is built to the same house standard: a backup lands before your file changes, the work is checked after, and when something cannot be done, your AI says so plainly instead of guessing. The spec sheets hang in each aisle.",
 "creed1.t": "Everything plus the kitchen sink.",
 "creed1.p": "One server per document format, complete enough that your agent never has to shop anywhere else.",
 "creed2.t": "Engineered not to corrupt.",
@@ -501,9 +584,11 @@ en: {
 "dx.g": "Visit the Excel service desk →",
 "svc.com": "<b>Commercial fitting?</b> Free for individuals and personal use, and it stays that way. If your company wants to build one of these servers into a product of its own, that needs a commercial license, and terms are worked out case by case. Open an issue at the desk of the product you need and we will talk it through.",
 "svc.note": "Reports are public GitHub issues (a free GitHub account is needed to file one). Every report lands in the maintainer's inbox.",
-"f.left": "&copy; 2026 &middot; <b>AGPL-3.0</b>, storewide: free for individuals and personal use.<br>Companies building these servers into their own products need a commercial license; arrange one at the service counter of the product you need.",
-"f.right": "<a href='https://github.com/nometalalchemist'>github.com/nometalalchemist</a><br>Every fixture in this store was prototyped with Claude Code and hardened until adversarial test agents ran out of complaints.",
+"counter.p": "Something broke, something you wish these could do, or your company wants to build them into a product of its own. Whatever brought you to the counter, it is the same window: file it on GitHub and it gets read by the person who built the shelves.",
+"f.receipts": "Four aisles, seven languages, and more than <b>5,400</b> adversarial tests between them, most of them filed by the owner against his own store before it opened. That's a lotta hardware. 🧰",
+"f.legal": "&copy; 2026 Alvut Consulting, LLC. Licensed AGPL-3.0: free for individuals and personal use; companies building these into their own products need a commercial license (licensing@kitchensink4.ai). Provided as-is, without warranty of any kind, per the license. Not affiliated with or endorsed by Microsoft Corporation. Microsoft, Word, PowerPoint, and Excel are trademarks of Microsoft Corporation. All other trademarks are the property of their respective owners.",
 "dog.alt": "the shop dog, asleep near the service counters"
+
 },
 ko: {
 "pageTitle": "The KitchenSink Works · 없는 게 없습니다",
@@ -513,6 +598,7 @@ ko: {
 "m.rules": "가게 원칙",
 "hero.open": "영업 중 · 24시간 · 모든 시간대",
 "hero.tagline": "정말 <em>없는 게 없습니다</em>. 그리고 이름 그대로, 그냥 잘 돌아갑니다. “Everything <em>plus</em> the kitchen sink.”",
+"hero.promise": "이번 여정에 필요한 모든 것, 그리고 그 이상까지. 부엌 싱크대마저 들어 있습니다.",
 "hero.idiom": "영어 관용구 “everything but the kitchen sink”는 ‘생각할 수 있는 모든 것’이라는 뜻입니다. 이 가게에는 그 싱크대까지 들어 있습니다.",
 "hero.est": "<b>MCP 서버</b> 제품군 · 부문마다 설비 하나 · <b>AGPL-3.0</b>",
 "floor.no": "매장",
@@ -522,25 +608,28 @@ ko: {
 "w.counts": "작업 <b>219</b>가지 · 도구 <b>108</b>종 · 테스트 <b>1,324</b>건 · 손상 <b>0</b>건",
 "w.show": "전시장 →",
 "p.tag": "P 통로 · 페인트",
-"p.badge": "신상품",
 "p.pitch": "PowerPoint(.pptx)를 위한 것도 정말 없는 게 없습니다. 간판은 다른 어디에도 없는 설비: SVG가 들어가면, 붙은 연결선을 갖춘 그룹 네이티브 도형이 나옵니다. 노드를 옮기면 화살표가 따라옵니다. 여기에 최초의 파일 기반 표 구조 수술, 제대로 만든 슬라이드 관리, 첫날부터 계층형 로딩까지.",
 "p.counts": "작업 <b>159</b>가지 · 도구 <b>138</b>종 · 테스트 <b>885</b>건 · 손상 <b>0</b>건",
 "p.show": "전시장 →",
 "x.tag": "X 통로 · 전기",
-"x.badge": "신상품",
 "x.pitch": "Excel(.xlsx)을 위한 것도 정말 없는 게 없습니다. 간판은 다른 서버가 하나같이 놓치는 지점: 스프레드시트는 계산 과정이 아니라 계산 결과만 기억하기 때문에, 오래된 숫자가 살아 있는 숫자와 똑같아 보입니다. 이 서버는 돌려주는 모든 값에 라벨을 붙이고, 오래된 셀을 주소로 지목하며, 중요한 순간에는 Excel 자신에게 재계산을 시킵니다. 구조를 바꿔도 수식이 함께 따라옵니다. 첫날부터 계층형 로딩.",
 "x.counts": "작업 <b>129</b>가지 · 도구 <b>69</b>종 · 테스트 <b>1,174</b>건 · 손상 <b>0</b>건",
 "x.show": "전시장 →",
 "g.tag": "G 통로 · 원예",
 "g.badge": "신상품",
 "g.pitch": "열린 웹을 위한 것도 정말 없는 게 없습니다. AI가 페이지 전체를 문단 하나 값에 읽고, 섬우 루트 안까지 들어가며, 사용자가 스위치를 올리기 전에는 아무것도 클릭하지 못합니다. 읽기가 끝날 때마다 치른 비용과 건너뛰 것의 목록이 함께 나옵니다.",
-"g.counts": "도구 <b>{LITE}/{FULL}</b>종 · 테스트 <b>{TESTS}</b>건 · 읽기 비용 <b>7×</b> 절감 · 허용 전 조작 도구 <b>0</b>종",
+"g.counts": "도구 <b>19/52</b>종 · 테스트 <b>2,055</b>건 · 읽기 비용 <b>7×</b> 절감 · 허용 전 조작 도구 <b>0</b>종",
 "g.show": "전시장 →",
-"shelf.p": "이 선반은 일부러 비워 두었습니다",
-"shelf.s1": "가게는 커지는 중입니다. 다음 설비도 앞의 둘과 같은 방식으로 제 부문을 얻습니다: 출시로.",
-"shelf.s2": "재입고 소식은 GitHub에 올라오며, 테스트를 통과하기 전에는 절대 올라오지 않습니다.",
+"shelf.s1": "입고 대기 중. 이 선반이 비어 있는 것은 우연이 아닙니다.",
+"cart.no": "한 번의 장보기",
+"cart.h2": "가게 전체",
+"cart.lead": "하나 사러 왔다가 세트가 탐나십니까? 전부 카트 하나에 들어갑니다.",
+"cart.desktop": "<b>Claude Desktop</b>, 번들마다 클릭 한 번:",
+"cart.code": "<b>Claude Code</b>, 한 번 붙여 넣으면 계산대가 네 개를 한꺼번에 찍습니다:",
+"cart.dev": "<b>개발자</b>:",
 "creed.no": "가게 원칙",
 "creed.h2": "이 가게가 돌아가는 방식",
+"creed.why": "한 번 있을까 말까 한 일 때문에 도구를 설치하고 싶은 사람은 없습니다. 그런데 막상 그 일이 닥치면, 도구를 찾으러 다닐 시간이 있는 사람도 없습니다. 그래서 이 선반들은 전부를 갖춰 둡니다. 평생 한 번도 손대지 않을 물건까지 올려 두고, 필요한 날이 오면 이미 거기에 있게 합니다. 선반 위의 모든 것은 같은 가게 기준으로 만듭니다: 파일이 바뀌기 전에 백업이 남고, 작업이 끝난 뒤에는 검사하며, 할 수 없는 일은 AI가 추측하는 대신 그렇다고 분명히 말합니다. 사양서는 통로마다 걸려 있습니다.",
 "creed1.t": "없는 게 없습니다.",
 "creed1.p": "문서 형식마다 서버 하나, 에이전트가 다른 가게에 갈 일이 없을 만큼 완전하게.",
 "creed2.t": "손상시키지 않도록 설계.",
@@ -564,9 +653,11 @@ ko: {
 "dx.g": "Excel 서비스 창구로 →",
 "svc.com": "<b>영업용 설비가 필요합니까?</b> 개인과 개인적 용도에는 무료이며, 앞으로도 그렇습니다. 회사가 이 서버들을 자사 제품에 넣어 만들려면 상업용 라이선스가 필요하고, 조건은 사안마다 협의해서 정합니다. 필요한 제품의 창구에서 이슈를 열어 주시면 함께 이야기하겠습니다.",
 "svc.note": "신고는 공개 GitHub 이슈로 접수됩니다(제출에는 무료 GitHub 계정이 필요합니다). 모든 신고는 관리자의 수신함에 바로 도착합니다.",
-"f.left": "&copy; 2026 &middot; <b>AGPL-3.0</b>, 전 매장 공통: 개인과 개인적 용도에는 무료.<br>이 서버들을 자사 제품에 넣어 만드는 회사에는 상업용 라이선스가 필요합니다. 필요한 제품의 서비스 창구에서 진행하세요.",
-"f.right": "<a href='https://github.com/nometalalchemist'>github.com/nometalalchemist</a><br>이 가게의 모든 설비는 Claude Code로 프로토타입을 만들고, 적대적 테스트 에이전트가 불평거리를 다 소진할 때까지 단련했습니다.",
+"counter.p": "무언가 고장 났거나, 이것들이 해 줬으면 하는 일이 있거나, 회사에서 이 서버들을 자사 제품에 넣고 싶을 수도 있습니다. 무엇 때문에 창구에 오셨든 창구는 하나입니다: GitHub에 올리시면 이 선반을 만든 사람이 직접 읽습니다.",
+"f.receipts": "통로 넷, 언어 일곱, 그리고 그 사이를 오간 적대적 테스트 <b>5,400</b>건 이상. 대부분은 문을 열기도 전에 주인이 자기 가게를 상대로 직접 걸어 본 것입니다. 철물 한번 어지간히 많습니다. 🧰",
+"f.legal": "&copy; 2026 Alvut Consulting, LLC. AGPL-3.0 라이선스: 개인과 개인적 용도에는 무료이며, 이 서버들을 자사 제품에 넣어 만드는 기업에는 상업용 라이선스가 필요합니다(licensing@kitchensink4.ai). 라이선스에 따라 어떠한 보증도 없이 있는 그대로 제공됩니다. Microsoft Corporation과 제휴하거나 그로부터 보증받지 않았습니다. Microsoft, Word, PowerPoint, Excel은 Microsoft Corporation의 상표입니다. 그 밖의 모든 상표는 각 소유자의 재산입니다.",
 "dog.alt": "서비스 창구 옆에서 잠든 가게 개"
+
 },
 ja: {
 "pageTitle": "The KitchenSink Works · 何でも揃います",
@@ -576,6 +667,7 @@ ja: {
 "m.rules": "店の掟",
 "hero.open": "営業中 · 24時間 · 全タイムゾーン",
 "hero.tagline": "<em>何でも揃う</em>、まさに至れり尽くせり。そして名前のとおり、ちゃんと動きます。“Everything <em>plus</em> the kitchen sink.”",
+"hero.promise": "この旅に必要なものはすべて、さらにその先まで。台所の流しまで積んであります。",
 "hero.idiom": "英語の慣用句 “everything but the kitchen sink” は「考えつく限りのすべて」という意味。この店には、その流しまで置いてあります。",
 "hero.est": "<b>MCP サーバー</b>のファミリー · 一部門に一器具 · <b>AGPL-3.0</b>",
 "floor.no": "売り場",
@@ -585,25 +677,28 @@ ja: {
 "w.counts": "操作 <b>219</b> · ツール <b>108</b> · テスト <b>1,324</b> · 破損 <b>0</b>",
 "w.show": "ショールーム →",
 "p.tag": "P 列 · 塗料",
-"p.badge": "新入荷",
 "p.pitch": "PowerPoint(.pptx)のためにも何でも揃っています。看板は他のどこにも置いていない器具:SVG を入れると、接着コネクタ付きのグループ化ネイティブ図形が出てきます。ノードを動かせば、矢印がついてくる。さらに初のファイルベース構造テーブル手術、まともに作られたスライド管理、初日からの段階式読み込みも。",
 "p.counts": "操作 <b>159</b> · ツール <b>138</b> · テスト <b>885</b> · 破損 <b>0</b>",
 "p.show": "ショールーム →",
 "x.tag": "X 列 · 電気",
-"x.badge": "新入荷",
 "x.pitch": "Excel(.xlsx)のためのものも本当になんでも揃っています。看板は、ほかのサーバーがそろって外している一点:表計算が覚えているのは答えであって、考え方ではありません。だから古い数字は生きている数字とまったく同じ顔をしています。このサーバーは返すすべての値にラベルを付け、古くなったセルをアドレスで名指しし、大事な場面では Excel 自身に再計算させます。構造を変えても数式がついてきます。初日からの段階式読み込み。",
 "x.counts": "操作 <b>129</b> · ツール <b>69</b> · テスト <b>1,174</b> · 破損 <b>0</b>",
 "x.show": "ショールーム →",
 "g.tag": "G 列 · 園芸",
 "g.badge": "新入荷",
 "g.pitch": "オープンウェブのためにも何でも揃っています。AI がページまるごとを段落ひとつ分の費用で読み、シャドウルートの中まで届き、あなたがスイッチを入れるまで何もクリックできません。読み取りが終わるたびに、かかった費用と飛ばした箇所の一覧が付いてきます。",
-"g.counts": "ツール <b>{LITE}/{FULL}</b> · テスト <b>{TESTS}</b> · 読み取り費用 <b>7×</b> 削減 · 許可前の操作ツール <b>0</b>",
+"g.counts": "ツール <b>19/52</b> · テスト <b>2,055</b> · 読み取り費用 <b>7×</b> 削減 · 許可前の操作ツール <b>0</b>",
 "g.show": "ショールーム →",
-"shelf.p": "この棚は意図的に空けてあります",
-"shelf.s1": "店は成長中です。次の器具も、最初の二つと同じやり方で自分の売り場を勝ち取ります:出荷することで。",
-"shelf.s2": "再入荷のお知らせは GitHub に。テストが通る前に出ることは決してありません。",
+"shelf.s1": "入荷待ち。この棚が空いているのは偶然ではありません。",
+"cart.no": "ひと回りで",
+"cart.h2": "店ごと",
+"cart.lead": "一つ買いに来て、揃いが欲しくなりましたか。全部カート一つに収まります。",
+"cart.desktop": "<b>Claude Desktop</b>、バンドルごとにクリック一回:",
+"cart.code": "<b>Claude Code</b>、一度貼り付ければレジが四つまとめて打ちます:",
+"cart.dev": "<b>開発者の方</b>:",
 "creed.no": "店の掟",
 "creed.h2": "この店の流儀",
+"creed.why": "一度きりの仕事のために道具を入れたい人はいません。ところがその一度が来たとき、道具を探しに行く時間のある人もいません。だからこの棚には全部置いてあります。一生触らないかもしれないものまで並べておき、必要になった日にはもうそこにある。棚の上のものはすべて同じ店の基準で作られています。ファイルが変わる前にバックアップが残り、作業のあとに検査が入り、できないことはAIが推測せずにはっきりそう言います。仕様書は各通路に掛けてあります。",
 "creed1.t": "何でも揃います。",
 "creed1.p": "文書形式ごとにサーバー1台。エージェントがよそへ買いに行かずに済む完全さで。",
 "creed2.t": "壊さないための設計。",
@@ -627,9 +722,11 @@ ja: {
 "dx.g": "Excel のサービス窓口へ →",
 "svc.com": "<b>業務用の取り付けですか?</b> 個人利用と私的な用途は無料で、これからも無料のままです。会社としてこれらのサーバーを自社製品に組み込みたい場合は商用ライセンスが必要で、条件は案件ごとに相談して決めます。必要な製品の窓口で Issue を開いてください。そこから話を進めましょう。",
 "svc.note": "報告は公開の GitHub Issue になります(提出には無料の GitHub アカウントが必要です)。すべての報告はメンテナーの受信箱に届きます。",
-"f.left": "&copy; 2026 &middot; <b>AGPL-3.0</b>、全店共通:個人利用と私的な用途は無料。<br>これらのサーバーを自社製品に組み込む企業には商用ライセンスが必要です。必要な製品のサービス窓口でご相談ください。",
-"f.right": "<a href='https://github.com/nometalalchemist'>github.com/nometalalchemist</a><br>この店のすべての器具は Claude Code でプロトタイプを作り、敵対的テストエージェントが文句を言い尽くすまで鍛えました。",
+"counter.p": "何かが壊れた、こうできたらいいのにと思うことがある、あるいは会社がこれらを自社製品に組み込みたい。どのご用件で窓口にいらしても、窓口は同じです。GitHubに出していただければ、この棚を作った本人が読みます。",
+"f.receipts": "通路四つ、言語七つ、そのあいだを走った敵対的テストは<b>5,400</b>件以上。その大半は、開店前に店主が自分の店に向けて仕掛けたものです。なかなかの金物の量です。🧰",
+"f.legal": "&copy; 2026 Alvut Consulting, LLC. AGPL-3.0ライセンス。個人および私的な用途は無料です。これらを自社製品に組み込む企業には商用ライセンスが必要です(licensing@kitchensink4.ai)。ライセンスに従い、いかなる保証もなく現状のまま提供されます。Microsoft Corporationとの提携や同社による推奨はありません。Microsoft、Word、PowerPoint、ExcelはMicrosoft Corporationの商標です。その他のすべての商標は各所有者に帰属します。",
 "dog.alt": "サービス窓口のそばで眠る看板犬"
+
 },
 zh: {
 "pageTitle": "The KitchenSink Works · 应有尽有",
@@ -639,6 +736,7 @@ zh: {
 "m.rules": "店规",
 "hero.open": "营业中 · 全天候 · 覆盖所有时区",
 "hero.tagline": "<em>应有尽有</em>。而且正如店名所说,确实好使。“Everything <em>plus</em> the kitchen sink.”",
+"hero.promise": "这趟出门要用的一切,还有更多;连厨房水槽都在里面。",
 "hero.idiom": "英语习语 “everything but the kitchen sink” 意为“能想到的一切”。这家店连那个水槽也一并有售。",
 "hero.est": "一个 <b>MCP 服务器</b>家族 · 每个部门一件设备 · <b>AGPL-3.0</b>",
 "floor.no": "卖场",
@@ -648,25 +746,28 @@ zh: {
 "w.counts": "<b>219</b> 项操作 · <b>108</b> 件工具 · <b>1,324</b> 项测试 · <b>0</b> 次损坏",
 "w.show": "展厅 →",
 "p.tag": "P 过道 · 油漆",
-"p.badge": "新货上架",
 "p.pitch": "为 PowerPoint(.pptx)同样应有尽有,招牌是别家都不进货的设备:SVG 进,带粘附连接线的分组原生图形出。移动节点,箭头跟着走。外加第一个基于文件的表格结构手术、做对了的幻灯片管理,以及第一天就有的分层加载。",
 "p.counts": "<b>159</b> 项操作 · <b>138</b> 件工具 · <b>885</b> 项测试 · <b>0</b> 次损坏",
 "p.show": "展厅 →",
 "x.tag": "X 过道 · 电工",
-"x.badge": "新货上架",
 "x.pitch": "为 Excel(.xlsx)同样应有尽有,招牌是别家服务器都做错的那一点: 表格记住的是答案,不是算法,所以过期的数字和活的数字长得一模一样。这一台给交回的每个值都贴上标注,把过期的单元格按地址点名,关键时刻请 Excel 亲自重算。改结构的时候,公式跟着走。第一天就有的分层加载。",
 "x.counts": "<b>129</b> 项操作 · <b>69</b> 件工具 · <b>1,174</b> 项测试 · <b>0</b> 次损坏",
 "x.show": "展厅 →",
 "g.tag": "G 过道 · 园艺",
 "g.badge": "新货上架",
 "g.pitch": "为开放网页同样应有尽有: 你的 AI 用一个段落的价钱读完整页,连 shadow root 里的内容也读得到,而且在你打开开关之前点不了任何东西。每次读完都会交代花了多少,以及跳过了哪些。",
-"g.counts": "<b>{LITE}/{FULL}</b> 件工具 · <b>{TESTS}</b> 项测试 · 读取便宜 <b>7×</b> · 允许前 <b>0</b> 个操作工具",
+"g.counts": "<b>19/52</b> 件工具 · <b>2,055</b> 项测试 · 读取便宜 <b>7×</b> · 允许前 <b>0</b> 个操作工具",
 "g.show": "展厅 →",
-"shelf.p": "此货架特意留空",
-"shelf.s1": "店还在扩张。下一件设备赢得自己部门的方式,和前两件一样:靠出货。",
-"shelf.s2": "补货通知发在 GitHub 上,测试没过之前绝不预告。",
+"shelf.s1": "缺货补货中。这个货架空着不是偶然。",
+"cart.no": "一趟",
+"cart.h2": "整间店",
+"cart.lead": "本来只想买一件,结果想要一整套?一辆购物车就装得下。",
+"cart.desktop": "<b>Claude Desktop</b>,每个安装包点一下:",
+"cart.code": "<b>Claude Code</b>,粘贴一次,收银台把四个一起结掉:",
+"cart.dev": "<b>开发者</b>:",
 "creed.no": "店规",
 "creed.h2": "这家店怎么开",
+"creed.why": "没人愿意为一件一辈子只碰一次的活儿去装一个工具。可真到了那一次,也没人有工夫再去找工具。所以这些货架什么都摆着,包括你也许永远用不上的东西,等到你需要的那天,它已经在那儿了。架上的每一件都按同一套本店标准做:文件改动之前先留一份备份,做完之后再核对一遍,做不到的事,你的 AI 会直说,而不是猜。规格说明就挂在各条通道上。",
 "creed1.t": "应有尽有。",
 "creed1.p": "每种文档格式一台服务器,完整到你的智能体不必再去别家。",
 "creed2.t": "为“不损坏”而设计。",
@@ -690,9 +791,11 @@ zh: {
 "dx.g": "去 Excel 服务台 →",
 "svc.com": "<b>商用装配?</b> 个人和个人用途一直免费,以后也是。如果贵公司想把这些服务器做进自家产品里,那就需要商业许可,条款按具体情况一事一议。到你所需产品的服务台开一个 issue,我们细谈。",
 "svc.note": "报告以公开 GitHub issue 的形式提交(需要一个免费的 GitHub 账号)。每份报告都会直达维护者的收件箱。",
-"f.left": "&copy; 2026 &middot; <b>AGPL-3.0</b>,全店通用:个人和个人用途免费。<br>把这些服务器做进自家产品的公司需要商业许可,请到所需产品的服务台办理。",
-"f.right": "<a href='https://github.com/nometalalchemist'>github.com/nometalalchemist</a><br>店里的每件设备都用 Claude Code 做出原型,再打磨到对抗性测试智能体挑不出毛病为止。",
+"counter.p": "东西坏了,有些事你希望它们能做到,或者贵公司想把它们做进自己的产品里。不管你为什么来到柜台,柜台只有一个:发到 GitHub 上,搭这些货架的人会亲自读。",
+"f.receipts": "四条通道,七种语言,其间跑过<b>5,400</b>多次对抗性测试,大多数是店主在开门之前对着自己的店提出来的。这五金可真不少。🧰",
+"f.legal": "&copy; 2026 Alvut Consulting, LLC. 依 AGPL-3.0 授权:个人及个人用途免费;把这些做进自有产品的公司需要商业许可(licensing@kitchensink4.ai)。按许可条款以现状提供,不附带任何形式的保证。与 Microsoft Corporation 无关联,亦未获其背书。Microsoft、Word、PowerPoint 和 Excel 是 Microsoft Corporation 的商标。所有其他商标归各自所有者所有。",
 "dog.alt": "在服务台旁睡着的看店狗"
+
 },
 de: {
 "pageTitle": "The KitchenSink Works · Alles mit allem Drum und Dran",
@@ -702,6 +805,7 @@ de: {
 "m.rules": "HAUSREGELN",
 "hero.open": "GEÖFFNET · RUND UM DIE UHR · IN JEDER ZEITZONE",
 "hero.tagline": "<em>Mit allem Drum und Dran</em>. Und ja, es funktioniert einfach. “Everything <em>plus</em> the kitchen sink.”",
+"hero.promise": "Alles, was Sie für die Fahrt je brauchen werden, und mehr; sogar die Küchenspüle.",
 "hero.idiom": "Die englische Redewendung “everything but the kitchen sink” bedeutet: wirklich alles. Dieser Laden führt die Spüle gleich mit.",
 "hero.est": "EINE FAMILIE VON <b>MCP-SERVERN</b> · EINE ARMATUR PRO ABTEILUNG · <b>AGPL-3.0</b>",
 "floor.no": "DIE VERKAUFSFLÄCHE",
@@ -711,25 +815,28 @@ de: {
 "w.counts": "<b>219</b> Operationen · <b>108</b> Werkzeuge · <b>1.324</b> Tests · <b>0</b> Beschädigungen",
 "w.show": "AUSSTELLUNG →",
 "p.tag": "GANG P · FARBEN",
-"p.badge": "NEU EINGETROFFEN",
 "p.pitch": "Auch für PowerPoint (.pptx) alles mit allem Drum und Dran, angeführt von der Armatur, die sonst niemand führt: SVG hinein, gruppierte native Formen mit angeklebten Verbindern heraus. Den Knoten verschieben, die Pfeile folgen. Dazu die erste dateibasierte strukturelle Tabellenchirurgie, Folienverwaltung, richtig gemacht, und gestuftes Laden vom ersten Tag an.",
 "p.counts": "<b>159</b> Operationen · <b>138</b> Werkzeuge · <b>885</b> Tests · <b>0</b> Beschädigungen",
 "p.show": "AUSSTELLUNG →",
 "x.tag": "GANG X · ELEKTRO",
-"x.badge": "NEU EINGETROFFEN",
 "x.pitch": "Auch für Excel (.xlsx) alles mit allem Drum und Dran, angeführt von dem einen Punkt, den jeder andere Server falsch macht: eine Tabelle merkt sich ihre Antworten, nicht ihren Rechenweg, und so sieht eine veraltete Zahl genau aus wie eine lebendige. Dieser hier weist jeden Wert aus, den er zurückgibt, benennt die veralteten Zellen mit Adresse und lässt Excel selbst neu rechnen, wenn es darauf ankommt. Strukturelle Änderungen nehmen ihre Formeln mit. Gestuftes Laden vom ersten Tag an.",
 "x.counts": "<b>129</b> Operationen · <b>69</b> Werkzeuge · <b>1.174</b> Tests · <b>0</b> Beschädigungen",
 "x.show": "AUSSTELLUNG →",
 "g.tag": "GANG G · GARTEN",
 "g.badge": "NEU EINGETROFFEN",
 "g.pitch": "Auch für das offene Web alles mit allem Drum und Dran: Ihre KI liest ganze Seiten zum Preis eines Absatzes, Shadow Roots eingeschlossen, und kann nichts anklicken, solange Sie den Schalter nicht umlegen. Jeder Lesevorgang endet mit dem Preis, den er gekostet hat, und einer Liste dessen, was übersprungen wurde.",
-"g.counts": "<b>{LITE}/{FULL}</b> Werkzeuge · <b>{TESTS}</b> Tests · <b>7×</b> günstiger lesen · <b>0</b> handelnde Werkzeuge bis erlaubt",
+"g.counts": "<b>19/52</b> Werkzeuge · <b>2.055</b> Tests · <b>7×</b> günstiger lesen · <b>0</b> handelnde Werkzeuge bis erlaubt",
 "g.show": "AUSSTELLUNG →",
-"shelf.p": "DIESES REGAL IST ABSICHTLICH LEER",
-"shelf.s1": "Der Laden wächst. Die nächste Armatur verdient sich ihre Abteilung genauso wie die ersten beiden: durchs Ausliefern.",
-"shelf.s2": "Nachschub wird auf GitHub angekündigt, nie bevor die Tests bestehen.",
+"shelf.s1": "Im Rückstand bestellt. Dieses Regal ist nicht aus Versehen leer.",
+"cart.no": "EINE FAHRT",
+"cart.h2": "Der ganze Laden",
+"cart.lead": "Wegen einem gekommen und jetzt den ganzen Satz im Blick? Das passt alles in einen Einkaufswagen.",
+"cart.desktop": "<b>Claude Desktop</b>, ein Klick pro Bundle:",
+"cart.code": "<b>Claude Code</b>, einmal einfügen und die Kasse bongt alle vier:",
+"cart.dev": "<b>Für Entwickler</b>:",
 "creed.no": "HAUSREGELN",
 "creed.h2": "Wie dieser Laden geführt wird",
+"creed.why": "Niemand möchte ein Werkzeug installieren für eine Arbeit, die einmal anfällt. Und wenn diese eine Arbeit dann doch kommt, hat auch niemand die Stunden, das Werkzeug erst zu suchen. Also führen diese Regale alles, auch Dinge, die Sie vielleicht nie anfassen, und an dem Tag, an dem Sie eines brauchen, steht es schon da. Alles darauf ist nach demselben Hausstandard gebaut: Vor jeder Änderung an Ihrer Datei landet eine Sicherung, danach wird die Arbeit geprüft, und wenn etwas nicht geht, sagt Ihre KI das klar, statt zu raten. Die Datenblätter hängen in jedem Gang.",
 "creed1.t": "Alles, mit allem Drum und Dran.",
 "creed1.p": "Ein Server pro Dokumentformat, vollständig genug, dass Ihr Agent nie woanders einkaufen muss.",
 "creed2.t": "Konstruiert, um nichts zu beschädigen.",
@@ -753,9 +860,11 @@ de: {
 "dx.g": "Zum Excel-Serviceschalter →",
 "svc.com": "<b>Gewerbliche Montage?</b> Für Privatpersonen und private Nutzung kostenlos, und das bleibt so. Will ein Unternehmen einen dieser Server in ein eigenes Produkt einbauen, braucht es eine kommerzielle Lizenz, und die Konditionen werden im Einzelfall besprochen. Öffnen Sie ein Issue am Schalter des Produkts, das Sie brauchen, dann klären wir das.",
 "svc.note": "Berichte sind öffentliche GitHub-Issues (zum Einreichen genügt ein kostenloses GitHub-Konto). Jeder Bericht landet im Posteingang des Maintainers.",
-"f.left": "&copy; 2026 &middot; <b>AGPL-3.0</b>, im ganzen Laden: kostenlos für Privatpersonen und private Nutzung.<br>Unternehmen, die diese Server in eigene Produkte einbauen, brauchen eine kommerzielle Lizenz; zu vereinbaren am Serviceschalter des Produkts, das Sie brauchen.",
-"f.right": "<a href='https://github.com/nometalalchemist'>github.com/nometalalchemist</a><br>Jede Armatur in diesem Laden wurde mit Claude Code prototypisiert und gehärtet, bis den adversarialen Test-Agenten die Beschwerden ausgingen.",
+"counter.p": "Etwas ist kaputt, etwas fehlt Ihnen, das diese können sollten, oder Ihr Unternehmen möchte sie in ein eigenes Produkt einbauen. Was Sie auch an den Tresen führt, es ist dasselbe Fenster: Reichen Sie es auf GitHub ein, und es liest die Person, die die Regale gebaut hat.",
+"f.receipts": "Vier Gänge, sieben Sprachen und mehr als <b>5.400</b> adversarielle Tests dazwischen, die meisten davon vom Inhaber gegen den eigenen Laden eingereicht, bevor er öffnete. Das ist eine Menge Eisenwaren. 🧰",
+"f.legal": "&copy; 2026 Alvut Consulting, LLC. Lizenziert unter AGPL-3.0: kostenlos für Privatpersonen und private Nutzung; Unternehmen, die diese in eigene Produkte einbauen, brauchen eine kommerzielle Lizenz (licensing@kitchensink4.ai). Bereitgestellt wie besehen, ohne jede Gewährleistung, gemäß der Lizenz. Nicht mit der Microsoft Corporation verbunden und nicht von ihr unterstützt. Microsoft, Word, PowerPoint und Excel sind Marken der Microsoft Corporation. Alle anderen Marken sind Eigentum ihrer jeweiligen Inhaber.",
 "dog.alt": "der Ladenhund, eingeschlafen neben den Serviceschaltern"
+
 },
 fr: {
 "pageTitle": "The KitchenSink Works · Absolument tout, jusqu'au moindre détail",
@@ -765,6 +874,7 @@ fr: {
 "m.rules": "RÈGLES DE LA MAISON",
 "hero.open": "OUVERT · À TOUTE HEURE · TOUS FUSEAUX HORAIRES",
 "hero.tagline": "<em>Absolument tout, jusqu'au moindre détail</em>. Et oui, ça marche, tout simplement. “Everything <em>plus</em> the kitchen sink.”",
+"hero.promise": "Tout ce dont vous aurez besoin pour le trajet, et plus encore ; même l'évier de la cuisine.",
 "hero.idiom": "L'expression anglaise “everything but the kitchen sink” signifie « absolument tout ». Cette boutique vend l'évier avec.",
 "hero.est": "UNE FAMILLE DE <b>SERVEURS MCP</b> · UNE INSTALLATION PAR RAYON · <b>AGPL-3.0</b>",
 "floor.no": "LA SURFACE DE VENTE",
@@ -774,25 +884,28 @@ fr: {
 "w.counts": "<b>219</b> opérations · <b>108</b> outils · <b>1 324</b> tests · <b>0</b> corruption",
 "w.show": "SALLE D'EXPO →",
 "p.tag": "ALLÉE P · PEINTURE",
-"p.badge": "NOUVEL ARRIVAGE",
 "p.pitch": "Absolument tout pour PowerPoint (.pptx) aussi, avec en vedette l'installation que personne d'autre ne tient en magasin : le SVG entre, des formes natives groupées aux connecteurs collés sortent. Déplacez le nœud, les flèches suivent. Plus la première chirurgie structurelle de tableaux sur fichier, une gestion des diapositives bien faite, et le chargement par paliers dès le premier jour.",
 "p.counts": "<b>159</b> opérations · <b>138</b> outils · <b>885</b> tests · <b>0</b> corruption",
 "p.show": "SALLE D'EXPO →",
 "x.tag": "ALLÉE X · ÉLECTRICITÉ",
-"x.badge": "NOUVEL ARRIVAGE",
 "x.pitch": "Absolument tout pour Excel (.xlsx) aussi, avec en vedette le point que tous les autres serveurs manquent : un tableur retient ses réponses, pas son raisonnement, si bien qu'un chiffre périmé ressemble exactement à un chiffre vivant. Celui-ci mentionne chaque valeur qu'il rend, nomme par leur adresse les cellules périmées, et demande à Excel lui-même de recalculer quand cela compte. Les modifications de structure emportent leurs formules avec elles. Le chargement par paliers dès le premier jour.",
 "x.counts": "<b>129</b> opérations · <b>69</b> outils · <b>1 174</b> tests · <b>0</b> corruption",
 "x.show": "SALLE D'EXPO →",
 "g.tag": "ALLÉE G · JARDIN",
 "g.badge": "NOUVEL ARRIVAGE",
 "g.pitch": "Absolument tout pour le web ouvert aussi : votre IA lit des pages entières pour le prix d'un paragraphe, shadow roots compris, et ne peut rien cliquer tant que vous n'avez pas actionné l'interrupteur. Chaque lecture se termine par le prix qu'elle a coûté et la liste de ce qui a été sauté.",
-"g.counts": "<b>{LITE}/{FULL}</b> outils · <b>{TESTS}</b> tests · lectures <b>7×</b> moins chères · <b>0</b> outil d'action avant autorisation",
+"g.counts": "<b>19/52</b> outils · <b>2 055</b> tests · lectures <b>7×</b> moins chères · <b>0</b> outil d'action avant autorisation",
 "g.show": "SALLE D'EXPO →",
-"shelf.p": "CETTE ÉTAGÈRE EST VIDE À DESSEIN",
-"shelf.s1": "La boutique grandit. La prochaine installation gagnera son rayon comme les deux premières : en étant livrée.",
-"shelf.s2": "Les avis de réassort sont publiés sur GitHub, jamais avant que les tests passent.",
+"shelf.s1": "En réapprovisionnement. Ce rayon n'est pas vide par hasard.",
+"cart.no": "UN SEUL PASSAGE",
+"cart.h2": "La boutique entière",
+"cart.lead": "Venu pour un seul et tenté par la série ? Tout tient dans un seul caddie.",
+"cart.desktop": "<b>Claude Desktop</b>, un clic par bundle :",
+"cart.code": "<b>Claude Code</b>, un seul copier-coller et la caisse encaisse les quatre :",
+"cart.dev": "<b>Développeurs</b> :",
 "creed.no": "RÈGLES DE LA MAISON",
 "creed.h2": "Comment cette boutique est tenue",
+"creed.why": "Personne n'a envie d'installer un outil pour une tâche qui se présente une fois. Et le jour où elle se présente, personne n'a non plus les heures nécessaires pour aller chercher l'outil. Ces rayons tiennent donc tout, y compris des choses que vous ne toucherez peut-être jamais, et le jour où il vous en faut une, elle est déjà là. Tout ce qui s'y trouve est construit au même standard maison : une sauvegarde est déposée avant que votre fichier ne change, le travail est vérifié ensuite, et quand quelque chose ne peut pas être fait, votre IA le dit franchement au lieu de deviner. Les fiches techniques sont affichées dans chaque allée.",
 "creed1.t": "Absolument tout, jusqu'au moindre détail.",
 "creed1.p": "Un serveur par format de document, assez complet pour que votre agent n'ait jamais à faire ses courses ailleurs.",
 "creed2.t": "Conçu pour ne pas corrompre.",
@@ -816,9 +929,11 @@ fr: {
 "dx.g": "Au comptoir de service Excel →",
 "svc.com": "<b>Installation commerciale ?</b> Gratuit pour les particuliers et l'usage personnel, et cela ne changera pas. Si votre entreprise veut intégrer un de ces serveurs dans un produit à elle, il lui faut une licence commerciale, et les conditions se discutent au cas par cas. Ouvrez un ticket au comptoir du produit qui vous intéresse et nous en parlerons.",
 "svc.note": "Les signalements sont des tickets GitHub publics (un compte GitHub gratuit suffit pour en déposer un). Chaque signalement atterrit dans la boîte du mainteneur.",
-"f.left": "&copy; 2026 &middot; <b>AGPL-3.0</b>, dans toute la boutique : gratuit pour les particuliers et l'usage personnel.<br>Les entreprises qui intègrent ces serveurs dans leurs propres produits ont besoin d'une licence commerciale ; à convenir au comptoir de service du produit qu'il vous faut.",
-"f.right": "<a href='https://github.com/nometalalchemist'>github.com/nometalalchemist</a><br>Chaque installation de cette boutique a été prototypée avec Claude Code et endurcie jusqu'à ce que les agents de test adversariaux soient à court de réclamations.",
+"counter.p": "Quelque chose est cassé, quelque chose que vous aimeriez qu'ils sachent faire, ou votre entreprise veut les intégrer à un produit maison. Quelle que soit la raison de votre venue au comptoir, c'est le même guichet : déposez-la sur GitHub et elle sera lue par la personne qui a monté les rayons.",
+"f.receipts": "Quatre allées, sept langues et plus de <b>5 400</b> tests adverses entre elles, la plupart déposés par le patron contre sa propre boutique avant l'ouverture. Ça fait beaucoup de quincaillerie. 🧰",
+"f.legal": "&copy; 2026 Alvut Consulting, LLC. Sous licence AGPL-3.0 : gratuit pour les particuliers et l'usage personnel ; les entreprises qui les intègrent à leurs propres produits ont besoin d'une licence commerciale (licensing@kitchensink4.ai). Fourni tel quel, sans garantie d'aucune sorte, conformément à la licence. Sans affiliation ni approbation de Microsoft Corporation. Microsoft, Word, PowerPoint et Excel sont des marques de Microsoft Corporation. Toutes les autres marques appartiennent à leurs propriétaires respectifs.",
 "dog.alt": "le chien de la boutique, endormi près des comptoirs de service"
+
 },
 es: {
 "pageTitle": "The KitchenSink Works · De todo, hasta lo que no imaginas",
@@ -828,6 +943,7 @@ es: {
 "m.rules": "REGLAS DE LA CASA",
 "hero.open": "ABIERTO · A TODAS HORAS · EN TODOS LOS HUSOS HORARIOS",
 "hero.tagline": "<em>De todo, hasta lo que no imaginas</em>. Y sí, simplemente funciona. “Everything <em>plus</em> the kitchen sink.”",
+"hero.promise": "Todo lo que vaya a necesitar para el viaje, y más; hasta el fregadero de la cocina.",
 "hero.idiom": "La expresión inglesa “everything but the kitchen sink” significa «absolutamente todo». Esta tienda vende hasta el fregadero.",
 "hero.est": "UNA FAMILIA DE <b>SERVIDORES MCP</b> · UN ACCESORIO POR DEPARTAMENTO · <b>AGPL-3.0</b>",
 "floor.no": "LA PLANTA",
@@ -837,25 +953,28 @@ es: {
 "w.counts": "<b>219</b> operaciones · <b>108</b> herramientas · <b>1.324</b> pruebas · <b>0</b> corrupciones",
 "w.show": "SALA DE EXPOSICIÓN →",
 "p.tag": "PASILLO P · PINTURA",
-"p.badge": "RECIÉN LLEGADO",
 "p.pitch": "De todo también para PowerPoint (.pptx), encabezado por el accesorio que nadie más tiene en stock: entra SVG, salen formas nativas agrupadas con conectores pegados. Mueva el nodo y las flechas lo siguen. Más la primera cirugía estructural de tablas basada en archivo, gestión de diapositivas bien hecha y carga por niveles desde el primer día.",
 "p.counts": "<b>159</b> operaciones · <b>138</b> herramientas · <b>885</b> pruebas · <b>0</b> corrupciones",
 "p.show": "SALA DE EXPOSICIÓN →",
 "x.tag": "PASILLO X · ELECTRICIDAD",
-"x.badge": "RECIÉN LLEGADO",
 "x.pitch": "De todo también para Excel (.xlsx), encabezado por lo que todos los demás servidores hacen mal: una hoja de cálculo recuerda sus respuestas, no su razonamiento, así que un número caducado se ve exactamente igual que uno vivo. Este etiqueta cada valor que devuelve, nombra por su dirección las celdas caducadas y le pide al propio Excel que recalcule cuando importa. Los cambios de estructura se llevan sus fórmulas consigo. Carga por niveles desde el primer día.",
 "x.counts": "<b>129</b> operaciones · <b>69</b> herramientas · <b>1.174</b> pruebas · <b>0</b> corrupciones",
 "x.show": "SALA DE EXPOSICIÓN →",
 "g.tag": "PASILLO G · JARDÍN",
 "g.badge": "RECIÉN LLEGADO",
 "g.pitch": "De todo también para la web abierta: su IA lee páginas enteras por el precio de un párrafo, shadow roots incluidos, y no puede hacer clic en nada hasta que usted accione el interruptor. Cada lectura termina con el precio que costó y una lista de lo que se saltó.",
-"g.counts": "<b>{LITE}/{FULL}</b> herramientas · <b>{TESTS}</b> pruebas · lecturas <b>7×</b> más baratas · <b>0</b> herramientas de acción hasta permitirlo",
+"g.counts": "<b>19/52</b> herramientas · <b>2.055</b> pruebas · lecturas <b>7×</b> más baratas · <b>0</b> herramientas de acción hasta permitirlo",
 "g.show": "SALA DE EXPOSICIÓN →",
-"shelf.p": "ESTE ESTANTE ESTÁ VACÍO A PROPÓSITO",
-"shelf.s1": "La tienda está creciendo. El próximo accesorio se ganará su departamento igual que los dos primeros: entregándose.",
-"shelf.s2": "Los avisos de reposición se publican en GitHub, nunca antes de que pasen las pruebas.",
+"shelf.s1": "En pedido pendiente. Este estante no está vacío por casualidad.",
+"cart.no": "UN SOLO VIAJE",
+"cart.h2": "La tienda entera",
+"cart.lead": "¿Vino por uno y se le antoja el juego? Todo cabe en un solo carro.",
+"cart.desktop": "<b>Claude Desktop</b>, un clic por paquete:",
+"cart.code": "<b>Claude Code</b>, pegue una vez y la caja cobra los cuatro:",
+"cart.dev": "<b>Desarrolladores</b>:",
 "creed.no": "REGLAS DE LA CASA",
 "creed.h2": "Cómo se lleva esta tienda",
+"creed.why": "Nadie quiere instalar una herramienta para un trabajo que sale una vez. Y el día que ese trabajo sale, tampoco nadie tiene las horas para ir a buscarla. Así que estos estantes lo tienen todo, incluidas cosas que quizá nunca toque, y el día que necesite una, ya está ahí. Todo lo que hay en ellos está construido con el mismo estándar de la casa: una copia de seguridad aterriza antes de que su archivo cambie, el trabajo se comprueba después, y cuando algo no se puede hacer, su IA lo dice claramente en lugar de adivinar. Las fichas técnicas cuelgan en cada pasillo.",
 "creed1.t": "De todo, hasta lo que no imaginas.",
 "creed1.p": "Un servidor por formato de documento, tan completo que su agente nunca tiene que comprar en otra parte.",
 "creed2.t": "Diseñado para no corromper.",
@@ -879,9 +998,11 @@ es: {
 "dx.g": "Al mostrador de servicio de Excel →",
 "svc.com": "<b>¿Instalación comercial?</b> Gratis para particulares y uso personal, y seguirá siéndolo. Si su empresa quiere integrar uno de estos servidores en un producto propio, hace falta una licencia comercial, y las condiciones se acuerdan caso por caso. Abra un issue en el mostrador del producto que necesite y lo hablamos.",
 "svc.note": "Los partes son issues públicos de GitHub (hace falta una cuenta gratuita de GitHub para presentarlos). Cada parte llega a la bandeja del mantenedor.",
-"f.left": "&copy; 2026 &middot; <b>AGPL-3.0</b>, en toda la tienda: gratis para particulares y uso personal.<br>Las empresas que integren estos servidores en productos propios necesitan una licencia comercial; gestiónela en el mostrador de servicio del producto que necesite.",
-"f.right": "<a href='https://github.com/nometalalchemist'>github.com/nometalalchemist</a><br>Cada accesorio de esta tienda se prototipó con Claude Code y se endureció hasta que los agentes de prueba adversariales se quedaron sin quejas.",
+"counter.p": "Algo se rompió, algo que le gustaría que estos supieran hacer, o su empresa quiere integrarlos en un producto propio. Sea lo que sea lo que le trajo al mostrador, es la misma ventanilla: preséntelo en GitHub y lo lee la persona que montó los estantes.",
+"f.receipts": "Cuatro pasillos, siete idiomas y más de <b>5.400</b> pruebas adversariales entre ellos, la mayoría presentadas por el dueño contra su propia tienda antes de abrir. Eso es un montón de ferretería. 🧰",
+"f.legal": "&copy; 2026 Alvut Consulting, LLC. Con licencia AGPL-3.0: gratis para particulares y uso personal; las empresas que los integren en productos propios necesitan una licencia comercial (licensing@kitchensink4.ai). Se proporciona tal cual, sin garantía de ningún tipo, conforme a la licencia. Sin afiliación ni respaldo de Microsoft Corporation. Microsoft, Word, PowerPoint y Excel son marcas comerciales de Microsoft Corporation. Todas las demás marcas son propiedad de sus respectivos titulares.",
 "dog.alt": "el perro de la tienda, dormido junto a los mostradores de servicio"
+
 }
 };
 /*I18N-END*/
