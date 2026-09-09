@@ -323,6 +323,9 @@ footer{border-top:3px double var(--ink);padding:36px 0 48px;font-size:12px;color
 .f-receipts{font-family:'Fraunces',"Fraunces Fallback",Georgia,serif;font-size:15px;
   line-height:1.7;color:var(--ink-soft);max-width:760px}
 .f-receipts b{color:var(--ink)}
+.f-corp{margin-top:20px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.f-corp a{text-decoration:none}
+.f-corp a:hover{text-decoration:underline}
 .f-legal{margin-top:20px;padding-top:16px;border-top:1px dotted var(--rule);
   font-size:11px;line-height:1.65;color:var(--ink-soft);opacity:.8;max-width:880px}
 .colophon{text-align:center;padding:22px 0 0;font-size:10px;letter-spacing:.28em;
@@ -531,6 +534,7 @@ claude mcp add web  -s user -- uvx kitchensink4web</code></pre>
 <footer>
   <div class="wrap">
     <p class="f-receipts" data-i18n="f.receipts">Four aisles, seven languages, and more than <b>6,400</b> adversarial tests between them, most of them filed by the owner against his own store before it opened. That's a lotta hardware. 🧰</p>
+    <p class="f-corp"><a href="https://kitchensink4.ai/" data-i18n="f.corp">The office upstairs: KitchenSink4AI →</a></p>
     <p class="f-legal" data-i18n="f.legal">© 2026 Alvut Consulting, LLC. Licensed AGPL-3.0: free for individuals and personal use; companies building these into their own products need a commercial license (licensing@kitchensink4.ai). Provided as-is, without warranty of any kind, per the license. Not affiliated with or endorsed by Microsoft Corporation. Microsoft, Word, PowerPoint, and Excel are trademarks of Microsoft Corporation. All other trademarks are the property of their respective owners.</p>
   </div>
   <div class="wrap" style="text-align:center;padding:10px 0"><img src="https://visitor-badge.laobi.icu/badge?page_id=kitchensink4ai.storefront&left_color=%231e3550&right_color=%23b0622a&left_text=views" alt="views" height="18" style="vertical-align:middle"></div>
@@ -613,6 +617,7 @@ en: {
 "counter.p": "Something broke, something you wish these could do, or your company wants to build them into a product of its own. Whatever brought you to the counter, it is the same window: file it on GitHub and it gets read by the person who built the shelves.",
 "f.receipts": "Four aisles, seven languages, and more than <b>6,400</b> adversarial tests between them, most of them filed by the owner against his own store before it opened. That's a lotta hardware. 🧰",
 "f.legal": "&copy; 2026 Alvut Consulting, LLC. Licensed AGPL-3.0: free for individuals and personal use; companies building these into their own products need a commercial license (licensing@kitchensink4.ai). Provided as-is, without warranty of any kind, per the license. Not affiliated with or endorsed by Microsoft Corporation. Microsoft, Word, PowerPoint, and Excel are trademarks of Microsoft Corporation. All other trademarks are the property of their respective owners.",
+"f.corp": "The office upstairs: KitchenSink4AI →",
 "dog.alt": "the shop dog, asleep near the service counters"
 
 },
@@ -687,6 +692,7 @@ ko: {
 "counter.p": "무언가 고장 났거나, 이것들이 해 줬으면 하는 일이 있거나, 회사에서 이 서버들을 자사 제품에 넣고 싶을 수도 있습니다. 무엇 때문에 창구에 오셨든 창구는 하나입니다: GitHub에 올리시면 이 선반을 만든 사람이 직접 읽습니다.",
 "f.receipts": "통로 넷, 언어 일곱, 그리고 그 사이를 오간 적대적 테스트 <b>6,400</b>건 이상. 대부분은 문을 열기도 전에 주인이 자기 가게를 상대로 직접 걸어 본 것입니다. 철물 한번 어지간히 많습니다. 🧰",
 "f.legal": "&copy; 2026 Alvut Consulting, LLC. AGPL-3.0 라이선스: 개인과 개인적 용도에는 무료이며, 이 서버들을 자사 제품에 넣어 만드는 기업에는 상업용 라이선스가 필요합니다(licensing@kitchensink4.ai). 라이선스에 따라 어떠한 보증도 없이 있는 그대로 제공됩니다. Microsoft Corporation과 제휴하거나 그로부터 보증받지 않았습니다. Microsoft, Word, PowerPoint, Excel은 Microsoft Corporation의 상표입니다. 그 밖의 모든 상표는 각 소유자의 재산입니다.",
+"f.corp": "위층 사무실: KitchenSink4AI →",
 "dog.alt": "서비스 창구 옆에서 잠든 가게 개"
 
 },
@@ -761,6 +767,7 @@ ja: {
 "counter.p": "何かが壊れた、こうできたらいいのにと思うことがある、あるいは会社がこれらを自社製品に組み込みたい。どのご用件で窓口にいらしても、窓口は同じです。GitHubに出していただければ、この棚を作った本人が読みます。",
 "f.receipts": "通路四つ、言語七つ、そのあいだを走った敵対的テストは<b>6,400</b>件以上。その大半は、開店前に店主が自分の店に向けて仕掛けたものです。なかなかの金物の量です。🧰",
 "f.legal": "&copy; 2026 Alvut Consulting, LLC. AGPL-3.0ライセンス。個人および私的な用途は無料です。これらを自社製品に組み込む企業には商用ライセンスが必要です(licensing@kitchensink4.ai)。ライセンスに従い、いかなる保証もなく現状のまま提供されます。Microsoft Corporationとの提携や同社による推奨はありません。Microsoft、Word、PowerPoint、ExcelはMicrosoft Corporationの商標です。その他のすべての商標は各所有者に帰属します。",
+"f.corp": "上の階の事務所：KitchenSink4AI →",
 "dog.alt": "サービス窓口のそばで眠る看板犬"
 
 },
@@ -835,6 +842,7 @@ zh: {
 "counter.p": "东西坏了,有些事你希望它们能做到,或者贵公司想把它们做进自己的产品里。不管你为什么来到柜台,柜台只有一个:发到 GitHub 上,搭这些货架的人会亲自读。",
 "f.receipts": "四条通道,七种语言,其间跑过<b>6,400</b>多次对抗性测试,大多数是店主在开门之前对着自己的店提出来的。这五金可真不少。🧰",
 "f.legal": "&copy; 2026 Alvut Consulting, LLC. 依 AGPL-3.0 授权:个人及个人用途免费;把这些做进自有产品的公司需要商业许可(licensing@kitchensink4.ai)。按许可条款以现状提供,不附带任何形式的保证。与 Microsoft Corporation 无关联,亦未获其背书。Microsoft、Word、PowerPoint 和 Excel 是 Microsoft Corporation 的商标。所有其他商标归各自所有者所有。",
+"f.corp": "楼上的办公室：KitchenSink4AI →",
 "dog.alt": "在服务台旁睡着的看店狗"
 
 },
@@ -909,6 +917,7 @@ de: {
 "counter.p": "Etwas ist kaputt, etwas fehlt Ihnen, das diese können sollten, oder Ihr Unternehmen möchte sie in ein eigenes Produkt einbauen. Was Sie auch an den Tresen führt, es ist dasselbe Fenster: Reichen Sie es auf GitHub ein, und es liest die Person, die die Regale gebaut hat.",
 "f.receipts": "Vier Gänge, sieben Sprachen und mehr als <b>6.400</b> adversarielle Tests dazwischen, die meisten davon vom Inhaber gegen den eigenen Laden eingereicht, bevor er öffnete. Das ist eine Menge Eisenwaren. 🧰",
 "f.legal": "&copy; 2026 Alvut Consulting, LLC. Lizenziert unter AGPL-3.0: kostenlos für Privatpersonen und private Nutzung; Unternehmen, die diese in eigene Produkte einbauen, brauchen eine kommerzielle Lizenz (licensing@kitchensink4.ai). Bereitgestellt wie besehen, ohne jede Gewährleistung, gemäß der Lizenz. Nicht mit der Microsoft Corporation verbunden und nicht von ihr unterstützt. Microsoft, Word, PowerPoint und Excel sind Marken der Microsoft Corporation. Alle anderen Marken sind Eigentum ihrer jeweiligen Inhaber.",
+"f.corp": "Das Büro über dem Laden: KitchenSink4AI →",
 "dog.alt": "der Ladenhund, eingeschlafen neben den Serviceschaltern"
 
 },
@@ -983,6 +992,7 @@ fr: {
 "counter.p": "Quelque chose est cassé, quelque chose que vous aimeriez qu'ils sachent faire, ou votre entreprise veut les intégrer à un produit maison. Quelle que soit la raison de votre venue au comptoir, c'est le même guichet : déposez-la sur GitHub et elle sera lue par la personne qui a monté les rayons.",
 "f.receipts": "Quatre allées, sept langues et plus de <b>6 400</b> tests adverses entre elles, la plupart déposés par le patron contre sa propre boutique avant l'ouverture. Ça fait beaucoup de quincaillerie. 🧰",
 "f.legal": "&copy; 2026 Alvut Consulting, LLC. Sous licence AGPL-3.0 : gratuit pour les particuliers et l'usage personnel ; les entreprises qui les intègrent à leurs propres produits ont besoin d'une licence commerciale (licensing@kitchensink4.ai). Fourni tel quel, sans garantie d'aucune sorte, conformément à la licence. Sans affiliation ni approbation de Microsoft Corporation. Microsoft, Word, PowerPoint et Excel sont des marques de Microsoft Corporation. Toutes les autres marques appartiennent à leurs propriétaires respectifs.",
+"f.corp": "Le bureau à l'étage : KitchenSink4AI →",
 "dog.alt": "le chien de la boutique, endormi près des comptoirs de service"
 
 },
@@ -1057,6 +1067,7 @@ es: {
 "counter.p": "Algo se rompió, algo que le gustaría que estos supieran hacer, o su empresa quiere integrarlos en un producto propio. Sea lo que sea lo que le trajo al mostrador, es la misma ventanilla: preséntelo en GitHub y lo lee la persona que montó los estantes.",
 "f.receipts": "Cuatro pasillos, siete idiomas y más de <b>6.400</b> pruebas adversariales entre ellos, la mayoría presentadas por el dueño contra su propia tienda antes de abrir. Eso es un montón de ferretería. 🧰",
 "f.legal": "&copy; 2026 Alvut Consulting, LLC. Con licencia AGPL-3.0: gratis para particulares y uso personal; las empresas que los integren en productos propios necesitan una licencia comercial (licensing@kitchensink4.ai). Se proporciona tal cual, sin garantía de ningún tipo, conforme a la licencia. Sin afiliación ni respaldo de Microsoft Corporation. Microsoft, Word, PowerPoint y Excel son marcas comerciales de Microsoft Corporation. Todas las demás marcas son propiedad de sus respectivos titulares.",
+"f.corp": "La oficina de arriba: KitchenSink4AI →",
 "dog.alt": "el perro de la tienda, dormido junto a los mostradores de servicio"
 
 }

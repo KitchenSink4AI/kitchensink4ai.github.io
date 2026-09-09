@@ -94,6 +94,11 @@ main{padding:64px 0 40px}
   text-transform:uppercase;font-weight:600}
 .back-line a{text-decoration:none}
 .back-line a:hover{text-decoration:underline}
+footer{border-top:3px double var(--ink);margin-top:44px;padding:32px 0 8px;font-size:12px;color:var(--ink-soft)}
+.f-corp{max-width:880px;margin:0 auto;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.f-corp a{text-decoration:none}
+.f-corp a:hover{text-decoration:underline}
+.f-legal{max-width:880px;margin:20px auto 0;padding-top:16px;border-top:1px dotted var(--rule);font-size:11px;line-height:1.65;color:var(--ink-soft);opacity:.8}
 .colophon{text-align:center;padding:34px 0 26px;font-size:10px;letter-spacing:.28em;
   text-transform:uppercase;opacity:.45}
 
@@ -126,7 +131,13 @@ main{padding:64px 0 40px}
   <p class="back-line"><a href="./" data-i18n="back">← Back to the floor</a></p>
 </main>
 
-<div class="wrap colophon">SET IN FRAUNCES &amp; IBM PLEX MONO</div>
+<footer>
+  <div class="wrap">
+    <p class="f-corp"><a href="https://kitchensink4.ai/" data-i18n="f.corp">The office upstairs: KitchenSink4AI →</a></p>
+    <p class="f-legal" data-i18n="f.legal">&copy; 2026 Alvut Consulting, LLC. Licensed AGPL-3.0: free for individuals and personal use; companies building these into their own products need a commercial license (licensing@kitchensink4.ai). Provided as-is, without warranty of any kind, per the license. Not affiliated with or endorsed by Microsoft Corporation. Microsoft, Word, PowerPoint, and Excel are trademarks of Microsoft Corporation. All other trademarks are the property of their respective owners.</p>
+  </div>
+  <div class="wrap colophon">SET IN FRAUNCES &amp; IBM PLEX MONO</div>
+</footer>
 
 <script>
 /*I18N-START*/
@@ -143,7 +154,9 @@ en: {
 "p2b": "The name is an old joke about overpacking: somebody loads the bags with everything they could possibly need and plenty they never will, plus the kitchen sink, just in case. That is this store, on purpose. Nobody wants to spend two hours installing a tool for a job that comes once, but the one time the job comes and the tool is missing, nobody has the two hours to go find it. So the shelves hold everything, including what you may never touch. The day you need it, it is already there. Everything, plus the kitchen sink.",
 "p3": "So when a page here says a tool refuses rather than guesses, that is not a promise written by a marketing department. It is a house rule, enforced by a very fussy dog.",
 "p4": "If it is not good enough for our dog, it does not go on the shelf.",
-"back": "← Back to the floor"
+"back": "← Back to the floor",
+"f.corp": "The office upstairs: KitchenSink4AI →",
+"f.legal": "&copy; 2026 Alvut Consulting, LLC. Licensed AGPL-3.0: free for individuals and personal use; companies building these into their own products need a commercial license (licensing@kitchensink4.ai). Provided as-is, without warranty of any kind, per the license. Not affiliated with or endorsed by Microsoft Corporation. Microsoft, Word, PowerPoint, and Excel are trademarks of Microsoft Corporation. All other trademarks are the property of their respective owners."
 },
 ko: {
 "pageTitle": "이 가게의 개",
@@ -155,7 +168,9 @@ ko: {
 "p2b": "이 이름은 짐을 너무 많이 싼다는 오래된 농담에서 왔습니다. 누군가 가방에 필요할 법한 모든 것과 절대 쓸 일 없는 것까지 잔뜩 챙기고, 혹시 몰라 부엌 싱크대까지 싣는다는 이야기입니다. 이 가게가 바로 그렇습니다. 일부러 그렇게 만들었습니다. 한 번 올까 말까 한 일 때문에 두 시간 들여 도구를 설치하고 싶은 사람은 없지만, 정작 그 일이 닥쳤는데 도구가 없으면 찾으러 다닐 두 시간도 없습니다. 그래서 선반에는 모든 것이 놓여 있습니다. 평생 손대지 않을 것까지 포함해서입니다. 필요한 날이 오면, 이미 거기에 있습니다. 정말 없는 게 없습니다. 그 싱크대까지 들어 있습니다.",
 "p3": "그러니 이 가게 어딘가에 도구가 추측하느니 거부한다고 적혀 있다면, 그것은 마케팅 부서가 쓴 약속이 아닙니다. 아주 깐깐한 개 한 마리가 지키는 가게 원칙입니다.",
 "p4": "우리 개가 먹기에 부족하다면, 선반에 올리지 않습니다.",
-"back": "← 매장으로 돌아가기"
+"back": "← 매장으로 돌아가기",
+"f.corp": "위층 사무실: KitchenSink4AI →",
+"f.legal": "&copy; 2026 Alvut Consulting, LLC. AGPL-3.0 라이선스: 개인과 개인적 용도에는 무료이며, 이 서버들을 자사 제품에 넣어 만드는 기업에는 상업용 라이선스가 필요합니다(licensing@kitchensink4.ai). 라이선스에 따라 어떠한 보증도 없이 있는 그대로 제공됩니다. Microsoft Corporation과 제휴하거나 그로부터 보증받지 않았습니다. Microsoft, Word, PowerPoint, Excel은 Microsoft Corporation의 상표입니다. 그 밖의 모든 상표는 각 소유자의 재산입니다."
 },
 ja: {
 "pageTitle": "看板犬",
@@ -167,7 +182,9 @@ ja: {
 "p2b": "この名前は、詰め込みすぎについての古い冗談から来ています。誰かが鞄に、要りそうなものすべてと絶対に使わないものまでたっぷり詰め、念のためにと台所の流しまで積み込む、という話です。この店がまさにそれで、わざとそうしてあります。一度来るかどうかの仕事のために二時間かけて道具を据え付けたい人はいません。しかし、いざその仕事が来て道具がないとき、探しに行く二時間は誰にもありません。だから棚にはすべてが置いてあります。一生触れないかもしれないものも含めてです。必要な日が来れば、もうそこにあります。何でも揃う。その流しまで置いてあります。",
 "p3": "ですから、この店のどこかに「道具は当て推量より拒否を選ぶ」と書いてあっても、それはマーケティング部門が書いた約束ではありません。とても口うるさい一匹の犬が守っている、店の掟です。",
 "p4": "うちの犬に出せないものは、棚に並べません。",
-"back": "← 売り場へ戻る"
+"back": "← 売り場へ戻る",
+"f.corp": "上の階の事務所：KitchenSink4AI →",
+"f.legal": "&copy; 2026 Alvut Consulting, LLC. AGPL-3.0ライセンス。個人および私的な用途は無料です。これらを自社製品に組み込む企業には商用ライセンスが必要です(licensing@kitchensink4.ai)。ライセンスに従い、いかなる保証もなく現状のまま提供されます。Microsoft Corporationとの提携や同社による推奨はありません。Microsoft、Word、PowerPoint、ExcelはMicrosoft Corporationの商標です。その他のすべての商標は各所有者に帰属します。"
 },
 zh: {
 "pageTitle": "看店的狗",
@@ -179,7 +196,9 @@ zh: {
 "p2b": "这个店名来自一个关于收拾行李收拾过头的老笑话:有人往包里装上可能用得着的一切,还有一堆永远用不着的,连厨房水槽也带上,以防万一。这家店就是这样,而且是故意的。谁都不愿意为一件也许只来一次的活儿花两个小时装一件工具,可等那活儿真来了、工具却不在手边,谁也拿不出那两个小时去找。所以这些货架上什么都有,包括你也许永远碰不到的。等到用得上的那天,它已经在那儿了。应有尽有,连那个水槽也一并有售。",
 "p3": "所以,这里哪一页写着某件工具宁拒绝、不瞎猜,那都不是市场部写下的承诺。那是店规,由一条非常挑剔的狗看着执行。",
 "p4": "连我们的狗都过不了关的东西,不上架。",
-"back": "← 回卖场"
+"back": "← 回卖场",
+"f.corp": "楼上的办公室：KitchenSink4AI →",
+"f.legal": "&copy; 2026 Alvut Consulting, LLC. 依 AGPL-3.0 授权:个人及个人用途免费;把这些做进自有产品的公司需要商业许可(licensing@kitchensink4.ai)。按许可条款以现状提供,不附带任何形式的保证。与 Microsoft Corporation 无关联,亦未获其背书。Microsoft、Word、PowerPoint 和 Excel 是 Microsoft Corporation 的商标。所有其他商标归各自所有者所有。"
 },
 de: {
 "pageTitle": "Der Ladenhund",
@@ -191,7 +210,9 @@ de: {
 "p2b": "Der Name kommt von einem alten Witz übers Überpacken: Jemand lädt in die Taschen alles, was er je brauchen könnte, und reichlich, was er nie brauchen wird, dazu die Küchenspüle, nur für den Fall. Genau das ist dieser Laden, mit Absicht. Niemand will zwei Stunden damit verbringen, ein Werkzeug für eine Arbeit einzurichten, die einmal kommt. Doch wenn die Arbeit dann kommt und das Werkzeug fehlt, hat niemand die zwei Stunden, um es erst zu suchen. Also halten die Regale alles bereit, auch das, was Sie vielleicht nie anfassen. An dem Tag, an dem Sie es brauchen, ist es schon da. Mit allem Drum und Dran, die Spüle gleich mit.",
 "p3": "Wenn hier also auf einer Seite steht, ein Werkzeug verweigere, statt zu raten, dann ist das kein Versprechen aus einer Marketingabteilung. Es ist eine Hausregel, durchgesetzt von einem sehr pingeligen Hund.",
 "p4": "Was unserem Hund nicht gut genug ist, kommt nicht ins Regal.",
-"back": "← Zurück auf die Verkaufsfläche"
+"back": "← Zurück auf die Verkaufsfläche",
+"f.corp": "Das Büro über dem Laden: KitchenSink4AI →",
+"f.legal": "&copy; 2026 Alvut Consulting, LLC. Lizenziert unter AGPL-3.0: kostenlos für Privatpersonen und private Nutzung; Unternehmen, die diese in eigene Produkte einbauen, brauchen eine kommerzielle Lizenz (licensing@kitchensink4.ai). Bereitgestellt wie besehen, ohne jede Gewährleistung, gemäß der Lizenz. Nicht mit der Microsoft Corporation verbunden und nicht von ihr unterstützt. Microsoft, Word, PowerPoint und Excel sind Marken der Microsoft Corporation. Alle anderen Marken sind Eigentum ihrer jeweiligen Inhaber."
 },
 fr: {
 "pageTitle": "Le chien de la boutique",
@@ -203,7 +224,9 @@ fr: {
 "p2b": "Le nom vient d'une vieille blague sur les bagages trop pleins : quelqu'un charge les sacs de tout ce dont il pourrait avoir besoin et de bien des choses qui ne serviront jamais, plus l'évier de la cuisine, au cas où. Cette boutique, c'est exactement cela, et c'est voulu. Personne ne veut passer deux heures à installer un outil pour une tâche qui ne vient qu'une fois, mais le jour où la tâche arrive et où l'outil manque, personne n'a les deux heures pour aller le chercher. Alors les rayons portent tout, y compris ce que vous ne toucherez peut-être jamais. Le jour où il vous le faut, c'est déjà là. Absolument tout, jusqu'au moindre détail, et l'évier avec.",
 "p3": "Alors quand une page ici dit qu'un outil refuse plutôt que de deviner, ce n'est pas une promesse écrite par un service marketing. C'est une règle de la maison, faite respecter par un chien très pointilleux.",
 "p4": "Si ce n'est pas assez bon pour notre chien, ça ne va pas en rayon.",
-"back": "← Retour à la surface de vente"
+"back": "← Retour à la surface de vente",
+"f.corp": "Le bureau à l'étage : KitchenSink4AI →",
+"f.legal": "&copy; 2026 Alvut Consulting, LLC. Sous licence AGPL-3.0 : gratuit pour les particuliers et l'usage personnel ; les entreprises qui les intègrent à leurs propres produits ont besoin d'une licence commerciale (licensing@kitchensink4.ai). Fourni tel quel, sans garantie d'aucune sorte, conformément à la licence. Sans affiliation ni approbation de Microsoft Corporation. Microsoft, Word, PowerPoint et Excel sont des marques de Microsoft Corporation. Toutes les autres marques appartiennent à leurs propriétaires respectifs."
 },
 es: {
 "pageTitle": "El perro de la tienda",
@@ -215,7 +238,9 @@ es: {
 "p2b": "El nombre viene de un chiste viejo sobre empacar de más: alguien carga las maletas con todo lo que podría llegar a necesitar y con mucho que no necesitará nunca, más el fregadero de la cocina, por si acaso. Esta tienda es exactamente eso, a propósito. Nadie quiere pasar dos horas instalando una herramienta para una faena que llega una sola vez, pero el día en que la faena llega y la herramienta falta, nadie tiene las dos horas para ir a buscarla. Así que los estantes lo guardan todo, incluso lo que quizá nunca toque. El día que lo necesita, ya está ahí. De todo, hasta lo que no imaginas, y el fregadero también.",
 "p3": "Así que cuando una página de aquí dice que una herramienta rehúsa antes que adivinar, eso no es una promesa escrita por un departamento de marketing. Es una regla de la casa, y la hace cumplir un perro muy quisquilloso.",
 "p4": "Si no es lo bastante bueno para nuestro perro, no sube al estante.",
-"back": "← Volver a la planta"
+"back": "← Volver a la planta",
+"f.corp": "La oficina de arriba: KitchenSink4AI →",
+"f.legal": "&copy; 2026 Alvut Consulting, LLC. Con licencia AGPL-3.0: gratis para particulares y uso personal; las empresas que los integren en productos propios necesitan una licencia comercial (licensing@kitchensink4.ai). Se proporciona tal cual, sin garantía de ningún tipo, conforme a la licencia. Sin afiliación ni respaldo de Microsoft Corporation. Microsoft, Word, PowerPoint y Excel son marcas comerciales de Microsoft Corporation. Todas las demás marcas son propiedad de sus respectivos titulares."
 }
 };
 /*I18N-END*/
