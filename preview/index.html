@@ -18,13 +18,10 @@
 /* ============ KitchenSink4 · the dark register, lasers on ============
    D21: NEON governs the mark and dark developer surfaces. This is the
    dark developer surface. Laser cyan and acid green carry the light;
-   ember appears where something refuses. Two faces with hard roles: Oxanium for display,
-   labels, and numbers; Geologica for paragraphs. Nothing else. */
+   ember appears where something refuses. One face: Oxanium carries the entire page. */
 
 @font-face { font-family:'Oxanium'; src:url('/fonts/oxanium-var.woff2') format('woff2');
   font-weight:200 800; font-display:swap; }
-@font-face { font-family:'Geologica'; src:url('/fonts/geologica-var.woff2') format('woff2');
-  font-weight:100 900; font-display:swap; }
 
 :root{
   --ground:#050608;
@@ -45,7 +42,6 @@
   --glow-e:0 0 6px rgba(255,74,28,.8), 0 0 18px rgba(255,74,28,.35);
   --glow-v:0 0 6px rgba(255,225,0,.8), 0 0 18px rgba(255,225,0,.35);
   --ox:'Oxanium','Segoe UI',system-ui,sans-serif;
-  --body:'Geologica','Segoe UI',system-ui,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -57,8 +53,8 @@ body{
     repeating-linear-gradient(90deg, rgba(0,252,254,.035) 0 1px, transparent 1px 56px),
     var(--ground);
   color:var(--ink);
-  font-family:var(--body);
-  font-weight:380;
+  font-family:var(--ox);
+  font-weight:400;
   font-size:17px; line-height:1.66;
   -webkit-font-smoothing:antialiased;
 }
@@ -227,7 +223,7 @@ section{padding:clamp(64px,10vh,110px) 0}
 /* engineering */
 .manifesto{
   font-size:clamp(19px,2vw,24px); line-height:1.5;
-  max-width:38ch; color:var(--ink); font-weight:560;
+  max-width:38ch; color:var(--ink); font-weight:600;
   border-left:3px solid var(--ember);
   box-shadow:inset 3px 0 14px -6px rgba(255,74,28,.55);
   padding-left:22px;
