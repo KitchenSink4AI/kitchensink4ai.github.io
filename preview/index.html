@@ -104,14 +104,6 @@ nav.top a{
 nav.top a:hover{color:var(--laser); text-decoration:none; text-shadow:var(--glow-c)}
 @media (max-width:640px){ nav.top a.hide-sm{display:none} }
 
-/* wayfinding for people who wanted the downloads */
-.wayfind{
-  background:rgba(0,252,254,.045);
-  border-bottom:1px solid var(--hairline);
-  padding:9px 0; font-size:13px; color:var(--ink-soft);
-}
-.wayfind b{color:var(--ink); font-weight:600}
-
 /* ---------- hero ---------- */
 .hero{padding:clamp(72px,12vh,140px) 0 clamp(50px,8vh,92px); position:relative}
 .hero h1{
@@ -129,6 +121,9 @@ nav.top a:hover{color:var(--laser); text-decoration:none; text-shadow:var(--glow
   padding:13px 20px; transition:border-color .18s, color .18s, box-shadow .18s;
 }
 .btn-shop:hover{border-color:var(--laser); color:var(--laser); text-decoration:none; box-shadow:var(--glow-c), inset 0 0 14px rgba(0,252,254,.1)}
+.btn-cat{display:inline-flex; flex-direction:column; align-items:flex-start; gap:4px; text-align:left; padding:14px 24px}
+.btn-cat .bs{font-family:var(--ox); font-weight:500; font-size:11px; letter-spacing:.06em; text-transform:none; color:var(--ink-soft)}
+.btn-cat:hover .bs{color:var(--cyan)}
 
 /* family strip */
 .strip{position:relative; background:linear-gradient(180deg, rgba(0,252,254,.05), transparent)}
@@ -321,10 +316,6 @@ footer:before{
 </header>
 
 <main>
-  <div class="wayfind"><div class="wrap">Looking for the products?
-  <b>Downloads, docs, and the full catalog live in the storefront</b> →
-  <a href="/shop/">The KitchenSink Works</a></div></div>
-
   <div class="wrap hero">
     <p class="kicker rev d1">By humans · For AI agents · To help humans</p>
     <h1 class="rev d2">Engineered, not generated<span class="dot">.</span></h1>
@@ -333,8 +324,8 @@ footer:before{
     everything included, all of it verified. <b>Every number on this page is measured
     by a script and enforced by a test</b>; we would rather show than sell.</p>
     <div class="cta-row rev d4">
-      <a class="btn-shop" href="#products">The products</a>
-      <a class="btn-shop" href="/shop/">Browse the storefront →</a>
+      <a class="btn-shop btn-cat" href="/shop/"><span>The products →</span>
+      <span class="bs">Downloads, docs, and the full catalog</span></a>
     </div>
   </div>
 
