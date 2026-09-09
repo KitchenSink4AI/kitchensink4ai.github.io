@@ -149,6 +149,13 @@ nav.top a:hover{color:var(--laser); text-decoration:none; text-shadow:var(--glow
 .stat .ok{color:var(--green); text-shadow:var(--glow-g)}
 @media (max-width:640px){ .strip-in{grid-template-columns:repeat(2,1fr)} .stat:nth-child(3){border-left:none} }
 
+/* the standing divider between sections: the blue laser, always on */
+.divide{
+  height:1px; border:none; margin:0;
+  background:linear-gradient(90deg, transparent, var(--laser) 14%, var(--laser) 86%, transparent);
+  box-shadow:0 0 8px rgba(0,252,254,.55), 0 0 22px rgba(0,252,254,.18);
+}
+
 /* ---------- sections ---------- */
 section{padding:clamp(64px,10vh,110px) 0}
 .sec-head{display:flex; align-items:baseline; gap:18px; margin-bottom:8px}
@@ -172,18 +179,19 @@ section{padding:clamp(64px,10vh,110px) 0}
 .product:last-of-type{border-bottom:1px solid rgba(255,74,28,.28)}
 .product:before{
   content:""; position:absolute; left:0; top:-1px; height:1px; width:0;
-  background:var(--laser); box-shadow:var(--glow-c);
+  background:linear-gradient(90deg, var(--ember), transparent 92%);
+  box-shadow:0 0 8px rgba(255,74,28,.5);
   transition:width .35s cubic-bezier(.2,.7,.2,1);
 }
-.product:hover:before{width:100%}
-.product:hover{background:linear-gradient(90deg, rgba(0,252,254,.05), transparent 60%)}
+.product:hover:before{width:72%}
+.product:hover{background:linear-gradient(90deg, rgba(255,74,28,.05), transparent 60%)}
 .aisle-letter{
   font-weight:700; font-size:27px; line-height:1; letter-spacing:.06em;
   padding-top:6px;
   color:transparent; -webkit-text-stroke:1px rgba(0,252,254,.4);
   user-select:none; transition:filter .2s;
 }
-.product:hover .aisle-letter{-webkit-text-stroke:1.2px var(--laser); filter:drop-shadow(0 0 7px rgba(0,252,254,.7))}
+.product:hover .aisle-letter{-webkit-text-stroke:1.2px var(--ember); filter:drop-shadow(0 0 7px rgba(255,74,28,.75))}
 .product h3{font-weight:600; font-size:22px; margin-bottom:6px}
 .product h3 .four{color:var(--green)}
 .product h3 .ver{
@@ -425,6 +433,8 @@ footer:before{
     </div>
   </section>
 
+  <hr class="divide">
+
   <section id="research">
     <div class="wrap">
       <div class="sec-head"><span class="no">02</span><h2>Research</h2></div>
@@ -455,6 +465,8 @@ footer:before{
       </div>
     </div>
   </section>
+
+  <hr class="divide">
 
   <section id="engineering">
     <div class="wrap">
@@ -502,6 +514,8 @@ footer:before{
       </div>
     </div>
   </section>
+
+  <hr class="divide">
 
   <section id="licensing">
     <div class="wrap">
