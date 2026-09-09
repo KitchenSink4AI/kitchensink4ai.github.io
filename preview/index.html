@@ -42,10 +42,12 @@
   --green:#39FF14;
   --ember:#FF4A1C;
   --volt:#FFE100;
+  --tron:#FF2BD6;
   --glow-c:0 0 6px rgba(0,252,254,.8), 0 0 18px rgba(0,252,254,.35);
   --glow-g:0 0 6px rgba(57,255,20,.8), 0 0 18px rgba(57,255,20,.35);
   --glow-e:0 0 6px rgba(255,74,28,.8), 0 0 18px rgba(255,74,28,.35);
   --glow-v:0 0 6px rgba(255,225,0,.8), 0 0 18px rgba(255,225,0,.35);
+  --glow-t:0 0 6px rgba(255,43,214,.8), 0 0 20px rgba(191,95,255,.4);
   --mono:'Plex Mono','Courier New',monospace;
   --ox:'Oxanium','Segoe UI',system-ui,sans-serif;
   --body:'Geologica','Segoe UI',system-ui,sans-serif;
@@ -118,7 +120,7 @@ nav.top a:hover{color:var(--laser); text-decoration:none; text-shadow:var(--glow
   font-size:clamp(44px,7.6vw,92px); line-height:1.02; letter-spacing:-.01em;
   margin:18px 0 26px; max-width:14ch;
 }
-.hero h1 .dot{color:var(--ember); text-shadow:var(--glow-e)}
+.hero h1 .dot{color:var(--tron); text-shadow:var(--glow-t)}
 .hero .sub{max-width:62ch; color:var(--ink-soft); font-weight:400; font-size:clamp(16px,1.35vw,19px)}
 .hero .sub b{color:var(--ink); font-weight:600}
 .cta-row{display:flex; flex-wrap:wrap; gap:16px; align-items:center; margin-top:38px}
@@ -160,7 +162,7 @@ nav.top a:hover{color:var(--laser); text-decoration:none; text-shadow:var(--glow
 /* ---------- sections ---------- */
 section{padding:clamp(64px,10vh,110px) 0}
 .sec-head{display:flex; align-items:baseline; gap:18px; margin-bottom:8px}
-.sec-head h2{font-weight:700; font-size:clamp(26px,3.4vw,40px); color:var(--ember); text-shadow:0 0 16px rgba(255,74,28,.22)}
+.sec-head h2{font-weight:700; font-size:clamp(26px,3.4vw,40px); color:var(--tron); text-shadow:0 0 18px rgba(191,95,255,.35)}
 .sec-head .no{
   font-weight:600; font-size:12px; letter-spacing:.26em; color:var(--green);
   text-shadow:0 0 10px rgba(57,255,20,.4);
@@ -322,9 +324,9 @@ footer:before{
     <nav class="top" aria-label="Site">
       <a href="#products">Products</a>
       <a href="#research" class="hide-sm">Research</a>
-      <a href="#engineering" class="hide-sm">Engineering</a>
+      <a href="#engineering" class="hide-sm">How we work</a>
       <a href="/shop/">Shop</a>
-      <a href="#licensing" class="hide-sm">Licensing</a>
+      <a href="#licensing" class="hide-sm">Business</a>
       <a href="https://github.com/KitchenSink4AI">GitHub</a>
     </nav>
   </div>
@@ -332,16 +334,15 @@ footer:before{
 
 <main>
   <div class="wrap hero">
-    <p class="kicker rev d1">Documents · The open web · Reproducible AI</p>
+    <p class="kicker rev d1">By humans · For AI agents · To help humans</p>
     <h1 class="rev d2">Engineered, not generated<span class="dot">.</span></h1>
-    <p class="sub rev d3">KitchenSink4 builds instruments for work that has to be
-    right: MCP servers for Word, PowerPoint, Excel, and the open web, patent-pending
-    research in reproducible AI, and open tooling. <b>Every figure on this page is
-    measured by a script and enforced by a test.</b> When something cannot be done
-    safely, the instrument refuses and says why.</p>
+    <p class="sub rev d3">KitchenSink4 builds the instruments AI agents use to do
+    real work in the tools people already live in: Word, PowerPoint, Excel, and the
+    open web. Agents are the operators; people are the customers. <b>Every figure on
+    this page is measured by a script and enforced by a test.</b></p>
     <div class="cta-row rev d4">
-      <code class="install"><span class="p">$</span> pip install kitchensink4word kitchensink4ppt kitchensink4xl kitchensink4web</code>
-      <a class="btn-shop" href="/shop/">Visit the shop →</a>
+      <a class="btn-shop" href="#products">The products</a>
+      <a class="btn-shop" href="/shop/">Browse the storefront →</a>
     </div>
   </div>
 
@@ -458,7 +459,7 @@ footer:before{
 
   <section id="engineering">
     <div class="wrap">
-      <div class="sec-head"><span class="no">03</span><h2>Engineering</h2></div>
+      <div class="sec-head"><span class="no">03</span><h2>How we work</h2></div>
       <hr class="sec-rule re">
       <p class="manifesto">It has never been easier to generate a tool that almost
       works. Documents people rely on deserve better than almost.</p>
@@ -505,12 +506,14 @@ footer:before{
 
   <section id="licensing">
     <div class="wrap">
-      <div class="sec-head"><span class="no">04</span><h2>Licensing</h2></div>
+      <div class="sec-head"><span class="no">04</span><h2>The business</h2></div>
       <hr class="sec-rule rv">
       <div class="license-band">
-        <p><b>Free for individuals and personal use, and it stays that way.</b> The
-        servers are AGPL-3.0. A company building them into a product of its own needs
-        a commercial license; terms are worked out case by case.</p>
+        <p><b>Open source where it builds trust, licensed where it captures value.</b>
+        The servers are AGPL-3.0 and free for individuals, forever. A company building
+        them into a product of its own buys a commercial license; terms are worked out
+        case by case. That is the whole model, and it is already in writing on every
+        repository.</p>
         <a class="license-mail" href="mailto:licensing@kitchensink4.ai">licensing@kitchensink4.ai</a>
       </div>
     </div>
