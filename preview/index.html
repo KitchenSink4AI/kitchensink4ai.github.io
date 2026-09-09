@@ -5,147 +5,158 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- PREVIEW-ONLY: remove this robots line at the root swap -->
 <meta name="robots" content="noindex">
-<title>KitchenSink4 · MCP servers for Word, PowerPoint, Excel, and the web</title>
-<meta name="description" content="KitchenSink4 builds MCP servers for Word, PowerPoint, Excel, and the open web. Measured figures, adversarial testing, zero corruptions, and servers that refuse rather than guess.">
+<title>KitchenSink4 · Instruments for documents, the web, and reproducible AI</title>
+<meta name="description" content="KitchenSink4 builds MCP servers for Word, PowerPoint, Excel, and the open web, patent-pending research in reproducible AI, and open tooling. Measured figures, adversarial testing, servers that refuse rather than guess.">
 <link rel="canonical" href="https://kitchensink4.ai/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://kitchensink4.ai/">
 <meta property="og:title" content="KitchenSink4 · Engineered, not generated.">
-<meta property="og:description" content="MCP servers for Word, PowerPoint, Excel, and the open web. Every figure measured by a script and enforced by a test.">
+<meta property="og:description" content="MCP servers for Word, PowerPoint, Excel, and the open web, patent-pending research in reproducible AI, and open tooling. Every figure measured by a script and enforced by a test.">
 <meta name="twitter:card" content="summary">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b0f14'/%3E%3Ctext x='32' y='44' font-family='Arial,sans-serif' font-size='30' font-weight='800' text-anchor='middle' fill='%2322D3EE'%3EK4%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b0f14'/%3E%3Ctext x='32' y='44' font-family='Arial,sans-serif' font-size='30' font-weight='800' text-anchor='middle' fill='%2339FF14'%3EK4%3C/text%3E%3C/svg%3E">
 <style>
-/* ============ KitchenSink4 · the dark register ============
-   D21: NEON governs the mark and dark developer surfaces.
-   This is the dark developer surface. Cyan is the working
-   accent; green and orange-red appear exactly once each. */
+/* ============ KitchenSink4 · the dark register, lasers on ============
+   D21: NEON governs the mark and dark developer surfaces. This is the
+   dark developer surface. Laser cyan and acid green carry the light;
+   ember appears where something refuses. One face: Oxanium. The only
+   other letters on the page are the mono of a shell command. */
 
-@font-face { font-family:'Oxanium'; src:url('/fonts/oxanium-600.woff2') format('woff2');
-  font-weight:600; font-display:swap; }
-@font-face { font-family:'Oxanium'; src:url('/fonts/oxanium-700.woff2') format('woff2');
-  font-weight:700; font-display:swap; }
-@font-face { font-family:'Plex Sans'; src:url('/fonts/plexsans-var.woff2') format('woff2');
-  font-weight:100 700; font-stretch:85% 100%; font-display:swap; }
+@font-face { font-family:'Oxanium'; src:url('/fonts/oxanium-var.woff2') format('woff2');
+  font-weight:200 800; font-display:swap; }
 @font-face { font-family:'Plex Mono'; src:url('/fonts/plexmono-400.woff2') format('woff2');
   font-weight:400; font-display:swap; }
-@font-face { font-family:'Plex Mono'; src:url('/fonts/plexmono-500.woff2') format('woff2');
-  font-weight:500; font-display:swap; }
 
 :root{
-  --ground:#07090d;
-  --panel:#0b0f14;
-  --panel-2:#0d1219;
-  --hairline:rgba(139,152,165,.16);
-  --hairline-2:rgba(139,152,165,.28);
-  --ink:#e8edf2;
-  --ink-soft:#98a4b0;
-  --ink-dim:#5c6873;
-  --cyan:#22D3EE;
-  --cyan-dim:rgba(34,211,238,.55);
+  --ground:#050608;
+  --panel:#0a0d12;
+  --panel-2:#0c1017;
+  --hairline:rgba(0,252,254,.10);
+  --hairline-2:rgba(0,252,254,.22);
+  --ink:#eef3f6;
+  --ink-soft:#9aa7b2;
+  --ink-dim:#5f6b76;
+  --cyan:#22D3EE;          /* readable accent: links, small text */
+  --laser:#00FCFE;         /* hot cyan: lines and light only */
   --green:#39FF14;
   --ember:#FF4A1C;
+  --glow-c:0 0 6px rgba(0,252,254,.8), 0 0 18px rgba(0,252,254,.35);
+  --glow-g:0 0 6px rgba(57,255,20,.8), 0 0 18px rgba(57,255,20,.35);
+  --glow-e:0 0 6px rgba(255,74,28,.8), 0 0 18px rgba(255,74,28,.35);
   --mono:'Plex Mono','Courier New',monospace;
-  --sans:'Plex Sans','Segoe UI',system-ui,sans-serif;
-  --disp:'Oxanium','Segoe UI',system-ui,sans-serif;
+  --ox:'Oxanium','Segoe UI',system-ui,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   background:
-    radial-gradient(1100px 480px at 50% -120px, rgba(34,211,238,.07), transparent 70%),
-    repeating-linear-gradient(0deg, rgba(34,211,238,.028) 0 1px, transparent 1px 56px),
-    repeating-linear-gradient(90deg, rgba(34,211,238,.028) 0 1px, transparent 1px 56px),
-    repeating-linear-gradient(0deg, rgba(139,152,165,.012) 0 1px, transparent 1px 14px),
+    radial-gradient(1200px 500px at 50% -140px, rgba(0,252,254,.10), transparent 70%),
+    radial-gradient(900px 400px at 85% 30%, rgba(57,255,20,.035), transparent 70%),
+    repeating-linear-gradient(0deg, rgba(0,252,254,.035) 0 1px, transparent 1px 56px),
+    repeating-linear-gradient(90deg, rgba(0,252,254,.035) 0 1px, transparent 1px 56px),
     var(--ground);
   color:var(--ink);
-  font-family:var(--sans);
-  font-size:17px; line-height:1.65;
+  font-family:var(--ox);
+  font-weight:400;
+  font-size:17px; line-height:1.66;
   -webkit-font-smoothing:antialiased;
 }
-::selection{background:rgba(34,211,238,.28)}
+::selection{background:rgba(57,255,20,.3)}
 a{color:var(--cyan); text-decoration:none}
-a:hover{text-decoration:underline; text-underline-offset:3px}
-a:focus-visible{outline:2px solid var(--cyan); outline-offset:3px; border-radius:2px}
+a:hover{color:var(--laser); text-decoration:underline; text-underline-offset:4px}
+a:focus-visible{outline:2px solid var(--laser); outline-offset:3px; border-radius:2px}
 .wrap{max-width:1080px; margin:0 auto; padding:0 clamp(20px,4vw,48px)}
-.mono{font-family:var(--mono)}
 .kicker{
-  font-family:var(--mono); font-weight:500; font-size:12px;
-  letter-spacing:.22em; text-transform:uppercase; color:var(--cyan);
+  font-weight:600; font-size:12.5px;
+  letter-spacing:.3em; text-transform:uppercase; color:var(--green);
+  text-shadow:0 0 10px rgba(57,255,20,.4);
+}
+
+/* laser rules */
+.laser-h{
+  height:1px; border:none;
+  background:linear-gradient(90deg, transparent, var(--laser) 18%, var(--green) 82%, transparent);
+  box-shadow:0 0 8px rgba(0,252,254,.55), 0 0 22px rgba(0,252,254,.2);
 }
 
 /* ---------- masthead ---------- */
 header.mast{
-  border-bottom:1px solid var(--hairline);
-  background:rgba(7,9,13,.82); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--hairline-2);
+  box-shadow:0 1px 12px rgba(0,252,254,.12);
+  background:rgba(5,6,8,.85); backdrop-filter:blur(8px);
   position:sticky; top:0; z-index:10;
 }
 .mast-in{display:flex; align-items:center; justify-content:space-between; height:64px}
 .wordmark{
-  font-family:var(--disp); font-weight:700; font-size:21px; letter-spacing:.01em;
+  font-weight:700; font-size:21px; letter-spacing:.01em;
   color:var(--ink); text-decoration:none !important;
 }
-.wordmark .four{color:var(--green)}
+.wordmark .four{color:var(--green); text-shadow:var(--glow-g)}
 nav.top{display:flex; gap:clamp(14px,2.5vw,30px)}
 nav.top a{
-  font-family:var(--mono); font-size:12.5px; letter-spacing:.14em;
+  font-weight:600; font-size:12.5px; letter-spacing:.18em;
   text-transform:uppercase; color:var(--ink-soft);
 }
-nav.top a:hover{color:var(--cyan); text-decoration:none}
+nav.top a:hover{color:var(--laser); text-decoration:none; text-shadow:var(--glow-c)}
 @media (max-width:640px){ nav.top a.hide-sm{display:none} }
 
 /* ---------- hero ---------- */
-.hero{padding:clamp(72px,12vh,140px) 0 clamp(56px,9vh,104px); position:relative}
+.hero{padding:clamp(72px,12vh,140px) 0 clamp(50px,8vh,92px); position:relative}
 .hero h1{
-  font-family:var(--disp); font-weight:700;
+  font-weight:700;
   font-size:clamp(44px,7.6vw,92px); line-height:1.02; letter-spacing:-.01em;
   margin:18px 0 26px; max-width:14ch;
 }
-.hero h1 .dot{color:var(--cyan)}
-.hero .sub{max-width:62ch; color:var(--ink-soft); font-size:clamp(16px,1.35vw,19px)}
+.hero h1 .dot{color:var(--laser); text-shadow:var(--glow-c)}
+.hero .sub{max-width:62ch; color:var(--ink-soft); font-weight:400; font-size:clamp(16px,1.35vw,19px)}
 .hero .sub b{color:var(--ink); font-weight:600}
 .cta-row{display:flex; flex-wrap:wrap; gap:16px; align-items:center; margin-top:38px}
 .install{
   font-family:var(--mono); font-size:13.5px; color:var(--ink);
   background:var(--panel); border:1px solid var(--hairline-2);
-  border-left:3px solid var(--cyan);
+  border-left:3px solid var(--green);
+  box-shadow:inset 3px 0 12px -6px rgba(57,255,20,.6);
   padding:13px 18px; border-radius:4px;
   overflow-x:auto; white-space:nowrap; max-width:100%;
 }
-.install .p{color:var(--ink-dim)}
+.install .p{color:var(--green)}
 .btn-shop{
-  font-family:var(--mono); font-size:13px; letter-spacing:.1em; text-transform:uppercase;
+  font-weight:600; font-size:13px; letter-spacing:.14em; text-transform:uppercase;
   color:var(--ink); border:1px solid var(--hairline-2); border-radius:4px;
-  padding:13px 20px; transition:border-color .18s, color .18s;
+  padding:13px 20px; transition:border-color .18s, color .18s, box-shadow .18s;
 }
-.btn-shop:hover{border-color:var(--cyan); color:var(--cyan); text-decoration:none}
+.btn-shop:hover{border-color:var(--laser); color:var(--laser); text-decoration:none; box-shadow:var(--glow-c), inset 0 0 14px rgba(0,252,254,.1)}
 
 /* family strip */
-.strip{
-  border-top:1px solid var(--hairline); border-bottom:1px solid var(--hairline);
-  background:linear-gradient(180deg, rgba(34,211,238,.04), transparent);
+.strip{position:relative; background:linear-gradient(180deg, rgba(0,252,254,.05), transparent)}
+.strip:before,.strip:after{
+  content:""; display:block; height:1px;
+  background:linear-gradient(90deg, transparent, var(--laser) 18%, var(--green) 82%, transparent);
+  box-shadow:0 0 8px rgba(0,252,254,.55);
 }
-.strip-in{
-  display:grid; grid-template-columns:repeat(4,1fr);
-  font-family:var(--mono);
-}
-.stat{padding:22px 8px; text-align:center; border-left:1px solid var(--hairline)}
+.strip-in{display:grid; grid-template-columns:repeat(4,1fr)}
+.stat{padding:24px 8px; text-align:center; border-left:1px solid var(--hairline)}
 .stat:first-child{border-left:none}
 .stat .n{
-  font-family:var(--disp); font-weight:700; font-size:clamp(22px,3vw,34px);
+  font-weight:700; font-size:clamp(22px,3vw,34px);
   font-variant-numeric:tabular-nums; display:block; color:var(--ink);
 }
-.stat .l{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-dim)}
-.stat .n .ok{color:var(--green)}
+.stat .l{font-weight:600; font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--ink-dim)}
+.stat .hot{color:var(--laser); text-shadow:var(--glow-c)}
+.stat .ok{color:var(--green); text-shadow:var(--glow-g)}
 @media (max-width:640px){ .strip-in{grid-template-columns:repeat(2,1fr)} .stat:nth-child(3){border-left:none} }
 
 /* ---------- sections ---------- */
 section{padding:clamp(64px,10vh,110px) 0}
-.sec-head{display:flex; align-items:baseline; gap:18px; margin-bottom:42px}
-.sec-head h2{
-  font-family:var(--disp); font-weight:700; font-size:clamp(26px,3.4vw,40px);
-}
+.sec-head{display:flex; align-items:baseline; gap:18px; margin-bottom:8px}
+.sec-head h2{font-weight:700; font-size:clamp(26px,3.4vw,40px)}
 .sec-head .no{
-  font-family:var(--mono); font-size:12px; letter-spacing:.2em; color:var(--cyan);
+  font-weight:600; font-size:12px; letter-spacing:.26em; color:var(--green);
+  text-shadow:0 0 10px rgba(57,255,20,.4);
+}
+.sec-rule{
+  height:1px; border:none; margin:0 0 42px;
+  background:linear-gradient(90deg, var(--laser), transparent 65%);
+  box-shadow:0 0 8px rgba(0,252,254,.4);
 }
 
 /* products */
@@ -156,64 +167,98 @@ section{padding:clamp(64px,10vh,110px) 0}
   transition:background .18s;
 }
 .product:last-of-type{border-bottom:1px solid var(--hairline)}
-.product:hover{background:linear-gradient(90deg, rgba(34,211,238,.045), transparent 60%)}
+.product:before{
+  content:""; position:absolute; left:0; top:-1px; height:1px; width:0;
+  background:var(--laser); box-shadow:var(--glow-c);
+  transition:width .35s cubic-bezier(.2,.7,.2,1);
+}
+.product:hover:before{width:100%}
+.product:hover{background:linear-gradient(90deg, rgba(0,252,254,.05), transparent 60%)}
 .aisle-letter{
-  font-family:var(--disp); font-weight:700; font-size:64px; line-height:.9;
-  color:transparent; -webkit-text-stroke:1px var(--ink-dim);
-  user-select:none;
+  font-weight:700; font-size:64px; line-height:.9;
+  color:transparent; -webkit-text-stroke:1px rgba(0,252,254,.4);
+  user-select:none; transition:filter .2s;
 }
-.product:hover .aisle-letter{-webkit-text-stroke:1px var(--cyan-dim)}
-.product h3{
-  font-family:var(--disp); font-weight:600; font-size:22px; margin-bottom:6px;
-}
-.product h3 .four{color:var(--cyan)}
+.product:hover .aisle-letter{-webkit-text-stroke:1.2px var(--laser); filter:drop-shadow(0 0 7px rgba(0,252,254,.7))}
+.product h3{font-weight:600; font-size:22px; margin-bottom:6px}
+.product h3 .four{color:var(--green)}
 .product h3 .ver{
-  font-family:var(--mono); font-weight:400; font-size:12px;
-  color:var(--ink-dim); margin-left:10px; letter-spacing:.06em;
+  font-weight:500; font-size:12px;
+  color:var(--ink-dim); margin-left:10px; letter-spacing:.08em;
 }
 .product p{color:var(--ink-soft); max-width:64ch; margin-bottom:12px}
 .figures{
-  font-family:var(--mono); font-size:12.5px; letter-spacing:.06em;
+  font-weight:500; font-size:13px; letter-spacing:.1em;
   color:var(--ink-dim); font-variant-numeric:tabular-nums;
-  margin-bottom:12px;
+  margin-bottom:12px; text-transform:uppercase;
 }
-.figures b{color:var(--ink); font-weight:500}
+.figures b{color:var(--cyan); font-weight:600}
 .p-links{display:flex; gap:22px}
-.p-links a{
-  font-family:var(--mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase;
-}
+.p-links a{font-weight:600; font-size:12px; letter-spacing:.18em; text-transform:uppercase}
 @media (max-width:640px){
   .product{grid-template-columns:1fr}
   .aisle-letter{font-size:34px; margin-bottom:8px}
 }
 
+/* research */
+.research-grid{display:grid; grid-template-columns:1.55fr 1fr; gap:24px}
+.r-card{
+  border:1px solid var(--hairline-2); border-radius:6px; background:var(--panel-2);
+  padding:clamp(24px,3vw,38px); position:relative; overflow:hidden;
+  box-shadow:0 0 24px rgba(57,255,20,.05);
+}
+.r-card:before{
+  content:""; position:absolute; top:0; left:0; height:2px; width:64px;
+  background:var(--green); box-shadow:var(--glow-g);
+}
+.r-card.tool:before{background:var(--laser); box-shadow:var(--glow-c)}
+.r-tag{
+  font-weight:600; font-size:11px; letter-spacing:.26em; text-transform:uppercase;
+  color:var(--green); text-shadow:0 0 10px rgba(57,255,20,.35);
+  display:block; margin-bottom:14px;
+}
+.r-card.tool .r-tag{color:var(--cyan); text-shadow:none}
+.r-card h3{font-weight:600; font-size:22px; margin-bottom:10px}
+.r-card p{color:var(--ink-soft); font-size:15.5px; margin-bottom:12px}
+.r-card p b{color:var(--ink)}
+.r-card .figures{margin-bottom:0}
+@media (max-width:860px){ .research-grid{grid-template-columns:1fr} }
+
 /* engineering */
 .manifesto{
-  font-family:var(--sans); font-size:clamp(19px,2vw,24px); line-height:1.5;
+  font-size:clamp(19px,2vw,24px); line-height:1.5;
   max-width:36ch; color:var(--ink); font-weight:600;
-  border-left:3px solid var(--cyan); padding-left:22px;
+  border-left:3px solid var(--green);
+  box-shadow:inset 3px 0 14px -6px rgba(57,255,20,.55);
+  padding-left:22px;
   margin-bottom:52px;
 }
 .receipts{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1px; background:var(--hairline)}
-.receipt{
-  background:var(--panel); padding:26px 24px 24px;
+.receipt{background:var(--panel); padding:26px 24px 24px; position:relative}
+.receipt:before{
+  content:""; position:absolute; top:0; left:0; right:auto; height:2px; width:44px;
+  background:var(--laser); box-shadow:var(--glow-c);
 }
+.receipt.refusal:before{background:var(--ember); box-shadow:var(--glow-e)}
+.receipt.maker:before{background:var(--green); box-shadow:var(--glow-g)}
 .receipt .rn{
-  font-family:var(--mono); font-size:11px; letter-spacing:.2em; color:var(--cyan);
+  font-weight:600; font-size:11px; letter-spacing:.26em; color:var(--cyan);
   display:block; margin-bottom:12px;
 }
 .receipt.refusal .rn{color:var(--ember)}
+.receipt.maker .rn{color:var(--green)}
 .receipt h4{
-  font-family:var(--disp); font-weight:600; font-size:16.5px; letter-spacing:.02em;
+  font-weight:600; font-size:16.5px; letter-spacing:.04em;
   text-transform:uppercase; margin-bottom:8px;
 }
-.receipt p{font-size:15px; color:var(--ink-soft)}
+.receipt p{font-size:15px; font-weight:400; color:var(--ink-soft)}
 
 /* licensing */
 .license-band{
   border:1px solid var(--hairline-2); border-radius:6px;
   background:var(--panel-2); padding:clamp(28px,4vw,46px);
   display:grid; grid-template-columns:1fr auto; gap:24px; align-items:center;
+  box-shadow:0 0 24px rgba(0,252,254,.07), inset 0 1px 0 rgba(0,252,254,.12);
 }
 .license-band p{color:var(--ink-soft); max-width:62ch}
 .license-band p b{color:var(--ink)}
@@ -221,18 +266,23 @@ section{padding:clamp(64px,10vh,110px) 0}
   font-family:var(--mono); font-size:14px; white-space:nowrap;
   border:1px solid var(--hairline-2); border-radius:4px; padding:12px 18px;
 }
-.license-mail:hover{border-color:var(--cyan); text-decoration:none}
+.license-mail:hover{border-color:var(--green); color:var(--green); text-decoration:none; box-shadow:var(--glow-g)}
 @media (max-width:760px){ .license-band{grid-template-columns:1fr} }
 
 /* footer */
-footer{border-top:1px solid var(--hairline); padding:44px 0 60px; margin-top:20px}
+footer{padding:44px 0 60px; margin-top:20px; position:relative}
+footer:before{
+  content:""; display:block; position:absolute; top:0; left:0; right:0; height:1px;
+  background:linear-gradient(90deg, transparent, var(--laser) 18%, var(--green) 82%, transparent);
+  box-shadow:0 0 8px rgba(0,252,254,.45);
+}
 .foot-shop{color:var(--ink-soft); margin-bottom:26px}
-.f-legal{font-size:12.5px; color:var(--ink-dim); max-width:88ch; margin-bottom:18px}
+.f-legal{font-size:12.5px; font-weight:400; color:var(--ink-dim); max-width:88ch; margin-bottom:18px}
 .colophon{
-  font-family:var(--mono); font-size:11px; letter-spacing:.18em;
+  font-weight:600; font-size:11px; letter-spacing:.24em;
   text-transform:uppercase; color:var(--ink-dim);
 }
-.colophon .led{color:var(--green)}
+.colophon .led{color:var(--green); text-shadow:var(--glow-g)}
 
 /* reveal */
 .rev{opacity:0; transform:translateY(14px); animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
@@ -241,6 +291,7 @@ footer{border-top:1px solid var(--hairline); padding:44px 0 60px; margin-top:20p
 @media (prefers-reduced-motion: reduce){
   .rev{opacity:1; transform:none; animation:none}
   html{scroll-behavior:auto}
+  .product:before{transition:none}
 }
 </style>
 </head>
@@ -251,6 +302,7 @@ footer{border-top:1px solid var(--hairline); padding:44px 0 60px; margin-top:20p
     <a class="wordmark" href="/">KitchenSink<span class="four">4</span></a>
     <nav class="top" aria-label="Site">
       <a href="#products">Products</a>
+      <a href="#research" class="hide-sm">Research</a>
       <a href="#engineering" class="hide-sm">Engineering</a>
       <a href="/shop/">Shop</a>
       <a href="#licensing" class="hide-sm">Licensing</a>
@@ -261,11 +313,13 @@ footer{border-top:1px solid var(--hairline); padding:44px 0 60px; margin-top:20p
 
 <main>
   <div class="wrap hero">
-    <p class="kicker rev d1">Four MCP servers · One standard</p>
+    <p class="kicker rev d1">Documents · The open web · Reproducible AI</p>
     <h1 class="rev d2">Engineered, not generated<span class="dot">.</span></h1>
-    <p class="sub rev d3">KitchenSink4 builds MCP servers for Word, PowerPoint, Excel,
-    and the open web. <b>Every figure on this page is measured by a script and enforced
-    by a test.</b> When an edit cannot be done safely, the server refuses and says why.</p>
+    <p class="sub rev d3">KitchenSink4 builds instruments for work that has to be
+    right: MCP servers for Word, PowerPoint, Excel, and the open web, patent-pending
+    research in reproducible AI, and open tooling. <b>Every figure on this page is
+    measured by a script and enforced by a test.</b> When something cannot be done
+    safely, the instrument refuses and says why.</p>
     <div class="cta-row rev d4">
       <code class="install"><span class="p">$</span> pip install kitchensink4word kitchensink4ppt kitchensink4xl kitchensink4web</code>
       <a class="btn-shop" href="/shop/">Visit the shop →</a>
@@ -275,15 +329,16 @@ footer{border-top:1px solid var(--hairline); padding:44px 0 60px; margin-top:20p
   <div class="strip" role="group" aria-label="Family figures">
     <div class="wrap strip-in">
       <div class="stat"><span class="n">4</span><span class="l">Servers</span></div>
-      <div class="stat"><span class="n">6,442</span><span class="l">Tests</span></div>
-      <div class="stat"><span class="n"><span class="ok">0</span></span><span class="l">Corruptions</span></div>
-      <div class="stat"><span class="n">AGPL</span><span class="l">3.0 · Open source</span></div>
+      <div class="stat"><span class="n hot">6,442</span><span class="l">Tests</span></div>
+      <div class="stat"><span class="n ok">0</span><span class="l">Corruptions</span></div>
+      <div class="stat"><span class="n">1</span><span class="l">Patent pending</span></div>
     </div>
   </div>
 
   <section id="products">
     <div class="wrap">
       <div class="sec-head"><span class="no">01</span><h2>The products</h2></div>
+      <hr class="sec-rule">
 
       <article class="product">
         <span class="aisle-letter" aria-hidden="true">W</span>
@@ -292,7 +347,7 @@ footer{border-top:1px solid var(--hairline); padding:44px 0 60px; margin-top:20p
           <p>The most complete Word (.docx) MCP server ever built. Live editing of open
           documents, native citations and bibliography, tracked-changes authoring,
           merge-aware table surgery, redaction with verification.</p>
-          <p class="figures"><b>221</b> OPS · <b>110</b> TOOLS · <b>1,842</b> TESTS · <b>0</b> CORRUPTIONS</p>
+          <p class="figures"><b>221</b> ops · <b>110</b> tools · <b>1,842</b> tests · <b>0</b> corruptions</p>
           <div class="p-links">
             <a href="https://pypi.org/project/kitchensink4word/">PyPI</a>
             <a href="https://github.com/KitchenSink4AI/KitchenSink4Word">GitHub</a>
@@ -308,7 +363,7 @@ footer{border-top:1px solid var(--hairline); padding:44px 0 60px; margin-top:20p
           <p>PowerPoint (.pptx) with the capability nobody else carries: SVG in, native
           editable shapes with glued connectors out. Move the node and the arrows follow.
           Structural table surgery and slide management done right.</p>
-          <p class="figures"><b>159</b> OPS · <b>141</b> TOOLS · <b>1,241</b> TESTS · <b>0</b> CORRUPTIONS</p>
+          <p class="figures"><b>159</b> ops · <b>141</b> tools · <b>1,241</b> tests · <b>0</b> corruptions</p>
           <div class="p-links">
             <a href="https://pypi.org/project/kitchensink4ppt/">PyPI</a>
             <a href="https://github.com/KitchenSink4AI/KitchenSink4PPT">GitHub</a>
@@ -324,7 +379,7 @@ footer{border-top:1px solid var(--hairline); padding:44px 0 60px; margin-top:20p
           <p>Excel (.xlsx) that knows a spreadsheet remembers its answers, not its
           thinking. Every value labeled live or stale, structural edits carry their
           formulas, and Excel itself recalculates when it matters.</p>
-          <p class="figures"><b>129</b> OPS · <b>69</b> TOOLS · <b>1,294</b> TESTS · <b>0</b> CORRUPTIONS</p>
+          <p class="figures"><b>129</b> ops · <b>69</b> tools · <b>1,294</b> tests · <b>0</b> corruptions</p>
           <div class="p-links">
             <a href="https://pypi.org/project/kitchensink4xl/">PyPI</a>
             <a href="https://github.com/KitchenSink4AI/KitchenSink4XL">GitHub</a>
@@ -340,7 +395,7 @@ footer{border-top:1px solid var(--hairline); padding:44px 0 60px; margin-top:20p
           <p>A browser built for AI agents. Whole pages read for the price of a
           paragraph, with an honest account of what went unread. Cannot click a thing
           until you allow it.</p>
-          <p class="figures"><b>2,065</b> TESTS · <b>7×</b> CHEAPER READS · <b>0</b> ACTING TOOLS UNTIL ALLOWED</p>
+          <p class="figures"><b>2,065</b> tests · <b>7×</b> cheaper reads · <b>0</b> acting tools until allowed</p>
           <div class="p-links">
             <a href="https://pypi.org/project/kitchensink4web/">PyPI</a>
             <a href="https://github.com/KitchenSink4AI/KitchenSink4Web">GitHub</a>
@@ -351,9 +406,41 @@ footer{border-top:1px solid var(--hairline); padding:44px 0 60px; margin-top:20p
     </div>
   </section>
 
+  <section id="research">
+    <div class="wrap">
+      <div class="sec-head"><span class="no">02</span><h2>Research</h2></div>
+      <hr class="sec-rule">
+      <div class="research-grid">
+        <div class="r-card">
+          <span class="r-tag">Patent pending · U.S. provisional 64/080,338</span>
+          <h3>Didymoi</h3>
+          <p>Ask a model the same question twice and you get two different answers.
+          Didymoi makes AI-assisted analysis reproducible: a deterministic layer builds
+          the record, and the model works inside it without the power to alter it.
+          <b>Grounding handed over as a fence, not a springboard.</b></p>
+          <p>Same data, same model, only the handoff changed: consistency rose from
+          0.75 to 0.95 on a 108-source benchmark. A way of making a probabilistic
+          system answerable to a deterministic one.</p>
+          <p class="figures"><b>1.000</b> deterministic layer · <b>0.95</b> fenced · <b>0.75</b> unfenced</p>
+        </div>
+        <div class="r-card tool">
+          <span class="r-tag">Open tooling · MIT + NC</span>
+          <h3>claude-code-statusline</h3>
+          <p>The context gauge for Claude Code: real burn rate, turns remaining, rate
+          limits, and alerts that escalate before the wall, not after. Built after a
+          session nearly died with the stock gauge reading fine.</p>
+          <div class="p-links">
+            <a href="https://github.com/KitchenSink4AI/claude-code-statusline">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="engineering">
     <div class="wrap">
-      <div class="sec-head"><span class="no">02</span><h2>Engineering</h2></div>
+      <div class="sec-head"><span class="no">03</span><h2>Engineering</h2></div>
+      <hr class="sec-rule">
       <p class="manifesto">It has never been easier to generate a tool that almost
       works. Documents people rely on deserve better than almost.</p>
       <div class="receipts">
@@ -387,7 +474,7 @@ footer{border-top:1px solid var(--hairline); padding:44px 0 60px; margin-top:20p
           <p>Capabilities that do not exist are named. Skipped tests say why. Changelogs
           say what actually changed.</p>
         </div>
-        <div class="receipt">
+        <div class="receipt maker">
           <span class="rn">R-06</span>
           <h4>Built by its first customer</h4>
           <p>Every server runs daily in the maker's own work long before it ships.
@@ -399,7 +486,8 @@ footer{border-top:1px solid var(--hairline); padding:44px 0 60px; margin-top:20p
 
   <section id="licensing">
     <div class="wrap">
-      <div class="sec-head"><span class="no">03</span><h2>Licensing</h2></div>
+      <div class="sec-head"><span class="no">04</span><h2>Licensing</h2></div>
+      <hr class="sec-rule">
       <div class="license-band">
         <p><b>Free for individuals and personal use, and it stays that way.</b> The
         servers are AGPL-3.0. A company building them into a product of its own needs
@@ -420,7 +508,7 @@ footer{border-top:1px solid var(--hairline); padding:44px 0 60px; margin-top:20p
     of any kind, per the license. Not affiliated with or endorsed by Microsoft
     Corporation. Microsoft, Word, PowerPoint, and Excel are trademarks of Microsoft
     Corporation. All other trademarks are the property of their respective owners.</p>
-    <p class="colophon"><span class="led">●</span> ALL SUITES GREEN AT PUBLISH · SET IN OXANIUM AND IBM PLEX · FIGURES MEASURED, NOT ESTIMATED</p>
+    <p class="colophon"><span class="led">●</span> ALL SUITES GREEN AT PUBLISH · SET IN OXANIUM · FIGURES MEASURED, NOT ESTIMATED</p>
   </div>
 </footer>
 
