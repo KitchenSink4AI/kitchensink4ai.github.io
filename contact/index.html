@@ -108,6 +108,7 @@ nav.top a:hover{color:var(--laser); text-decoration:none; text-shadow:var(--glow
   font-size:clamp(40px,7vw,84px); line-height:1.03; letter-spacing:-.01em;
   margin:18px 0 24px; max-width:14ch;
 }
+.hero h1 .dot{color:var(--ember); text-shadow:var(--glow-e)}
 .hero .sub{max-width:62ch; color:var(--ink-soft); font-weight:400; font-size:clamp(16px,1.35vw,19px)}
 
 /* ---------- form ---------- */
@@ -313,7 +314,7 @@ footer:before{
 <main>
   <div class="wrap hero">
     <p class="kicker rev d1">CONTACT</p>
-    <h1 class="rev d2" id="pageh1">Reach the humans.</h1>
+    <h1 class="rev d2" id="pageh1">Reach the humans<span class="dot">.</span></h1>
     <p class="sub rev d3">Every message here lands in a mailbox a human reads,
     usually the human who built the thing you are writing about.</p>
   </div>
@@ -341,21 +342,21 @@ footer:before{
 
           <div class="cat-grid">
 
-            <div class="cat a-cyan">
-              <input type="radio" name="category" id="cat-support" value="support"
-                data-addr="support@kitchensink4.ai" data-tag="[Support]">
-              <label for="cat-support">
-                <span class="cat-l">SUPPORT</span>
-                <span class="cat-d">Something does not work the way the docs say it should.</span>
-              </label>
-            </div>
-
             <div class="cat a-green">
               <input type="radio" name="category" id="cat-feature" value="feature"
                 data-addr="support@kitchensink4.ai" data-tag="[Feature request]">
               <label for="cat-feature">
                 <span class="cat-l">FEATURE REQUEST</span>
                 <span class="cat-d">The sink is missing something you need.</span>
+              </label>
+            </div>
+
+            <div class="cat a-cyan">
+              <input type="radio" name="category" id="cat-support" value="support"
+                data-addr="support@kitchensink4.ai" data-tag="[Support]">
+              <label for="cat-support">
+                <span class="cat-l">SUPPORT</span>
+                <span class="cat-d">Something does not work the way the docs say it should.</span>
               </label>
             </div>
 
