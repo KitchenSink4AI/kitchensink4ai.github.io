@@ -23,6 +23,8 @@
 
 @font-face { font-family:'Oxanium'; src:url('/fonts/oxanium-var.woff2') format('woff2');
   font-weight:200 800; font-display:swap; }
+@font-face { font-family:'Geologica'; src:url('/fonts/geologica-var.woff2') format('woff2');
+  font-weight:100 900; font-display:swap; }
 @font-face { font-family:'Plex Mono'; src:url('/fonts/plexmono-400.woff2') format('woff2');
   font-weight:400; font-display:swap; }
 
@@ -44,6 +46,7 @@
   --glow-e:0 0 6px rgba(255,74,28,.8), 0 0 18px rgba(255,74,28,.35);
   --mono:'Plex Mono','Courier New',monospace;
   --ox:'Oxanium','Segoe UI',system-ui,sans-serif;
+  --body:'Geologica','Segoe UI',system-ui,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -55,8 +58,8 @@ body{
     repeating-linear-gradient(90deg, rgba(0,252,254,.035) 0 1px, transparent 1px 56px),
     var(--ground);
   color:var(--ink);
-  font-family:var(--ox);
-  font-weight:400;
+  font-family:var(--body);
+  font-weight:380;
   font-size:17px; line-height:1.66;
   -webkit-font-smoothing:antialiased;
 }
@@ -70,6 +73,13 @@ a:focus-visible{outline:2px solid var(--laser); outline-offset:3px; border-radiu
   letter-spacing:.3em; text-transform:uppercase; color:var(--green);
   text-shadow:0 0 10px rgba(57,255,20,.4);
 }
+
+/* the brand face: display, labels, and numbers stay Oxanium */
+.kicker, .wordmark, nav.top a, .hero h1, .btn-shop,
+.stat .n, .stat .l, .sec-head h2, .sec-head .no,
+.aisle-letter, .product h3, .figures, .p-links a,
+.receipt .rn, .receipt h4, .r-tag, .r-card h3,
+.manifesto, .colophon{ font-family:var(--ox); }
 
 /* laser rules */
 .laser-h{
@@ -412,7 +422,7 @@ footer:before{
       <hr class="sec-rule">
       <div class="research-grid">
         <div class="r-card">
-          <span class="r-tag">Patent pending · U.S. provisional 64/080,338</span>
+          <span class="r-tag">Research · Patent pending</span>
           <h3>Didymoi</h3>
           <p>Ask a model the same question twice and you get two different answers.
           Didymoi makes AI-assisted analysis reproducible: a deterministic layer builds
@@ -447,38 +457,38 @@ footer:before{
         <div class="receipt">
           <span class="rn">R-01</span>
           <h4>Measured, not asserted</h4>
-          <p>Published figures come from measurement scripts, and guard tests fail the
-          build when the page and the code disagree.</p>
+          <p>Every number we publish comes from a measurement, and the build fails
+          when a claim and the code disagree. Marketing does not get a vote.</p>
         </div>
         <div class="receipt">
           <span class="rn">R-02</span>
-          <h4>Adversarial by routine</h4>
-          <p>More than 6,400 tests across the family, adversarial batteries thrown at
-          the raw wire, and suites run in both orders before a release.</p>
+          <h4>We break it first</h4>
+          <p>Nothing ships because a demo worked once. It ships after we have tried
+          to break it deliberately, repeatedly, and on the record.</p>
         </div>
         <div class="receipt">
           <span class="rn">R-03</span>
-          <h4>Verified writes</h4>
-          <p>Backups before every mutation, verification after every write, zero
-          corruptions across the fixture corpus.</p>
+          <h4>Done means verified</h4>
+          <p>A change is not done when it runs; it is done when it is checked after
+          it lands. Backups first, receipts after, every time.</p>
         </div>
         <div class="receipt refusal">
           <span class="rn">R-04</span>
-          <h4>Refuses rather than guesses</h4>
-          <p>A confident wrong edit is the one product we do not stock. Refusals name
-          the real cause and the safe route when one exists.</p>
+          <h4>Honest over impressive</h4>
+          <p>A confident wrong answer is the one thing we refuse to ship. When
+          something cannot be done right, we say so and say why.</p>
         </div>
         <div class="receipt">
           <span class="rn">R-05</span>
-          <h4>Honest limits</h4>
-          <p>Capabilities that do not exist are named. Skipped tests say why. Changelogs
-          say what actually changed.</p>
+          <h4>Limits in writing</h4>
+          <p>What we cannot do is stated, not hidden. Skipped tests name their
+          reasons. Changelogs say what actually changed.</p>
         </div>
         <div class="receipt maker">
           <span class="rn">R-06</span>
           <h4>Built by its first customer</h4>
-          <p>Every server runs daily in the maker's own work long before it ships.
-          The rough edges get found at our desk, not yours.</p>
+          <p>Everything here runs daily in the maker's own work long before it
+          ships. The rough edges get found at our desk, not yours.</p>
         </div>
       </div>
     </div>
