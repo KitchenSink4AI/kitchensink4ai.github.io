@@ -192,7 +192,8 @@ section{padding:clamp(64px,10vh,110px) 0}
   margin-bottom:12px; text-transform:uppercase;
 }
 .figures b{color:var(--volt); font-weight:600}
-.p-links{display:flex; gap:22px}
+.product .stretch{position:absolute; inset:0; z-index:1}
+.p-links{display:flex; gap:22px; position:relative; z-index:2}
 .p-links a{font-weight:600; font-size:12px; letter-spacing:.18em; text-transform:uppercase}
 @media (max-width:640px){
   .product{grid-template-columns:1fr}
@@ -349,7 +350,7 @@ footer:before{
       work. An F1 car for the daily commute: overbuilt on purpose, so the spec sheet
       does the selling.</p>
 
-      <article class="product w">
+      <article class="product w"><a class="stretch" href="https://kitchensink4ai.github.io/KitchenSink4Word/" aria-label="KitchenSink4Word"></a>
         <span class="aisle-letter" aria-hidden="true">WORD</span>
         <div>
           <h3>KitchenSink<span class="four">4</span>Word<span class="ver">v2.1.0</span></h3>
@@ -365,7 +366,7 @@ footer:before{
         </div>
       </article>
 
-      <article class="product p">
+      <article class="product p"><a class="stretch" href="https://kitchensink4ai.github.io/KitchenSink4PPT/" aria-label="KitchenSink4PPT"></a>
         <span class="aisle-letter" aria-hidden="true">PPT</span>
         <div>
           <h3>KitchenSink<span class="four">4</span>PPT<span class="ver">v1.2.1</span></h3>
@@ -381,7 +382,7 @@ footer:before{
         </div>
       </article>
 
-      <article class="product x">
+      <article class="product x"><a class="stretch" href="https://kitchensink4ai.github.io/KitchenSink4XL/" aria-label="KitchenSink4XL"></a>
         <span class="aisle-letter" aria-hidden="true">XL</span>
         <div>
           <h3>KitchenSink<span class="four">4</span>XL<span class="ver">v1.2.0</span></h3>
@@ -397,7 +398,7 @@ footer:before{
         </div>
       </article>
 
-      <article class="product g">
+      <article class="product g"><a class="stretch" href="https://kitchensink4ai.github.io/KitchenSink4Web/" aria-label="KitchenSink4Web"></a>
         <span class="aisle-letter" aria-hidden="true">WEB</span>
         <div>
           <h3>KitchenSink<span class="four">4</span>Web<span class="ver">v1.0.0</span></h3>
