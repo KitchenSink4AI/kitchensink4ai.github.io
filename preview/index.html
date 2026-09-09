@@ -41,9 +41,11 @@
   --laser:#00FCFE;         /* hot cyan: lines and light only */
   --green:#39FF14;
   --ember:#FF4A1C;
+  --volt:#FFE100;
   --glow-c:0 0 6px rgba(0,252,254,.8), 0 0 18px rgba(0,252,254,.35);
   --glow-g:0 0 6px rgba(57,255,20,.8), 0 0 18px rgba(57,255,20,.35);
   --glow-e:0 0 6px rgba(255,74,28,.8), 0 0 18px rgba(255,74,28,.35);
+  --glow-v:0 0 6px rgba(255,225,0,.8), 0 0 18px rgba(255,225,0,.35);
   --mono:'Plex Mono','Courier New',monospace;
   --ox:'Oxanium','Segoe UI',system-ui,sans-serif;
   --body:'Geologica','Segoe UI',system-ui,sans-serif;
@@ -84,7 +86,7 @@ a:focus-visible{outline:2px solid var(--laser); outline-offset:3px; border-radiu
 /* laser rules */
 .laser-h{
   height:1px; border:none;
-  background:linear-gradient(90deg, transparent, var(--laser) 18%, var(--green) 82%, transparent);
+  background:linear-gradient(90deg, transparent, var(--laser) 15%, var(--green) 40%, var(--volt) 62%, var(--ember) 85%, transparent);
   box-shadow:0 0 8px rgba(0,252,254,.55), 0 0 22px rgba(0,252,254,.2);
 }
 
@@ -116,7 +118,7 @@ nav.top a:hover{color:var(--laser); text-decoration:none; text-shadow:var(--glow
   font-size:clamp(44px,7.6vw,92px); line-height:1.02; letter-spacing:-.01em;
   margin:18px 0 26px; max-width:14ch;
 }
-.hero h1 .dot{color:var(--laser); text-shadow:var(--glow-c)}
+.hero h1 .dot{color:var(--ember); text-shadow:var(--glow-e)}
 .hero .sub{max-width:62ch; color:var(--ink-soft); font-weight:400; font-size:clamp(16px,1.35vw,19px)}
 .hero .sub b{color:var(--ink); font-weight:600}
 .cta-row{display:flex; flex-wrap:wrap; gap:16px; align-items:center; margin-top:38px}
@@ -140,7 +142,7 @@ nav.top a:hover{color:var(--laser); text-decoration:none; text-shadow:var(--glow
 .strip{position:relative; background:linear-gradient(180deg, rgba(0,252,254,.05), transparent)}
 .strip:before,.strip:after{
   content:""; display:block; height:1px;
-  background:linear-gradient(90deg, transparent, var(--laser) 18%, var(--green) 82%, transparent);
+  background:linear-gradient(90deg, transparent, var(--laser) 15%, var(--green) 40%, var(--volt) 62%, var(--ember) 85%, transparent);
   box-shadow:0 0 8px rgba(0,252,254,.55);
 }
 .strip-in{display:grid; grid-template-columns:repeat(4,1fr)}
@@ -168,6 +170,9 @@ section{padding:clamp(64px,10vh,110px) 0}
   background:linear-gradient(90deg, var(--laser), transparent 65%);
   box-shadow:0 0 8px rgba(0,252,254,.4);
 }
+.sec-rule.rg{background:linear-gradient(90deg, var(--green), transparent 65%); box-shadow:0 0 8px rgba(57,255,20,.4)}
+.sec-rule.re{background:linear-gradient(90deg, var(--ember), transparent 65%); box-shadow:0 0 8px rgba(255,74,28,.4)}
+.sec-rule.rv{background:linear-gradient(90deg, var(--volt), transparent 65%); box-shadow:0 0 8px rgba(255,225,0,.4)}
 
 /* products */
 .product{
@@ -177,9 +182,13 @@ section{padding:clamp(64px,10vh,110px) 0}
   transition:background .18s;
 }
 .product:last-of-type{border-bottom:1px solid var(--hairline)}
+.product{--pc:var(--laser); --pglow:var(--glow-c)}
+.product.p{--pc:var(--ember); --pglow:var(--glow-e)}
+.product.x{--pc:var(--volt); --pglow:var(--glow-v)}
+.product.g{--pc:var(--green); --pglow:var(--glow-g)}
 .product:before{
   content:""; position:absolute; left:0; top:-1px; height:1px; width:0;
-  background:var(--laser); box-shadow:var(--glow-c);
+  background:var(--pc); box-shadow:var(--pglow);
   transition:width .35s cubic-bezier(.2,.7,.2,1);
 }
 .product:hover:before{width:100%}
@@ -189,7 +198,7 @@ section{padding:clamp(64px,10vh,110px) 0}
   color:transparent; -webkit-text-stroke:1px rgba(0,252,254,.4);
   user-select:none; transition:filter .2s;
 }
-.product:hover .aisle-letter{-webkit-text-stroke:1.2px var(--laser); filter:drop-shadow(0 0 7px rgba(0,252,254,.7))}
+.product:hover .aisle-letter{-webkit-text-stroke:1.2px var(--pc); filter:drop-shadow(0 0 7px var(--pc))}
 .product h3{font-weight:600; font-size:22px; margin-bottom:6px}
 .product h3 .four{color:var(--green)}
 .product h3 .ver{
@@ -202,7 +211,7 @@ section{padding:clamp(64px,10vh,110px) 0}
   color:var(--ink-dim); font-variant-numeric:tabular-nums;
   margin-bottom:12px; text-transform:uppercase;
 }
-.figures b{color:var(--cyan); font-weight:600}
+.figures b{color:var(--pc, var(--cyan)); font-weight:600}
 .p-links{display:flex; gap:22px}
 .p-links a{font-weight:600; font-size:12px; letter-spacing:.18em; text-transform:uppercase}
 @media (max-width:640px){
@@ -251,6 +260,10 @@ section{padding:clamp(64px,10vh,110px) 0}
 }
 .receipt.refusal:before{background:var(--ember); box-shadow:var(--glow-e)}
 .receipt.maker:before{background:var(--green); box-shadow:var(--glow-g)}
+.receipt.volt:before{background:var(--volt); box-shadow:var(--glow-v)}
+.receipt.volt .rn{color:var(--volt)}
+.receipt.gg:before{background:var(--green); box-shadow:var(--glow-g)}
+.receipt.gg .rn{color:var(--green)}
 .receipt .rn{
   font-weight:600; font-size:11px; letter-spacing:.26em; color:var(--cyan);
   display:block; margin-bottom:12px;
@@ -276,14 +289,14 @@ section{padding:clamp(64px,10vh,110px) 0}
   font-family:var(--mono); font-size:14px; white-space:nowrap;
   border:1px solid var(--hairline-2); border-radius:4px; padding:12px 18px;
 }
-.license-mail:hover{border-color:var(--green); color:var(--green); text-decoration:none; box-shadow:var(--glow-g)}
+.license-mail:hover{border-color:var(--volt); color:var(--volt); text-decoration:none; box-shadow:var(--glow-v)}
 @media (max-width:760px){ .license-band{grid-template-columns:1fr} }
 
 /* footer */
 footer{padding:44px 0 60px; margin-top:20px; position:relative}
 footer:before{
   content:""; display:block; position:absolute; top:0; left:0; right:0; height:1px;
-  background:linear-gradient(90deg, transparent, var(--laser) 18%, var(--green) 82%, transparent);
+  background:linear-gradient(90deg, transparent, var(--laser) 15%, var(--green) 40%, var(--volt) 62%, var(--ember) 85%, transparent);
   box-shadow:0 0 8px rgba(0,252,254,.45);
 }
 .foot-shop{color:var(--ink-soft); margin-bottom:26px}
@@ -341,7 +354,7 @@ footer:before{
       <div class="stat"><span class="n">4</span><span class="l">Servers</span></div>
       <div class="stat"><span class="n hot">6,442</span><span class="l">Tests</span></div>
       <div class="stat"><span class="n ok">0</span><span class="l">Corruptions</span></div>
-      <div class="stat"><span class="n">1</span><span class="l">Patent pending</span></div>
+      <div class="stat"><span class="n" style="color:var(--volt); text-shadow:var(--glow-v)">1</span><span class="l">Patent pending</span></div>
     </div>
   </div>
 
@@ -350,7 +363,7 @@ footer:before{
       <div class="sec-head"><span class="no">01</span><h2>The products</h2></div>
       <hr class="sec-rule">
 
-      <article class="product">
+      <article class="product w">
         <span class="aisle-letter" aria-hidden="true">W</span>
         <div>
           <h3>KitchenSink<span class="four">4</span>Word<span class="ver">v2.1.0</span></h3>
@@ -366,7 +379,7 @@ footer:before{
         </div>
       </article>
 
-      <article class="product">
+      <article class="product p">
         <span class="aisle-letter" aria-hidden="true">P</span>
         <div>
           <h3>KitchenSink<span class="four">4</span>PPT<span class="ver">v1.2.1</span></h3>
@@ -382,7 +395,7 @@ footer:before{
         </div>
       </article>
 
-      <article class="product">
+      <article class="product x">
         <span class="aisle-letter" aria-hidden="true">X</span>
         <div>
           <h3>KitchenSink<span class="four">4</span>XL<span class="ver">v1.2.0</span></h3>
@@ -398,7 +411,7 @@ footer:before{
         </div>
       </article>
 
-      <article class="product">
+      <article class="product g">
         <span class="aisle-letter" aria-hidden="true">G</span>
         <div>
           <h3>KitchenSink<span class="four">4</span>Web<span class="ver">v1.0.0</span></h3>
@@ -419,7 +432,7 @@ footer:before{
   <section id="research">
     <div class="wrap">
       <div class="sec-head"><span class="no">02</span><h2>Research</h2></div>
-      <hr class="sec-rule">
+      <hr class="sec-rule rg">
       <div class="research-grid">
         <div class="r-card">
           <span class="r-tag">Research · Patent pending</span>
@@ -449,8 +462,8 @@ footer:before{
 
   <section id="engineering">
     <div class="wrap">
-      <div class="sec-head"><span class="no">03</span><h2>Engineering</h2></div>
-      <hr class="sec-rule">
+      <div class="sec-head"><span class="no" style="color:var(--ember); text-shadow:0 0 10px rgba(255,74,28,.4)">03</span><h2>Engineering</h2></div>
+      <hr class="sec-rule re">
       <p class="manifesto">It has never been easier to generate a tool that almost
       works. Documents people rely on deserve better than almost.</p>
       <div class="receipts">
@@ -460,13 +473,13 @@ footer:before{
           <p>Every number we publish comes from a measurement, and the build fails
           when a claim and the code disagree. Marketing does not get a vote.</p>
         </div>
-        <div class="receipt">
+        <div class="receipt volt">
           <span class="rn">R-02</span>
           <h4>We break it first</h4>
           <p>Nothing ships because a demo worked once. It ships after we have tried
           to break it deliberately, repeatedly, and on the record.</p>
         </div>
-        <div class="receipt">
+        <div class="receipt gg">
           <span class="rn">R-03</span>
           <h4>Done means verified</h4>
           <p>A change is not done when it runs; it is done when it is checked after
@@ -496,8 +509,8 @@ footer:before{
 
   <section id="licensing">
     <div class="wrap">
-      <div class="sec-head"><span class="no">04</span><h2>Licensing</h2></div>
-      <hr class="sec-rule">
+      <div class="sec-head"><span class="no" style="color:var(--volt); text-shadow:0 0 10px rgba(255,225,0,.4)">04</span><h2>Licensing</h2></div>
+      <hr class="sec-rule rv">
       <div class="license-band">
         <p><b>Free for individuals and personal use, and it stays that way.</b> The
         servers are AGPL-3.0. A company building them into a product of its own needs
