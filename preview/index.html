@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- PREVIEW-ONLY: remove this robots line at the root swap -->
+<meta name="robots" content="noindex">
+<title>KitchenSink4 · MCP servers for Word, PowerPoint, Excel, and the web</title>
+<meta name="description" content="KitchenSink4 builds MCP servers for Word, PowerPoint, Excel, and the open web. Measured figures, adversarial testing, zero corruptions, and servers that refuse rather than guess.">
+<link rel="canonical" href="https://kitchensink4.ai/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kitchensink4.ai/">
+<meta property="og:title" content="KitchenSink4 · Engineered, not generated.">
+<meta property="og:description" content="MCP servers for Word, PowerPoint, Excel, and the open web. Every figure measured by a script and enforced by a test.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b0f14'/%3E%3Ctext x='32' y='44' font-family='Arial,sans-serif' font-size='30' font-weight='800' text-anchor='middle' fill='%2322D3EE'%3EK4%3C/text%3E%3C/svg%3E">
+<style>
+/* ============ KitchenSink4 · the dark register ============
+   D21: NEON governs the mark and dark developer surfaces.
+   This is the dark developer surface. Cyan is the working
+   accent; green and orange-red appear exactly once each. */
+
+@font-face { font-family:'Oxanium'; src:url('/fonts/oxanium-600.woff2') format('woff2');
+  font-weight:600; font-display:swap; }
+@font-face { font-family:'Oxanium'; src:url('/fonts/oxanium-700.woff2') format('woff2');
+  font-weight:700; font-display:swap; }
+@font-face { font-family:'Plex Sans'; src:url('/fonts/plexsans-var.woff2') format('woff2');
+  font-weight:100 700; font-stretch:85% 100%; font-display:swap; }
+@font-face { font-family:'Plex Mono'; src:url('/fonts/plexmono-400.woff2') format('woff2');
+  font-weight:400; font-display:swap; }
+@font-face { font-family:'Plex Mono'; src:url('/fonts/plexmono-500.woff2') format('woff2');
+  font-weight:500; font-display:swap; }
+
+:root{
+  --ground:#07090d;
+  --panel:#0b0f14;
+  --panel-2:#0d1219;
+  --hairline:rgba(139,152,165,.16);
+  --hairline-2:rgba(139,152,165,.28);
+  --ink:#e8edf2;
+  --ink-soft:#98a4b0;
+  --ink-dim:#5c6873;
+  --cyan:#22D3EE;
+  --cyan-dim:rgba(34,211,238,.55);
+  --green:#39FF14;
+  --ember:#FF4A1C;
+  --mono:'Plex Mono','Courier New',monospace;
+  --sans:'Plex Sans','Segoe UI',system-ui,sans-serif;
+  --disp:'Oxanium','Segoe UI',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:
+    radial-gradient(1100px 480px at 50% -120px, rgba(34,211,238,.07), transparent 70%),
+    repeating-linear-gradient(0deg, rgba(34,211,238,.028) 0 1px, transparent 1px 56px),
+    repeating-linear-gradient(90deg, rgba(34,211,238,.028) 0 1px, transparent 1px 56px),
+    repeating-linear-gradient(0deg, rgba(139,152,165,.012) 0 1px, transparent 1px 14px),
+    var(--ground);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:17px; line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:rgba(34,211,238,.28)}
+a{color:var(--cyan); text-decoration:none}
+a:hover{text-decoration:underline; text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--cyan); outline-offset:3px; border-radius:2px}
+.wrap{max-width:1080px; margin:0 auto; padding:0 clamp(20px,4vw,48px)}
+.mono{font-family:var(--mono)}
+.kicker{
+  font-family:var(--mono); font-weight:500; font-size:12px;
+  letter-spacing:.22em; text-transform:uppercase; color:var(--cyan);
+}
+
+/* ---------- masthead ---------- */
+header.mast{
+  border-bottom:1px solid var(--hairline);
+  background:rgba(7,9,13,.82); backdrop-filter:blur(8px);
+  position:sticky; top:0; z-index:10;
+}
+.mast-in{display:flex; align-items:center; justify-content:space-between; height:64px}
+.wordmark{
+  font-family:var(--disp); font-weight:700; font-size:21px; letter-spacing:.01em;
+  color:var(--ink); text-decoration:none !important;
+}
+.wordmark .four{color:var(--cyan)}
+nav.top{display:flex; gap:clamp(14px,2.5vw,30px)}
+nav.top a{
+  font-family:var(--mono); font-size:12.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-soft);
+}
+nav.top a:hover{color:var(--cyan); text-decoration:none}
+@media (max-width:640px){ nav.top a.hide-sm{display:none} }
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(72px,12vh,140px) 0 clamp(56px,9vh,104px); position:relative}
+.hero h1{
+  font-family:var(--disp); font-weight:700;
+  font-size:clamp(44px,7.6vw,92px); line-height:1.02; letter-spacing:-.01em;
+  margin:18px 0 26px; max-width:14ch;
+}
+.hero h1 .dot{color:var(--cyan)}
+.hero .sub{max-width:62ch; color:var(--ink-soft); font-size:clamp(16px,1.35vw,19px)}
+.hero .sub b{color:var(--ink); font-weight:600}
+.cta-row{display:flex; flex-wrap:wrap; gap:16px; align-items:center; margin-top:38px}
+.install{
+  font-family:var(--mono); font-size:13.5px; color:var(--ink);
+  background:var(--panel); border:1px solid var(--hairline-2);
+  border-left:3px solid var(--cyan);
+  padding:13px 18px; border-radius:4px;
+  overflow-x:auto; white-space:nowrap; max-width:100%;
+}
+.install .p{color:var(--ink-dim)}
+.btn-shop{
+  font-family:var(--mono); font-size:13px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--ink); border:1px solid var(--hairline-2); border-radius:4px;
+  padding:13px 20px; transition:border-color .18s, color .18s;
+}
+.btn-shop:hover{border-color:var(--cyan); color:var(--cyan); text-decoration:none}
+
+/* family strip */
+.strip{
+  border-top:1px solid var(--hairline); border-bottom:1px solid var(--hairline);
+  background:linear-gradient(180deg, rgba(34,211,238,.04), transparent);
+}
+.strip-in{
+  display:grid; grid-template-columns:repeat(4,1fr);
+  font-family:var(--mono);
+}
+.stat{padding:22px 8px; text-align:center; border-left:1px solid var(--hairline)}
+.stat:first-child{border-left:none}
+.stat .n{
+  font-family:var(--disp); font-weight:700; font-size:clamp(22px,3vw,34px);
+  font-variant-numeric:tabular-nums; display:block; color:var(--ink);
+}
+.stat .l{font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-dim)}
+.stat .n .ok{color:var(--green)}
+@media (max-width:640px){ .strip-in{grid-template-columns:repeat(2,1fr)} .stat:nth-child(3){border-left:none} }
+
+/* ---------- sections ---------- */
+section{padding:clamp(64px,10vh,110px) 0}
+.sec-head{display:flex; align-items:baseline; gap:18px; margin-bottom:42px}
+.sec-head h2{
+  font-family:var(--disp); font-weight:700; font-size:clamp(26px,3.4vw,40px);
+}
+.sec-head .no{
+  font-family:var(--mono); font-size:12px; letter-spacing:.2em; color:var(--cyan);
+}
+
+/* products */
+.product{
+  display:grid; grid-template-columns:88px 1fr; gap:0 28px;
+  border-top:1px solid var(--hairline);
+  padding:34px 0 30px; position:relative;
+  transition:background .18s;
+}
+.product:last-of-type{border-bottom:1px solid var(--hairline)}
+.product:hover{background:linear-gradient(90deg, rgba(34,211,238,.045), transparent 60%)}
+.aisle-letter{
+  font-family:var(--disp); font-weight:700; font-size:64px; line-height:.9;
+  color:transparent; -webkit-text-stroke:1px var(--ink-dim);
+  user-select:none;
+}
+.product:hover .aisle-letter{-webkit-text-stroke:1px var(--cyan-dim)}
+.product h3{
+  font-family:var(--disp); font-weight:600; font-size:22px; margin-bottom:6px;
+}
+.product h3 .four{color:var(--cyan)}
+.product h3 .ver{
+  font-family:var(--mono); font-weight:400; font-size:12px;
+  color:var(--ink-dim); margin-left:10px; letter-spacing:.06em;
+}
+.product p{color:var(--ink-soft); max-width:64ch; margin-bottom:12px}
+.figures{
+  font-family:var(--mono); font-size:12.5px; letter-spacing:.06em;
+  color:var(--ink-dim); font-variant-numeric:tabular-nums;
+  margin-bottom:12px;
+}
+.figures b{color:var(--ink); font-weight:500}
+.p-links{display:flex; gap:22px}
+.p-links a{
+  font-family:var(--mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+}
+@media (max-width:640px){
+  .product{grid-template-columns:1fr}
+  .aisle-letter{font-size:34px; margin-bottom:8px}
+}
+
+/* engineering */
+.manifesto{
+  font-family:var(--sans); font-size:clamp(19px,2vw,24px); line-height:1.5;
+  max-width:36ch; color:var(--ink); font-weight:600;
+  border-left:3px solid var(--cyan); padding-left:22px;
+  margin-bottom:52px;
+}
+.receipts{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1px; background:var(--hairline)}
+.receipt{
+  background:var(--panel); padding:26px 24px 24px;
+}
+.receipt .rn{
+  font-family:var(--mono); font-size:11px; letter-spacing:.2em; color:var(--cyan);
+  display:block; margin-bottom:12px;
+}
+.receipt.refusal .rn{color:var(--ember)}
+.receipt h4{
+  font-family:var(--disp); font-weight:600; font-size:16.5px; letter-spacing:.02em;
+  text-transform:uppercase; margin-bottom:8px;
+}
+.receipt p{font-size:15px; color:var(--ink-soft)}
+
+/* licensing */
+.license-band{
+  border:1px solid var(--hairline-2); border-radius:6px;
+  background:var(--panel-2); padding:clamp(28px,4vw,46px);
+  display:grid; grid-template-columns:1fr auto; gap:24px; align-items:center;
+}
+.license-band p{color:var(--ink-soft); max-width:62ch}
+.license-band p b{color:var(--ink)}
+.license-mail{
+  font-family:var(--mono); font-size:14px; white-space:nowrap;
+  border:1px solid var(--hairline-2); border-radius:4px; padding:12px 18px;
+}
+.license-mail:hover{border-color:var(--cyan); text-decoration:none}
+@media (max-width:760px){ .license-band{grid-template-columns:1fr} }
+
+/* footer */
+footer{border-top:1px solid var(--hairline); padding:44px 0 60px; margin-top:20px}
+.foot-shop{color:var(--ink-soft); margin-bottom:26px}
+.f-legal{font-size:12.5px; color:var(--ink-dim); max-width:88ch; margin-bottom:18px}
+.colophon{
+  font-family:var(--mono); font-size:11px; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--ink-dim);
+}
+.colophon .led{color:var(--green)}
+
+/* reveal */
+.rev{opacity:0; transform:translateY(14px); animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
+.d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.25s}.d4{animation-delay:.38s}
+@keyframes rise{to{opacity:1; transform:none}}
+@media (prefers-reduced-motion: reduce){
+  .rev{opacity:1; transform:none; animation:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap mast-in">
+    <a class="wordmark" href="/">KitchenSink<span class="four">4</span></a>
+    <nav class="top" aria-label="Site">
+      <a href="#products">Products</a>
+      <a href="#engineering" class="hide-sm">Engineering</a>
+      <a href="/shop/">Shop</a>
+      <a href="#licensing" class="hide-sm">Licensing</a>
+      <a href="https://github.com/KitchenSink4AI">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <p class="kicker rev d1">Four MCP servers · One standard</p>
+    <h1 class="rev d2">Engineered, not generated<span class="dot">.</span></h1>
+    <p class="sub rev d3">KitchenSink4 builds MCP servers for Word, PowerPoint, Excel,
+    and the open web. <b>Every figure on this page is measured by a script and enforced
+    by a test.</b> When an edit cannot be done safely, the server refuses and says why.</p>
+    <div class="cta-row rev d4">
+      <code class="install"><span class="p">$</span> pip install kitchensink4word kitchensink4ppt kitchensink4xl kitchensink4web</code>
+      <a class="btn-shop" href="/shop/">Visit the shop →</a>
+    </div>
+  </div>
+
+  <div class="strip" role="group" aria-label="Family figures">
+    <div class="wrap strip-in">
+      <div class="stat"><span class="n">4</span><span class="l">Servers</span></div>
+      <div class="stat"><span class="n">6,442</span><span class="l">Tests</span></div>
+      <div class="stat"><span class="n"><span class="ok">0</span></span><span class="l">Corruptions</span></div>
+      <div class="stat"><span class="n">AGPL</span><span class="l">3.0 · Open source</span></div>
+    </div>
+  </div>
+
+  <section id="products">
+    <div class="wrap">
+      <div class="sec-head"><span class="no">01</span><h2>The products</h2></div>
+
+      <article class="product">
+        <span class="aisle-letter" aria-hidden="true">W</span>
+        <div>
+          <h3>KitchenSink<span class="four">4</span>Word<span class="ver">v2.1.0</span></h3>
+          <p>The most complete Word (.docx) MCP server ever built. Live editing of open
+          documents, native citations and bibliography, tracked-changes authoring,
+          merge-aware table surgery, redaction with verification.</p>
+          <p class="figures"><b>221</b> OPS · <b>110</b> TOOLS · <b>1,842</b> TESTS · <b>0</b> CORRUPTIONS</p>
+          <div class="p-links">
+            <a href="https://pypi.org/project/kitchensink4word/">PyPI</a>
+            <a href="https://github.com/KitchenSink4AI/KitchenSink4Word">GitHub</a>
+            <a href="https://kitchensink4ai.github.io/KitchenSink4Word/">Docs</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product">
+        <span class="aisle-letter" aria-hidden="true">P</span>
+        <div>
+          <h3>KitchenSink<span class="four">4</span>PPT<span class="ver">v1.2.1</span></h3>
+          <p>PowerPoint (.pptx) with the capability nobody else carries: SVG in, native
+          editable shapes with glued connectors out. Move the node and the arrows follow.
+          Structural table surgery and slide management done right.</p>
+          <p class="figures"><b>159</b> OPS · <b>141</b> TOOLS · <b>1,241</b> TESTS · <b>0</b> CORRUPTIONS</p>
+          <div class="p-links">
+            <a href="https://pypi.org/project/kitchensink4ppt/">PyPI</a>
+            <a href="https://github.com/KitchenSink4AI/KitchenSink4PPT">GitHub</a>
+            <a href="https://kitchensink4ai.github.io/KitchenSink4PPT/">Docs</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product">
+        <span class="aisle-letter" aria-hidden="true">X</span>
+        <div>
+          <h3>KitchenSink<span class="four">4</span>XL<span class="ver">v1.2.0</span></h3>
+          <p>Excel (.xlsx) that knows a spreadsheet remembers its answers, not its
+          thinking. Every value labeled live or stale, structural edits carry their
+          formulas, and Excel itself recalculates when it matters.</p>
+          <p class="figures"><b>129</b> OPS · <b>69</b> TOOLS · <b>1,294</b> TESTS · <b>0</b> CORRUPTIONS</p>
+          <div class="p-links">
+            <a href="https://pypi.org/project/kitchensink4xl/">PyPI</a>
+            <a href="https://github.com/KitchenSink4AI/KitchenSink4XL">GitHub</a>
+            <a href="https://kitchensink4ai.github.io/KitchenSink4XL/">Docs</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="product">
+        <span class="aisle-letter" aria-hidden="true">G</span>
+        <div>
+          <h3>KitchenSink<span class="four">4</span>Web<span class="ver">v1.0.0</span></h3>
+          <p>A browser built for AI agents. Whole pages read for the price of a
+          paragraph, with an honest account of what went unread. Cannot click a thing
+          until you allow it.</p>
+          <p class="figures"><b>2,065</b> TESTS · <b>7×</b> CHEAPER READS · <b>0</b> ACTING TOOLS UNTIL ALLOWED</p>
+          <div class="p-links">
+            <a href="https://pypi.org/project/kitchensink4web/">PyPI</a>
+            <a href="https://github.com/KitchenSink4AI/KitchenSink4Web">GitHub</a>
+            <a href="https://kitchensink4ai.github.io/KitchenSink4Web/">Docs</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="engineering">
+    <div class="wrap">
+      <div class="sec-head"><span class="no">02</span><h2>Engineering</h2></div>
+      <p class="manifesto">It has never been easier to generate a tool that almost
+      works. Documents people rely on deserve better than almost.</p>
+      <div class="receipts">
+        <div class="receipt">
+          <span class="rn">R-01</span>
+          <h4>Measured, not asserted</h4>
+          <p>Published figures come from measurement scripts, and guard tests fail the
+          build when the page and the code disagree.</p>
+        </div>
+        <div class="receipt">
+          <span class="rn">R-02</span>
+          <h4>Adversarial by routine</h4>
+          <p>More than 6,400 tests across the family, adversarial batteries thrown at
+          the raw wire, and suites run in both orders before a release.</p>
+        </div>
+        <div class="receipt">
+          <span class="rn">R-03</span>
+          <h4>Engineered not to corrupt</h4>
+          <p>Zero corruptions across the fixture corpus. Backups before every mutation,
+          verification after every write.</p>
+        </div>
+        <div class="receipt refusal">
+          <span class="rn">R-04</span>
+          <h4>Refuses rather than guesses</h4>
+          <p>A confident wrong edit is the one product we do not stock. Refusals name
+          the real cause and the safe route when one exists.</p>
+        </div>
+        <div class="receipt">
+          <span class="rn">R-05</span>
+          <h4>Honest limits</h4>
+          <p>Capabilities that do not exist are named. Skipped tests say why. Changelogs
+          say what actually changed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="licensing">
+    <div class="wrap">
+      <div class="sec-head"><span class="no">03</span><h2>Licensing</h2></div>
+      <div class="license-band">
+        <p><b>Free for individuals and personal use, and it stays that way.</b> The
+        servers are AGPL-3.0. A company building them into a product of its own needs
+        a commercial license; terms are worked out case by case.</p>
+        <a class="license-mail" href="mailto:licensing@kitchensink4.ai">licensing@kitchensink4.ai</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="foot-shop">Prefer aisles, an awning, and a sleeping dog? The family also
+    runs a storefront: <a href="/shop/">The KitchenSink Works →</a></p>
+    <p class="f-legal">© 2026 Alvut Consulting, LLC. Licensed AGPL-3.0: free for
+    individuals and personal use; companies building these into their own products need
+    a commercial license (licensing@kitchensink4.ai). Provided as-is, without warranty
+    of any kind, per the license. Not affiliated with or endorsed by Microsoft
+    Corporation. Microsoft, Word, PowerPoint, and Excel are trademarks of Microsoft
+    Corporation. All other trademarks are the property of their respective owners.</p>
+    <p class="colophon"><span class="led">●</span> ALL SUITES GREEN AT PUBLISH · SET IN OXANIUM AND IBM PLEX · FIGURES MEASURED, NOT ESTIMATED</p>
+  </div>
+</footer>
+
+</body>
+</html>
