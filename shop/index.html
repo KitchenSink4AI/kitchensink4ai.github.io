@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--
+  LIVE. This is the kitchensink4ai.github.io root page, served at https://kitchensink4ai.github.io/.
+  Per-product counts in the aisle cards track the SHIPPED release of each server, not a staged one.
+  Update an aisle card only when that product's release is actually public.
+  EXCEPTION (author ruling, 2026-09-04): for the KS4PPT v1.1 / KS4W v2.0 pair the storefront was
+  told to arrive with or ahead of the releases, so the Word card carries v2.0 numbers from the
+  moment that release is cut rather than waiting for it.
+  APPLIED 2026-09-09 under that same exception: all four cards now carry the figures of the
+  releases cutting that day, in all seven languages. Sources are each repo's own measuring
+  script, and each figure also appears on that product's README, landing page and llms.txt,
+  where its ship gate asserts it.
+-->
+<title>The KitchenSink Works · Everything plus the kitchen sink</title>
+<meta name="description" content="Every KitchenSink server on one page: Word, PowerPoint, Excel, and the web. Everything you'll ever need for the trip, plus more; even the kitchen sink.">
+<meta property="og:title" content="The KitchenSink Works · Everything plus the kitchen sink">
+<meta property="og:description" content="Every KitchenSink server on one page: Word, PowerPoint, Excel, and the web. Everything you'll ever need for the trip, plus more; even the kitchen sink.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kitchensink4.ai/shop/">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://kitchensink4.ai/shop/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏪</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,50&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* metric-matched local fallbacks: on a cold cache the swap to the webfonts cannot re-wrap text.
+   Courier New shares IBM Plex Mono's exact 0.6em advance width; Georgia scaled 104% matches Fraunces at text weights.
+   font-weight ranges are required: without them the fallback covers weight 400 only, so bold text
+   (the masthead <b>) fell through to the generic monospace face while its own sentence stayed in
+   Courier New. That was the visible mismatch between PURVEYORS and the words after it. */
+@font-face{font-family:"Plex Mono Fallback";src:local("Courier New");size-adjust:100%;line-gap-override:0%;font-weight:100 900}
+@font-face{font-family:"Fraunces Fallback";src:local("Georgia");size-adjust:104%;line-gap-override:0%;font-weight:100 900}
+:root{
+  --paper:#f5efe0; --paper-deep:#ede4cd; --ink:#1e3550; --ink-soft:#3f5878;
+  --copper:#b0622a; --patina:#2e6e55; --brass:#7d5c14; --emerald:#2a7a45; --stamp:#a3352b; --rule:#c9bda0;
+  --shadow: 0 2px 0 var(--rule), 0 10px 30px rgba(30,53,80,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'IBM Plex Mono',"Plex Mono Fallback",ui-monospace,monospace;
+  background:var(--paper); color:var(--ink); line-height:1.6;
+  overflow-x:hidden;
+  background-image:
+    radial-gradient(ellipse at 50% -10%, rgba(30,53,80,.06), transparent 55%),
+    repeating-linear-gradient(0deg, transparent 0 27px, rgba(30,53,80,.035) 27px 28px);
+}
+h1,h2,h3{font-family:'Fraunces',"Fraunces Fallback",Georgia,serif}
+a{color:var(--copper)}
+a:hover{text-decoration-style:wavy;text-decoration-thickness:1px;text-underline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* masthead */
+/* grid, not flex: the language toggle keeps the same centre column in every
+   language, so switching languages never moves it. */
+.masthead{border-bottom:3px double var(--ink);padding:14px 0;font-size:12px;
+  letter-spacing:.18em;text-transform:uppercase;display:grid;
+  grid-template-columns:1fr auto 1fr;align-items:baseline;gap:12px}
+.masthead>span:last-child{justify-self:end;text-align:right}
+/* one face across the whole line, bold included */
+.masthead,.masthead span,.masthead b{
+  font-family:'IBM Plex Mono',"Plex Mono Fallback",ui-monospace,monospace}
+.masthead b{letter-spacing:.02em;font-weight:600}
+@media(max-width:900px){
+  .masthead{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .masthead>span:last-child{justify-self:center;text-align:center}
+}
+
+/* product switch bar */
+.switchbar{border-bottom:1px solid var(--rule);background:var(--paper-deep);
+  padding:9px 0;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap;
+  font-family:'IBM Plex Mono',"Plex Mono Fallback",ui-monospace,monospace}
+.switchbar .lbl{color:var(--ink-soft);letter-spacing:.22em}
+.switchbar a{text-decoration:none;font-weight:600;border-bottom:2px solid transparent;
+  padding-bottom:2px}
+.switchbar a.w{color:var(--copper)}
+.switchbar a.w:hover{border-bottom-color:var(--copper)}
+.switchbar a.p{color:var(--patina)}
+.switchbar a.p:hover{border-bottom-color:var(--patina)}
+.switchbar a.x{color:var(--brass)}
+.switchbar a.x:hover{border-bottom-color:var(--brass)}
+.switchbar a.g{color:var(--emerald)}
+.switchbar a.g:hover{border-bottom-color:var(--emerald)}
+.lang-toggle{display:inline-flex;gap:1px;align-items:baseline;flex-wrap:wrap;text-transform:none;letter-spacing:.05em}
+.lang-toggle button{font-family:'IBM Plex Mono',"Plex Mono Fallback",ui-monospace,monospace;font-size:11px;background:none;border:none;border-bottom:2px solid transparent;color:var(--ink-soft);cursor:pointer;padding:1px 5px;letter-spacing:.05em}
+.lang-toggle button:hover{color:var(--copper)}
+.lang-toggle button[aria-pressed="true"]{color:var(--copper);font-weight:600;border-bottom-color:var(--copper)}
+.lang-toggle .sep{color:var(--rule);padding:0 1px}
+.idiom-note{font-size:12px;color:var(--ink-soft);margin:12px auto 0;max-width:560px;opacity:.85}
+.idiom-note:empty{display:none}
+
+/* awning: unrolls on load, settles with a small bounce */
+.awning{height:44px;margin-top:0;position:relative;
+  background:repeating-linear-gradient(90deg, var(--ink) 0 46px, var(--paper-deep) 46px 92px);
+  border-bottom:3px solid var(--ink);
+  animation:unroll .9s cubic-bezier(.2,.7,.25,1.15) both;transform-origin:top center}
+@keyframes unroll{0%{transform:translateY(-105%)}72%{transform:translateY(2px)}100%{transform:translateY(0)}}
+.awning:after{content:"";position:absolute;left:0;right:0;bottom:-17px;height:17px;
+  background-image:radial-gradient(circle at 23px -6px, var(--ink) 0 21px, transparent 22px);
+  background-size:46px 17px;background-position:0 0;
+  animation:scallop-sway 3.2s ease-in-out .9s 2}
+.awning .scallop-alt{position:absolute;left:46px;right:0;bottom:-17px;height:17px;
+  background-image:radial-gradient(circle at 23px -6px, var(--paper-deep) 0 21px, transparent 22px);
+  background-size:92px 17px;
+  animation:scallop-sway 3.2s ease-in-out .9s 2}
+@keyframes scallop-sway{0%,100%{transform:translateY(0)}50%{transform:translateY(2.5px)}}
+
+/* storefront sign */
+.hero{padding:84px 0 56px;text-align:center;position:relative}
+.open-sign{display:inline-block;border:2px solid var(--patina);color:var(--patina);
+  padding:5px 16px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+  margin-bottom:26px;background:var(--paper-deep);
+  animation:neon-on 2.1s linear .6s both}
+@keyframes neon-on{
+  0%{opacity:.15;text-shadow:none;box-shadow:none}
+  9%{opacity:.9}11%{opacity:.2}
+  22%{opacity:1}25%{opacity:.35}
+  34%,100%{opacity:1;text-shadow:0 0 9px rgba(60,138,107,.55);
+    box-shadow:0 0 12px rgba(60,138,107,.30), inset 0 0 8px rgba(60,138,107,.14)}
+}
+.hero h1{font-size:clamp(38px,7.5vw,92px);font-weight:900;line-height:1;
+  letter-spacing:-.01em;font-variation-settings:'SOFT' 50;
+  text-shadow:3px 3px 0 var(--paper-deep), 5px 5px 0 var(--rule)}
+.hero h1 .amp{color:var(--copper)}
+.tagline{font-family:'Fraunces',"Fraunces Fallback",Georgia,serif;font-style:italic;font-size:clamp(18px,2.6vw,26px);
+  color:var(--ink-soft);margin:20px auto 0;max-width:640px}
+/* the promise takes the tagline slot; the older line stays under it because the
+   idiom note below is written to explain the English idiom that line quotes. */
+.tagline-sub{font-family:'Fraunces',"Fraunces Fallback",Georgia,serif;font-style:italic;
+  font-size:clamp(15px,1.9vw,19px);color:var(--ink-soft);margin:10px auto 0;max-width:600px;opacity:.9}
+.est-line{margin-top:18px;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-soft)}
+.est-line b{color:var(--ink)}
+
+/* reveal */
+.rev{opacity:0;transform:translateY(14px);animation:rev .7s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes rev{to{opacity:1;transform:none}}
+.d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.28s}.d4{animation-delay:.42s}
+
+/* sections */
+section{padding:60px 0;border-top:1px solid var(--rule)}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:34px}
+.sec-head h2{font-size:clamp(26px,4vw,40px);font-weight:800}
+.sec-head .no{font-size:12px;letter-spacing:.25em;color:var(--copper);white-space:nowrap;
+  border:2px solid currentColor;border-radius:3px;padding:3px 10px;transform:rotate(-2deg);
+  display:inline-block;opacity:.85;
+  mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='white'/%3E%3Ccircle cx='2.5' cy='1.5' r='.3' fill='black'/%3E%3C/svg%3E")}
+.sec-head:after{content:"";flex:1;border-bottom:2px dotted var(--rule);transform:translateY(-6px)}
+
+/* aisles */
+.aisles{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+@media(max-width:760px){.aisles{grid-template-columns:1fr}}
+.aisle{border:2px solid var(--ink);background:var(--paper);box-shadow:var(--shadow);
+  padding:30px 28px 24px;position:relative;transition:all .15s}
+/* paper wash: each aisle card is cut from its own department's stock. Ink is
+   untouched; only the paper under it changes. */
+.aisle.w{background:#f5efe0}
+.aisle.p{background:#e3edea}
+.aisle.x{background:#f8e7c4}
+.aisle.w:hover{transform:translate(-2px,-2px);border-color:var(--copper);
+  box-shadow:2px 4px 0 rgba(176,98,42,.35), 8px 14px 30px rgba(30,53,80,.16)}
+.aisle.p:hover{transform:translate(-2px,-2px);border-color:var(--patina);
+  box-shadow:2px 4px 0 rgba(46,110,85,.35), 8px 14px 30px rgba(30,53,80,.16)}
+.aisle.x:hover{transform:translate(-2px,-2px);border-color:var(--brass);
+  box-shadow:2px 4px 0 rgba(125,92,20,.35), 8px 14px 30px rgba(30,53,80,.16)}
+.aisle.g:hover{transform:translate(-2px,-2px);border-color:var(--emerald);
+  box-shadow:2px 4px 0 rgba(42,122,69,.35), 8px 14px 30px rgba(30,53,80,.16)}
+.aisle.w:hover .aisle-tag{background:var(--copper)}
+.aisle.p:hover .aisle-tag{background:var(--patina)}
+.aisle.x:hover .aisle-tag{background:var(--brass)}
+.aisle.g:hover .aisle-tag{background:var(--emerald)}
+.aisle .aisle-tag{position:absolute;top:-11px;left:24px;background:var(--ink);color:var(--paper);
+  font-size:10px;letter-spacing:.3em;padding:4px 12px;text-transform:uppercase;transition:background .15s}
+/* fixture: each department's sign hangs from the shelf edge above it. Hover the
+   card (or tab to its stretch link) and the sign takes a nudge, rocks, and
+   settles; hinged at the top so it swings like a hanging sign, not a dial. */
+.aisle .fixture{font-size:44px;display:block;margin-bottom:10px;line-height:1;transform-origin:top center}
+@keyframes sign-swing{0%{transform:rotate(0)}35%{transform:rotate(-6deg)}70%{transform:rotate(3deg)}100%{transform:rotate(0)}}
+@media (prefers-reduced-motion: no-preference){
+  .aisle:hover .fixture,.aisle:focus-within .fixture{animation:sign-swing .45s ease-out}
+}
+.aisle h3{font-size:clamp(22px,3vw,28px);font-weight:900}
+.aisle h3 .four{font-size:.8em}
+.aisle.w h3 .four{color:var(--copper)}
+.aisle.p h3 .four{color:var(--patina)}
+.aisle.x h3 .four{color:var(--brass)}
+.aisle.g h3 .four{color:var(--emerald)}
+.aisle .pitch{font-family:'Fraunces',"Fraunces Fallback",Georgia,serif;font-size:15.5px;color:var(--ink-soft);margin-top:10px;line-height:1.6}
+.aisle .counts{margin-top:16px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
+.aisle .counts b{color:var(--ink);font-size:13px;letter-spacing:.05em}
+.aisle .links{margin-top:18px;padding-top:14px;border-top:1px dotted var(--rule);
+  font-size:12px;display:flex;gap:14px;flex-wrap:wrap}
+.aisle.w .links a{color:var(--copper)}
+.aisle.p .links a{color:var(--patina)}
+.aisle.x .links a{color:var(--brass)}
+.aisle.g .links a{color:var(--emerald)}
+.aisle .badge{display:inline-block;margin-left:10px;font-size:9px;border:1px solid var(--stamp);
+  color:var(--stamp);padding:1px 7px;letter-spacing:.18em;vertical-align:middle;transform:rotate(-2deg)}
+
+/* empty shelves: a dust outline where the next fixture will sit */
+.shelves{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:26px}
+@media(max-width:760px){.shelves{grid-template-columns:1fr}}
+.shelf{border:2px dashed var(--rule);background:transparent;padding:30px 28px 22px;text-align:center;
+  color:var(--ink-soft);position:relative}
+/* the backordered shelf: the fixture is on the label, not on the floor, so it
+   sits at aisle-card scale but greyed back to shelf weight. */
+.shelf .fixture{font-size:40px;display:block;line-height:1;margin-bottom:2px;
+  filter:grayscale(70%);opacity:.7}
+.shelf .dustline{width:96px;height:9px;margin:2px auto 12px;border-radius:50%;
+  background:radial-gradient(ellipse, rgba(30,53,80,.12), transparent 70%)}
+.shelf .shelf-name{font-family:'Fraunces',"Fraunces Fallback",Georgia,serif;
+  font-size:clamp(19px,2.4vw,24px);font-weight:900;letter-spacing:0;text-transform:none;
+  color:var(--ink-soft)}
+.shelf .shelf-name .four{font-size:.8em;color:var(--rule)}
+.shelf small{display:block;margin-top:8px;font-size:11px;letter-spacing:.02em;text-transform:none;opacity:.8}
+
+/* the cart: three routes to the same four packages, laid out like a receipt */
+.cart-lead{font-family:'Fraunces',"Fraunces Fallback",Georgia,serif;font-size:17px;
+  color:var(--ink-soft);max-width:640px;margin-bottom:28px}
+.routes{display:grid;gap:22px;max-width:900px}
+.route{border:2px solid var(--ink);background:var(--paper-deep);box-shadow:var(--shadow);
+  padding:20px 22px 18px}
+.route-t{font-size:13px;color:var(--ink-soft);margin-bottom:12px}
+.route-t b{color:var(--ink);font-weight:700}
+.bundles{font-size:14px;letter-spacing:.06em;color:var(--rule)}
+.bundles a{font-weight:600;text-decoration:none;border-bottom:2px solid transparent;padding-bottom:1px}
+.bundles a:nth-of-type(1){color:var(--copper)}
+.bundles a:nth-of-type(2){color:var(--patina)}
+.bundles a:nth-of-type(3){color:var(--brass)}
+.bundles a:nth-of-type(4){color:var(--emerald)}
+.bundles a:hover{border-bottom-color:currentColor;text-decoration:none}
+.cmd{background:var(--paper);border:1px dashed var(--rule);padding:14px 16px;
+  overflow-x:auto;font-size:12.5px;line-height:1.75}
+.cmd code{font-family:'IBM Plex Mono',"Plex Mono Fallback",ui-monospace,monospace;
+  color:var(--ink);white-space:pre}
+
+/* philosophy */
+.creed-lead{max-width:820px;margin:0 auto 30px;font-family:'Fraunces',"Fraunces Fallback",Georgia,serif;
+  font-size:16px;line-height:1.7;color:var(--ink-soft)}
+.creed{max-width:820px;margin:0 auto;border:3px double var(--ink);background:var(--paper-deep);
+  box-shadow:var(--shadow);padding:38px 34px;text-align:center}
+.creed h3{font-family:'Fraunces',"Fraunces Fallback",Georgia,serif;font-size:clamp(20px,2.8vw,27px);font-weight:900}
+.creed .line{padding:16px 0}
+.creed .line+.line{border-top:1px dotted var(--rule)}
+.creed p{font-size:12.5px;color:var(--ink-soft);margin-top:6px;max-width:560px;margin-left:auto;margin-right:auto}
+
+/* service counter: same desk language as the product pages */
+.ticket{display:inline-block;border:2px dashed var(--ink);background:var(--paper-deep);
+  padding:6px 18px;font-size:10px;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--ink-soft);margin-bottom:24px;transform:rotate(-1.5deg);position:relative}
+.ticket:before,.ticket:after{content:"";position:absolute;top:50%;width:10px;height:10px;
+  border-radius:50%;background:var(--paper);border:2px dashed var(--ink);transform:translateY(-50%)}
+.ticket:before{left:-7px}
+.ticket:after{right:-7px}
+.desks{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+@media(max-width:760px){.desks{grid-template-columns:1fr}}
+.counter{border:2px solid var(--ink);background:var(--paper);padding:30px 24px 24px;
+  box-shadow:var(--shadow);text-decoration:none;color:var(--ink);display:block;
+  transition:all .15s;position:relative}
+.counter .aisle-tag{position:absolute;top:-11px;left:24px;background:var(--ink);color:var(--paper);
+  font-size:10px;letter-spacing:.3em;padding:4px 12px;text-transform:uppercase;transition:background .15s}
+.counter .icon{font-size:30px;display:block;margin-bottom:10px;line-height:1}
+.counter h3{font-size:18px;font-weight:800;margin-bottom:8px}
+.counter p{font-size:12.5px;color:var(--ink-soft);line-height:1.55}
+.counter .go{display:inline-block;margin-top:14px;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;font-weight:600}
+.counter.w .go{color:var(--copper)}
+.counter.p .go{color:var(--patina)}
+.counter.w:hover{transform:translate(-2px,-2px);border-color:var(--copper);
+  box-shadow:2px 4px 0 rgba(176,98,42,.35), 8px 14px 30px rgba(30,53,80,.16)}
+.counter.p:hover{transform:translate(-2px,-2px);border-color:var(--patina);
+  box-shadow:2px 4px 0 rgba(46,110,85,.35), 8px 14px 30px rgba(30,53,80,.16)}
+.counter.w:hover .aisle-tag{background:var(--copper)}
+.counter.p:hover .aisle-tag{background:var(--patina)}
+.counter.x .go{color:var(--brass)}
+.counter.x:hover{transform:translate(-2px,-2px);border-color:var(--brass);
+  box-shadow:2px 4px 0 rgba(125,92,20,.35), 8px 14px 30px rgba(30,53,80,.16)}
+.counter.x:hover .aisle-tag{background:var(--brass)}
+.counter.g .go{color:var(--emerald)}
+.counter.g:hover{transform:translate(-2px,-2px);border-color:var(--emerald);
+  box-shadow:2px 4px 0 rgba(42,122,69,.35), 8px 14px 30px rgba(30,53,80,.16)}
+.counter.g:hover .aisle-tag{background:var(--emerald)}
+.svc-note{margin-top:18px;font-size:12px;color:var(--ink-soft);max-width:820px}
+.svc-note b{color:var(--ink)}
+
+/* the counter: one window for everything the four desks do not sort by aisle */
+.the-counter{margin-top:30px;border-top:2px dotted var(--rule);padding-top:24px;max-width:820px}
+.the-counter p{font-family:'Fraunces',"Fraunces Fallback",Georgia,serif;font-size:16px;
+  line-height:1.7;color:var(--ink-soft)}
+.the-counter .counter-link{margin-top:12px;font-family:'IBM Plex Mono',"Plex Mono Fallback",ui-monospace,monospace;
+  font-size:13px;letter-spacing:.06em}
+.the-counter .counter-link a{text-decoration:none;font-weight:600;
+  border-bottom:2px solid transparent;padding-bottom:2px}
+.the-counter .counter-link a:hover{border-bottom-color:var(--copper);text-decoration:none}
+
+/* the shop dog: asleep near the service counters. Unlabeled, unlisted, easy to
+   miss. Three ascending z's read as sleep at a glance (author, 2026-09-06); the
+   z's breathe slowly where motion is welcome, and hold still where it is not. */
+.shop-dog{display:block;width:max-content;margin:30px 6px 0 auto;font-size:22px;line-height:1;
+  text-decoration:none;opacity:.45;filter:grayscale(55%);transition:opacity .2s,filter .2s}
+.shop-dog .zz{font-family:'IBM Plex Mono',"Plex Mono Fallback",ui-monospace,monospace;
+  color:var(--ink-soft);vertical-align:top;letter-spacing:.06em}
+.shop-dog .zz i{font-style:normal;display:inline-block}
+.shop-dog .zz i:nth-child(1){font-size:9px}
+.shop-dog .zz i:nth-child(2){font-size:12px;transform:translateY(-3px)}
+.shop-dog .zz i:nth-child(3){font-size:15px;transform:translateY(-7px)}
+@media (prefers-reduced-motion:no-preference){
+  .shop-dog .zz i{animation:zbreathe 3.6s ease-in-out infinite}
+  .shop-dog .zz i:nth-child(2){animation-delay:1.2s}
+  .shop-dog .zz i:nth-child(3){animation-delay:2.4s}
+}
+@keyframes zbreathe{0%,100%{opacity:.45}50%{opacity:1}}
+.shop-dog:hover,.shop-dog:focus-visible{opacity:.95;filter:grayscale(0%)}
+
+/* footer */
+footer{border-top:3px double var(--ink);padding:36px 0 48px;font-size:12px;color:var(--ink-soft)}
+/* the footer splits: receipts in the store's own voice, then plain boilerplate */
+.f-receipts{font-family:'Fraunces',"Fraunces Fallback",Georgia,serif;font-size:15px;
+  line-height:1.7;color:var(--ink-soft);max-width:760px}
+.f-receipts b{color:var(--ink)}
+.f-legal{margin-top:20px;padding-top:16px;border-top:1px dotted var(--rule);
+  font-size:11px;line-height:1.65;color:var(--ink-soft);opacity:.8;max-width:880px}
+.colophon{text-align:center;padding:22px 0 0;font-size:10px;letter-spacing:.28em;
+  text-transform:uppercase;opacity:.45}
+
+/* reduced motion: ambient animation collapses to its final frame */
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  html{scroll-behavior:auto}
+}
+
+/* whole-card click targets: stretched link under the card, inner links above */
+.aisle{cursor:pointer}
+.aisle .stretch{position:absolute;inset:0;z-index:1}
+.aisle .links, .aisle .links a{position:relative;z-index:2}
+</style>
+</head>
+<body>
+
+<div class="wrap masthead rev d1">
+  <span data-i18n="m.left"><b>PURVEYORS</b> OF FINE INSTRUMENTS FOR OFFICE DOCUMENTS</span>
+  <nav class="lang-toggle" id="langToggle" aria-label="Language"></nav>
+  <span><a href="https://github.com/KitchenSink4AI">GITHUB</a> · <a href="#aisles" data-i18n="m.depts">DEPARTMENTS</a> · <a href="#cart" data-i18n="m.cart">CHECKOUT</a> · <a href="#creed" data-i18n="m.rules">HOUSE RULES</a></span>
+</div>
+
+<div class="switchbar">
+  <span class="lbl" data-i18n="sw.lbl">The aisles</span>
+  <a class="w" href="https://kitchensink4ai.github.io/KitchenSink4Word/">🚰 KitchenSink4Word</a>
+  <a class="p" href="https://kitchensink4ai.github.io/KitchenSink4PPT/">🖌️ KitchenSink4PPT</a>
+  <a class="x" href="https://kitchensink4ai.github.io/KitchenSink4XL/">🔌 KitchenSink4XL</a>
+  <a class="g" href="https://kitchensink4ai.github.io/KitchenSink4Web/">🌿 KitchenSink4Web</a>
+</div>
+
+<div class="awning"><div class="scallop-alt"></div></div>
+
+<header class="hero wrap">
+  <div class="open-sign" data-i18n="hero.open">OPEN · ALL HOURS · ALL TIME ZONES</div>
+  <h1 class="rev d2">The KitchenSink<br><span class="amp">Works</span></h1>
+  <p class="tagline rev d3" data-i18n="hero.promise">Everything you'll ever need for the trip, plus more; even the kitchen sink.</p>
+  <p class="tagline-sub rev d3" data-i18n="hero.tagline">Everything <em>plus</em> the kitchen sink. And yes, it just works.</p>
+  <p class="idiom-note rev d3" data-i18n="hero.idiom"></p>
+  <p class="est-line rev d4" data-i18n="hero.est">A FAMILY OF <b>MCP SERVERS</b> · ONE FIXTURE PER DEPARTMENT · <b>AGPL-3.0</b></p>
+</header>
+
+<section id="aisles">
+  <div class="wrap">
+    <div class="sec-head"><span class="no" data-i18n="floor.no">THE FLOOR</span><h2 data-i18n="floor.h2">Shop by department</h2></div>
+    <div class="aisles">
+      <div class="aisle w"><a class="stretch" href="https://kitchensink4ai.github.io/KitchenSink4Word/" aria-label="KitchenSink4Word showroom"></a>
+        <span class="aisle-tag" data-i18n="w.tag">AISLE W · PLUMBING</span>
+        <span class="fixture">🚰</span>
+        <h3>KitchenSink<span class="four">4</span>Word</h3>
+        <p class="pitch" data-i18n="w.pitch">The most complete Word (.docx) MCP server ever plumbed. Live editing of open documents, native citations and bibliography, merge-aware table surgery, footnotes, tracked-changes authoring, redaction with verification. Engineered not to corrupt.</p>
+        <p class="counts" data-i18n="w.counts"><b>221</b> operations · <b>110</b> tools · <b>1,842</b> tests · <b>0</b> corruptions</p>
+        <div class="links">
+          <a href="https://kitchensink4ai.github.io/KitchenSink4Word/" data-i18n="w.show">SHOWROOM →</a>
+          <a href="https://github.com/KitchenSink4AI/KitchenSink4Word">GITHUB</a>
+          <a href="https://pypi.org/project/kitchensink4word/">PYPI</a>
+        </div>
+      </div>
+      <div class="aisle p"><a class="stretch" href="https://kitchensink4ai.github.io/KitchenSink4PPT/" aria-label="KitchenSink4PPT showroom"></a>
+        <span class="aisle-tag" data-i18n="p.tag">AISLE P · PAINT</span>
+        <span class="fixture">🖌️</span>
+        <h3>KitchenSink<span class="four">4</span>PPT</h3>
+        <p class="pitch" data-i18n="p.pitch">Everything plus the kitchen sink for PowerPoint (.pptx), headlined by the fixture nobody else carries: SVG in, grouped native shapes with glued connectors out. Move the node, the arrows follow. Plus the first file-based structural table surgery, slide management done right, and tiered loading from day one.</p>
+        <p class="counts" data-i18n="p.counts"><b>159</b> operations · <b>141</b> tools · <b>1,241</b> tests · <b>0</b> corruptions</p>
+        <div class="links">
+          <a href="https://kitchensink4ai.github.io/KitchenSink4PPT/" data-i18n="p.show">SHOWROOM →</a>
+          <a href="https://github.com/KitchenSink4AI/KitchenSink4PPT">GITHUB</a>
+          <a href="https://pypi.org/project/kitchensink4ppt/">PYPI</a>
+        </div>
+      </div>
+      <div class="aisle x"><a class="stretch" href="https://kitchensink4ai.github.io/KitchenSink4XL/" aria-label="KitchenSink4XL showroom"></a>
+        <span class="aisle-tag" data-i18n="x.tag">AISLE X · ELECTRICAL</span>
+        <span class="fixture">🔌</span>
+        <h3>KitchenSink<span class="four">4</span>XL</h3>
+        <p class="pitch" data-i18n="x.pitch">Everything plus the kitchen sink for Excel (.xlsx), headlined by the thing every other server gets wrong: a spreadsheet remembers its answers, not its thinking, so a stale number looks exactly like a live one. This one labels every value it hands back, names the cells that went stale, and asks Excel itself to recalculate when it matters. Structural edits carry their formulas with them. Tiered loading from day one.</p>
+        <p class="counts" data-i18n="x.counts"><b>129</b> operations · <b>69</b> tools · <b>1,294</b> tests · <b>0</b> corruptions</p>
+        <div class="links">
+          <a href="https://kitchensink4ai.github.io/KitchenSink4XL/" data-i18n="x.show">SHOWROOM →</a>
+          <a href="https://github.com/KitchenSink4AI/KitchenSink4XL">GITHUB</a>
+          <a href="https://pypi.org/project/kitchensink4xl/">PYPI</a>
+        </div>
+      </div>
+      <div class="aisle g"><a class="stretch" href="https://kitchensink4ai.github.io/KitchenSink4Web/" aria-label="KitchenSink4Web showroom"></a>
+        <span class="aisle-tag" data-i18n="g.tag">AISLE G · GARDEN</span>
+        <span class="fixture">🌿</span>
+        <h3>KitchenSink<span class="four">4</span>Web<span class="badge" data-i18n="g.badge">NEW STOCK</span></h3>
+        <p class="pitch" data-i18n="g.pitch">Everything plus the kitchen sink for the open web: your AI reads whole pages for the price of a paragraph, shadow roots included, and cannot click a thing until you flip the switch. Every read ends with the price it paid and a list of what it skipped.</p>
+        <p class="counts" data-i18n="g.counts"><b>19/52</b> tools · <b>2,065</b> tests · <b>7×</b> cheaper reads · <b>0</b> acting tools until allowed</p>
+        <div class="links">
+          <a href="https://kitchensink4ai.github.io/KitchenSink4Web/" data-i18n="g.show">SHOWROOM →</a>
+          <a href="https://github.com/KitchenSink4AI/KitchenSink4Web">GITHUB</a>
+          <a href="https://pypi.org/project/kitchensink4web/">PYPI</a>
+        </div>
+      </div>
+    </div>
+    <div class="shelves">
+      <div class="shelf">
+        <span class="fixture">📦</span>
+        <div class="dustline"></div>
+        <p class="shelf-name">KitchenSink<span class="four">4</span>PDF</p>
+        <small data-i18n="shelf.s1">Backordered. This shelf is not empty by accident.</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cart">
+  <div class="wrap">
+    <div class="sec-head"><span class="no" data-i18n="cart.no">ONE TRIP</span><h2 data-i18n="cart.h2">Whole store</h2></div>
+    <p class="cart-lead" data-i18n="cart.lead">Came in for one and want the set? It all fits in one cart.</p>
+    <div class="routes">
+      <div class="route">
+        <p class="route-t" data-i18n="cart.desktop"><b>Claude Desktop</b>, one click per bundle:</p>
+        <p class="bundles">
+          <a href="https://github.com/KitchenSink4AI/KitchenSink4Word/releases/latest">Word</a> ·
+          <a href="https://github.com/KitchenSink4AI/KitchenSink4PPT/releases/latest">PPT</a> ·
+          <a href="https://github.com/KitchenSink4AI/KitchenSink4XL/releases/latest">XL</a> ·
+          <a href="https://github.com/KitchenSink4AI/KitchenSink4Web/releases/latest">Web</a>
+        </p>
+      </div>
+      <div class="route">
+        <p class="route-t" data-i18n="cart.code"><b>Claude Code</b>, paste once and the register rings up all four:</p>
+        <pre class="cmd"><code>claude mcp add word -s user -- uvx kitchensink4word
+claude mcp add ppt  -s user -- uvx kitchensink4ppt
+claude mcp add xl   -s user -- uvx kitchensink4xl
+claude mcp add web  -s user -- uvx kitchensink4web</code></pre>
+      </div>
+      <div class="route">
+        <p class="route-t" data-i18n="cart.dev"><b>Developers</b>:</p>
+        <pre class="cmd"><code>pip install kitchensink4word kitchensink4ppt kitchensink4xl kitchensink4web</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="creed">
+  <div class="wrap">
+    <div class="sec-head"><span class="no" data-i18n="creed.no">HOUSE RULES</span><h2 data-i18n="creed.h2">How this store is run</h2></div>
+    <p class="creed-lead" data-i18n="creed.why">Nobody wants to install a tool for a job that comes up once. The one time the job does come, though, nobody has the hours to go find the tool either. So these shelves hold everything, including things you may never touch, and the day you need one, it is already there. Everything on them is built to the same house standard: a backup lands before your file changes, the work is checked after, and when something cannot be done, your AI says so plainly instead of guessing. The spec sheets hang in each aisle.</p>
+    <div class="creed">
+      <div class="line">
+        <h3 data-i18n="creed1.t">Everything plus the kitchen sink.</h3>
+        <p data-i18n="creed1.p">One server per document format, complete enough that your agent never has to shop anywhere else.</p>
+      </div>
+      <div class="line">
+        <h3 data-i18n="creed2.t">Engineered not to corrupt.</h3>
+        <p data-i18n="creed2.p">Atomic validated saves, automatic backups before every change, byte-identical passthrough of everything untouched, and adversarial test evidence published with every release.</p>
+      </div>
+      <div class="line">
+        <h3 data-i18n="creed3.t">Refuses rather than guesses.</h3>
+        <p data-i18n="creed3.p">When a target is ambiguous, the tools refuse and show the candidates. A confident wrong edit is the one product this store does not stock.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="service">
+  <div class="wrap">
+    <div class="sec-head"><span class="no" data-i18n="svc.no">THE FRONT DESK</span><h2 data-i18n="svc.h2">CUSTOMER SERVICE</h2></div>
+    <span class="ticket" data-i18n="svc.ticket">NOW SERVING · TAKE A NUMBER · EVERY FIXTURE HAS ITS OWN DESK</span>
+    <div class="desks">
+      <a class="counter w" href="https://github.com/KitchenSink4AI/KitchenSink4Word/issues">
+        <span class="aisle-tag" data-i18n="w.tag">AISLE W · PLUMBING</span>
+        <span class="icon">🔧</span>
+        <h3><span data-i18n="dw.t">Word</span> <span style="font-size:.72em;font-weight:400;font-style:italic">(KitchenSink4Word)</span></h3>
+        <p style="margin:2px 0 0;font-family:'Fraunces',Georgia,serif;font-style:italic;color:var(--ink-soft)" data-i18n="dw.q">Sink acting up?</p>
+        <p data-i18n="dw.p">Leaks, missing attachments, and feature requests for KitchenSink4Word all go to the plumbing desk. Structured forms ask exactly what a fix needs; never attach a private document, rebuild the structure with placeholder text.</p>
+        <span class="go" data-i18n="dw.g">Visit the Word service desk →</span>
+      </a>
+      <a class="counter p" href="https://github.com/KitchenSink4AI/KitchenSink4PPT/issues">
+        <span class="aisle-tag" data-i18n="p.tag">AISLE P · PAINT</span>
+        <span class="icon">🎨</span>
+        <h3><span data-i18n="dp.t">PowerPoint</span> <span style="font-size:.72em;font-weight:400;font-style:italic">(KitchenSink4PPT)</span></h3>
+        <p style="margin:2px 0 0;font-family:'Fraunces',Georgia,serif;font-style:italic;color:var(--ink-soft)" data-i18n="dp.q">Streaks in the finish?</p>
+        <p data-i18n="dp.p">Glitches, refusals, and feature requests for KitchenSink4PPT go to the paint desk. Same structured forms, same house policy; never attach a private deck, rebuild the structure with placeholder text.</p>
+        <span class="go" data-i18n="dp.g">Visit the PPT service desk →</span>
+      </a>
+      <a class="counter x" href="https://github.com/KitchenSink4AI/KitchenSink4XL/issues">
+        <span class="aisle-tag" data-i18n="x.tag">AISLE X · ELECTRICAL</span>
+        <span class="icon">🔌</span>
+        <h3><span data-i18n="dx.t">Excel</span> <span style="font-size:.72em;font-weight:400;font-style:italic">(KitchenSink4XL)</span></h3>
+        <p style="margin:2px 0 0;font-family:'Fraunces',Georgia,serif;font-style:italic;color:var(--ink-soft)" data-i18n="dx.q">Found a number you can't trust?</p>
+        <p data-i18n="dx.p">A value labeled wrong, a refusal that made no sense, a save that touched something it shouldn't have, or a capability the sink should have and doesn't. File it at the counter: the forms ask exactly what a fix needs. Never paste real spreadsheet data; describe the shape of the workbook instead.</p>
+        <span class="go" data-i18n="dx.g">Visit the Excel service desk →</span>
+      </a>
+      <a class="counter g" href="https://github.com/KitchenSink4AI/KitchenSink4Web/issues">
+        <span class="aisle-tag" data-i18n="g.tag">AISLE G · GARDEN</span>
+        <span class="icon">🪴</span>
+        <h3><span data-i18n="dg.t">Web</span> <span style="font-size:.72em;font-weight:400;font-style:italic">(KitchenSink4Web)</span></h3>
+        <p style="margin:2px 0 0;font-family:'Fraunces',Georgia,serif;font-style:italic;color:var(--ink-soft)" data-i18n="dg.q">Weeds in the garden?</p>
+        <p data-i18n="dg.p">Overgrown pages, surprise costs, and feature requests for KitchenSink4Web go to the garden desk. Same structured forms, same house policy; never paste a private page, describe its shape instead.</p>
+        <span class="go" data-i18n="dg.g">Visit the Web service desk →</span>
+      </a>
+    </div>
+    <p class="svc-note" data-i18n="svc.com"><b>Commercial fitting?</b> Free for individuals and personal use, and it stays that way. If your company wants to build one of these servers into a product of its own, that needs a commercial license, and terms are worked out case by case. Open an issue at the desk of the product you need and we will talk it through.</p>
+    <p class="svc-note" data-i18n="svc.note">Reports are public GitHub issues (a free GitHub account is needed to file one). Every report lands in the maintainer's inbox.</p>
+    <div class="the-counter">
+      <p data-i18n="counter.p">Something broke, something you wish these could do, or your company wants to build them into a product of its own. Whatever brought you to the counter, it is the same window: file it on GitHub and it gets read by the person who built the shelves.</p>
+      <p class="counter-link"><a href="https://github.com/KitchenSink4AI">→ github.com/KitchenSink4AI</a></p>
+    </div>
+    <a class="shop-dog" href="shop-dog.html" data-i18n-aria="dog.alt" aria-label="the shop dog, asleep near the service counters">🐕<span class="zz" aria-hidden="true"><i>z</i><i>z</i><i>z</i></span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="f-receipts" data-i18n="f.receipts">Four aisles, seven languages, and more than <b>6,400</b> adversarial tests between them, most of them filed by the owner against his own store before it opened. That's a lotta hardware. 🧰</p>
+    <p class="f-legal" data-i18n="f.legal">© 2026 Alvut Consulting, LLC. Licensed AGPL-3.0: free for individuals and personal use; companies building these into their own products need a commercial license (licensing@kitchensink4.ai). Provided as-is, without warranty of any kind, per the license. Not affiliated with or endorsed by Microsoft Corporation. Microsoft, Word, PowerPoint, and Excel are trademarks of Microsoft Corporation. All other trademarks are the property of their respective owners.</p>
+  </div>
+  <div class="wrap" style="text-align:center;padding:10px 0"><img src="https://visitor-badge.laobi.icu/badge?page_id=kitchensink4ai.storefront&left_color=%231e3550&right_color=%23b0622a&left_text=views" alt="views" height="18" style="vertical-align:middle"></div>
+<div class="wrap colophon">SET IN FRAUNCES &amp; IBM PLEX MONO</div>
+</footer>
+
+<script>
+/*I18N-START*/
+(function(){
+"use strict";
+var I18N = {
+en: {
+"pageTitle": "The KitchenSink Works · Everything plus the kitchen sink",
+"sw.lbl": "The aisles",
+"m.left": "<b>PURVEYORS</b> OF FINE INSTRUMENTS FOR OFFICE DOCUMENTS",
+"m.depts": "DEPARTMENTS",
+"m.cart": "CHECKOUT",
+"m.rules": "HOUSE RULES",
+"hero.open": "OPEN · ALL HOURS · ALL TIME ZONES",
+"hero.tagline": "Everything <em>plus</em> the kitchen sink. And yes, it just works.",
+"hero.promise": "Everything you'll ever need for the trip, plus more; even the kitchen sink.",
+"hero.idiom": "",
+"hero.est": "A FAMILY OF <b>MCP SERVERS</b> · ONE FIXTURE PER DEPARTMENT · <b>AGPL-3.0</b>",
+"floor.no": "THE FLOOR",
+"floor.h2": "Shop by department",
+"w.tag": "AISLE W · PLUMBING",
+"w.pitch": "The most complete Word (.docx) MCP server ever plumbed. Live editing of open documents, native citations and bibliography, merge-aware table surgery, footnotes, tracked-changes authoring, redaction with verification. Engineered not to corrupt.",
+"w.counts": "<b>221</b> operations · <b>110</b> tools · <b>1,842</b> tests · <b>0</b> corruptions",
+"w.show": "SHOWROOM →",
+"p.tag": "AISLE P · PAINT",
+"p.pitch": "Everything plus the kitchen sink for PowerPoint (.pptx), headlined by the fixture nobody else carries: SVG in, grouped native shapes with glued connectors out. Move the node, the arrows follow. Plus the first file-based structural table surgery, slide management done right, and tiered loading from day one.",
+"p.counts": "<b>159</b> operations · <b>141</b> tools · <b>1,241</b> tests · <b>0</b> corruptions",
+"p.show": "SHOWROOM →",
+"x.tag": "AISLE X · ELECTRICAL",
+"x.pitch": "Everything plus the kitchen sink for Excel (.xlsx), headlined by the thing every other server gets wrong: a spreadsheet remembers its answers, not its thinking, so a stale number looks exactly like a live one. This one labels every value it hands back, names the cells that went stale, and asks Excel itself to recalculate when it matters. Structural edits carry their formulas with them. Tiered loading from day one.",
+"x.counts": "<b>129</b> operations · <b>69</b> tools · <b>1,294</b> tests · <b>0</b> corruptions",
+"x.show": "SHOWROOM →",
+"g.tag": "AISLE G · GARDEN",
+"g.badge": "NEW STOCK",
+"g.pitch": "Everything plus the kitchen sink for the open web: your AI reads whole pages for the price of a paragraph, shadow roots included, and cannot click a thing until you flip the switch. Every read ends with the price it paid and a list of what it skipped.",
+"g.counts": "<b>19/52</b> tools · <b>2,065</b> tests · <b>7×</b> cheaper reads · <b>0</b> acting tools until allowed",
+"g.show": "SHOWROOM →",
+"shelf.s1": "Backordered. This shelf is not empty by accident.",
+"cart.no": "ONE TRIP",
+"cart.h2": "Whole store",
+"cart.lead": "Came in for one and want the set? It all fits in one cart.",
+"cart.desktop": "<b>Claude Desktop</b>, one click per bundle:",
+"cart.code": "<b>Claude Code</b>, paste once and the register rings up all four:",
+"cart.dev": "<b>Developers</b>:",
+"creed.no": "HOUSE RULES",
+"creed.h2": "How this store is run",
+"creed.why": "Nobody wants to install a tool for a job that comes up once. The one time the job does come, though, nobody has the hours to go find the tool either. So these shelves hold everything, including things you may never touch, and the day you need one, it is already there. Everything on them is built to the same house standard: a backup lands before your file changes, the work is checked after, and when something cannot be done, your AI says so plainly instead of guessing. The spec sheets hang in each aisle.",
+"creed1.t": "Everything plus the kitchen sink.",
+"creed1.p": "One server per document format, complete enough that your agent never has to shop anywhere else.",
+"creed2.t": "Engineered not to corrupt.",
+"creed2.p": "Atomic validated saves, automatic backups before every change, byte-identical passthrough of everything untouched, and adversarial test evidence published with every release.",
+"creed3.t": "Refuses rather than guesses.",
+"creed3.p": "When a target is ambiguous, the tools refuse and show the candidates. A confident wrong edit is the one product this store does not stock.",
+"svc.no": "THE FRONT DESK",
+"svc.h2": "CUSTOMER SERVICE",
+"svc.ticket": "NOW SERVING · TAKE A NUMBER · EVERY FIXTURE HAS ITS OWN DESK",
+"dw.t": "Word",
+"dw.q": "Sink acting up?",
+"dw.p": "Leaks, missing attachments, and feature requests for KitchenSink4Word all go to the plumbing desk. Structured forms ask exactly what a fix needs; never attach a private document, rebuild the structure with placeholder text.",
+"dw.g": "Visit the Word service desk →",
+"dp.t": "PowerPoint",
+"dp.q": "Streaks in the finish?",
+"dp.p": "Glitches, refusals, and feature requests for KitchenSink4PPT go to the paint desk. Same structured forms, same house policy; never attach a private deck, rebuild the structure with placeholder text.",
+"dp.g": "Visit the PPT service desk →",
+"dx.t": "Excel",
+"dx.q": "Found a number you can't trust?",
+"dx.p": "A value labeled wrong, a refusal that made no sense, a save that touched something it shouldn't have, or a capability the sink should have and doesn't. File it at the counter: the forms ask exactly what a fix needs. Never paste real spreadsheet data; describe the shape of the workbook instead.",
+"dx.g": "Visit the Excel service desk →",
+"dg.t": "Web",
+"dg.q": "Weeds in the garden?",
+"dg.p": "Overgrown pages, surprise costs, and feature requests for KitchenSink4Web go to the garden desk. Same structured forms, same house policy; never paste a private page, describe its shape instead.",
+"dg.g": "Visit the Web service desk →",
+"svc.com": "<b>Commercial fitting?</b> Free for individuals and personal use, and it stays that way. If your company wants to build one of these servers into a product of its own, that needs a commercial license, and terms are worked out case by case. Open an issue at the desk of the product you need and we will talk it through.",
+"svc.note": "Reports are public GitHub issues (a free GitHub account is needed to file one). Every report lands in the maintainer's inbox.",
+"counter.p": "Something broke, something you wish these could do, or your company wants to build them into a product of its own. Whatever brought you to the counter, it is the same window: file it on GitHub and it gets read by the person who built the shelves.",
+"f.receipts": "Four aisles, seven languages, and more than <b>6,400</b> adversarial tests between them, most of them filed by the owner against his own store before it opened. That's a lotta hardware. 🧰",
+"f.legal": "&copy; 2026 Alvut Consulting, LLC. Licensed AGPL-3.0: free for individuals and personal use; companies building these into their own products need a commercial license (licensing@kitchensink4.ai). Provided as-is, without warranty of any kind, per the license. Not affiliated with or endorsed by Microsoft Corporation. Microsoft, Word, PowerPoint, and Excel are trademarks of Microsoft Corporation. All other trademarks are the property of their respective owners.",
+"dog.alt": "the shop dog, asleep near the service counters"
+
+},
+ko: {
+"pageTitle": "The KitchenSink Works · 없는 게 없습니다",
+"sw.lbl": "매장 통로",
+"m.left": "<b>사무 문서용</b> 정밀 기구 전문점",
+"m.depts": "매장 안내",
+"m.cart": "계산대",
+"m.rules": "가게 원칙",
+"hero.open": "영업 중 · 24시간 · 모든 시간대",
+"hero.tagline": "정말 <em>없는 게 없습니다</em>. 그리고 이름 그대로, 그냥 잘 돌아갑니다. “Everything <em>plus</em> the kitchen sink.”",
+"hero.promise": "이번 여정에 필요한 모든 것, 그리고 그 이상까지. 부엌 싱크대마저 들어 있습니다.",
+"hero.idiom": "영어 관용구 “everything but the kitchen sink”는 ‘생각할 수 있는 모든 것’이라는 뜻입니다. 이 가게에는 그 싱크대까지 들어 있습니다.",
+"hero.est": "<b>MCP 서버</b> 제품군 · 부문마다 설비 하나 · <b>AGPL-3.0</b>",
+"floor.no": "매장",
+"floor.h2": "부문별로 둘러보기",
+"w.tag": "W 통로 · 배관",
+"w.pitch": "역대 가장 완전하게 배관된 Word(.docx) MCP 서버. 열린 문서의 라이브 편집, 네이티브 인용과 참고문헌, 병합 인식 표 수술, 각주, 추적 변경으로 쓰기, 검증을 동반한 검열 삭제. 손상시키지 않도록 설계.",
+"w.counts": "작업 <b>221</b>가지 · 도구 <b>110</b>종 · 테스트 <b>1,842</b>건 · 손상 <b>0</b>건",
+"w.show": "전시장 →",
+"p.tag": "P 통로 · 페인트",
+"p.pitch": "PowerPoint(.pptx)를 위한 것도 정말 없는 게 없습니다. 간판은 다른 어디에도 없는 설비: SVG가 들어가면, 붙은 연결선을 갖춘 그룹 네이티브 도형이 나옵니다. 노드를 옮기면 화살표가 따라옵니다. 여기에 최초의 파일 기반 표 구조 수술, 제대로 만든 슬라이드 관리, 첫날부터 계층형 로딩까지.",
+"p.counts": "작업 <b>159</b>가지 · 도구 <b>141</b>종 · 테스트 <b>1,241</b>건 · 손상 <b>0</b>건",
+"p.show": "전시장 →",
+"x.tag": "X 통로 · 전기",
+"x.pitch": "Excel(.xlsx)을 위한 것도 정말 없는 게 없습니다. 간판은 다른 서버가 하나같이 놓치는 지점: 스프레드시트는 계산 과정이 아니라 계산 결과만 기억하기 때문에, 오래된 숫자가 살아 있는 숫자와 똑같아 보입니다. 이 서버는 돌려주는 모든 값에 라벨을 붙이고, 오래된 셀을 주소로 지목하며, 중요한 순간에는 Excel 자신에게 재계산을 시킵니다. 구조를 바꿔도 수식이 함께 따라옵니다. 첫날부터 계층형 로딩.",
+"x.counts": "작업 <b>129</b>가지 · 도구 <b>69</b>종 · 테스트 <b>1,294</b>건 · 손상 <b>0</b>건",
+"x.show": "전시장 →",
+"g.tag": "G 통로 · 원예",
+"g.badge": "신상품",
+"g.pitch": "열린 웹을 위한 것도 정말 없는 게 없습니다. AI가 페이지 전체를 문단 하나 값에 읽고, 섬우 루트 안까지 들어가며, 사용자가 스위치를 올리기 전에는 아무것도 클릭하지 못합니다. 읽기가 끝날 때마다 치른 비용과 건너뛰 것의 목록이 함께 나옵니다.",
+"g.counts": "도구 <b>19/52</b>종 · 테스트 <b>2,065</b>건 · 읽기 비용 <b>7×</b> 절감 · 허용 전 조작 도구 <b>0</b>종",
+"g.show": "전시장 →",
+"shelf.s1": "입고 대기 중. 이 선반이 비어 있는 것은 우연이 아닙니다.",
+"cart.no": "한 번의 장보기",
+"cart.h2": "가게 전체",
+"cart.lead": "하나 사러 왔다가 세트가 탐나십니까? 전부 카트 하나에 들어갑니다.",
+"cart.desktop": "<b>Claude Desktop</b>, 번들마다 클릭 한 번:",
+"cart.code": "<b>Claude Code</b>, 한 번 붙여 넣으면 계산대가 네 개를 한꺼번에 찍습니다:",
+"cart.dev": "<b>개발자</b>:",
+"creed.no": "가게 원칙",
+"creed.h2": "이 가게가 돌아가는 방식",
+"creed.why": "한 번 있을까 말까 한 일 때문에 도구를 설치하고 싶은 사람은 없습니다. 그런데 막상 그 일이 닥치면, 도구를 찾으러 다닐 시간이 있는 사람도 없습니다. 그래서 이 선반들은 전부를 갖춰 둡니다. 평생 한 번도 손대지 않을 물건까지 올려 두고, 필요한 날이 오면 이미 거기에 있게 합니다. 선반 위의 모든 것은 같은 가게 기준으로 만듭니다: 파일이 바뀌기 전에 백업이 남고, 작업이 끝난 뒤에는 검사하며, 할 수 없는 일은 AI가 추측하는 대신 그렇다고 분명히 말합니다. 사양서는 통로마다 걸려 있습니다.",
+"creed1.t": "없는 게 없습니다.",
+"creed1.p": "문서 형식마다 서버 하나, 에이전트가 다른 가게에 갈 일이 없을 만큼 완전하게.",
+"creed2.t": "손상시키지 않도록 설계.",
+"creed2.p": "원자적 검증 저장, 모든 변경 전 자동 백업, 손대지 않는 것은 바이트 단위 그대로 통과, 그리고 릴리스마다 공개되는 적대적 테스트 근거.",
+"creed3.t": "추측하느니 거부합니다.",
+"creed3.p": "대상이 모호하면 도구는 거부하고 후보를 보여 줍니다. 자신만만한 오편집이야말로 이 가게가 취급하지 않는 유일한 상품입니다.",
+"svc.no": "프런트 데스크",
+"svc.h2": "고객 서비스",
+"svc.ticket": "지금 접수 중 · 번호표를 뽑으세요 · 설비마다 전용 창구가 있습니다",
+"dw.t": "Word",
+"dw.q": "싱크대가 말썽입니까?",
+"dw.p": "누수, 빠진 부속, KitchenSink4Word 기능 요청은 모두 배관 창구로 갑니다. 구조화된 양식이 수리에 필요한 것만 정확히 묻습니다. 개인 문서는 절대 첨부하지 말고, 자리표시 텍스트로 구조만 재현해 주세요.",
+"dw.g": "Word 서비스 창구로 →",
+"dp.t": "PowerPoint",
+"dp.q": "마감에 얼룩이 졌습니까?",
+"dp.p": "오작동, 거부, KitchenSink4PPT 기능 요청은 페인트 창구로 갑니다. 같은 구조화된 양식, 같은 가게 방침입니다. 개인 프레젠테이션은 절대 첨부하지 말고, 자리표시 텍스트로 구조만 재현해 주세요.",
+"dp.g": "PPT 서비스 창구로 →",
+"dx.t": "Excel",
+"dx.q": "믿기 어려운 숫자가 나왔습니까?",
+"dx.p": "값에 잘못된 라벨이 붙었거나, 납득할 수 없는 거부가 돌아왔거나, 저장이 건드리지 말아야 할 곳까지 건드렸거나, 싱크대에 마땅히 있어야 할 기능이 없다면 창구에 접수해 주세요. 양식은 수리에 필요한 것만 정확히 묻습니다. 실제 스프레드시트 데이터는 절대 붙여 넣지 마시고, 대신 통합 문서의 구조를 설명해 주세요.",
+"dx.g": "Excel 서비스 창구로 →",
+"dg.t": "Web",
+"dg.q": "정원에 잡초가 자랐습니까?",
+"dg.p": "손쓸 수 없이 커진 페이지, 예상치 못한 비용, KitchenSink4Web 기능 요청은 원예 창구로 갑니다. 같은 구조화된 양식, 같은 가게 방침입니다. 개인 페이지는 절대 붙여 넣지 마시고, 대신 그 구조를 설명해 주세요.",
+"dg.g": "Web 서비스 창구로 →",
+"svc.com": "<b>영업용 설비가 필요합니까?</b> 개인과 개인적 용도에는 무료이며, 앞으로도 그렇습니다. 회사가 이 서버들을 자사 제품에 넣어 만들려면 상업용 라이선스가 필요하고, 조건은 사안마다 협의해서 정합니다. 필요한 제품의 창구에서 이슈를 열어 주시면 함께 이야기하겠습니다.",
+"svc.note": "신고는 공개 GitHub 이슈로 접수됩니다(제출에는 무료 GitHub 계정이 필요합니다). 모든 신고는 관리자의 수신함에 바로 도착합니다.",
+"counter.p": "무언가 고장 났거나, 이것들이 해 줬으면 하는 일이 있거나, 회사에서 이 서버들을 자사 제품에 넣고 싶을 수도 있습니다. 무엇 때문에 창구에 오셨든 창구는 하나입니다: GitHub에 올리시면 이 선반을 만든 사람이 직접 읽습니다.",
+"f.receipts": "통로 넷, 언어 일곱, 그리고 그 사이를 오간 적대적 테스트 <b>6,400</b>건 이상. 대부분은 문을 열기도 전에 주인이 자기 가게를 상대로 직접 걸어 본 것입니다. 철물 한번 어지간히 많습니다. 🧰",
+"f.legal": "&copy; 2026 Alvut Consulting, LLC. AGPL-3.0 라이선스: 개인과 개인적 용도에는 무료이며, 이 서버들을 자사 제품에 넣어 만드는 기업에는 상업용 라이선스가 필요합니다(licensing@kitchensink4.ai). 라이선스에 따라 어떠한 보증도 없이 있는 그대로 제공됩니다. Microsoft Corporation과 제휴하거나 그로부터 보증받지 않았습니다. Microsoft, Word, PowerPoint, Excel은 Microsoft Corporation의 상표입니다. 그 밖의 모든 상표는 각 소유자의 재산입니다.",
+"dog.alt": "서비스 창구 옆에서 잠든 가게 개"
+
+},
+ja: {
+"pageTitle": "The KitchenSink Works · 何でも揃います",
+"sw.lbl": "売り場",
+"m.left": "<b>オフィス文書のための</b>精密器具商",
+"m.depts": "売り場案内",
+"m.cart": "レジ",
+"m.rules": "店の掟",
+"hero.open": "営業中 · 24時間 · 全タイムゾーン",
+"hero.tagline": "<em>何でも揃う</em>、まさに至れり尽くせり。そして名前のとおり、ちゃんと動きます。“Everything <em>plus</em> the kitchen sink.”",
+"hero.promise": "この旅に必要なものはすべて、さらにその先まで。台所の流しまで積んであります。",
+"hero.idiom": "英語の慣用句 “everything but the kitchen sink” は「考えつく限りのすべて」という意味。この店には、その流しまで置いてあります。",
+"hero.est": "<b>MCP サーバー</b>のファミリー · 一部門に一器具 · <b>AGPL-3.0</b>",
+"floor.no": "売り場",
+"floor.h2": "売り場別に見る",
+"w.tag": "W 列 · 配管",
+"w.pitch": "史上もっとも完全に配管された Word(.docx)MCP サーバー。開いた文書のライブ編集、ネイティブの引用と文献目録、結合を認識する表の外科手術、脚注、変更履歴としての書き込み、検証付きの墨消し。壊さないための設計。",
+"w.counts": "操作 <b>221</b> · ツール <b>110</b> · テスト <b>1,842</b> · 破損 <b>0</b>",
+"w.show": "ショールーム →",
+"p.tag": "P 列 · 塗料",
+"p.pitch": "PowerPoint(.pptx)のためにも何でも揃っています。看板は他のどこにも置いていない器具:SVG を入れると、接着コネクタ付きのグループ化ネイティブ図形が出てきます。ノードを動かせば、矢印がついてくる。さらに初のファイルベース構造テーブル手術、まともに作られたスライド管理、初日からの段階式読み込みも。",
+"p.counts": "操作 <b>159</b> · ツール <b>141</b> · テスト <b>1,241</b> · 破損 <b>0</b>",
+"p.show": "ショールーム →",
+"x.tag": "X 列 · 電気",
+"x.pitch": "Excel(.xlsx)のためのものも本当になんでも揃っています。看板は、ほかのサーバーがそろって外している一点:表計算が覚えているのは答えであって、考え方ではありません。だから古い数字は生きている数字とまったく同じ顔をしています。このサーバーは返すすべての値にラベルを付け、古くなったセルをアドレスで名指しし、大事な場面では Excel 自身に再計算させます。構造を変えても数式がついてきます。初日からの段階式読み込み。",
+"x.counts": "操作 <b>129</b> · ツール <b>69</b> · テスト <b>1,294</b> · 破損 <b>0</b>",
+"x.show": "ショールーム →",
+"g.tag": "G 列 · 園芸",
+"g.badge": "新入荷",
+"g.pitch": "オープンウェブのためにも何でも揃っています。AI がページまるごとを段落ひとつ分の費用で読み、シャドウルートの中まで届き、あなたがスイッチを入れるまで何もクリックできません。読み取りが終わるたびに、かかった費用と飛ばした箇所の一覧が付いてきます。",
+"g.counts": "ツール <b>19/52</b> · テスト <b>2,065</b> · 読み取り費用 <b>7×</b> 削減 · 許可前の操作ツール <b>0</b>",
+"g.show": "ショールーム →",
+"shelf.s1": "入荷待ち。この棚が空いているのは偶然ではありません。",
+"cart.no": "ひと回りで",
+"cart.h2": "店ごと",
+"cart.lead": "一つ買いに来て、揃いが欲しくなりましたか。全部カート一つに収まります。",
+"cart.desktop": "<b>Claude Desktop</b>、バンドルごとにクリック一回:",
+"cart.code": "<b>Claude Code</b>、一度貼り付ければレジが四つまとめて打ちます:",
+"cart.dev": "<b>開発者の方</b>:",
+"creed.no": "店の掟",
+"creed.h2": "この店の流儀",
+"creed.why": "一度きりの仕事のために道具を入れたい人はいません。ところがその一度が来たとき、道具を探しに行く時間のある人もいません。だからこの棚には全部置いてあります。一生触らないかもしれないものまで並べておき、必要になった日にはもうそこにある。棚の上のものはすべて同じ店の基準で作られています。ファイルが変わる前にバックアップが残り、作業のあとに検査が入り、できないことはAIが推測せずにはっきりそう言います。仕様書は各通路に掛けてあります。",
+"creed1.t": "何でも揃います。",
+"creed1.p": "文書形式ごとにサーバー1台。エージェントがよそへ買いに行かずに済む完全さで。",
+"creed2.t": "壊さないための設計。",
+"creed2.p": "アトミックな検証付き保存、すべての変更前の自動バックアップ、手を付けない部分のバイト単位そのままの通過、そしてリリースごとに公開される敵対的テストの証跡。",
+"creed3.t": "当て推量より、拒否。",
+"creed3.p": "対象が曖昧なら、ツールは拒否して候補を示します。自信満々の誤編集こそ、この店が置かない唯一の商品です。",
+"svc.no": "フロントデスク",
+"svc.h2": "カスタマーサービス",
+"svc.ticket": "ただいま受付中 · 番号札をどうぞ · 器具ごとに専用窓口",
+"dw.t": "Word",
+"dw.q": "流しの調子が悪い?",
+"dw.p": "水漏れ、足りない部品、KitchenSink4Word への機能要望は、すべて配管窓口へ。構造化されたフォームが修理に必要なことだけを尋ねます。私的な文書は決して添付せず、プレースホルダーのテキストで構造だけ再現してください。",
+"dw.g": "Word のサービス窓口へ →",
+"dp.t": "PowerPoint",
+"dp.q": "仕上げにムラがある?",
+"dp.p": "誤動作、拒否、KitchenSink4PPT への機能要望は塗料窓口へ。同じ構造化フォーム、同じ店の方針です。私的なスライド資料は決して添付せず、プレースホルダーのテキストで構造だけ再現してください。",
+"dp.g": "PPT のサービス窓口へ →",
+"dx.t": "Excel",
+"dx.q": "信用できない数字が出ましたか？",
+"dx.p": "値のラベルが違う、筋の通らない拒否が返ってきた、保存が触るべきでないところまで触った、この流しにあるべき機能がない。窓口にお届けください。フォームは修理に必要なことだけを尋ねます。実際のスプレッドシートのデータは決して貼らず、代わりにブックの形を説明してください。",
+"dx.g": "Excel のサービス窓口へ →",
+"dg.t": "Web",
+"dg.q": "庭に雑草が生えた?",
+"dg.p": "伸び放題のページ、思わぬ費用、KitchenSink4Web への機能要望は園芸窓口へ。同じ構造化フォーム、同じ店の方針です。私的なページは決して貼らず、代わりにその形を説明してください。",
+"dg.g": "Web のサービス窓口へ →",
+"svc.com": "<b>業務用の取り付けですか?</b> 個人利用と私的な用途は無料で、これからも無料のままです。会社としてこれらのサーバーを自社製品に組み込みたい場合は商用ライセンスが必要で、条件は案件ごとに相談して決めます。必要な製品の窓口で Issue を開いてください。そこから話を進めましょう。",
+"svc.note": "報告は公開の GitHub Issue になります(提出には無料の GitHub アカウントが必要です)。すべての報告はメンテナーの受信箱に届きます。",
+"counter.p": "何かが壊れた、こうできたらいいのにと思うことがある、あるいは会社がこれらを自社製品に組み込みたい。どのご用件で窓口にいらしても、窓口は同じです。GitHubに出していただければ、この棚を作った本人が読みます。",
+"f.receipts": "通路四つ、言語七つ、そのあいだを走った敵対的テストは<b>6,400</b>件以上。その大半は、開店前に店主が自分の店に向けて仕掛けたものです。なかなかの金物の量です。🧰",
+"f.legal": "&copy; 2026 Alvut Consulting, LLC. AGPL-3.0ライセンス。個人および私的な用途は無料です。これらを自社製品に組み込む企業には商用ライセンスが必要です(licensing@kitchensink4.ai)。ライセンスに従い、いかなる保証もなく現状のまま提供されます。Microsoft Corporationとの提携や同社による推奨はありません。Microsoft、Word、PowerPoint、ExcelはMicrosoft Corporationの商標です。その他のすべての商標は各所有者に帰属します。",
+"dog.alt": "サービス窓口のそばで眠る看板犬"
+
+},
+zh: {
+"pageTitle": "The KitchenSink Works · 应有尽有",
+"sw.lbl": "各条过道",
+"m.left": "<b>办公文档</b>精密器具供应商",
+"m.depts": "各部门",
+"m.cart": "收银台",
+"m.rules": "店规",
+"hero.open": "营业中 · 全天候 · 覆盖所有时区",
+"hero.tagline": "<em>应有尽有</em>。而且正如店名所说,确实好使。“Everything <em>plus</em> the kitchen sink.”",
+"hero.promise": "这趟出门要用的一切,还有更多;连厨房水槽都在里面。",
+"hero.idiom": "英语习语 “everything but the kitchen sink” 意为“能想到的一切”。这家店连那个水槽也一并有售。",
+"hero.est": "一个 <b>MCP 服务器</b>家族 · 每个部门一件设备 · <b>AGPL-3.0</b>",
+"floor.no": "卖场",
+"floor.h2": "按部门选购",
+"w.tag": "W 过道 · 水暖",
+"w.pitch": "迄今管道铺设最完整的 Word(.docx)MCP 服务器。打开的文档实时编辑,原生引文与参考文献,识别合并的表格手术,脚注,以修订方式写入,带验证的涂黑。为“不损坏”而设计。",
+"w.counts": "<b>221</b> 项操作 · <b>110</b> 件工具 · <b>1,842</b> 项测试 · <b>0</b> 次损坏",
+"w.show": "展厅 →",
+"p.tag": "P 过道 · 油漆",
+"p.pitch": "为 PowerPoint(.pptx)同样应有尽有,招牌是别家都不进货的设备:SVG 进,带粘附连接线的分组原生图形出。移动节点,箭头跟着走。外加第一个基于文件的表格结构手术、做对了的幻灯片管理,以及第一天就有的分层加载。",
+"p.counts": "<b>159</b> 项操作 · <b>141</b> 件工具 · <b>1,241</b> 项测试 · <b>0</b> 次损坏",
+"p.show": "展厅 →",
+"x.tag": "X 过道 · 电工",
+"x.pitch": "为 Excel(.xlsx)同样应有尽有,招牌是别家服务器都做错的那一点: 表格记住的是答案,不是算法,所以过期的数字和活的数字长得一模一样。这一台给交回的每个值都贴上标注,把过期的单元格按地址点名,关键时刻请 Excel 亲自重算。改结构的时候,公式跟着走。第一天就有的分层加载。",
+"x.counts": "<b>129</b> 项操作 · <b>69</b> 件工具 · <b>1,294</b> 项测试 · <b>0</b> 次损坏",
+"x.show": "展厅 →",
+"g.tag": "G 过道 · 园艺",
+"g.badge": "新货上架",
+"g.pitch": "为开放网页同样应有尽有: 你的 AI 用一个段落的价钱读完整页,连 shadow root 里的内容也读得到,而且在你打开开关之前点不了任何东西。每次读完都会交代花了多少,以及跳过了哪些。",
+"g.counts": "<b>19/52</b> 件工具 · <b>2,065</b> 项测试 · 读取便宜 <b>7×</b> · 允许前 <b>0</b> 个操作工具",
+"g.show": "展厅 →",
+"shelf.s1": "缺货补货中。这个货架空着不是偶然。",
+"cart.no": "一趟",
+"cart.h2": "整间店",
+"cart.lead": "本来只想买一件,结果想要一整套?一辆购物车就装得下。",
+"cart.desktop": "<b>Claude Desktop</b>,每个安装包点一下:",
+"cart.code": "<b>Claude Code</b>,粘贴一次,收银台把四个一起结掉:",
+"cart.dev": "<b>开发者</b>:",
+"creed.no": "店规",
+"creed.h2": "这家店怎么开",
+"creed.why": "没人愿意为一件一辈子只碰一次的活儿去装一个工具。可真到了那一次,也没人有工夫再去找工具。所以这些货架什么都摆着,包括你也许永远用不上的东西,等到你需要的那天,它已经在那儿了。架上的每一件都按同一套本店标准做:文件改动之前先留一份备份,做完之后再核对一遍,做不到的事,你的 AI 会直说,而不是猜。规格说明就挂在各条通道上。",
+"creed1.t": "应有尽有。",
+"creed1.p": "每种文档格式一台服务器,完整到你的智能体不必再去别家。",
+"creed2.t": "为“不损坏”而设计。",
+"creed2.p": "原子化校验保存,每次改动前自动备份,未触碰的内容逐字节原样通过,每次发布都公开对抗性测试证据。",
+"creed3.t": "宁拒绝,不瞎猜。",
+"creed3.p": "目标含糊时,工具会拒绝并列出候选。信心十足的错误修改,是这家店唯一不进的货。",
+"svc.no": "前台",
+"svc.h2": "客户服务",
+"svc.ticket": "正在叫号 · 请取号 · 每件设备都有自己的服务台",
+"dw.t": "Word",
+"dw.q": "水槽闹脾气了?",
+"dw.p": "漏水、缺配件、KitchenSink4Word 的功能请求,统统到水暖台。结构化表单只问修复所需的信息;切勿附上私人文档,请用占位文字重建结构。",
+"dw.g": "去 Word 服务台 →",
+"dp.t": "PowerPoint",
+"dp.q": "漆面有刷痕?",
+"dp.p": "故障、拒绝、KitchenSink4PPT 的功能请求,到油漆台。同样的结构化表单,同样的店规;切勿附上私人演示文稿,请用占位文字重建结构。",
+"dp.g": "去 PPT 服务台 →",
+"dx.t": "Excel",
+"dx.q": "拿到一个信不过的数？",
+"dx.p": "某个值标错了，某次拒绝毫无道理，某回保存动了不该动的地方，或者这台水槽该有的某项能力它没有。到柜台报一单，表单只问修复所需的信息。切勿粘贴真实的表格数据；请改为描述工作簿的结构。",
+"dx.g": "去 Excel 服务台 →",
+"dg.t": "Web",
+"dg.q": "园子里长草了?",
+"dg.p": "疯长的页面、意外的开销、KitchenSink4Web 的功能请求,到园艺台。同样的结构化表单,同样的店规;切勿粘贴私人页面,请改为描述它的结构。",
+"dg.g": "去 Web 服务台 →",
+"svc.com": "<b>商用装配?</b> 个人和个人用途一直免费,以后也是。如果贵公司想把这些服务器做进自家产品里,那就需要商业许可,条款按具体情况一事一议。到你所需产品的服务台开一个 issue,我们细谈。",
+"svc.note": "报告以公开 GitHub issue 的形式提交(需要一个免费的 GitHub 账号)。每份报告都会直达维护者的收件箱。",
+"counter.p": "东西坏了,有些事你希望它们能做到,或者贵公司想把它们做进自己的产品里。不管你为什么来到柜台,柜台只有一个:发到 GitHub 上,搭这些货架的人会亲自读。",
+"f.receipts": "四条通道,七种语言,其间跑过<b>6,400</b>多次对抗性测试,大多数是店主在开门之前对着自己的店提出来的。这五金可真不少。🧰",
+"f.legal": "&copy; 2026 Alvut Consulting, LLC. 依 AGPL-3.0 授权:个人及个人用途免费;把这些做进自有产品的公司需要商业许可(licensing@kitchensink4.ai)。按许可条款以现状提供,不附带任何形式的保证。与 Microsoft Corporation 无关联,亦未获其背书。Microsoft、Word、PowerPoint 和 Excel 是 Microsoft Corporation 的商标。所有其他商标归各自所有者所有。",
+"dog.alt": "在服务台旁睡着的看店狗"
+
+},
+de: {
+"pageTitle": "The KitchenSink Works · Alles mit allem Drum und Dran",
+"sw.lbl": "Die Gänge",
+"m.left": "<b>LIEFERANTEN</b> FEINER INSTRUMENTE FÜR OFFICE-DOKUMENTE",
+"m.depts": "ABTEILUNGEN",
+"m.cart": "KASSE",
+"m.rules": "HAUSREGELN",
+"hero.open": "GEÖFFNET · RUND UM DIE UHR · IN JEDER ZEITZONE",
+"hero.tagline": "<em>Mit allem Drum und Dran</em>. Und ja, es funktioniert einfach. “Everything <em>plus</em> the kitchen sink.”",
+"hero.promise": "Alles, was Sie für die Fahrt je brauchen werden, und mehr; sogar die Küchenspüle.",
+"hero.idiom": "Die englische Redewendung “everything but the kitchen sink” bedeutet: wirklich alles. Dieser Laden führt die Spüle gleich mit.",
+"hero.est": "EINE FAMILIE VON <b>MCP-SERVERN</b> · EINE ARMATUR PRO ABTEILUNG · <b>AGPL-3.0</b>",
+"floor.no": "DIE VERKAUFSFLÄCHE",
+"floor.h2": "Nach Abteilung einkaufen",
+"w.tag": "GANG W · SANITÄR",
+"w.pitch": "Der vollständigste Word-(.docx-)MCP-Server, der je verrohrt wurde. Live-Bearbeitung offener Dokumente, native Zitate und Literaturverzeichnis, verbund-bewusste Tabellenchirurgie, Fußnoten, Schreiben als nachverfolgte Änderung, Schwärzung mit Verifikation. Konstruiert mit dem Ziel, nichts zu beschädigen.",
+"w.counts": "<b>221</b> Operationen · <b>110</b> Werkzeuge · <b>1.842</b> Tests · <b>0</b> Beschädigungen",
+"w.show": "AUSSTELLUNG →",
+"p.tag": "GANG P · FARBEN",
+"p.pitch": "Auch für PowerPoint (.pptx) alles mit allem Drum und Dran, angeführt von der Armatur, die sonst niemand führt: SVG hinein, gruppierte native Formen mit angeklebten Verbindern heraus. Den Knoten verschieben, die Pfeile folgen. Dazu die erste dateibasierte strukturelle Tabellenchirurgie, Folienverwaltung, richtig gemacht, und gestuftes Laden vom ersten Tag an.",
+"p.counts": "<b>159</b> Operationen · <b>141</b> Werkzeuge · <b>1.241</b> Tests · <b>0</b> Beschädigungen",
+"p.show": "AUSSTELLUNG →",
+"x.tag": "GANG X · ELEKTRO",
+"x.pitch": "Auch für Excel (.xlsx) alles mit allem Drum und Dran, angeführt von dem einen Punkt, den jeder andere Server falsch macht: eine Tabelle merkt sich ihre Antworten, nicht ihren Rechenweg, und so sieht eine veraltete Zahl genau aus wie eine lebendige. Dieser hier weist jeden Wert aus, den er zurückgibt, benennt die veralteten Zellen mit Adresse und lässt Excel selbst neu rechnen, wenn es darauf ankommt. Strukturelle Änderungen nehmen ihre Formeln mit. Gestuftes Laden vom ersten Tag an.",
+"x.counts": "<b>129</b> Operationen · <b>69</b> Werkzeuge · <b>1.294</b> Tests · <b>0</b> Beschädigungen",
+"x.show": "AUSSTELLUNG →",
+"g.tag": "GANG G · GARTEN",
+"g.badge": "NEU EINGETROFFEN",
+"g.pitch": "Auch für das offene Web alles mit allem Drum und Dran: Ihre KI liest ganze Seiten zum Preis eines Absatzes, Shadow Roots eingeschlossen, und kann nichts anklicken, solange Sie den Schalter nicht umlegen. Jeder Lesevorgang endet mit dem Preis, den er gekostet hat, und einer Liste dessen, was übersprungen wurde.",
+"g.counts": "<b>19/52</b> Werkzeuge · <b>2.065</b> Tests · <b>7×</b> günstiger lesen · <b>0</b> handelnde Werkzeuge bis erlaubt",
+"g.show": "AUSSTELLUNG →",
+"shelf.s1": "Im Rückstand bestellt. Dieses Regal ist nicht aus Versehen leer.",
+"cart.no": "EINE FAHRT",
+"cart.h2": "Der ganze Laden",
+"cart.lead": "Wegen einem gekommen und jetzt den ganzen Satz im Blick? Das passt alles in einen Einkaufswagen.",
+"cart.desktop": "<b>Claude Desktop</b>, ein Klick pro Bundle:",
+"cart.code": "<b>Claude Code</b>, einmal einfügen und die Kasse bongt alle vier:",
+"cart.dev": "<b>Für Entwickler</b>:",
+"creed.no": "HAUSREGELN",
+"creed.h2": "Wie dieser Laden geführt wird",
+"creed.why": "Niemand möchte ein Werkzeug installieren für eine Arbeit, die einmal anfällt. Und wenn diese eine Arbeit dann doch kommt, hat auch niemand die Stunden, das Werkzeug erst zu suchen. Also führen diese Regale alles, auch Dinge, die Sie vielleicht nie anfassen, und an dem Tag, an dem Sie eines brauchen, steht es schon da. Alles darauf ist nach demselben Hausstandard gebaut: Vor jeder Änderung an Ihrer Datei landet eine Sicherung, danach wird die Arbeit geprüft, und wenn etwas nicht geht, sagt Ihre KI das klar, statt zu raten. Die Datenblätter hängen in jedem Gang.",
+"creed1.t": "Alles, mit allem Drum und Dran.",
+"creed1.p": "Ein Server pro Dokumentformat, vollständig genug, dass Ihr Agent nie woanders einkaufen muss.",
+"creed2.t": "Konstruiert, um nichts zu beschädigen.",
+"creed2.p": "Atomares, validiertes Speichern, automatische Backups vor jeder Änderung, byte-identische Durchleitung von allem Unberührten und mit jedem Release veröffentlichte adversariale Testbelege.",
+"creed3.t": "Verweigert, statt zu raten.",
+"creed3.p": "Ist ein Ziel mehrdeutig, verweigern die Werkzeuge und zeigen die Kandidaten. Eine selbstsichere Fehlbearbeitung ist das eine Produkt, das dieser Laden nicht führt.",
+"svc.no": "DER EMPFANG",
+"svc.h2": "KUNDENSERVICE",
+"svc.ticket": "JETZT BEDIENUNG · NUMMER ZIEHEN · JEDE ARMATUR HAT IHREN EIGENEN SCHALTER",
+"dw.t": "Word",
+"dw.q": "Zickt die Spüle?",
+"dw.p": "Lecks, fehlende Anbauteile und Funktionswünsche für KitchenSink4Word gehen alle an den Sanitärschalter. Strukturierte Formulare fragen genau das ab, was eine Reparatur braucht; hängen Sie nie ein privates Dokument an, bauen Sie die Struktur mit Platzhaltertext nach.",
+"dw.g": "Zum Word-Serviceschalter →",
+"dp.t": "PowerPoint",
+"dp.q": "Streifen im Lack?",
+"dp.p": "Aussetzer, Verweigerungen und Funktionswünsche für KitchenSink4PPT gehen an den Farbenschalter. Dieselben strukturierten Formulare, dieselbe Hauspolitik; hängen Sie nie einen privaten Foliensatz an, bauen Sie die Struktur mit Platzhaltertext nach.",
+"dp.g": "Zum PPT-Serviceschalter →",
+"dx.t": "Excel",
+"dx.q": "Eine Zahl, der Sie nicht trauen?",
+"dx.p": "Ein falsch beschrifteter Wert, eine Verweigerung ohne erkennbaren Grund, ein Speichern, das etwas angefasst hat, das es nicht anfassen sollte, oder eine Fähigkeit, die die Spüle haben sollte und nicht hat. Geben Sie es am Schalter ab: die Formulare fragen genau das ab, was eine Reparatur braucht. Fügen Sie nie echte Tabellendaten ein; beschreiben Sie stattdessen den Aufbau der Arbeitsmappe.",
+"dx.g": "Zum Excel-Serviceschalter →",
+"dg.t": "Web",
+"dg.q": "Unkraut im Garten?",
+"dg.p": "Zugewucherte Seiten, überraschende Kosten und Funktionswünsche für KitchenSink4Web gehen an den Gartenschalter. Dieselben strukturierten Formulare, dieselbe Hauspolitik; fügen Sie nie eine private Seite ein, beschreiben Sie stattdessen ihren Aufbau.",
+"dg.g": "Zum Web-Serviceschalter →",
+"svc.com": "<b>Gewerbliche Montage?</b> Für Privatpersonen und private Nutzung kostenlos, und das bleibt so. Will ein Unternehmen einen dieser Server in ein eigenes Produkt einbauen, braucht es eine kommerzielle Lizenz, und die Konditionen werden im Einzelfall besprochen. Öffnen Sie ein Issue am Schalter des Produkts, das Sie brauchen, dann klären wir das.",
+"svc.note": "Berichte sind öffentliche GitHub-Issues (zum Einreichen genügt ein kostenloses GitHub-Konto). Jeder Bericht landet im Posteingang des Maintainers.",
+"counter.p": "Etwas ist kaputt, etwas fehlt Ihnen, das diese können sollten, oder Ihr Unternehmen möchte sie in ein eigenes Produkt einbauen. Was Sie auch an den Tresen führt, es ist dasselbe Fenster: Reichen Sie es auf GitHub ein, und es liest die Person, die die Regale gebaut hat.",
+"f.receipts": "Vier Gänge, sieben Sprachen und mehr als <b>6.400</b> adversarielle Tests dazwischen, die meisten davon vom Inhaber gegen den eigenen Laden eingereicht, bevor er öffnete. Das ist eine Menge Eisenwaren. 🧰",
+"f.legal": "&copy; 2026 Alvut Consulting, LLC. Lizenziert unter AGPL-3.0: kostenlos für Privatpersonen und private Nutzung; Unternehmen, die diese in eigene Produkte einbauen, brauchen eine kommerzielle Lizenz (licensing@kitchensink4.ai). Bereitgestellt wie besehen, ohne jede Gewährleistung, gemäß der Lizenz. Nicht mit der Microsoft Corporation verbunden und nicht von ihr unterstützt. Microsoft, Word, PowerPoint und Excel sind Marken der Microsoft Corporation. Alle anderen Marken sind Eigentum ihrer jeweiligen Inhaber.",
+"dog.alt": "der Ladenhund, eingeschlafen neben den Serviceschaltern"
+
+},
+fr: {
+"pageTitle": "The KitchenSink Works · Absolument tout, jusqu'au moindre détail",
+"sw.lbl": "Les allées",
+"m.left": "<b>FOURNISSEURS</b> D'INSTRUMENTS DE PRÉCISION POUR DOCUMENTS OFFICE",
+"m.depts": "RAYONS",
+"m.cart": "CAISSE",
+"m.rules": "RÈGLES DE LA MAISON",
+"hero.open": "OUVERT · À TOUTE HEURE · TOUS FUSEAUX HORAIRES",
+"hero.tagline": "<em>Absolument tout, jusqu'au moindre détail</em>. Et oui, ça marche, tout simplement. “Everything <em>plus</em> the kitchen sink.”",
+"hero.promise": "Tout ce dont vous aurez besoin pour le trajet, et plus encore ; même l'évier de la cuisine.",
+"hero.idiom": "L'expression anglaise “everything but the kitchen sink” signifie « absolument tout ». Cette boutique vend l'évier avec.",
+"hero.est": "UNE FAMILLE DE <b>SERVEURS MCP</b> · UNE INSTALLATION PAR RAYON · <b>AGPL-3.0</b>",
+"floor.no": "LA SURFACE DE VENTE",
+"floor.h2": "Acheter par rayon",
+"w.tag": "ALLÉE W · PLOMBERIE",
+"w.pitch": "Le serveur MCP Word (.docx) le plus complet jamais raccordé. Édition en direct des documents ouverts, citations et bibliographie natives, chirurgie de tableaux tenant compte des fusions, notes de bas de page, écriture en suivi des modifications, caviardage avec vérification. Conçu pour ne pas corrompre.",
+"w.counts": "<b>221</b> opérations · <b>110</b> outils · <b>1 842</b> tests · <b>0</b> corruption",
+"w.show": "SALLE D'EXPO →",
+"p.tag": "ALLÉE P · PEINTURE",
+"p.pitch": "Absolument tout pour PowerPoint (.pptx) aussi, avec en vedette l'installation que personne d'autre ne tient en magasin : le SVG entre, des formes natives groupées aux connecteurs collés sortent. Déplacez le nœud, les flèches suivent. Plus la première chirurgie structurelle de tableaux sur fichier, une gestion des diapositives bien faite, et le chargement par paliers dès le premier jour.",
+"p.counts": "<b>159</b> opérations · <b>141</b> outils · <b>1 241</b> tests · <b>0</b> corruption",
+"p.show": "SALLE D'EXPO →",
+"x.tag": "ALLÉE X · ÉLECTRICITÉ",
+"x.pitch": "Absolument tout pour Excel (.xlsx) aussi, avec en vedette le point que tous les autres serveurs manquent : un tableur retient ses réponses, pas son raisonnement, si bien qu'un chiffre périmé ressemble exactement à un chiffre vivant. Celui-ci mentionne chaque valeur qu'il rend, nomme par leur adresse les cellules périmées, et demande à Excel lui-même de recalculer quand cela compte. Les modifications de structure emportent leurs formules avec elles. Le chargement par paliers dès le premier jour.",
+"x.counts": "<b>129</b> opérations · <b>69</b> outils · <b>1 294</b> tests · <b>0</b> corruption",
+"x.show": "SALLE D'EXPO →",
+"g.tag": "ALLÉE G · JARDIN",
+"g.badge": "NOUVEL ARRIVAGE",
+"g.pitch": "Absolument tout pour le web ouvert aussi : votre IA lit des pages entières pour le prix d'un paragraphe, shadow roots compris, et ne peut rien cliquer tant que vous n'avez pas actionné l'interrupteur. Chaque lecture se termine par le prix qu'elle a coûté et la liste de ce qui a été sauté.",
+"g.counts": "<b>19/52</b> outils · <b>2 065</b> tests · lectures <b>7×</b> moins chères · <b>0</b> outil d'action avant autorisation",
+"g.show": "SALLE D'EXPO →",
+"shelf.s1": "En réapprovisionnement. Ce rayon n'est pas vide par hasard.",
+"cart.no": "UN SEUL PASSAGE",
+"cart.h2": "La boutique entière",
+"cart.lead": "Venu pour un seul et tenté par la série ? Tout tient dans un seul caddie.",
+"cart.desktop": "<b>Claude Desktop</b>, un clic par bundle :",
+"cart.code": "<b>Claude Code</b>, un seul copier-coller et la caisse encaisse les quatre :",
+"cart.dev": "<b>Développeurs</b> :",
+"creed.no": "RÈGLES DE LA MAISON",
+"creed.h2": "Comment cette boutique est tenue",
+"creed.why": "Personne n'a envie d'installer un outil pour une tâche qui se présente une fois. Et le jour où elle se présente, personne n'a non plus les heures nécessaires pour aller chercher l'outil. Ces rayons tiennent donc tout, y compris des choses que vous ne toucherez peut-être jamais, et le jour où il vous en faut une, elle est déjà là. Tout ce qui s'y trouve est construit au même standard maison : une sauvegarde est déposée avant que votre fichier ne change, le travail est vérifié ensuite, et quand quelque chose ne peut pas être fait, votre IA le dit franchement au lieu de deviner. Les fiches techniques sont affichées dans chaque allée.",
+"creed1.t": "Absolument tout, jusqu'au moindre détail.",
+"creed1.p": "Un serveur par format de document, assez complet pour que votre agent n'ait jamais à faire ses courses ailleurs.",
+"creed2.t": "Conçu pour ne pas corrompre.",
+"creed2.p": "Enregistrements atomiques validés, sauvegardes automatiques avant chaque modification, passage octet pour octet de tout ce qui n'est pas touché, et preuves de tests adversariaux publiées avec chaque version.",
+"creed3.t": "Refuse plutôt que de deviner.",
+"creed3.p": "Quand une cible est ambiguë, les outils refusent et montrent les candidats. La modification erronée pleine d'assurance est le seul produit que cette boutique ne tient pas.",
+"svc.no": "L'ACCUEIL",
+"svc.h2": "SERVICE CLIENT",
+"svc.ticket": "ON VOUS SERT · PRENEZ UN NUMÉRO · CHAQUE INSTALLATION A SON COMPTOIR",
+"dw.t": "Word",
+"dw.q": "L'évier fait des siennes ?",
+"dw.p": "Fuites, accessoires manquants et demandes de fonctions pour KitchenSink4Word vont tous au comptoir plomberie. Des formulaires structurés demandent exactement ce qu'il faut pour réparer ; ne joignez jamais un document privé, reconstruisez la structure avec du texte de substitution.",
+"dw.g": "Au comptoir de service Word →",
+"dp.t": "PowerPoint",
+"dp.q": "Des traces dans la finition ?",
+"dp.p": "Pépins, refus et demandes de fonctions pour KitchenSink4PPT vont au comptoir peinture. Mêmes formulaires structurés, même politique de la maison ; ne joignez jamais une présentation privée, reconstruisez la structure avec du texte de substitution.",
+"dp.g": "Au comptoir de service PPT →",
+"dx.t": "Excel",
+"dx.q": "Un chiffre auquel vous ne pouvez pas vous fier ?",
+"dx.p": "Une valeur mal étiquetée, un refus sans logique, un enregistrement qui a touché ce qu'il n'aurait pas dû, ou une capacité que l'évier devrait avoir et n'a pas. Déposez-le au comptoir : les formulaires demandent exactement ce qu'il faut pour réparer. Ne collez jamais de vraies données de tableur ; décrivez plutôt la structure du classeur.",
+"dx.g": "Au comptoir de service Excel →",
+"dg.t": "Web",
+"dg.q": "Des mauvaises herbes au jardin ?",
+"dg.p": "Pages envahies, coûts inattendus et demandes de fonctions pour KitchenSink4Web vont au comptoir jardin. Mêmes formulaires structurés, même politique de la maison ; ne collez jamais une page privée, décrivez plutôt sa structure.",
+"dg.g": "Au comptoir de service Web →",
+"svc.com": "<b>Installation commerciale ?</b> Gratuit pour les particuliers et l'usage personnel, et cela ne changera pas. Si votre entreprise veut intégrer un de ces serveurs dans un produit à elle, il lui faut une licence commerciale, et les conditions se discutent au cas par cas. Ouvrez un ticket au comptoir du produit qui vous intéresse et nous en parlerons.",
+"svc.note": "Les signalements sont des tickets GitHub publics (un compte GitHub gratuit suffit pour en déposer un). Chaque signalement atterrit dans la boîte du mainteneur.",
+"counter.p": "Quelque chose est cassé, quelque chose que vous aimeriez qu'ils sachent faire, ou votre entreprise veut les intégrer à un produit maison. Quelle que soit la raison de votre venue au comptoir, c'est le même guichet : déposez-la sur GitHub et elle sera lue par la personne qui a monté les rayons.",
+"f.receipts": "Quatre allées, sept langues et plus de <b>6 400</b> tests adverses entre elles, la plupart déposés par le patron contre sa propre boutique avant l'ouverture. Ça fait beaucoup de quincaillerie. 🧰",
+"f.legal": "&copy; 2026 Alvut Consulting, LLC. Sous licence AGPL-3.0 : gratuit pour les particuliers et l'usage personnel ; les entreprises qui les intègrent à leurs propres produits ont besoin d'une licence commerciale (licensing@kitchensink4.ai). Fourni tel quel, sans garantie d'aucune sorte, conformément à la licence. Sans affiliation ni approbation de Microsoft Corporation. Microsoft, Word, PowerPoint et Excel sont des marques de Microsoft Corporation. Toutes les autres marques appartiennent à leurs propriétaires respectifs.",
+"dog.alt": "le chien de la boutique, endormi près des comptoirs de service"
+
+},
+es: {
+"pageTitle": "The KitchenSink Works · De todo, hasta lo que no imaginas",
+"sw.lbl": "Los pasillos",
+"m.left": "<b>PROVEEDORES</b> DE INSTRUMENTOS FINOS PARA DOCUMENTOS DE OFFICE",
+"m.depts": "DEPARTAMENTOS",
+"m.cart": "CAJA",
+"m.rules": "REGLAS DE LA CASA",
+"hero.open": "ABIERTO · A TODAS HORAS · EN TODOS LOS HUSOS HORARIOS",
+"hero.tagline": "<em>De todo, hasta lo que no imaginas</em>. Y sí, simplemente funciona. “Everything <em>plus</em> the kitchen sink.”",
+"hero.promise": "Todo lo que vaya a necesitar para el viaje, y más; hasta el fregadero de la cocina.",
+"hero.idiom": "La expresión inglesa “everything but the kitchen sink” significa «absolutamente todo». Esta tienda vende hasta el fregadero.",
+"hero.est": "UNA FAMILIA DE <b>SERVIDORES MCP</b> · UN ACCESORIO POR DEPARTAMENTO · <b>AGPL-3.0</b>",
+"floor.no": "LA PLANTA",
+"floor.h2": "Compre por departamento",
+"w.tag": "PASILLO W · FONTANERÍA",
+"w.pitch": "El servidor MCP de Word (.docx) más completo jamás entubado. Edición en vivo de documentos abiertos, citas y bibliografía nativas, cirugía de tablas consciente de las combinaciones, notas al pie, escritura como cambios rastreados, censura con verificación. Diseñado para no corromper.",
+"w.counts": "<b>221</b> operaciones · <b>110</b> herramientas · <b>1.842</b> pruebas · <b>0</b> corrupciones",
+"w.show": "SALA DE EXPOSICIÓN →",
+"p.tag": "PASILLO P · PINTURA",
+"p.pitch": "De todo también para PowerPoint (.pptx), encabezado por el accesorio que nadie más tiene en stock: entra SVG, salen formas nativas agrupadas con conectores pegados. Mueva el nodo y las flechas lo siguen. Más la primera cirugía estructural de tablas basada en archivo, gestión de diapositivas bien hecha y carga por niveles desde el primer día.",
+"p.counts": "<b>159</b> operaciones · <b>141</b> herramientas · <b>1.241</b> pruebas · <b>0</b> corrupciones",
+"p.show": "SALA DE EXPOSICIÓN →",
+"x.tag": "PASILLO X · ELECTRICIDAD",
+"x.pitch": "De todo también para Excel (.xlsx), encabezado por lo que todos los demás servidores hacen mal: una hoja de cálculo recuerda sus respuestas, no su razonamiento, así que un número caducado se ve exactamente igual que uno vivo. Este etiqueta cada valor que devuelve, nombra por su dirección las celdas caducadas y le pide al propio Excel que recalcule cuando importa. Los cambios de estructura se llevan sus fórmulas consigo. Carga por niveles desde el primer día.",
+"x.counts": "<b>129</b> operaciones · <b>69</b> herramientas · <b>1.294</b> pruebas · <b>0</b> corrupciones",
+"x.show": "SALA DE EXPOSICIÓN →",
+"g.tag": "PASILLO G · JARDÍN",
+"g.badge": "RECIÉN LLEGADO",
+"g.pitch": "De todo también para la web abierta: su IA lee páginas enteras por el precio de un párrafo, shadow roots incluidos, y no puede hacer clic en nada hasta que usted accione el interruptor. Cada lectura termina con el precio que costó y una lista de lo que se saltó.",
+"g.counts": "<b>19/52</b> herramientas · <b>2.065</b> pruebas · lecturas <b>7×</b> más baratas · <b>0</b> herramientas de acción hasta permitirlo",
+"g.show": "SALA DE EXPOSICIÓN →",
+"shelf.s1": "En pedido pendiente. Este estante no está vacío por casualidad.",
+"cart.no": "UN SOLO VIAJE",
+"cart.h2": "La tienda entera",
+"cart.lead": "¿Vino por uno y se le antoja el juego? Todo cabe en un solo carro.",
+"cart.desktop": "<b>Claude Desktop</b>, un clic por paquete:",
+"cart.code": "<b>Claude Code</b>, pegue una vez y la caja cobra los cuatro:",
+"cart.dev": "<b>Desarrolladores</b>:",
+"creed.no": "REGLAS DE LA CASA",
+"creed.h2": "Cómo se lleva esta tienda",
+"creed.why": "Nadie quiere instalar una herramienta para un trabajo que sale una vez. Y el día que ese trabajo sale, tampoco nadie tiene las horas para ir a buscarla. Así que estos estantes lo tienen todo, incluidas cosas que quizá nunca toque, y el día que necesite una, ya está ahí. Todo lo que hay en ellos está construido con el mismo estándar de la casa: una copia de seguridad aterriza antes de que su archivo cambie, el trabajo se comprueba después, y cuando algo no se puede hacer, su IA lo dice claramente en lugar de adivinar. Las fichas técnicas cuelgan en cada pasillo.",
+"creed1.t": "De todo, hasta lo que no imaginas.",
+"creed1.p": "Un servidor por formato de documento, tan completo que su agente nunca tiene que comprar en otra parte.",
+"creed2.t": "Diseñado para no corromper.",
+"creed2.p": "Guardados atómicos validados, copias de seguridad automáticas antes de cada cambio, paso byte a byte de todo lo no tocado, y evidencia de pruebas adversariales publicada con cada versión.",
+"creed3.t": "Rehúsa antes que adivinar.",
+"creed3.p": "Cuando un objetivo es ambiguo, las herramientas rehúsan y muestran los candidatos. Una edición equivocada y segura de sí misma es el único producto que esta tienda no vende.",
+"svc.no": "EL MOSTRADOR PRINCIPAL",
+"svc.h2": "ATENCIÓN AL CLIENTE",
+"svc.ticket": "AHORA ATENDIENDO · TOME UN NÚMERO · CADA ACCESORIO TIENE SU PROPIO MOSTRADOR",
+"dw.t": "Word",
+"dw.q": "¿El fregadero da guerra?",
+"dw.p": "Fugas, accesorios que faltan y peticiones de funciones de KitchenSink4Word van todas al mostrador de fontanería. Formularios estructurados preguntan exactamente lo que un arreglo necesita; nunca adjunte un documento privado, reconstruya la estructura con texto de relleno.",
+"dw.g": "Al mostrador de servicio de Word →",
+"dp.t": "PowerPoint",
+"dp.q": "¿Marcas en el acabado?",
+"dp.p": "Fallos, rechazos y peticiones de funciones de KitchenSink4PPT van al mostrador de pintura. Los mismos formularios estructurados, la misma política de la casa; nunca adjunte una presentación privada, reconstruya la estructura con texto de relleno.",
+"dp.g": "Al mostrador de servicio de PPT →",
+"dx.t": "Excel",
+"dx.q": "¿Un número del que no se fía?",
+"dx.p": "Un valor mal etiquetado, un rechazo sin sentido, un guardado que tocó algo que no debía, o una capacidad que el fregadero debería tener y no tiene. Preséntelo en el mostrador: los formularios preguntan exactamente lo que un arreglo necesita. Nunca pegue datos reales de hoja de cálculo; describa en su lugar la estructura del libro.",
+"dx.g": "Al mostrador de servicio de Excel →",
+"dg.t": "Web",
+"dg.q": "¿Malas hierbas en el jardín?",
+"dg.p": "Páginas desbordadas, costes inesperados y peticiones de funciones de KitchenSink4Web van al mostrador de jardín. Los mismos formularios estructurados, la misma política de la casa; nunca pegue una página privada, describa en su lugar su estructura.",
+"dg.g": "Al mostrador de servicio de Web →",
+"svc.com": "<b>¿Instalación comercial?</b> Gratis para particulares y uso personal, y seguirá siéndolo. Si su empresa quiere integrar uno de estos servidores en un producto propio, hace falta una licencia comercial, y las condiciones se acuerdan caso por caso. Abra un issue en el mostrador del producto que necesite y lo hablamos.",
+"svc.note": "Los partes son issues públicos de GitHub (hace falta una cuenta gratuita de GitHub para presentarlos). Cada parte llega a la bandeja del mantenedor.",
+"counter.p": "Algo se rompió, algo que le gustaría que estos supieran hacer, o su empresa quiere integrarlos en un producto propio. Sea lo que sea lo que le trajo al mostrador, es la misma ventanilla: preséntelo en GitHub y lo lee la persona que montó los estantes.",
+"f.receipts": "Cuatro pasillos, siete idiomas y más de <b>6.400</b> pruebas adversariales entre ellos, la mayoría presentadas por el dueño contra su propia tienda antes de abrir. Eso es un montón de ferretería. 🧰",
+"f.legal": "&copy; 2026 Alvut Consulting, LLC. Con licencia AGPL-3.0: gratis para particulares y uso personal; las empresas que los integren en productos propios necesitan una licencia comercial (licensing@kitchensink4.ai). Se proporciona tal cual, sin garantía de ningún tipo, conforme a la licencia. Sin afiliación ni respaldo de Microsoft Corporation. Microsoft, Word, PowerPoint y Excel son marcas comerciales de Microsoft Corporation. Todas las demás marcas son propiedad de sus respectivos titulares.",
+"dog.alt": "el perro de la tienda, dormido junto a los mostradores de servicio"
+
+}
+};
+/*I18N-END*/
+var LANGS = [["en","EN"],["ko","한국어"],["ja","日本語"],["zh","中文"],["de","DE"],["fr","FR"],["es","ES"]];
+var HTML_LANG = {en:"en", ko:"ko", ja:"ja", zh:"zh-CN", de:"de", fr:"fr", es:"es"};
+function apply(lang){
+  if (!I18N[lang]) lang = "en";
+  var t = I18N[lang];
+  document.documentElement.lang = HTML_LANG[lang];
+  if (t["pageTitle"]) document.title = t["pageTitle"];
+  var nodes = document.querySelectorAll("[data-i18n]");
+  for (var i = 0; i < nodes.length; i++){
+    var k = nodes[i].getAttribute("data-i18n");
+    if (t[k] !== undefined) nodes[i].innerHTML = t[k];
+  }
+  var ariaNodes = document.querySelectorAll("[data-i18n-aria]");
+  for (var a = 0; a < ariaNodes.length; a++){
+    var ak = ariaNodes[a].getAttribute("data-i18n-aria");
+    if (t[ak] !== undefined) ariaNodes[a].setAttribute("aria-label", t[ak]);
+  }
+  var btns = document.querySelectorAll("#langToggle button");
+  for (var j = 0; j < btns.length; j++){
+    btns[j].setAttribute("aria-pressed", String(btns[j].getAttribute("data-lang") === lang));
+  }
+  try { localStorage.setItem("ksworks-lang", lang); } catch(e){}
+}
+var nav = document.getElementById("langToggle");
+if (nav){
+  LANGS.forEach(function(pair, idx){
+    if (idx){ var s = document.createElement("span"); s.className = "sep"; s.textContent = "·"; nav.appendChild(s); }
+    var b = document.createElement("button");
+    b.type = "button";
+    b.setAttribute("data-lang", pair[0]);
+    b.setAttribute("aria-pressed", "false");
+    b.textContent = pair[1];
+    b.addEventListener("click", function(){ apply(pair[0]); });
+    nav.appendChild(b);
+  });
+}
+var saved = null;
+try { saved = localStorage.getItem("ksworks-lang"); } catch(e){}
+var lang = (saved && I18N[saved]) ? saved : null;
+if (!lang){
+  var pref = (navigator.languages && navigator.languages[0]) || navigator.language || "en";
+  var code = String(pref).toLowerCase().slice(0, 2);
+  lang = I18N[code] ? code : "en";
+}
+apply(lang);
+})();
+</script>
+
+</body>
+</html>
