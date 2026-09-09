@@ -104,6 +104,14 @@ nav.top a{
 nav.top a:hover{color:var(--laser); text-decoration:none; text-shadow:var(--glow-c)}
 @media (max-width:640px){ nav.top a.hide-sm{display:none} }
 
+/* wayfinding for people who wanted the downloads */
+.wayfind{
+  background:rgba(0,252,254,.045);
+  border-bottom:1px solid var(--hairline);
+  padding:9px 0; font-size:13px; color:var(--ink-soft);
+}
+.wayfind b{color:var(--ink); font-weight:600}
+
 /* ---------- hero ---------- */
 .hero{padding:clamp(72px,12vh,140px) 0 clamp(50px,8vh,92px); position:relative}
 .hero h1{
@@ -312,13 +320,17 @@ footer:before{
 </header>
 
 <main>
+  <div class="wayfind"><div class="wrap">Looking for the products?
+  <b>Downloads, docs, and the full catalog live in the storefront</b> →
+  <a href="/shop/">The KitchenSink Works</a></div></div>
+
   <div class="wrap hero">
     <p class="kicker rev d1">By humans · For AI agents · To help humans</p>
     <h1 class="rev d2">Engineered, not generated<span class="dot">.</span></h1>
-    <p class="sub rev d3">KitchenSink4 builds the instruments AI agents use to do
-    real work in the tools people already live in: Word, PowerPoint, Excel, and the
-    open web. Agents are the operators; people are the customers. <b>Every figure on
-    this page is measured by a script and enforced by a test.</b></p>
+    <p class="sub rev d3">KitchenSink4 builds the instruments AI agents work with:
+    Word, PowerPoint, Excel, and the open web. Four shipped products, one bar:
+    everything included, all of it verified. <b>Every number on this page is measured
+    by a script and enforced by a test</b>; we would rather show than sell.</p>
     <div class="cta-row rev d4">
       <a class="btn-shop" href="#products">The products</a>
       <a class="btn-shop" href="/shop/">Browse the storefront →</a>
@@ -340,14 +352,19 @@ footer:before{
     <div class="wrap">
       <div class="sec-head"><span class="no">01</span><h2>The products</h2></div>
       <hr class="sec-rule">
+      <p class="sub" style="max-width:68ch; margin-bottom:38px">The name is the spec.
+      Every server ships with everything: the capability an agent needs today, the
+      fifty it will reach for next quarter, and the rails that make it safe with real
+      work. An F1 car for the daily commute: overbuilt on purpose, so the spec sheet
+      does the selling.</p>
 
       <article class="product">
         <span class="aisle-letter" aria-hidden="true">WORD</span>
         <div>
           <h3>KitchenSink<span class="four">4</span>Word<span class="ver">v2.1.0</span></h3>
-          <p>The most complete Word (.docx) MCP server ever built. Live editing of open
-          documents, native citations and bibliography, tracked-changes authoring,
-          merge-aware table surgery, redaction with verification.</p>
+          <p>The benchmark for what an agent can do in a document. Complete enough
+          that the comparison table writes itself, fast enough that nobody watches the
+          clock, and engineered so the work survives every single time.</p>
           <p class="figures"><b>221</b> ops · <b>110</b> tools · <b>1,842</b> tests · <b>0</b> corruptions</p>
           <div class="p-links">
             <a href="https://pypi.org/project/kitchensink4word/">PyPI</a>
@@ -361,9 +378,9 @@ footer:before{
         <span class="aisle-letter" aria-hidden="true">PPT</span>
         <div>
           <h3>KitchenSink<span class="four">4</span>PPT<span class="ver">v1.2.1</span></h3>
-          <p>PowerPoint (.pptx) with the capability nobody else carries: SVG in, native
-          editable shapes with glued connectors out. Move the node and the arrows follow.
-          Structural table surgery and slide management done right.</p>
+          <p>Decks at the speed of thought. The only server anywhere that turns an
+          agent's drawings into native, hand-editable slides: polished output people
+          can keep working on, with zero babysitting in between.</p>
           <p class="figures"><b>159</b> ops · <b>141</b> tools · <b>1,241</b> tests · <b>0</b> corruptions</p>
           <div class="p-links">
             <a href="https://pypi.org/project/kitchensink4ppt/">PyPI</a>
@@ -377,9 +394,9 @@ footer:before{
         <span class="aisle-letter" aria-hidden="true">XL</span>
         <div>
           <h3>KitchenSink<span class="four">4</span>XL<span class="ver">v1.2.0</span></h3>
-          <p>Excel (.xlsx) that knows a spreadsheet remembers its answers, not its
-          thinking. Every value labeled live or stale, structural edits carry their
-          formulas, and Excel itself recalculates when it matters.</p>
+          <p>Spreadsheets an agent cannot silently break. Every number knows whether
+          it is fresh, every edit carries its formulas, and the answers arrive at
+          interactive speed. The trust layer Excel always needed.</p>
           <p class="figures"><b>129</b> ops · <b>69</b> tools · <b>1,294</b> tests · <b>0</b> corruptions</p>
           <div class="p-links">
             <a href="https://pypi.org/project/kitchensink4xl/">PyPI</a>
@@ -393,9 +410,10 @@ footer:before{
         <span class="aisle-letter" aria-hidden="true">WEB</span>
         <div>
           <h3>KitchenSink<span class="four">4</span>Web<span class="ver">v1.0.0</span></h3>
-          <p>A browser built for AI agents. Whole pages read for the price of a
-          paragraph, with an honest account of what went unread. Cannot click a thing
-          until you allow it.</p>
+          <p>The web, read whole and priced honestly. An agent sees the entire page
+          for a fraction of the cost, accounts for what it skipped, and cannot take a
+          single action until it is allowed to. Fast, complete, incapable of going
+          rogue.</p>
           <p class="figures"><b>2,065</b> tests · <b>7×</b> cheaper reads · <b>0</b> acting tools until allowed</p>
           <div class="p-links">
             <a href="https://pypi.org/project/kitchensink4web/">PyPI</a>
@@ -442,44 +460,44 @@ footer:before{
     <div class="wrap">
       <div class="sec-head"><span class="no">03</span><h2>How we work</h2></div>
       <hr class="sec-rule">
-      <p class="manifesto">It has never been easier to generate a tool that almost
-      works. Documents people rely on deserve better than almost.</p>
+      <p class="manifesto">It has never been easier to ship a tool that almost
+      works. Almost is the whole problem. We build the ones that just work.</p>
       <div class="receipts">
         <div class="receipt">
           <span class="rn">R-01</span>
           <h4>Measured, not asserted</h4>
-          <p>Every number we publish comes from a measurement, and the build fails
-          when a claim and the code disagree. Marketing does not get a vote.</p>
+          <p>Every number comes off a measurement script, and the build fails the
+          moment the code stops backing it. Marketing does not get a vote.</p>
         </div>
         <div class="receipt volt">
           <span class="rn">R-02</span>
           <h4>We break it first</h4>
-          <p>Nothing ships because a demo worked once. It ships after we have tried
-          to break it deliberately, repeatedly, and on the record.</p>
+          <p>Nothing ships off one good demo. It ships after we have attacked it
+          deliberately, repeatedly, and on the record.</p>
         </div>
         <div class="receipt gg">
           <span class="rn">R-03</span>
           <h4>Done means verified</h4>
-          <p>A change is not done when it runs; it is done when it is checked after
-          it lands. Backups first, receipts after, every time.</p>
+          <p>Running is not done. Verified is done. Backups first, receipts after,
+          every time.</p>
         </div>
         <div class="receipt refusal">
           <span class="rn">R-04</span>
           <h4>Honest over impressive</h4>
           <p>A confident wrong answer is the one thing we refuse to ship. When
-          something cannot be done right, we say so and say why.</p>
+          something cannot be done right, it says so, and says why.</p>
         </div>
         <div class="receipt">
           <span class="rn">R-05</span>
           <h4>Limits in writing</h4>
-          <p>What we cannot do is stated, not hidden. Skipped tests name their
-          reasons. Changelogs say what actually changed.</p>
+          <p>What we cannot do is written down. Skips name their reasons. Changelogs
+          name what actually changed.</p>
         </div>
         <div class="receipt maker">
           <span class="rn">R-06</span>
           <h4>Built by its first customer</h4>
-          <p>Everything here runs daily in the maker's own work long before it
-          ships. The rough edges get found at our desk, not yours.</p>
+          <p>All of it runs daily in the founder's own work before anyone else
+          touches it. The rough edges die at our desk, not yours.</p>
         </div>
       </div>
     </div>
@@ -490,11 +508,11 @@ footer:before{
       <div class="sec-head"><span class="no">04</span><h2>The business</h2></div>
       <hr class="sec-rule">
       <div class="license-band">
-        <p><b>Open source where it builds trust, licensed where it captures value.</b>
-        The servers are AGPL-3.0 and free for individuals, forever. A company building
-        them into a product of its own buys a commercial license; terms are worked out
-        case by case. That is the whole model, and it is already in writing on every
-        repository.</p>
+        <p><b>Open where it builds trust, licensed where it captures value.</b> The
+        servers are AGPL-3.0 and free for individuals, forever; that is the funnel. A
+        company building them into a product of its own buys a commercial license;
+        that is the revenue. The model is simple, already in writing on every
+        repository, and it scales with every integration.</p>
         <a class="license-mail" href="mailto:licensing@kitchensink4.ai">licensing@kitchensink4.ai</a>
       </div>
     </div>
@@ -503,8 +521,8 @@ footer:before{
 
 <footer>
   <div class="wrap">
-    <p class="foot-shop">Prefer aisles, an awning, and a sleeping dog? The family also
-    runs a storefront: <a href="/shop/">The KitchenSink Works →</a></p>
+    <p class="foot-shop">The catalog, the docs, and the personality live in the
+    storefront: <a href="/shop/">The KitchenSink Works →</a></p>
     <p class="f-legal">© 2026 Alvut Consulting, LLC. Licensed AGPL-3.0: free for
     individuals and personal use; companies building these into their own products need
     a commercial license (licensing@kitchensink4.ai). Provided as-is, without warranty
