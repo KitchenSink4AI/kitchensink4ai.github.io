@@ -275,6 +275,10 @@ section{padding:60px 0;border-top:1px solid var(--rule)}
 .counter.x:hover{transform:translate(-2px,-2px);border-color:var(--brass);
   box-shadow:2px 4px 0 rgba(125,92,20,.35), 8px 14px 30px rgba(30,53,80,.16)}
 .counter.x:hover .aisle-tag{background:var(--brass)}
+.counter.g .go{color:var(--emerald)}
+.counter.g:hover{transform:translate(-2px,-2px);border-color:var(--emerald);
+  box-shadow:2px 4px 0 rgba(42,122,69,.35), 8px 14px 30px rgba(30,53,80,.16)}
+.counter.g:hover .aisle-tag{background:var(--emerald)}
 .svc-note{margin-top:18px;font-size:12px;color:var(--ink-soft);max-width:820px}
 .svc-note b{color:var(--ink)}
 
@@ -500,6 +504,14 @@ claude mcp add web  -s user -- uvx kitchensink4web</code></pre>
         <p data-i18n="dx.p">A value labeled wrong, a refusal that made no sense, a save that touched something it shouldn't have, or a capability the sink should have and doesn't. File it at the counter: the forms ask exactly what a fix needs. Never paste real spreadsheet data; describe the shape of the workbook instead.</p>
         <span class="go" data-i18n="dx.g">Visit the Excel service desk →</span>
       </a>
+      <a class="counter g" href="https://github.com/KitchenSink4AI/KitchenSink4Web/issues">
+        <span class="aisle-tag" data-i18n="g.tag">AISLE G · GARDEN</span>
+        <span class="icon">🪴</span>
+        <h3><span data-i18n="dg.t">Web</span> <span style="font-size:.72em;font-weight:400;font-style:italic">(KitchenSink4Web)</span></h3>
+        <p style="margin:2px 0 0;font-family:'Fraunces',Georgia,serif;font-style:italic;color:var(--ink-soft)" data-i18n="dg.q">Weeds in the garden?</p>
+        <p data-i18n="dg.p">Overgrown pages, surprise costs, and feature requests for KitchenSink4Web go to the garden desk. Same structured forms, same house policy; never paste a private page, describe its shape instead.</p>
+        <span class="go" data-i18n="dg.g">Visit the Web service desk →</span>
+      </a>
     </div>
     <p class="svc-note" data-i18n="svc.com"><b>Commercial fitting?</b> Free for individuals and personal use, and it stays that way. If your company wants to build one of these servers into a product of its own, that needs a commercial license, and terms are worked out case by case. Open an issue at the desk of the product you need and we will talk it through.</p>
     <p class="svc-note" data-i18n="svc.note">Reports are public GitHub issues (a free GitHub account is needed to file one). Every report lands in the maintainer's inbox.</p>
@@ -587,6 +599,10 @@ en: {
 "dx.q": "Found a number you can't trust?",
 "dx.p": "A value labeled wrong, a refusal that made no sense, a save that touched something it shouldn't have, or a capability the sink should have and doesn't. File it at the counter: the forms ask exactly what a fix needs. Never paste real spreadsheet data; describe the shape of the workbook instead.",
 "dx.g": "Visit the Excel service desk →",
+"dg.t": "Web",
+"dg.q": "Weeds in the garden?",
+"dg.p": "Overgrown pages, surprise costs, and feature requests for KitchenSink4Web go to the garden desk. Same structured forms, same house policy; never paste a private page, describe its shape instead.",
+"dg.g": "Visit the Web service desk →",
 "svc.com": "<b>Commercial fitting?</b> Free for individuals and personal use, and it stays that way. If your company wants to build one of these servers into a product of its own, that needs a commercial license, and terms are worked out case by case. Open an issue at the desk of the product you need and we will talk it through.",
 "svc.note": "Reports are public GitHub issues (a free GitHub account is needed to file one). Every report lands in the maintainer's inbox.",
 "counter.p": "Something broke, something you wish these could do, or your company wants to build them into a product of its own. Whatever brought you to the counter, it is the same window: file it on GitHub and it gets read by the person who built the shelves.",
@@ -657,6 +673,10 @@ ko: {
 "dx.q": "믿기 어려운 숫자가 나왔습니까?",
 "dx.p": "값에 잘못된 라벨이 붙었거나, 납득할 수 없는 거부가 돌아왔거나, 저장이 건드리지 말아야 할 곳까지 건드렸거나, 싱크대에 마땅히 있어야 할 기능이 없다면 창구에 접수해 주세요. 양식은 수리에 필요한 것만 정확히 묻습니다. 실제 스프레드시트 데이터는 절대 붙여 넣지 마시고, 대신 통합 문서의 구조를 설명해 주세요.",
 "dx.g": "Excel 서비스 창구로 →",
+"dg.t": "Web",
+"dg.q": "정원에 잡초가 자랐습니까?",
+"dg.p": "손쓸 수 없이 커진 페이지, 예상치 못한 비용, KitchenSink4Web 기능 요청은 원예 창구로 갑니다. 같은 구조화된 양식, 같은 가게 방침입니다. 개인 페이지는 절대 붙여 넣지 마시고, 대신 그 구조를 설명해 주세요.",
+"dg.g": "Web 서비스 창구로 →",
 "svc.com": "<b>영업용 설비가 필요합니까?</b> 개인과 개인적 용도에는 무료이며, 앞으로도 그렇습니다. 회사가 이 서버들을 자사 제품에 넣어 만들려면 상업용 라이선스가 필요하고, 조건은 사안마다 협의해서 정합니다. 필요한 제품의 창구에서 이슈를 열어 주시면 함께 이야기하겠습니다.",
 "svc.note": "신고는 공개 GitHub 이슈로 접수됩니다(제출에는 무료 GitHub 계정이 필요합니다). 모든 신고는 관리자의 수신함에 바로 도착합니다.",
 "counter.p": "무언가 고장 났거나, 이것들이 해 줬으면 하는 일이 있거나, 회사에서 이 서버들을 자사 제품에 넣고 싶을 수도 있습니다. 무엇 때문에 창구에 오셨든 창구는 하나입니다: GitHub에 올리시면 이 선반을 만든 사람이 직접 읽습니다.",
@@ -727,6 +747,10 @@ ja: {
 "dx.q": "信用できない数字が出ましたか？",
 "dx.p": "値のラベルが違う、筋の通らない拒否が返ってきた、保存が触るべきでないところまで触った、この流しにあるべき機能がない。窓口にお届けください。フォームは修理に必要なことだけを尋ねます。実際のスプレッドシートのデータは決して貼らず、代わりにブックの形を説明してください。",
 "dx.g": "Excel のサービス窓口へ →",
+"dg.t": "Web",
+"dg.q": "庭に雑草が生えた?",
+"dg.p": "伸び放題のページ、思わぬ費用、KitchenSink4Web への機能要望は園芸窓口へ。同じ構造化フォーム、同じ店の方針です。私的なページは決して貼らず、代わりにその形を説明してください。",
+"dg.g": "Web のサービス窓口へ →",
 "svc.com": "<b>業務用の取り付けですか?</b> 個人利用と私的な用途は無料で、これからも無料のままです。会社としてこれらのサーバーを自社製品に組み込みたい場合は商用ライセンスが必要で、条件は案件ごとに相談して決めます。必要な製品の窓口で Issue を開いてください。そこから話を進めましょう。",
 "svc.note": "報告は公開の GitHub Issue になります(提出には無料の GitHub アカウントが必要です)。すべての報告はメンテナーの受信箱に届きます。",
 "counter.p": "何かが壊れた、こうできたらいいのにと思うことがある、あるいは会社がこれらを自社製品に組み込みたい。どのご用件で窓口にいらしても、窓口は同じです。GitHubに出していただければ、この棚を作った本人が読みます。",
@@ -797,6 +821,10 @@ zh: {
 "dx.q": "拿到一个信不过的数？",
 "dx.p": "某个值标错了，某次拒绝毫无道理，某回保存动了不该动的地方，或者这台水槽该有的某项能力它没有。到柜台报一单，表单只问修复所需的信息。切勿粘贴真实的表格数据；请改为描述工作簿的结构。",
 "dx.g": "去 Excel 服务台 →",
+"dg.t": "Web",
+"dg.q": "园子里长草了?",
+"dg.p": "疯长的页面、意外的开销、KitchenSink4Web 的功能请求,到园艺台。同样的结构化表单,同样的店规;切勿粘贴私人页面,请改为描述它的结构。",
+"dg.g": "去 Web 服务台 →",
 "svc.com": "<b>商用装配?</b> 个人和个人用途一直免费,以后也是。如果贵公司想把这些服务器做进自家产品里,那就需要商业许可,条款按具体情况一事一议。到你所需产品的服务台开一个 issue,我们细谈。",
 "svc.note": "报告以公开 GitHub issue 的形式提交(需要一个免费的 GitHub 账号)。每份报告都会直达维护者的收件箱。",
 "counter.p": "东西坏了,有些事你希望它们能做到,或者贵公司想把它们做进自己的产品里。不管你为什么来到柜台,柜台只有一个:发到 GitHub 上,搭这些货架的人会亲自读。",
@@ -867,6 +895,10 @@ de: {
 "dx.q": "Eine Zahl, der Sie nicht trauen?",
 "dx.p": "Ein falsch beschrifteter Wert, eine Verweigerung ohne erkennbaren Grund, ein Speichern, das etwas angefasst hat, das es nicht anfassen sollte, oder eine Fähigkeit, die die Spüle haben sollte und nicht hat. Geben Sie es am Schalter ab: die Formulare fragen genau das ab, was eine Reparatur braucht. Fügen Sie nie echte Tabellendaten ein; beschreiben Sie stattdessen den Aufbau der Arbeitsmappe.",
 "dx.g": "Zum Excel-Serviceschalter →",
+"dg.t": "Web",
+"dg.q": "Unkraut im Garten?",
+"dg.p": "Zugewucherte Seiten, überraschende Kosten und Funktionswünsche für KitchenSink4Web gehen an den Gartenschalter. Dieselben strukturierten Formulare, dieselbe Hauspolitik; fügen Sie nie eine private Seite ein, beschreiben Sie stattdessen ihren Aufbau.",
+"dg.g": "Zum Web-Serviceschalter →",
 "svc.com": "<b>Gewerbliche Montage?</b> Für Privatpersonen und private Nutzung kostenlos, und das bleibt so. Will ein Unternehmen einen dieser Server in ein eigenes Produkt einbauen, braucht es eine kommerzielle Lizenz, und die Konditionen werden im Einzelfall besprochen. Öffnen Sie ein Issue am Schalter des Produkts, das Sie brauchen, dann klären wir das.",
 "svc.note": "Berichte sind öffentliche GitHub-Issues (zum Einreichen genügt ein kostenloses GitHub-Konto). Jeder Bericht landet im Posteingang des Maintainers.",
 "counter.p": "Etwas ist kaputt, etwas fehlt Ihnen, das diese können sollten, oder Ihr Unternehmen möchte sie in ein eigenes Produkt einbauen. Was Sie auch an den Tresen führt, es ist dasselbe Fenster: Reichen Sie es auf GitHub ein, und es liest die Person, die die Regale gebaut hat.",
@@ -937,6 +969,10 @@ fr: {
 "dx.q": "Un chiffre auquel vous ne pouvez pas vous fier ?",
 "dx.p": "Une valeur mal étiquetée, un refus sans logique, un enregistrement qui a touché ce qu'il n'aurait pas dû, ou une capacité que l'évier devrait avoir et n'a pas. Déposez-le au comptoir : les formulaires demandent exactement ce qu'il faut pour réparer. Ne collez jamais de vraies données de tableur ; décrivez plutôt la structure du classeur.",
 "dx.g": "Au comptoir de service Excel →",
+"dg.t": "Web",
+"dg.q": "Des mauvaises herbes au jardin ?",
+"dg.p": "Pages envahies, coûts inattendus et demandes de fonctions pour KitchenSink4Web vont au comptoir jardin. Mêmes formulaires structurés, même politique de la maison ; ne collez jamais une page privée, décrivez plutôt sa structure.",
+"dg.g": "Au comptoir de service Web →",
 "svc.com": "<b>Installation commerciale ?</b> Gratuit pour les particuliers et l'usage personnel, et cela ne changera pas. Si votre entreprise veut intégrer un de ces serveurs dans un produit à elle, il lui faut une licence commerciale, et les conditions se discutent au cas par cas. Ouvrez un ticket au comptoir du produit qui vous intéresse et nous en parlerons.",
 "svc.note": "Les signalements sont des tickets GitHub publics (un compte GitHub gratuit suffit pour en déposer un). Chaque signalement atterrit dans la boîte du mainteneur.",
 "counter.p": "Quelque chose est cassé, quelque chose que vous aimeriez qu'ils sachent faire, ou votre entreprise veut les intégrer à un produit maison. Quelle que soit la raison de votre venue au comptoir, c'est le même guichet : déposez-la sur GitHub et elle sera lue par la personne qui a monté les rayons.",
@@ -1007,6 +1043,10 @@ es: {
 "dx.q": "¿Un número del que no se fía?",
 "dx.p": "Un valor mal etiquetado, un rechazo sin sentido, un guardado que tocó algo que no debía, o una capacidad que el fregadero debería tener y no tiene. Preséntelo en el mostrador: los formularios preguntan exactamente lo que un arreglo necesita. Nunca pegue datos reales de hoja de cálculo; describa en su lugar la estructura del libro.",
 "dx.g": "Al mostrador de servicio de Excel →",
+"dg.t": "Web",
+"dg.q": "¿Malas hierbas en el jardín?",
+"dg.p": "Páginas desbordadas, costes inesperados y peticiones de funciones de KitchenSink4Web van al mostrador de jardín. Los mismos formularios estructurados, la misma política de la casa; nunca pegue una página privada, describa en su lugar su estructura.",
+"dg.g": "Al mostrador de servicio de Web →",
 "svc.com": "<b>¿Instalación comercial?</b> Gratis para particulares y uso personal, y seguirá siéndolo. Si su empresa quiere integrar uno de estos servidores en un producto propio, hace falta una licencia comercial, y las condiciones se acuerdan caso por caso. Abra un issue en el mostrador del producto que necesite y lo hablamos.",
 "svc.note": "Los partes son issues públicos de GitHub (hace falta una cuenta gratuita de GitHub para presentarlos). Cada parte llega a la bandeja del mantenedor.",
 "counter.p": "Algo se rompió, algo que le gustaría que estos supieran hacer, o su empresa quiere integrarlos en un producto propio. Sea lo que sea lo que le trajo al mostrador, es la misma ventanilla: preséntelo en GitHub y lo lee la persona que montó los estantes.",
