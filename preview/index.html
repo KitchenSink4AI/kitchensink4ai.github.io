@@ -160,7 +160,7 @@ nav.top a:hover{color:var(--laser); text-decoration:none; text-shadow:var(--glow
 /* ---------- sections ---------- */
 section{padding:clamp(64px,10vh,110px) 0}
 .sec-head{display:flex; align-items:baseline; gap:18px; margin-bottom:8px}
-.sec-head h2{font-weight:700; font-size:clamp(26px,3.4vw,40px)}
+.sec-head h2{font-weight:700; font-size:clamp(26px,3.4vw,40px); color:var(--volt); text-shadow:0 0 16px rgba(255,225,0,.22)}
 .sec-head .no{
   font-weight:600; font-size:12px; letter-spacing:.26em; color:var(--green);
   text-shadow:0 0 10px rgba(57,255,20,.4);
@@ -182,13 +182,9 @@ section{padding:clamp(64px,10vh,110px) 0}
   transition:background .18s;
 }
 .product:last-of-type{border-bottom:1px solid var(--hairline)}
-.product{--pc:var(--laser); --pglow:var(--glow-c)}
-.product.p{--pc:var(--ember); --pglow:var(--glow-e)}
-.product.x{--pc:var(--volt); --pglow:var(--glow-v)}
-.product.g{--pc:var(--green); --pglow:var(--glow-g)}
 .product:before{
   content:""; position:absolute; left:0; top:-1px; height:1px; width:0;
-  background:var(--pc); box-shadow:var(--pglow);
+  background:var(--laser); box-shadow:var(--glow-c);
   transition:width .35s cubic-bezier(.2,.7,.2,1);
 }
 .product:hover:before{width:100%}
@@ -198,7 +194,7 @@ section{padding:clamp(64px,10vh,110px) 0}
   color:transparent; -webkit-text-stroke:1px rgba(0,252,254,.4);
   user-select:none; transition:filter .2s;
 }
-.product:hover .aisle-letter{-webkit-text-stroke:1.2px var(--pc); filter:drop-shadow(0 0 7px var(--pc))}
+.product:hover .aisle-letter{-webkit-text-stroke:1.2px var(--laser); filter:drop-shadow(0 0 7px rgba(0,252,254,.7))}
 .product h3{font-weight:600; font-size:22px; margin-bottom:6px}
 .product h3 .four{color:var(--green)}
 .product h3 .ver{
@@ -211,7 +207,7 @@ section{padding:clamp(64px,10vh,110px) 0}
   color:var(--ink-dim); font-variant-numeric:tabular-nums;
   margin-bottom:12px; text-transform:uppercase;
 }
-.figures b{color:var(--pc, var(--cyan)); font-weight:600}
+.figures b{color:var(--ember); font-weight:600}
 .p-links{display:flex; gap:22px}
 .p-links a{font-weight:600; font-size:12px; letter-spacing:.18em; text-transform:uppercase}
 @media (max-width:640px){
@@ -363,7 +359,7 @@ footer:before{
       <div class="sec-head"><span class="no">01</span><h2>The products</h2></div>
       <hr class="sec-rule">
 
-      <article class="product w">
+      <article class="product">
         <span class="aisle-letter" aria-hidden="true">W</span>
         <div>
           <h3>KitchenSink<span class="four">4</span>Word<span class="ver">v2.1.0</span></h3>
@@ -379,7 +375,7 @@ footer:before{
         </div>
       </article>
 
-      <article class="product p">
+      <article class="product">
         <span class="aisle-letter" aria-hidden="true">P</span>
         <div>
           <h3>KitchenSink<span class="four">4</span>PPT<span class="ver">v1.2.1</span></h3>
@@ -395,7 +391,7 @@ footer:before{
         </div>
       </article>
 
-      <article class="product x">
+      <article class="product">
         <span class="aisle-letter" aria-hidden="true">X</span>
         <div>
           <h3>KitchenSink<span class="four">4</span>XL<span class="ver">v1.2.0</span></h3>
@@ -411,7 +407,7 @@ footer:before{
         </div>
       </article>
 
-      <article class="product g">
+      <article class="product">
         <span class="aisle-letter" aria-hidden="true">G</span>
         <div>
           <h3>KitchenSink<span class="four">4</span>Web<span class="ver">v1.0.0</span></h3>
@@ -462,7 +458,7 @@ footer:before{
 
   <section id="engineering">
     <div class="wrap">
-      <div class="sec-head"><span class="no" style="color:var(--ember); text-shadow:0 0 10px rgba(255,74,28,.4)">03</span><h2>Engineering</h2></div>
+      <div class="sec-head"><span class="no">03</span><h2>Engineering</h2></div>
       <hr class="sec-rule re">
       <p class="manifesto">It has never been easier to generate a tool that almost
       works. Documents people rely on deserve better than almost.</p>
@@ -509,7 +505,7 @@ footer:before{
 
   <section id="licensing">
     <div class="wrap">
-      <div class="sec-head"><span class="no" style="color:var(--volt); text-shadow:0 0 10px rgba(255,225,0,.4)">04</span><h2>Licensing</h2></div>
+      <div class="sec-head"><span class="no">04</span><h2>Licensing</h2></div>
       <hr class="sec-rule rv">
       <div class="license-band">
         <p><b>Free for individuals and personal use, and it stays that way.</b> The
