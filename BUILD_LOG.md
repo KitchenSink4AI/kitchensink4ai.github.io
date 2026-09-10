@@ -28,3 +28,29 @@
 - Fonts: oxanium-var.woff2 (12KB), geologica-var.woff2 (42KB, unused after all-Oxanium ruling), plexmono-400.woff2 (12KB, shell line only).
 - Old address flipped to 2s auto-redirect.
 - pip co-install line restored after ppt fastmcp3 migration.
+
+## 2026-09-10 (contact live end to end, two new pages, the legal pass)
+
+The contact form completed its pipeline: Resend domain verified (recreated
+once after a poisoned verification backoff; same DKIM key, zero DNS changes),
+the Worker's six-category battery delivered to all four mailboxes, and the
+author confirmed all seven test mails. Masthead Contact link and the business
+tile's "Reach the humans" link went live, plus the statusline and Didymoi
+tiles gained whole-card links.
+
+Two pages shipped: /didymoi/ (the patent teaser, author-blessed same day)
+and /privacy/ ("Nothing much, on purpose." - every sentence verified against
+the actual stack), with footer Privacy links on the landing family. The
+legal pass replaced the overstated license line on every footer and the
+service counter, rescoped the no-trackers claim to the products while the
+visitor counters stayed by author order, de-absolutized the web tile's
+safety copy, and moved the catalog fonts to /products/fonts (23 woff2,
+zero Google-CDN requests). Locale sync retranslated the changed strings
+across six languages in three passes, 100+ entries.
+
+Figures restamped through the day as the releases landed: version badges to
+2.1.2/1.2.2/1.2.2/1.0.1, PPT to 142 tools / 1,251 tests across all locale
+number formats, Word to 1,846, Web to 20/53 tools and 2,066 tests. The
+phone-width masthead defect (nav wider than a 390px viewport since the
+Contact link) fixed on landing and contact pages with the Didymoi page's
+tiers. Worker source homed in the repo under workers/contact/. Logged at 2026-09-10 18:13.
