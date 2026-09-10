@@ -100,7 +100,21 @@ nav.top a{
   text-transform:uppercase; color:var(--ink-soft);
 }
 nav.top a:hover{color:var(--laser); text-decoration:none; text-shadow:var(--glow-c)}
-@media (max-width:640px){ nav.top a.hide-sm{display:none} }
+/* the secondary links drop before the bar runs out of room: at 640 the six
+   items wrap into the wordmark, so they leave at 860 instead */
+@media (max-width:860px){ nav.top a.hide-sm{display:none} }
+/* six nav items minus the three that hide still outruns a phone masthead, so
+   the bar scales down rather than pushing the page sideways */
+@media (max-width:560px){
+  .wordmark{font-size:18px}
+  nav.top{gap:clamp(10px,3vw,14px)}
+  nav.top a{font-size:11px; letter-spacing:.1em}
+}
+@media (max-width:380px){
+  .wrap{padding:0 14px}
+  nav.top{gap:8px}
+  nav.top a{font-size:10.5px; letter-spacing:.05em}
+}
 
 /* ---------- hero ---------- */
 .hero{padding:clamp(72px,12vh,140px) 0 clamp(50px,8vh,92px); position:relative}
