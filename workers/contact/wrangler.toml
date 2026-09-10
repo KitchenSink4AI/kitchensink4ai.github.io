@@ -1,0 +1,47 @@
+# Production config, Workers FREE plan. Zero recurring cost.
+#
+# Deliberately absent, and why:
+#   [[send_email]]  Cloudflare Email Service. Its pricing table lists outbound
+#                   sending as "Not available" on Workers Free, so binding it
+#                   would force the 5 USD/month Workers Paid line. See the
+#                   OPTIONAL UPGRADE section of DEPLOY_BRIEF.md.
+#   [[ratelimits]]  The native rate limiting binding. No Cloudflare page states
+#                   whether it works on Workers Free, and an unverified
+#                   dependency is not worth the risk here. The KV hourly counter
+#                   below carries the rate limit alone. The Worker treats the
+#                   binding as optional at runtime, so it can be added later
+#                   with no code change.
+
+name = "kitchensink4-contact"
+main = "src/index.js"
+compatibility_date = "2026-09-09"
+
+# The endpoint shares an origin with the page, so the Worker takes a zone route
+# rather than a workers.dev subdomain.
+workers_dev = false
+
+[[routes]]
+pattern = "kitchensink4.ai/api/contact*"
+zone_name = "kitchensink4.ai"
+
+[vars]
+# Resend is the primary sender: 3,000 emails/month and 100/day on a permanent
+# 0 USD tier. Switch to "zeptomail" or "cloudflare" without touching code.
+MAIL_PROVIDER = "resend"
+FROM_EMAIL = "no-reply@kitchensink4.ai"
+FROM_NAME = "kitchensink4.ai contact form"
+# Turnstile stays off until the widget is on the page. Flip to "true" and set
+# the TURNSTILE_SECRET secret to turn verification on.
+TURNSTILE_ENABLED = "false"
+
+# Hourly per-IP counter, 10 per hour. Included on the Workers Free plan
+# (1,000 writes/day, 100,000 reads/day). Create it with:
+#   wrangler kv namespace create CONTACT_RL
+[[kv_namespaces]]
+binding = "CONTACT_RL"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+# Secrets, set with `wrangler secret put <NAME>`:
+#   RESEND_TOKEN       required, the re_... API key
+#   TURNSTILE_SECRET   only when TURNSTILE_ENABLED = "true"
+#   ZEPTOMAIL_TOKEN    only if MAIL_PROVIDER is switched to "zeptomail"
