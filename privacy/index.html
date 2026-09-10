@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Didymoi · KitchenSink4AI</title>
-<meta name="description" content="Didymoi makes AI-assisted analysis reproducible. That sentence is worth more than it sounds.">
-<link rel="canonical" href="https://kitchensink4.ai/didymoi/">
+<title>Privacy · KitchenSink4AI</title>
+<meta name="description" content="The KitchenSink4AI privacy policy: the software sends nothing off your machine; the site keeps a visitor count; the contact form goes to our mailbox and nowhere else.">
+<link rel="canonical" href="https://kitchensink4.ai/privacy/">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://kitchensink4.ai/didymoi/">
-<meta property="og:title" content="Didymoi · KitchenSink4AI">
-<meta property="og:description" content="Didymoi makes AI-assisted analysis reproducible. That sentence is worth more than it sounds.">
+<meta property="og:url" content="https://kitchensink4.ai/privacy/">
+<meta property="og:title" content="Privacy · KitchenSink4AI">
+<meta property="og:description" content="What this site and this software collect, where it goes, and how to make us forget it.">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b0f14'/%3E%3Ctext x='32' y='44' font-family='Arial,sans-serif' font-size='30' font-weight='800' text-anchor='middle' fill='%2339FF14'%3EK4%3C/text%3E%3C/svg%3E">
 <style>
@@ -207,77 +207,79 @@ footer:before{
 
 <main>
   <div class="wrap hero">
-    <p class="kicker rev d1">RESEARCH · PATENT PENDING</p>
-    <h1 class="rev d2">The same answer twice<span class="dot">.</span></h1>
-    <p class="sub rev d3">Didymoi makes AI-assisted analysis reproducible. That
-    sentence is worth more than it sounds.</p>
+    <p class="kicker rev d1">THE RECORD · PRIVACY</p>
+    <h1 class="rev d2">Nothing much, on purpose<span class="dot">.</span></h1>
+    <p class="sub rev d3">What this site and this software collect, where it goes,
+    and how to make us forget it.</p>
   </div>
 
-  <div class="wrap"><hr class="laser-h" style="background:linear-gradient(90deg, transparent, var(--ember) 30%, var(--ember) 70%, transparent); box-shadow:0 0 8px rgba(255,74,28,.5), 0 0 20px rgba(255,74,28,.2)"></div>
+  <div class="wrap"><hr class="laser-h"></div>
 
-  <section id="problem">
+  <section id="software">
     <div class="wrap">
-      <div class="sec-head"><span class="no">01</span><h2>The problem</h2></div>
+      <div class="sec-head"><span class="no">01</span><h2>The software</h2></div>
       <hr class="sec-rule">
       <div class="prose">
-        <p>Ask a model the same question twice and you get two different answers.
-        For a chatbot, that is personality. For analysis, it is disqualifying: a
-        conclusion nobody can reproduce is a conclusion nobody can audit, defend, or
-        be held to. The industries that run on defensible answers, law, finance,
-        intelligence, compliance, medicine, are stuck at the demo stage with AI for
-        exactly this reason.</p>
+        <p>The products send nothing off your machine: no telemetry, no analytics, no tracking. Your documents, spreadsheets, decks, and pages are processed locally and never leave it.</p>
+        <p>One documented exception: an optional update check, at most one plain HTTPS request per seven days to pypi.org, carrying only the package name and version. Nothing about you and nothing about your files. Each server names the switch that turns it off (for example <b>KS4WEB_UPDATE_CHECK=off</b>).</p>
       </div>
     </div>
   </section>
 
-  <section id="idea">
+  <section id="site">
     <div class="wrap">
-      <div class="sec-head"><span class="no">02</span><h2>The idea</h2></div>
+      <div class="sec-head"><span class="no">02</span><h2>This website</h2></div>
       <hr class="sec-rule">
       <div class="prose">
-        <p>Didymoi splits the work. A deterministic layer builds the record: what was
-        asked, what was consulted, what was found. The model works inside that record
-        and has no power to alter it. Grounding is handed over as a fence, not a
-        springboard.</p>
-        <p><b>The result is a probabilistic system answerable to a deterministic
-        one.</b></p>
-        <p>The analysis can be re-run, checked, and disagreed with on the evidence.</p>
+        <p>These are static pages served by GitHub Pages through Cloudflare. Both keep standard server logs (address, page, time) under their own terms; we do not receive them.</p>
+        <p>Fonts are served from this domain. There are no cookies and no analytics scripts. The product pages show a visitor counter from a third-party badge service, which receives the page view request as part of counting it. That is the whole list.</p>
       </div>
     </div>
   </section>
 
-  <section id="why">
+  <section id="form">
     <div class="wrap">
-      <div class="sec-head"><span class="no">03</span><h2>Why it matters</h2></div>
+      <div class="sec-head"><span class="no">03</span><h2>The contact form</h2></div>
       <hr class="sec-rule">
       <div class="prose">
-        <p>Every serious buyer of AI analysis eventually asks the same question: why
-        should I trust this? Today the honest answer is a shrug and some benchmarks.
-        The trust layer, the piece that turns model output into a defensible record,
-        does not exist yet as infrastructure. That is the layer Didymoi is built for,
-        and the reason it is filed as a patent rather than shipped as a feature.</p>
+        <p>The form collects a category, a message, and an optional name and email. A Cloudflare Worker passes it through Resend to our Zoho mailbox. The message content is never logged along the way; the delivery log records category and outcome, nothing else.</p>
+        <p>Rate limiting keeps a hashed form of your network address at our edge for up to two hours. It is never stored with your message. Once delivered, your message lives in our mailbox like any email until we delete it.</p>
       </div>
     </div>
   </section>
 
-  <section id="not-saying">
+  <section id="email">
     <div class="wrap">
-      <div class="sec-head"><span class="no">04</span><h2>What this page is not saying</h2></div>
+      <div class="sec-head"><span class="no">04</span><h2>Email</h2></div>
       <hr class="sec-rule">
       <div class="prose">
-        <p>The filing describes the mechanism. This page deliberately does not. If
-        your diligence needs more than a teaser, that conversation happens under NDA,
-        and it starts one click away.</p>
+        <p>Write to any address here and we keep the thread as ordinary correspondence, used to answer you and for nothing else. No mailing lists exist, and nobody is added to anything by writing in.</p>
       </div>
     </div>
   </section>
 
-  <div class="wrap cta">
-    <hr class="cta-rule">
-    <div class="cta-row">
-      <a class="btn-shop" href="/contact/">Reach the humans →</a>
+  <section id="rights">
+    <div class="wrap">
+      <div class="sec-head"><span class="no">05</span><h2>Your data, your call</h2></div>
+      <hr class="sec-rule">
+      <div class="prose">
+        <p>Want your correspondence deleted? Ask: <a href="mailto:admin@kitchensink4.ai">admin@kitchensink4.ai</a>. There is nothing else to delete: no accounts, no profiles, no stored visitors.</p>
+      </div>
     </div>
-    <p class="status">Patent pending. Didymoi is a research program of KitchenSink4AI.</p>
+  </section>
+
+  <section id="changes">
+    <div class="wrap">
+      <div class="sec-head"><span class="no">06</span><h2>Changes</h2></div>
+      <hr class="sec-rule">
+      <div class="prose">
+        <p>When this page changes, the effective date below changes with it.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <p class="status">Effective 2026-09-10 · Questions: admin@kitchensink4.ai · KitchenSink4AI is a product line of Alvut Consulting, LLC.</p>
   </div>
 </main>
 
