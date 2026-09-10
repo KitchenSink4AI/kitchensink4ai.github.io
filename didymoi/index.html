@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Didymoi · KitchenSink4AI</title>
+<meta name="description" content="Didymoi makes AI-assisted analysis reproducible. That sentence is worth more than it sounds.">
+<link rel="canonical" href="https://kitchensink4.ai/didymoi/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kitchensink4.ai/didymoi/">
+<meta property="og:title" content="Didymoi · KitchenSink4AI">
+<meta property="og:description" content="Didymoi makes AI-assisted analysis reproducible. That sentence is worth more than it sounds.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b0f14'/%3E%3Ctext x='32' y='44' font-family='Arial,sans-serif' font-size='30' font-weight='800' text-anchor='middle' fill='%2339FF14'%3EK4%3C/text%3E%3C/svg%3E">
+<style>
+/* ============ KitchenSink4 · didymoi, same dark register ============
+   Tokens, masthead, laser rules, section heads and footer are lifted from
+   the corporate landing page so the two surfaces are one surface. Acid
+   green carries the headings, ember stays in the linework, volt is
+   rationed. One face: Oxanium, all of it. */
+
+@font-face { font-family:'Oxanium'; src:url('/fonts/oxanium-var.woff2') format('woff2');
+  font-weight:200 800; font-display:swap; }
+
+:root{
+  --ground:#050608;
+  --panel:#0a0d12;
+  --panel-2:#0c1017;
+  --hairline:rgba(0,252,254,.10);
+  --hairline-2:rgba(0,252,254,.22);
+  --ink:#eef3f6;
+  --ink-soft:#9aa7b2;
+  --ink-dim:#5f6b76;
+  --cyan:#22D3EE;          /* readable accent: links, small text */
+  --laser:#00FCFE;         /* hot cyan: lines and light only */
+  --green:#39FF14;
+  --ember:#FF4A1C;
+  --volt:#FFE100;
+  --glow-c:0 0 6px rgba(0,252,254,.8), 0 0 18px rgba(0,252,254,.35);
+  --glow-g:0 0 6px rgba(57,255,20,.8), 0 0 18px rgba(57,255,20,.35);
+  --glow-e:0 0 6px rgba(255,74,28,.8), 0 0 18px rgba(255,74,28,.35);
+  --glow-v:0 0 6px rgba(255,225,0,.8), 0 0 18px rgba(255,225,0,.35);
+  --ox:'Oxanium','Segoe UI',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:
+    radial-gradient(1200px 500px at 50% -140px, rgba(0,252,254,.10), transparent 70%),
+    radial-gradient(900px 400px at 85% 30%, rgba(57,255,20,.035), transparent 70%),
+    repeating-linear-gradient(0deg, rgba(0,252,254,.035) 0 1px, transparent 1px 56px),
+    repeating-linear-gradient(90deg, rgba(0,252,254,.035) 0 1px, transparent 1px 56px),
+    var(--ground);
+  color:var(--ink);
+  font-family:var(--ox);
+  font-weight:400;
+  font-size:17px; line-height:1.66;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:rgba(57,255,20,.3)}
+a{color:var(--cyan); text-decoration:none}
+a:hover{color:var(--laser); text-decoration:underline; text-underline-offset:4px}
+a:focus-visible{outline:2px solid var(--laser); outline-offset:3px; border-radius:2px}
+.wrap{max-width:1080px; margin:0 auto; padding:0 clamp(20px,4vw,48px)}
+.kicker{
+  font-weight:600; font-size:12.5px;
+  letter-spacing:.3em; text-transform:uppercase; color:var(--green);
+  text-shadow:0 0 10px rgba(57,255,20,.4);
+}
+
+/* the brand face: display, labels, and numbers stay Oxanium */
+.kicker, .wordmark, nav.top a, .hero h1, .btn-shop,
+.sec-head h2, .sec-head .no, .prose p, .status,
+.f-l, .colophon{ font-family:var(--ox); }
+
+/* laser rules */
+.laser-h{
+  height:1px; border:none;
+  background:linear-gradient(90deg, transparent, var(--laser) 15%, var(--green) 40%, var(--volt) 62%, var(--ember) 85%, transparent);
+  box-shadow:0 0 8px rgba(0,252,254,.55), 0 0 22px rgba(0,252,254,.2);
+}
+
+/* ---------- masthead ---------- */
+header.mast{
+  border-bottom:1px solid var(--hairline-2);
+  box-shadow:0 1px 12px rgba(0,252,254,.12);
+  background:rgba(5,6,8,.85); backdrop-filter:blur(8px);
+  position:sticky; top:0; z-index:10;
+}
+.mast-in{display:flex; align-items:center; justify-content:space-between; height:64px}
+.wordmark{
+  font-weight:700; font-size:21px; letter-spacing:.01em;
+  color:var(--ink); text-decoration:none !important;
+}
+.wordmark .four{color:var(--green); text-shadow:var(--glow-g)}
+nav.top{display:flex; gap:clamp(14px,2.5vw,30px)}
+nav.top a{
+  font-weight:600; font-size:12.5px; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--ink-soft);
+}
+nav.top a:hover{color:var(--laser); text-decoration:none; text-shadow:var(--glow-c)}
+/* the secondary links drop before the bar runs out of room: at 640 the six
+   items wrap into the wordmark, so they leave at 860 instead */
+@media (max-width:860px){ nav.top a.hide-sm{display:none} }
+/* six nav items minus the three that hide still outruns a phone masthead, so
+   the bar scales down rather than pushing the page sideways */
+@media (max-width:560px){
+  .wordmark{font-size:18px}
+  nav.top{gap:clamp(10px,3vw,14px)}
+  nav.top a{font-size:11px; letter-spacing:.1em}
+}
+@media (max-width:380px){
+  .wrap{padding:0 14px}
+  nav.top{gap:8px}
+  nav.top a{font-size:10.5px; letter-spacing:.05em}
+}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(60px,10vh,116px) 0 clamp(34px,6vh,60px); position:relative}
+.hero h1{
+  font-weight:700;
+  font-size:clamp(40px,7vw,84px); line-height:1.03; letter-spacing:-.01em;
+  margin:18px 0 24px; max-width:14ch;
+}
+.hero h1 .dot{color:var(--ember); text-shadow:var(--glow-e)}
+.hero .sub{max-width:62ch; color:var(--ink-soft); font-weight:400; font-size:clamp(16px,1.35vw,19px)}
+.hero .sub b{color:var(--ink); font-weight:600}
+
+/* ---------- sections ---------- */
+section{padding:clamp(52px,8vh,88px) 0}
+section + section{padding-top:0}
+.sec-head{display:flex; align-items:baseline; gap:18px; margin-bottom:8px}
+.sec-head h2{font-weight:700; font-size:clamp(26px,3.4vw,40px); color:var(--green); text-shadow:0 0 18px rgba(57,255,20,.28)}
+.sec-head .no{
+  font-weight:600; font-size:12px; letter-spacing:.26em; color:var(--ink);
+}
+.sec-rule{
+  height:1px; border:none; margin:0 0 34px;
+  background:linear-gradient(90deg, var(--laser), transparent 80%);
+  box-shadow:0 0 8px rgba(0,252,254,.45);
+}
+.prose p{color:var(--ink-soft); max-width:68ch}
+.prose p + p{margin-top:18px}
+.prose b{color:var(--ink); font-weight:600}
+
+/* ---------- the one call to action ---------- */
+.cta{padding:clamp(44px,7vh,80px) 0 clamp(64px,10vh,104px)}
+.cta-rule{
+  height:1px; border:none; margin:0 0 clamp(30px,5vh,44px);
+  background:linear-gradient(90deg, transparent, var(--ember) 30%, var(--ember) 70%, transparent);
+  box-shadow:0 0 8px rgba(255,74,28,.5), 0 0 20px rgba(255,74,28,.2);
+}
+.cta-row{display:flex; flex-wrap:wrap; gap:16px; align-items:center}
+.btn-shop{
+  font-weight:600; font-size:13px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink); border:1px solid var(--hairline-2); border-radius:4px;
+  padding:13px 20px; transition:border-color .18s, color .18s, box-shadow .18s;
+}
+.btn-shop:hover{border-color:var(--laser); color:var(--laser); text-decoration:none; box-shadow:var(--glow-c), inset 0 0 14px rgba(0,252,254,.1)}
+.status{font-size:13.5px; font-weight:400; color:var(--ink-dim); max-width:70ch; margin-top:20px}
+@media (max-width:640px){
+  .cta-row, .btn-shop{width:100%}
+  .btn-shop{text-align:center}
+}
+
+/* footer */
+footer{padding:44px 0 60px; margin-top:20px; position:relative}
+footer:before{
+  content:""; display:block; position:absolute; top:0; left:0; right:0; height:1px;
+  background:linear-gradient(90deg, transparent, var(--laser) 15%, var(--green) 40%, var(--volt) 62%, var(--ember) 85%, transparent);
+  box-shadow:0 0 8px rgba(0,252,254,.45);
+}
+.foot-shop{color:var(--ink-soft); margin-bottom:26px}
+.f-legal{font-size:12.5px; font-weight:400; color:var(--ink-dim); max-width:88ch; margin-bottom:18px}
+.colophon{
+  font-weight:600; font-size:11px; letter-spacing:.24em;
+  text-transform:uppercase; color:var(--ink-dim);
+}
+.colophon .led{color:var(--green); text-shadow:var(--glow-g)}
+
+/* reveal */
+.rev{opacity:0; transform:translateY(14px); animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
+.d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.25s}.d4{animation-delay:.38s}
+@keyframes rise{to{opacity:1; transform:none}}
+@media (prefers-reduced-motion: reduce){
+  .rev{opacity:1; transform:none; animation:none}
+  html{scroll-behavior:auto}
+  *{transition:none !important}
+}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap mast-in">
+    <a class="wordmark" href="/">KitchenSink<span class="four">4</span>AI</a>
+    <nav class="top" aria-label="Site">
+      <a href="/products/">Products</a>
+      <a href="/#research" class="hide-sm">Research</a>
+      <a href="/#engineering" class="hide-sm">How we work</a>
+      <a href="/#licensing" class="hide-sm">Business</a>
+      <a href="/contact/">Contact</a>
+      <a href="https://github.com/KitchenSink4AI">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <p class="kicker rev d1">RESEARCH · PATENT PENDING</p>
+    <h1 class="rev d2">The same answer twice<span class="dot">.</span></h1>
+    <p class="sub rev d3">Didymoi makes AI-assisted analysis reproducible. That
+    sentence is worth more than it sounds.</p>
+  </div>
+
+  <div class="wrap"><hr class="laser-h" style="background:linear-gradient(90deg, transparent, var(--ember) 30%, var(--ember) 70%, transparent); box-shadow:0 0 8px rgba(255,74,28,.5), 0 0 20px rgba(255,74,28,.2)"></div>
+
+  <section id="problem">
+    <div class="wrap">
+      <div class="sec-head"><span class="no">01</span><h2>The problem</h2></div>
+      <hr class="sec-rule">
+      <div class="prose">
+        <p>Ask a model the same question twice and you get two different answers.
+        For a chatbot, that is personality. For analysis, it is disqualifying: a
+        conclusion nobody can reproduce is a conclusion nobody can audit, defend, or
+        be held to. The industries that run on defensible answers, law, finance,
+        intelligence, compliance, medicine, are stuck at the demo stage with AI for
+        exactly this reason.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="idea">
+    <div class="wrap">
+      <div class="sec-head"><span class="no">02</span><h2>The idea</h2></div>
+      <hr class="sec-rule">
+      <div class="prose">
+        <p>Didymoi splits the work. A deterministic layer builds the record: what was
+        asked, what was consulted, what was found. The model works inside that record
+        and has no power to alter it. Grounding is handed over as a fence, not a
+        springboard.</p>
+        <p><b>The result is a probabilistic system answerable to a deterministic
+        one.</b></p>
+        <p>The analysis can be re-run, checked, and disagreed with on the evidence.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="wrap">
+      <div class="sec-head"><span class="no">03</span><h2>Why it matters</h2></div>
+      <hr class="sec-rule">
+      <div class="prose">
+        <p>Every serious buyer of AI analysis eventually asks the same question: why
+        should I trust this? Today the honest answer is a shrug and some benchmarks.
+        The trust layer, the piece that turns model output into a defensible record,
+        does not exist yet as infrastructure. That is the layer Didymoi is built for,
+        and the reason it is filed as a patent rather than shipped as a feature.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="not-saying">
+    <div class="wrap">
+      <div class="sec-head"><span class="no">04</span><h2>What this page is not saying</h2></div>
+      <hr class="sec-rule">
+      <div class="prose">
+        <p>The filing describes the mechanism. This page deliberately does not. If
+        your diligence needs more than a teaser, that conversation happens under NDA,
+        and it starts one click away.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap cta">
+    <hr class="cta-rule">
+    <div class="cta-row">
+      <a class="btn-shop" href="/contact/">Reach the humans →</a>
+    </div>
+    <p class="status">Patent pending. Didymoi is a research program of KitchenSink4AI.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="foot-shop">The catalog, the docs, and the personality live in the
+    storefront: <a href="/products/">The KitchenSink Works →</a></p>
+    <p class="f-legal">© 2026 Alvut Consulting, LLC. Licensed AGPL-3.0: free for
+    individuals and personal use; companies building these into their own products need
+    a commercial license (licensing@kitchensink4.ai). Provided as-is, without warranty
+    of any kind, per the license. Not affiliated with or endorsed by Microsoft
+    Corporation. Microsoft, Word, PowerPoint, and Excel are trademarks of Microsoft
+    Corporation. All other trademarks are the property of their respective owners.</p>
+    <p class="colophon"><span class="led">●</span> ALL SUITES GREEN AT PUBLISH · SET IN OXANIUM · FIGURES MEASURED, NOT ESTIMATED</p>
+  </div>
+</footer>
+
+</body>
+</html>
