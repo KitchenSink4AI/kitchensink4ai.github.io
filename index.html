@@ -192,7 +192,7 @@ section{padding:clamp(64px,10vh,110px) 0}
   margin-bottom:12px; text-transform:uppercase;
 }
 .figures b{color:var(--volt); font-weight:600}
-.product .stretch{position:absolute; inset:0; z-index:1}
+.product .stretch, .r-card .stretch{position:absolute; inset:0; z-index:1}
 .p-links{display:flex; gap:22px; position:relative; z-index:2}
 .p-links a{font-weight:600; font-size:12px; letter-spacing:.18em; text-transform:uppercase}
 @media (max-width:640px){
@@ -432,7 +432,7 @@ footer:before{
           <p>A way of making a probabilistic system answerable to a deterministic
           one.</p>
         </div>
-        <div class="r-card tool">
+        <div class="r-card tool"><a class="stretch" href="https://github.com/KitchenSink4AI/claude-code-statusline" aria-label="claude-code-statusline on GitHub"></a>
           <span class="r-tag">Open tooling · MIT + NC</span>
           <h3>claude-code-statusline</h3>
           <p>The context gauge for Claude Code: real burn rate, turns remaining, rate
