@@ -394,7 +394,7 @@ footer:before{
             </div>
 
             <div class="cat a-neutral">
-              <input type="radio" name="category" id="cat-else" value="else"
+              <input type="radio" name="category" id="cat-else" value="other"
                 data-addr="admin@kitchensink4.ai" data-tag="[Contact]">
               <label for="cat-else">
                 <span class="cat-l">SOMETHING ELSE</span>
@@ -419,8 +419,9 @@ footer:before{
           </div>
           <div class="field wide">
             <label class="f-l" for="f-message">MESSAGE</label>
-            <textarea id="f-message" name="message" required aria-required="true"
-              aria-describedby="err-message"></textarea>
+            <textarea id="f-message" name="message" maxlength="8000" required aria-required="true"
+              aria-describedby="message-limit err-message"></textarea>
+            <p id="message-limit">Up to 8,000 characters.</p>
             <p class="ferr" id="err-message" aria-live="polite"
                data-msg="The message is the one required field."></p>
           </div>
@@ -613,7 +614,8 @@ footer:before{
   form.addEventListener('submit', function(ev){
     ev.preventDefault();
     var hasCat = !!selected();
-    var hasMsg = !!message.value.trim();
+    var tooLong = message.value.length > 8000;
+    var hasMsg = !!message.value.trim() && !tooLong;
     if (hasCat){
       cats.removeAttribute('data-invalid');
     } else {
@@ -626,6 +628,7 @@ footer:before{
       message.setAttribute('aria-invalid', 'true');
     }
     warn(errMsg, !hasMsg);
+    if (tooLong){ errMsg.textContent = 'Please shorten your message to 8,000 characters or fewer.'; }
     if (!hasCat){ radios[0].focus(); return; }
     if (!hasMsg){ message.focus(); return; }
     failBox.hidden = true;
@@ -649,6 +652,11 @@ footer:before{
     });
   });
 
+  // Preselect only a category already offered by this form; never submit it.
+  var requestedCategory = new URLSearchParams(window.location.search).get('category');
+  radios.forEach(function(r){
+    if (r.value === requestedCategory){ r.checked = true; }
+  });
   refresh();
 })();
 </script>

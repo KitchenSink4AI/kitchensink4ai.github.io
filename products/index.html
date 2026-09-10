@@ -144,9 +144,10 @@ a:hover{text-decoration-style:wavy;text-decoration-thickness:1px;text-underline-
 
 /* sections */
 section{padding:60px 0;border-top:1px solid var(--rule)}
-.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:34px}
-.sec-head h2{font-size:clamp(26px,4vw,40px);font-weight:800}
-.sec-head .no{font-size:12px;letter-spacing:.25em;color:var(--copper);white-space:nowrap;
+/* Translated labels and headings must wrap independently on narrow screens. */
+.sec-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 16px;margin-bottom:34px}
+.sec-head h2{min-width:0;overflow-wrap:anywhere;font-size:clamp(26px,4vw,40px);font-weight:800}
+.sec-head .no{max-width:100%;overflow-wrap:anywhere;font-size:12px;letter-spacing:.25em;color:var(--copper);white-space:normal;
   border:2px solid currentColor;border-radius:3px;padding:3px 10px;transform:rotate(-2deg);
   display:inline-block;opacity:.85;
   mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='white'/%3E%3Ccircle cx='2.5' cy='1.5' r='.3' fill='black'/%3E%3C/svg%3E")}
@@ -222,8 +223,8 @@ section{padding:60px 0;border-top:1px solid var(--rule)}
 /* the cart: three routes to the same four packages, laid out like a receipt */
 .cart-lead{font-family:'Fraunces',"Fraunces Fallback",Georgia,serif;font-size:17px;
   color:var(--ink-soft);max-width:640px;margin-bottom:28px}
-.routes{display:grid;gap:22px;max-width:900px}
-.route{border:2px solid var(--ink);background:var(--paper-deep);box-shadow:var(--shadow);
+.routes{display:grid;gap:22px;max-width:900px;min-width:0}
+.route{min-width:0;border:2px solid var(--ink);background:var(--paper-deep);box-shadow:var(--shadow);
   padding:20px 22px 18px}
 .route-t{font-size:13px;color:var(--ink-soft);margin-bottom:12px}
 .route-t b{color:var(--ink);font-weight:700}
