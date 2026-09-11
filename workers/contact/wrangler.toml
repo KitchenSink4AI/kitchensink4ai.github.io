@@ -34,9 +34,9 @@ zone_name = "kitchensink4.ai"
 MAIL_PROVIDER = "resend"
 FROM_EMAIL = "no-reply@kitchensink4.ai"
 FROM_NAME = "kitchensink4.ai contact form"
-# Turnstile stays off until the widget is on the page. Flip to "true" and set
-# the TURNSTILE_SECRET secret to turn verification on.
-TURNSTILE_ENABLED = "false"
+# Turnstile is enabled for the production contact widget.
+
+TURNSTILE_ENABLED = "true"
 
 # Hourly per-IP counter, 10 per hour. Included on the Workers Free plan
 # (1,000 writes/day, 100,000 reads/day). Create it with:
