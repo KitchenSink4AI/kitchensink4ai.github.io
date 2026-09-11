@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contact - KitchenSink4AI</title>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <meta name="description" content="Every message here lands in a mailbox a human reads, usually the human who built the thing you are writing about.">
 <link rel="canonical" href="https://kitchensink4.ai/contact/">
 <meta property="og:type" content="website">
@@ -225,6 +226,7 @@ textarea[aria-invalid="true"]{
   overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%);
   white-space:nowrap; border:0;
 }
+.turnstile-wrap{margin:24px 0 4px;min-height:65px}
 .send-row{display:flex; flex-wrap:wrap; gap:14px 20px; align-items:center; margin-top:30px}
 .send{
   font-family:var(--ox); font-weight:600; font-size:13px;
@@ -429,6 +431,10 @@ footer:before{
 
         <div class="hp" aria-hidden="true">
           <input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="turnstile-wrap" aria-label="Security check">
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAAEwNtPCbz5fnrEza" data-theme="dark"></div>
         </div>
 
         <div class="send-row">
@@ -640,7 +646,8 @@ footer:before{
       name: name.value.trim(),
       email: email.value.trim(),
       message: message.value,
-      website: website.value
+      website: website.value,
+      "cf-turnstile-response": (form.querySelector("[name=cf-turnstile-response]") || {}).value || ""
     }).then(function(data){
       sendBtn.disabled = false;
       sendBtn.removeAttribute('aria-busy');
