@@ -1,3 +1,8 @@
+## 2026-09-12 (Turnstile contact protection enabled)
+
+Cloudflare Turnstile was enabled on the production contact form. The managed widget is restricted to kitchensink4.ai and www.kitchensink4.ai. The public site key is embedded in contact/index.html; the private secret is stored only as the Worker secret TURNSTILE_SECRET and is not committed. The Worker config now sets TURNSTILE_ENABLED=true. Worker deployment version: a3bf379a-1eb8-4d2b-bbcb-12cb96241df6.
+
+Verification: live /contact/ returned HTTP 200 and contained both the Turnstile script and widget site key; a tokenless POST to /api/contact returned HTTP 403 and did not send mail; Wrangler secret metadata showed RESEND_TOKEN and TURNSTILE_SECRET. Existing honeypot and KV rate limiting remain active. A second unused widget named kitchensink4-contact remains in the account from initial setup; it is not referenced by the site and was left untouched.
 # Storefront BUILD_LOG
 
 ## 2026-09-09 overnight ship-prep run (started as record; earlier history in git)
