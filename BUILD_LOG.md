@@ -1,4 +1,4 @@
-## 2026-09-12 (Turnstile contact protection enabled)
+## 2026-09-11 (Turnstile contact protection enabled)
 
 Cloudflare Turnstile was enabled on the production contact form. The managed widget is restricted to kitchensink4.ai and www.kitchensink4.ai. The public site key is embedded in contact/index.html; the private secret is stored only as the Worker secret TURNSTILE_SECRET and is not committed. The Worker config now sets TURNSTILE_ENABLED=true. Worker deployment version: a3bf379a-1eb8-4d2b-bbcb-12cb96241df6.
 
